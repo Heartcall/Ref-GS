@@ -1,0 +1,15 @@
+/home/liuly/anaconda3/envs/ref_gs/lib/python3.7/site-packages/torch/functional.py:478: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at  /opt/conda/conda-bld/pytorch_1659484809535/work/aten/src/ATen/native/TensorShape.cpp:2894.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Looking for config file in output/repro_paper/glossy_synthetic/luyu_blender/cfg_args
+Config file found: output/repro_paper/glossy_synthetic/luyu_blender/cfg_args
+Rendering output/repro_paper/glossy_synthetic/luyu_blender [07/07 19:22:13]
+SphMipEncoding ### level: 9   size: 512 [07/07 19:22:14]
+Loading trained model at iteration 31000 [07/07 19:22:14]
+Found transforms_train.json file, assuming Blender data set! [07/07 19:22:14]
+Reading Training Transforms [07/07 19:22:14]
+Reading Test Transforms [07/07 19:22:14]
+Generating random point cloud (100000)... [07/07 19:22:14]
+resolution_scales [1.0] [07/07 19:22:15]
+Loading Training Cameras [07/07 19:22:15]
+Loading Test Cameras [07/07 19:22:21]
+Load Path output/repro_paper/glossy_synthetic/luyu_blender/point_cloud/iteration_31000/point_cloud.ply [07/07 19:22:22]

@@ -4,16 +4,16 @@
   f"Using {sequence_to_str(tuple(keyword_only_kwargs.keys()), separate_last='and ')} as positional "
 /home/liuly/anaconda3/envs/ref_gs/lib/python3.7/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and will be removed in 0.15. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
   warnings.warn(msg)
-Looking for config file in output/repro_paper/refnerf/coffee/cfg_args
-Config file found: output/repro_paper/refnerf/coffee/cfg_args
-Rendering output/repro_paper/refnerf/coffee [07/07 19:33:07]
-SphMipEncoding ### level: 9   size: 512 [07/07 19:33:08]
-Loading trained model at iteration 31000 [07/07 19:33:08]
-Found transforms_train.json file, assuming Blender data set! [07/07 19:33:08]
-Reading Training Transforms [07/07 19:33:08]
-Reading Test Transforms [07/07 19:33:09]
-Generating random point cloud (100000)... [07/07 19:33:09]
-resolution_scales [1.0] [07/07 19:33:09]
-Loading Training Cameras [07/07 19:33:09]
-Loading Test Cameras [07/07 19:33:14]
-Load Path output/repro_paper/refnerf/coffee/point_cloud/iteration_31000/point_cloud.ply [07/07 19:33:22]
+Looking for config file in output/repro_smoke/refnerf/coffee/cfg_args
+Config file found: output/repro_smoke/refnerf/coffee/cfg_args
+Rendering output/repro_smoke/refnerf/coffee [07/07 15:38:57]
+SphMipEncoding ### level: 9   size: 512 [07/07 15:38:58]
+Loading trained model at iteration 10 [07/07 15:38:58]
+Found transforms_train.json file, assuming Blender data set! [07/07 15:38:58]
+Reading Training Transforms [07/07 15:38:58]
+Reading Test Transforms [07/07 15:38:58]
+Generating random point cloud (100000)... [07/07 15:38:58]
+resolution_scales [1.0] [07/07 15:38:58]
+Loading Training Cameras [07/07 15:38:58]
+Loading Test Cameras [07/07 15:39:03]
+Load Path output/repro_smoke/refnerf/coffee/point_cloud/iteration_10/point_cloud.ply [07/07 15:39:10]

@@ -1,0 +1,20 @@
+/home/liuly/anaconda3/envs/ref_gs/lib/python3.7/site-packages/torch/functional.py:478: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at  /opt/conda/conda-bld/pytorch_1659484809535/work/aten/src/ATen/native/TensorShape.cpp:2894.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Optimizing output/repro_smoke/glossy_synthetic/bell_blender
+Output folder: output/repro_smoke/glossy_synthetic/bell_blender [07/07 15:36:23]
+Tensorboard not available: not logging progress [07/07 15:36:23]
+SphMipEncoding ### level: 9   size: 512 [07/07 15:36:26]
+Found transforms_train.json file, assuming Blender data set! [07/07 15:36:26]
+Reading Training Transforms [07/07 15:36:26]
+Reading Test Transforms [07/07 15:36:26]
+Generating random point cloud (100000)... [07/07 15:36:26]
+resolution_scales [1.0] [07/07 15:36:27]
+Loading Training Cameras [07/07 15:36:27]
+Loading Test Cameras [07/07 15:36:41]
+Number of points at initialisation :  100000 [07/07 15:36:42]
+Training set length 112 [07/07 15:36:42]
+Training progress:   0%|          | 0/10 [00:00<?, ?it/s]Training progress:   0%|          | 0/10 [00:03<?, ?it/s, Loss=0.59906, distort=0.00000, normal=0.04768, Points=100000]Training progress: 100%|██████████| 10/10 [00:03<00:00,  2.82it/s, Loss=0.59906, distort=0.00000, normal=0.04768, Points=100000]Training progress: 100%|██████████| 10/10 [00:03<00:00,  2.82it/s, Loss=0.59906, distort=0.00000, normal=0.04768, Points=100000]
+
+[ITER 10] Saving Gaussians [07/07 15:36:46]
+
+Training complete. [07/07 15:36:47]

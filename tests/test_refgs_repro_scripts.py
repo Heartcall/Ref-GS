@@ -70,6 +70,21 @@ class RefGSRunnerTests(unittest.TestCase):
         self.assertIn("--iteration", jobs[1].command)
         self.assertIn("31000", jobs[1].command)
 
+    def test_glossy_uses_blender_scene_names_and_lowercase_output_dir(self):
+        jobs = build_jobs(
+            DATASET_CONFIGS["glossy_synthetic"],
+            scenes=["bell_blender"],
+            data_root=Path("/data/liuly/dataset/3DGS"),
+            output_root=Path("output/repro_paper"),
+            gpu="7",
+            actions=("train",),
+            python="python",
+        )
+
+        command = jobs[0].command
+        self.assertIn("/data/liuly/dataset/3DGS/GlossySyntheticConverted/bell_blender", command)
+        self.assertIn("output/repro_paper/glossy_synthetic/bell_blender", command)
+
 
 if __name__ == "__main__":
     unittest.main()

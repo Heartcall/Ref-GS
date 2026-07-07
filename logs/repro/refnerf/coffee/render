@@ -1,9 +1,15 @@
-Looking for config file in output/repro/refnerf/coffee/cfg_args
-Traceback (most recent call last):
-  File "render.py", line 194, in <module>
-    main()
-  File "render.py", line 157, in main
-    args = get_combined_args(parser)
-  File "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/arguments/__init__.py", line 131, in get_combined_args
-    with open(cfgfilepath) as cfg_file:
-FileNotFoundError: [Errno 2] No such file or directory: 'output/repro/refnerf/coffee/cfg_args'
+/home/liuly/anaconda3/envs/ref_gs/lib/python3.7/site-packages/torch/functional.py:478: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at  /opt/conda/conda-bld/pytorch_1659484809535/work/aten/src/ATen/native/TensorShape.cpp:2894.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Looking for config file in output/repro_paper/refnerf/coffee/cfg_args
+Config file found: output/repro_paper/refnerf/coffee/cfg_args
+Rendering output/repro_paper/refnerf/coffee [07/07 19:31:35]
+SphMipEncoding ### level: 9   size: 512 [07/07 19:31:36]
+Loading trained model at iteration 31000 [07/07 19:31:36]
+Found transforms_train.json file, assuming Blender data set! [07/07 19:31:36]
+Reading Training Transforms [07/07 19:31:36]
+Reading Test Transforms [07/07 19:31:36]
+Generating random point cloud (100000)... [07/07 19:31:36]
+resolution_scales [1.0] [07/07 19:31:37]
+Loading Training Cameras [07/07 19:31:37]
+Loading Test Cameras [07/07 19:31:42]
+Load Path output/repro_paper/refnerf/coffee/point_cloud/iteration_31000/point_cloud.ply [07/07 19:31:50]
