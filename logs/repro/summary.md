@@ -67,6 +67,33 @@ completed on GPUs 1 and 4.
 | NeRF Synthetic | materials | ok | 31000 | 200 | 30.2855 | 0.9500 | 0.0506 |
 | NeRF Synthetic | drums | ok | 31000 | 200 | 24.8235 | 0.9336 | 0.0603 |
 
+## Geometry Metrics
+
+Geometry metrics were added after the RGB/LPIPS summary. They compare saved
+Ref-GS Gaussian point-cloud centers against available dataset geometry in raw
+coordinates, with no ICP, scale fitting, or similarity alignment.
+
+Reference protocol:
+
+- Ref-NeRF/Shiny Blender Synthetic: sampled scene GT mesh, accepted GT.
+- GlossySynthetic: `eval_pts.ply`, accepted evaluation points.
+- NeRF Synthetic: `points3d.ply`, proxy only and not accepted GT.
+
+Normal-angle metrics are reported as `NA` because the saved Ref-GS prediction
+point clouds do not contain normals.
+
+| Dataset | Rows | Protocol | Chamfer-L1 | Chamfer-L2 | Hausdorff | F@0.5% | F@1% | F@2% |
+|---|---:|---|---:|---:|---:|---:|---:|---:|
+| Ref-NeRF | 6 | accepted GT | 0.021572 | 0.002087 | 0.452548 | 0.6018 | 0.8202 | 0.9237 |
+| GlossySynthetic | 6 | accepted GT | 0.010846 | 0.000365 | 0.337523 | 0.7694 | 0.9332 | 0.9796 |
+| NeRF Synthetic | 8 | proxy only | 0.184408 | 0.084345 | 1.048907 | 0.0736 | 0.1754 | 0.2671 |
+
+Geometry metric files:
+
+- `logs/repro/geometry_summary.md`
+- `logs/repro/geometry_metrics.csv`
+- `logs/repro/geometry_metrics.json`
+
 ## Success And Failure Summary
 
 Successful train/render/eval scenes:
