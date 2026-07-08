@@ -1,5 +1,7 @@
 import csv
 import json
+import subprocess
+import sys
 from argparse import ArgumentParser
 from pathlib import Path
 from statistics import mean
@@ -168,7 +170,7 @@ def _save_geometry(render_pkg: dict, split_dir: Path, image_name: str, args) -> 
             split_dir / "geometry" / "depth" / f"{image_name}.npy",
             split_dir / "geometry" / "depth_vis" / f"{image_name}.png",
         )
-    return {"normal_key": normal_key, "depth_key": depth_key}
+    return {"normal_key": normal_key, "depth_key": depth_key, "render_keys": sorted(render_pkg.keys())}
 
 
 def _dump_render_keys(render_pkg: dict) -> None:
@@ -199,7 +201,8 @@ def _write_metrics(output_dir: Path, rows: List[Dict], aggregate: Dict) -> None:
 
 
 def _evaluate_split(split: str, cameras, scene, render_func, pipe, background, args, lpips_fn):
-    split_dir = Path(args.model_path) / split / f"ours_{scene.loaded_iter}"
+    split_base = Path(args.geometry_output_root) if args.geometry_output_root else Path(args.model_path)
+    split_dir = split_base / split / f"ours_{scene.loaded_iter}"
     render_dir = split_dir / "renders"
     gt_dir = split_dir / "gt"
     rows = []
@@ -221,10 +224,15 @@ def _evaluate_split(split: str, cameras, scene, render_func, pipe, background, a
                 rows.append({"split": split, "image_name": camera.image_name, **metrics})
     if args.save_geometry:
         meta = {
+            "source_model_path": str(Path(args.model_path)),
             "split": split,
             "iteration": scene.loaded_iter,
             "normal_key": geometry_keys["normal_key"] if geometry_keys else None,
             "depth_key": geometry_keys["depth_key"] if geometry_keys else None,
+            "render_keys": geometry_keys["render_keys"] if geometry_keys else None,
+            "command": " ".join(sys.argv),
+            "git_commit": _git_text(["git", "rev-parse", "HEAD"]),
+            "git_diff_summary": _git_text(["git", "diff", "--stat"]),
         }
         (split_dir / "geometry").mkdir(parents=True, exist_ok=True)
         with (split_dir / "geometry" / "metadata.json").open("w", encoding="utf-8") as handle:
@@ -241,6 +249,13 @@ def _evaluate_split(split: str, cameras, scene, render_func, pipe, background, a
         }
         _write_metrics(split_dir, rows, aggregate)
     return rows
+
+
+def _git_text(command: List[str]) -> Optional[str]:
+    try:
+        return subprocess.check_output(command, cwd=Path(__file__).resolve().parent, text=True, stderr=subprocess.DEVNULL).strip()
+    except Exception:
+        return None
 
 
 def main(default_renderer: str = "refgs") -> None:
@@ -262,6 +277,7 @@ def main(default_renderer: str = "refgs") -> None:
     parser.add_argument("--geometry-only", action="store_true")
     parser.add_argument("--normal-key", default="auto")
     parser.add_argument("--depth-key", default="auto")
+    parser.add_argument("--geometry-output-root", default=None)
     parser.add_argument("--split", choices=("train", "test", "both"), default=None)
     parser.add_argument("--quiet", action="store_true")
     args = get_combined_args(parser)

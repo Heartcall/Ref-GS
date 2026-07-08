@@ -15,6 +15,19 @@ from PIL import Image
 from plyfile import PlyData
 from scipy.spatial import cKDTree
 
+from scripts.normal_mae_protocol import (
+    apply_axis_flip,
+    build_eval_mask,
+    compute_normal_mae_deg,
+    decode_normal_rgb,
+    load_gt_normal_alpha,
+    load_normal as load_protocol_normal,
+    load_rgba_alpha_from_source_image,
+    load_transforms_frames,
+    normalize_normals,
+    transform_normals,
+)
+
 
 DEFAULT_SCENES = {
     "refnerf": ["helmet", "car", "ball", "teapot", "coffee", "toaster"],
@@ -40,28 +53,8 @@ NORMAL_EXTENSIONS = (".npy", ".npz", ".png", ".jpg", ".jpeg", ".exr")
 DEPTH_EXTENSIONS = (".npy", ".npz", ".png", ".jpg", ".jpeg", ".exr")
 
 
-def normalize_normals(normals: np.ndarray, eps: float = 1e-8) -> np.ndarray:
-    normals = np.asarray(normals, dtype=np.float32)
-    norm = np.linalg.norm(normals, axis=-1, keepdims=True)
-    safe = norm > eps
-    return np.where(safe, normals / np.maximum(norm, eps), 0.0).astype(np.float32)
-
-
 def decode_normal_image(array: np.ndarray) -> np.ndarray:
-    array = np.asarray(array)
-    if array.ndim == 2:
-        raise ValueError("Normal image must have 3 channels")
-    if array.shape[-1] > 3:
-        array = array[..., :3]
-    if np.issubdtype(array.dtype, np.integer):
-        return (array.astype(np.float32) / 255.0) * 2.0 - 1.0
-    array = array.astype(np.float32)
-    finite = array[np.isfinite(array)]
-    if finite.size == 0:
-        return array
-    if finite.min() >= -0.05 and finite.max() <= 1.05:
-        return array * 2.0 - 1.0
-    return array
+    return decode_normal_rgb(array)
 
 
 def apply_normal_convention(
@@ -70,40 +63,7 @@ def apply_normal_convention(
     flip_y: bool = False,
     flip_z: bool = False,
 ) -> np.ndarray:
-    result = np.array(normals, dtype=np.float32, copy=True)
-    if flip_x:
-        result[..., 0] *= -1.0
-    if flip_y:
-        result[..., 1] *= -1.0
-    if flip_z:
-        result[..., 2] *= -1.0
-    return result
-
-
-def compute_normal_mae_deg(
-    pred: np.ndarray,
-    gt: np.ndarray,
-    mask: Optional[np.ndarray] = None,
-    absolute_dot: bool = False,
-) -> Dict[str, Optional[float]]:
-    pred = normalize_normals(pred)
-    gt = normalize_normals(gt)
-    valid = np.isfinite(pred).all(axis=-1) & np.isfinite(gt).all(axis=-1)
-    valid &= np.linalg.norm(pred, axis=-1) > 1e-6
-    valid &= np.linalg.norm(gt, axis=-1) > 1e-6
-    if mask is not None:
-        valid &= mask.astype(bool)
-    if not np.any(valid):
-        return {"normal_mae_deg": None, "valid_pixel_count": 0}
-    dot = np.sum(pred[valid] * gt[valid], axis=-1)
-    if absolute_dot:
-        dot = np.abs(dot)
-    dot = np.clip(dot, -1.0, 1.0)
-    angle = np.degrees(np.arccos(dot))
-    return {
-        "normal_mae_deg": float(np.mean(angle)),
-        "valid_pixel_count": int(valid.sum()),
-    }
+    return apply_axis_flip(normals, flip_x=flip_x, flip_y=flip_y, flip_z=flip_z)
 
 
 def _load_array(path: Path) -> np.ndarray:
@@ -118,7 +78,8 @@ def _load_array(path: Path) -> np.ndarray:
 
 
 def load_normal(path: Path) -> np.ndarray:
-    return normalize_normals(decode_normal_image(_load_array(path)))
+    normal, _ = load_protocol_normal(path)
+    return normal
 
 
 def load_depth(path: Path) -> np.ndarray:
@@ -207,7 +168,17 @@ def find_mask(scene_root: Path, split: str, image_name: str) -> Optional[Path]:
     return None
 
 
-def geometry_dir(output_root: Path, dataset: str, scene: str, split: str, iteration: int) -> Path:
+def geometry_dir(
+    output_root: Path,
+    dataset: str,
+    scene: str,
+    split: str,
+    iteration: int,
+    normal_source_key: str = "unknown",
+) -> Path:
+    keyed = output_root / dataset / scene / f"iteration_{iteration}" / normal_source_key / split / f"ours_{iteration}" / "geometry"
+    if normal_source_key != "unknown" and keyed.exists():
+        return keyed
     return output_root / dataset / scene / split / f"ours_{iteration}" / "geometry"
 
 
@@ -236,6 +207,7 @@ def empty_row(dataset: str, scene: str, iteration: int, split: str) -> Dict[str,
         "fscore": None,
         "normal_consistency": None,
         "valid_pixel_count": 0,
+        "valid_pixel_ratio": None,
         "sampled_point_count": 0,
         "gt_normal_available": False,
         "gt_depth_available": False,
@@ -245,6 +217,26 @@ def empty_row(dataset: str, scene: str, iteration: int, split: str) -> Dict[str,
         "status": "pending",
         "notes": "",
     }
+
+
+def load_explicit_mask(scene_root: Path, split: str, frame: str) -> Optional[np.ndarray]:
+    mask_path = find_mask(scene_root, split, frame)
+    if mask_path is None:
+        return None
+    arr = _load_array(mask_path)
+    if arr.ndim == 3:
+        arr = arr[..., 0]
+    return arr > 0
+
+
+def transform_for_declared_space(normal: np.ndarray, R: Optional[np.ndarray], normal_space: str) -> np.ndarray:
+    if R is None or normal_space in ("as_saved", "auto"):
+        return normal
+    if normal_space == "camera":
+        return transform_normals(normal, R, "world_to_camera")
+    if normal_space == "world":
+        return transform_normals(normal, R, "camera_to_world")
+    raise ValueError(f"Unknown normal_space: {normal_space}")
 
 
 def evaluate_normal_frames(
@@ -258,10 +250,15 @@ def evaluate_normal_frames(
     flip_y: bool = False,
     flip_z: bool = False,
     absolute_dot: bool = False,
+    normal_space: str = "auto",
+    mask_policy: str = "auto",
+    normal_source_key: str = "unknown",
+    write_debug_masks: bool = False,
+    write_debug_visuals: bool = False,
 ) -> Tuple[Dict[str, object], List[Dict[str, object]]]:
     row = empty_row(dataset, scene, iteration, split)
     scene_root = dataset_scene_root(data_root, dataset, scene)
-    geom_dir = geometry_dir(output_root, dataset, scene, split, iteration)
+    geom_dir = geometry_dir(output_root, dataset, scene, split, iteration, normal_source_key=normal_source_key)
     frames = list_prediction_frames(geom_dir)
     per_frame = []
     if not frames:
@@ -270,28 +267,70 @@ def evaluate_normal_frames(
 
     maes: List[float] = []
     valid_total = 0
+    pixel_total = 0
+    missing_frame_count = 0
     gt_found = False
     notes = set()
+    try:
+        transform_frames = load_transforms_frames(scene_root, split)
+    except Exception as exc:
+        transform_frames = {}
+        notes.add(f"missing_or_unreadable_transforms:{exc}")
     for frame in frames:
         pred_path = geom_dir / "normal" / f"{frame}.npy"
         gt_path = find_gt_normal(scene_root, split, frame)
         if gt_path is None:
+            missing_frame_count += 1
             per_frame.append({"image_name": frame, "status": "missing_gt_normal"})
             continue
         gt_found = True
         pred = np.load(str(pred_path)).astype(np.float32)
-        gt = load_normal(gt_path)
+        gt, gt_alpha = load_protocol_normal(gt_path)
         pred = apply_normal_convention(pred, flip_x=flip_x, flip_y=flip_y, flip_z=flip_z)
         pred, resize_note = resize_array(pred, gt.shape[:2], is_normal=True)
         if resize_note:
             notes.add(resize_note)
-        mask = load_mask(find_mask(scene_root, split, frame), normal=gt)
+        frame_info = transform_frames.get(frame)
+        R = None if frame_info is None else frame_info["R"]
+        pred = transform_for_declared_space(pred, R, normal_space)
+        gt = transform_for_declared_space(gt, R, normal_space)
+        explicit_mask = load_explicit_mask(scene_root, split, frame)
+        source_alpha = None
+        if frame_info is not None:
+            source_alpha = load_rgba_alpha_from_source_image(frame_info["frame"], scene_root)
+        else:
+            source_alpha = load_rgba_alpha_from_source_image(frame, scene_root)
+        if gt_alpha is None:
+            gt_alpha = load_gt_normal_alpha(gt_path)
+        try:
+            mask = build_eval_mask(
+                mask_policy=mask_policy,
+                explicit_mask=explicit_mask,
+                source_rgba_alpha=source_alpha,
+                gt_normal_alpha=gt_alpha,
+                gt_normal=gt,
+                shape_hw=gt.shape[:2],
+            )
+        except ValueError as exc:
+            notes.add(f"mask_error:{exc}")
+            mask = None
         result = compute_normal_mae_deg(pred, gt, mask=mask, absolute_dot=absolute_dot)
         if result["normal_mae_deg"] is None:
             per_frame.append({"image_name": frame, "status": "no_valid_pixels", "gt_normal": str(gt_path)})
             continue
         maes.append(float(result["normal_mae_deg"]))
         valid_total += int(result["valid_pixel_count"])
+        pixel_total += int(gt.shape[0] * gt.shape[1])
+        if write_debug_masks and mask is not None:
+            debug_dir = geom_dir / "debug_masks" / mask_policy
+            debug_dir.mkdir(parents=True, exist_ok=True)
+            np.save(str(debug_dir / f"{frame}.npy"), np.asarray(mask, dtype=np.uint8))
+            Image.fromarray((np.asarray(mask, dtype=np.uint8) * 255)).save(debug_dir / f"{frame}.png")
+        if write_debug_visuals:
+            debug_dir = geom_dir / "debug_visuals" / mask_policy / normal_space
+            debug_dir.mkdir(parents=True, exist_ok=True)
+            Image.fromarray(np.clip((normalize_normals(pred) + 1.0) * 127.5, 0, 255).astype(np.uint8)).save(debug_dir / f"{frame}_pred.png")
+            Image.fromarray(np.clip((normalize_normals(gt) + 1.0) * 127.5, 0, 255).astype(np.uint8)).save(debug_dir / f"{frame}_gt.png")
         per_frame.append(
             {
                 "image_name": frame,
@@ -299,10 +338,23 @@ def evaluate_normal_frames(
                 "gt_normal": str(gt_path),
                 "normal_mae_deg": result["normal_mae_deg"],
                 "valid_pixel_count": result["valid_pixel_count"],
+                "valid_pixel_ratio": float(result["valid_pixel_count"] / max(gt.shape[0] * gt.shape[1], 1)),
+                "mask_policy": mask_policy,
+                "normal_space": normal_space,
+                "normal_key": normal_source_key,
             }
         )
 
     row["gt_normal_available"] = gt_found
+    row["normal_key"] = normal_source_key
+    row["mask_policy"] = mask_policy
+    row["normal_space"] = normal_space
+    row["absolute_dot"] = absolute_dot
+    row["flip_x"] = flip_x
+    row["flip_y"] = flip_y
+    row["flip_z"] = flip_z
+    row["frame_count"] = len(frames)
+    row["missing_frame_count"] = missing_frame_count
     if not gt_found:
         row.update(status="missing_gt_normal", notes="no matching GT normal files")
     elif not maes:
@@ -311,9 +363,10 @@ def evaluate_normal_frames(
         row.update(
             normal_mae_deg=float(np.mean(maes)),
             valid_pixel_count=valid_total,
+            valid_pixel_ratio=float(valid_total / max(pixel_total, 1)),
             metric_family="paper_geometry" if dataset == "refnerf" else "auxiliary_geometry",
             paper_comparable=dataset == "refnerf",
-            status="ok",
+            status="protocol_uncertain" if normal_space == "auto" or normal_source_key == "unknown" else "ok",
             notes="; ".join(sorted(notes)),
         )
     return row, per_frame
@@ -547,11 +600,16 @@ def evaluate_scene(
     split: str = "test",
     metrics: Sequence[str] = ALL_METRICS,
     normal_space: str = "auto",
+    mask_policy: str = "auto",
+    normal_source_key: str = "unknown",
     flip_x: bool = False,
     flip_y: bool = False,
     flip_z: bool = False,
     absolute_dot: bool = False,
     auto_convention_sweep: bool = False,
+    write_debug_masks: bool = False,
+    write_debug_visuals: bool = False,
+    protocol_name: str = "",
 ) -> Dict[str, object]:
     model_dir = output_root / dataset / scene
     requested = tuple(ALL_METRICS if "all" in metrics else metrics)
@@ -566,8 +624,16 @@ def evaluate_scene(
         flip_y=flip_y,
         flip_z=flip_z,
         absolute_dot=absolute_dot,
+        normal_space=normal_space,
+        mask_policy=mask_policy,
+        normal_source_key=normal_source_key,
+        write_debug_masks=write_debug_masks,
+        write_debug_visuals=write_debug_visuals,
     ) if "normal_mae" in requested else (empty_row(dataset, scene, iteration, split), [])
     row["normal_space"] = normal_space
+    row["mask_policy"] = mask_policy
+    row["normal_key"] = normal_source_key
+    row["protocol_name"] = protocol_name
     row["normal_convention"] = f"flip_x={flip_x},flip_y={flip_y},flip_z={flip_z},absolute_dot={absolute_dot}"
 
     if "depth" in requested:
@@ -598,7 +664,7 @@ def evaluate_scene(
 
     if auto_convention_sweep:
         sweep_rows = []
-        geom_dir = geometry_dir(output_root, dataset, scene, split, iteration)
+        geom_dir = geometry_dir(output_root, dataset, scene, split, iteration, normal_source_key=normal_source_key)
         scene_root = dataset_scene_root(data_root, dataset, scene)
         frames_for_sweep = list_prediction_frames(geom_dir)[:1]
         if frames_for_sweep:
@@ -609,7 +675,7 @@ def evaluate_scene(
                 pred = np.load(str(pred_path)).astype(np.float32)
                 gt = load_normal(gt_path)
                 pred, _ = resize_array(pred, gt.shape[:2], is_normal=True)
-                mask = load_mask(find_mask(scene_root, split, frame), normal=gt)
+                mask = build_eval_mask(mask_policy=mask_policy, explicit_mask=load_explicit_mask(scene_root, split, frame), gt_normal=gt)
                 sweep_rows = convention_candidates(pred, gt, mask, absolute_dot)
         if sweep_rows:
             write_csv(model_dir / "geometry_convention_sweep.csv", sweep_rows)
@@ -691,7 +757,16 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--split", choices=("train", "test"), default="test")
     parser.add_argument("--metrics", choices=("normal_mae", "depth", "chamfer", "all"), default="all")
     parser.add_argument("--dry-run", action="store_true")
-    parser.add_argument("--normal-space", choices=("camera", "world", "auto"), default="auto")
+    parser.add_argument("--normal-space", choices=("as_saved", "camera", "world", "auto"), default="auto")
+    parser.add_argument(
+        "--mask-policy",
+        choices=("explicit_mask", "source_rgba_alpha", "gt_normal_alpha", "gt_normal_nonzero", "union_alpha", "intersection_alpha", "auto"),
+        default="auto",
+    )
+    parser.add_argument("--normal-source-key", choices=("surf_normal", "rend_normal", "unknown"), default="unknown")
+    parser.add_argument("--write-debug-masks", action="store_true")
+    parser.add_argument("--write-debug-visuals", action="store_true")
+    parser.add_argument("--protocol-name", default="")
     parser.add_argument("--flip-x", action="store_true")
     parser.add_argument("--flip-y", action="store_true")
     parser.add_argument("--flip-z", action="store_true")
@@ -720,11 +795,16 @@ def main() -> int:
                     split=args.split,
                     metrics=parse_metrics(args.metrics),
                     normal_space=args.normal_space,
+                    mask_policy=args.mask_policy,
+                    normal_source_key=args.normal_source_key,
                     flip_x=args.flip_x,
                     flip_y=args.flip_y,
                     flip_z=args.flip_z,
                     absolute_dot=args.absolute_dot,
                     auto_convention_sweep=args.auto_convention_sweep,
+                    write_debug_masks=args.write_debug_masks,
+                    write_debug_visuals=args.write_debug_visuals,
+                    protocol_name=args.protocol_name,
                 )
             )
     if rows:
