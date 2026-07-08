@@ -1,0 +1,2614 @@
+{
+  "paper_normal_mae_deg": 2.21,
+  "reproduced_average_normal_mae_deg": 8.825999811291695,
+  "per_scene_normal_mae_deg": {
+    "helmet": 5.382109150886536,
+    "car": 12.49553924560547,
+    "ball": 3.723057070970535,
+    "teapot": 8.420210540294647,
+    "coffee": 11.097899255752564,
+    "toaster": 11.837183604240417
+  },
+  "paper_gap_deg": 6.615999811291695,
+  "geometry_export_chain": {
+    "run_geometry_eval_calls_save_geometry": true,
+    "run_geometry_eval_calls_geometry_only": true,
+    "run_geometry_eval_calls_split": true,
+    "render_supports_save_geometry": true,
+    "render_supports_geometry_only": true,
+    "render_supports_split": true,
+    "render_supports_normal_key": true,
+    "render_supports_depth_key": true,
+    "render_saves_npy_normals": true,
+    "geometry_export_chain_inconsistent": false,
+    "render_auto_normal_key_order": [
+      "surf_normal",
+      "rend_normal",
+      "normal",
+      "render_normal"
+    ],
+    "render_auto_depth_key_order": [
+      "median_depth",
+      "render_depth",
+      "depth",
+      "surf_depth",
+      "rend_dist"
+    ]
+  },
+  "render_keys": {
+    "renderer_returns_rend_normal": true,
+    "renderer_returns_surf_normal": true,
+    "rend_normal_definition": "allmap[2:5] transformed by viewpoint_camera.world_view_transform[:3,:3].T and F.normalize",
+    "surf_normal_definition": "depth_to_normal(viewpoint_camera, surf_depth), then multiplied by detached render_alpha"
+  },
+  "normal_key_hypothesis": {
+    "current_saved_normal_key": [
+      "surf_normal"
+    ],
+    "current_saved_depth_key": [
+      "surf_depth"
+    ],
+    "normal_key_protocol_uncertain": true,
+    "evidence": {
+      "render_auto_normal_key_order": [
+        "surf_normal",
+        "rend_normal",
+        "normal",
+        "render_normal"
+      ],
+      "renderer_returns_rend_normal": true,
+      "renderer_returns_surf_normal": true,
+      "rend_normal_definition": "allmap[2:5] transformed by viewpoint_camera.world_view_transform[:3,:3].T and F.normalize",
+      "surf_normal_definition": "depth_to_normal(viewpoint_camera, surf_depth), then multiplied by detached render_alpha",
+      "surf_normal_multiplied_by_alpha": true
+    }
+  },
+  "normal_space_implementation": {
+    "normal_space_not_implemented": true,
+    "normal_space_argument_recorded_only": true,
+    "flip_flags_applied": true,
+    "absolute_dot_applied": true,
+    "auto_convention_sweep_first_frame_only": true,
+    "decode_normal_drops_alpha": true,
+    "find_mask_reads_rgba_alpha": false
+  },
+  "normal_buffer_diagnostics": {
+    "helmet": {
+      "normal_npy_count": 200,
+      "normal_vis_png_count": 200,
+      "depth_npy_count": 200,
+      "sample_files": [
+        {
+          "file": "r_0.npy",
+          "shape": [
+            800,
+            800,
+            3
+          ],
+          "dtype": "float32",
+          "min": -0.9986599087715149,
+          "max": 0.9999995827674866,
+          "mean": 0.15840193629264832,
+          "mean_norm": 0.42906561493873596
+        },
+        {
+          "file": "r_1.npy",
+          "shape": [
+            800,
+            800,
+            3
+          ],
+          "dtype": "float32",
+          "min": -0.9997916221618652,
+          "max": 0.9999986886978149,
+          "mean": 0.15319859981536865,
+          "mean_norm": 0.4262140691280365
+        },
+        {
+          "file": "r_10.npy",
+          "shape": [
+            800,
+            800,
+            3
+          ],
+          "dtype": "float32",
+          "min": -0.9999783039093018,
+          "max": 1.0,
+          "mean": 0.0959901362657547,
+          "mean_norm": 0.3915046751499176
+        }
+      ],
+      "nan_count": 0,
+      "inf_count": 0,
+      "mean_norm_mean": 0.41559478640556335,
+      "norm_min": 0.0,
+      "norm_max": 1.0000001192092896,
+      "stats_files_sampled": 3,
+      "metadata": {
+        "split": "test",
+        "iteration": 31000,
+        "normal_key": "surf_normal",
+        "depth_key": "surf_depth"
+      }
+    },
+    "car": {
+      "normal_npy_count": 200,
+      "normal_vis_png_count": 200,
+      "depth_npy_count": 200,
+      "sample_files": [
+        {
+          "file": "r_0.npy",
+          "shape": [
+            800,
+            800,
+            3
+          ],
+          "dtype": "float32",
+          "min": -0.9999837279319763,
+          "max": 1.0,
+          "mean": 0.09970399737358093,
+          "mean_norm": 0.2932734489440918
+        },
+        {
+          "file": "r_1.npy",
+          "shape": [
+            800,
+            800,
+            3
+          ],
+          "dtype": "float32",
+          "min": -0.9995208382606506,
+          "max": 0.9999998807907104,
+          "mean": 0.0976833924651146,
+          "mean_norm": 0.292954683303833
+        },
+        {
+          "file": "r_10.npy",
+          "shape": [
+            800,
+            800,
+            3
+          ],
+          "dtype": "float32",
+          "min": -1.0,
+          "max": 1.0,
+          "mean": 0.06956446170806885,
+          "mean_norm": 0.3128812611103058
+        }
+      ],
+      "nan_count": 0,
+      "inf_count": 0,
+      "mean_norm_mean": 0.2997031311194102,
+      "norm_min": 0.0,
+      "norm_max": 1.0000001192092896,
+      "stats_files_sampled": 3,
+      "metadata": {
+        "split": "test",
+        "iteration": 31000,
+        "normal_key": "surf_normal",
+        "depth_key": "surf_depth"
+      }
+    },
+    "ball": {
+      "normal_npy_count": 200,
+      "normal_vis_png_count": 200,
+      "depth_npy_count": 200,
+      "sample_files": [
+        {
+          "file": "r_0.npy",
+          "shape": [
+            800,
+            800,
+            3
+          ],
+          "dtype": "float32",
+          "min": -0.9985118508338928,
+          "max": 0.999999463558197,
+          "mean": 0.18425363302230835,
+          "mean_norm": 0.5110296607017517
+        },
+        {
+          "file": "r_1.npy",
+          "shape": [
+            800,
+            800,
+            3
+          ],
+          "dtype": "float32",
+          "min": -0.9999566674232483,
+          "max": 0.9999992847442627,
+          "mean": 0.1784272938966751,
+          "mean_norm": 0.5108171701431274
+        },
+        {
+          "file": "r_10.npy",
+          "shape": [
+            800,
+            800,
+            3
+          ],
+          "dtype": "float32",
+          "min": -0.999993622303009,
+          "max": 0.9999997019767761,
+          "mean": 0.11369656771421432,
+          "mean_norm": 0.5087546706199646
+        }
+      ],
+      "nan_count": 0,
+      "inf_count": 0,
+      "mean_norm_mean": 0.5102005004882812,
+      "norm_min": 0.0,
+      "norm_max": 1.0000001192092896,
+      "stats_files_sampled": 3,
+      "metadata": {
+        "split": "test",
+        "iteration": 31000,
+        "normal_key": "surf_normal",
+        "depth_key": "surf_depth"
+      }
+    },
+    "teapot": {
+      "normal_npy_count": 200,
+      "normal_vis_png_count": 200,
+      "depth_npy_count": 200,
+      "sample_files": [
+        {
+          "file": "r_0.npy",
+          "shape": [
+            800,
+            800,
+            3
+          ],
+          "dtype": "float32",
+          "min": -0.9985229969024658,
+          "max": 0.9999971985816956,
+          "mean": 0.03673447296023369,
+          "mean_norm": 0.11259374767541885
+        },
+        {
+          "file": "r_1.npy",
+          "shape": [
+            800,
+            800,
+            3
+          ],
+          "dtype": "float32",
+          "min": -0.9995148181915283,
+          "max": 0.9999988079071045,
+          "mean": 0.035853948444128036,
+          "mean_norm": 0.11284687370061874
+        },
+        {
+          "file": "r_10.npy",
+          "shape": [
+            800,
+            800,
+            3
+          ],
+          "dtype": "float32",
+          "min": -0.9998952746391296,
+          "max": 0.9999974966049194,
+          "mean": 0.025189444422721863,
+          "mean_norm": 0.11157499998807907
+        }
+      ],
+      "nan_count": 0,
+      "inf_count": 0,
+      "mean_norm_mean": 0.11233854045470555,
+      "norm_min": 0.0,
+      "norm_max": 1.0000001192092896,
+      "stats_files_sampled": 3,
+      "metadata": {
+        "split": "test",
+        "iteration": 31000,
+        "normal_key": "surf_normal",
+        "depth_key": "surf_depth"
+      }
+    },
+    "coffee": {
+      "normal_npy_count": 200,
+      "normal_vis_png_count": 200,
+      "depth_npy_count": 200,
+      "sample_files": [
+        {
+          "file": "r_0.npy",
+          "shape": [
+            800,
+            800,
+            3
+          ],
+          "dtype": "float32",
+          "min": -0.9992583990097046,
+          "max": 1.0,
+          "mean": 0.1261441558599472,
+          "mean_norm": 0.41206249594688416
+        },
+        {
+          "file": "r_1.npy",
+          "shape": [
+            800,
+            800,
+            3
+          ],
+          "dtype": "float32",
+          "min": -0.9995580315589905,
+          "max": 1.0,
+          "mean": 0.12423978000879288,
+          "mean_norm": 0.41226404905319214
+        },
+        {
+          "file": "r_10.npy",
+          "shape": [
+            800,
+            800,
+            3
+          ],
+          "dtype": "float32",
+          "min": -0.9999942183494568,
+          "max": 1.0,
+          "mean": 0.10137372463941574,
+          "mean_norm": 0.41479218006134033
+        }
+      ],
+      "nan_count": 0,
+      "inf_count": 0,
+      "mean_norm_mean": 0.4130395750204722,
+      "norm_min": 0.0,
+      "norm_max": 1.0000001192092896,
+      "stats_files_sampled": 3,
+      "metadata": {
+        "split": "test",
+        "iteration": 31000,
+        "normal_key": "surf_normal",
+        "depth_key": "surf_depth"
+      }
+    },
+    "toaster": {
+      "normal_npy_count": 200,
+      "normal_vis_png_count": 200,
+      "depth_npy_count": 200,
+      "sample_files": [
+        {
+          "file": "r_0.npy",
+          "shape": [
+            800,
+            800,
+            3
+          ],
+          "dtype": "float32",
+          "min": -0.9999995827674866,
+          "max": 1.0,
+          "mean": 0.1484500616788864,
+          "mean_norm": 0.44907811284065247
+        },
+        {
+          "file": "r_1.npy",
+          "shape": [
+            800,
+            800,
+            3
+          ],
+          "dtype": "float32",
+          "min": -1.0,
+          "max": 1.0,
+          "mean": 0.1446278691291809,
+          "mean_norm": 0.449017196893692
+        },
+        {
+          "file": "r_10.npy",
+          "shape": [
+            800,
+            800,
+            3
+          ],
+          "dtype": "float32",
+          "min": -1.0,
+          "max": 1.0,
+          "mean": 0.05204775556921959,
+          "mean_norm": 0.4986187517642975
+        }
+      ],
+      "nan_count": 0,
+      "inf_count": 0,
+      "mean_norm_mean": 0.4655713538328807,
+      "norm_min": 0.0,
+      "norm_max": 1.0000001192092896,
+      "stats_files_sampled": 3,
+      "metadata": {
+        "split": "test",
+        "iteration": 31000,
+        "normal_key": "surf_normal",
+        "depth_key": "surf_depth"
+      }
+    }
+  },
+  "mask_alpha_diagnostics": {
+    "helmet": {
+      "frames_evaluated": 200,
+      "current_eval_mean_frame_mae_deg": 5.385959506034851,
+      "current_eval_valid_pixels": 429414,
+      "image_alpha_available_frames": 200,
+      "alpha_mask_mean_frame_mae_deg": 4.927681789398194,
+      "alpha_mask_valid_pixels": 999578,
+      "background_pixels_entering_current_eval_where_alpha_available": 73352942,
+      "mae_pixels_per_frame": 5000,
+      "sweep_pixels_per_frame": 1000,
+      "sample_masks": [
+        {
+          "scene": "helmet",
+          "frame": "r_0",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_0_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_0.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.4277859375,
+          "background_pixels_enter_eval": 366217,
+          "current_mae_deg": 4.6756792068481445,
+          "alpha_mask_mae_deg": 4.44672966003418,
+          "resize_note": ""
+        },
+        {
+          "scene": "helmet",
+          "frame": "r_1",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_1_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_1.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.424784375,
+          "background_pixels_enter_eval": 368138,
+          "current_mae_deg": 4.5759453773498535,
+          "alpha_mask_mae_deg": 4.296119213104248,
+          "resize_note": ""
+        },
+        {
+          "scene": "helmet",
+          "frame": "r_10",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_10_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_10.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.39030625,
+          "background_pixels_enter_eval": 390204,
+          "current_mae_deg": 4.30954122543335,
+          "alpha_mask_mae_deg": 4.059606552124023,
+          "resize_note": ""
+        },
+        {
+          "scene": "helmet",
+          "frame": "r_100",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_100_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_100.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.476384375,
+          "background_pixels_enter_eval": 335114,
+          "current_mae_deg": 5.937625885009766,
+          "alpha_mask_mae_deg": 5.12345552444458,
+          "resize_note": ""
+        },
+        {
+          "scene": "helmet",
+          "frame": "r_101",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_101_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_101.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.473278125,
+          "background_pixels_enter_eval": 337102,
+          "current_mae_deg": 4.94179105758667,
+          "alpha_mask_mae_deg": 4.840306282043457,
+          "resize_note": ""
+        },
+        {
+          "scene": "helmet",
+          "frame": "r_102",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_102_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_102.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.469509375,
+          "background_pixels_enter_eval": 339514,
+          "current_mae_deg": 4.961413860321045,
+          "alpha_mask_mae_deg": 4.9239912033081055,
+          "resize_note": ""
+        },
+        {
+          "scene": "helmet",
+          "frame": "r_103",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_103_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_103.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.4655015625,
+          "background_pixels_enter_eval": 342079,
+          "current_mae_deg": 5.246271133422852,
+          "alpha_mask_mae_deg": 4.770318984985352,
+          "resize_note": ""
+        },
+        {
+          "scene": "helmet",
+          "frame": "r_104",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_104_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_104.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.4610203125,
+          "background_pixels_enter_eval": 344947,
+          "current_mae_deg": 5.6271138191223145,
+          "alpha_mask_mae_deg": 4.7194318771362305,
+          "resize_note": ""
+        },
+        {
+          "scene": "helmet",
+          "frame": "r_105",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_105_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_105.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.4564265625,
+          "background_pixels_enter_eval": 347887,
+          "current_mae_deg": 4.910909175872803,
+          "alpha_mask_mae_deg": 4.7117815017700195,
+          "resize_note": ""
+        },
+        {
+          "scene": "helmet",
+          "frame": "r_106",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_106_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_106.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.4513921875,
+          "background_pixels_enter_eval": 351109,
+          "current_mae_deg": 5.039828300476074,
+          "alpha_mask_mae_deg": 4.676105499267578,
+          "resize_note": ""
+        },
+        {
+          "scene": "helmet",
+          "frame": "r_107",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_107_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_107.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.4464046875,
+          "background_pixels_enter_eval": 354301,
+          "current_mae_deg": 5.01775598526001,
+          "alpha_mask_mae_deg": 4.36411190032959,
+          "resize_note": ""
+        },
+        {
+          "scene": "helmet",
+          "frame": "r_108",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_108_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_108.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.4410390625,
+          "background_pixels_enter_eval": 357735,
+          "current_mae_deg": 4.6799821853637695,
+          "alpha_mask_mae_deg": 4.485904693603516,
+          "resize_note": ""
+        }
+      ]
+    },
+    "car": {
+      "frames_evaluated": 200,
+      "current_eval_mean_frame_mae_deg": 12.555857787132263,
+      "current_eval_valid_pixels": 260031,
+      "image_alpha_available_frames": 200,
+      "alpha_mask_mean_frame_mae_deg": 11.5955699968338,
+      "alpha_mask_valid_pixels": 999290,
+      "background_pixels_entering_current_eval_where_alpha_available": 95025248,
+      "mae_pixels_per_frame": 5000,
+      "sweep_pixels_per_frame": 1000,
+      "sample_masks": [
+        {
+          "scene": "car",
+          "frame": "r_0",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_0_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_0.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.2909828125,
+          "background_pixels_enter_eval": 453771,
+          "current_mae_deg": 8.568103790283203,
+          "alpha_mask_mae_deg": 7.447526454925537,
+          "resize_note": ""
+        },
+        {
+          "scene": "car",
+          "frame": "r_1",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_1_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_1.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.290578125,
+          "background_pixels_enter_eval": 454030,
+          "current_mae_deg": 7.948392868041992,
+          "alpha_mask_mae_deg": 7.524026870727539,
+          "resize_note": ""
+        },
+        {
+          "scene": "car",
+          "frame": "r_10",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_10_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_10.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.3105515625,
+          "background_pixels_enter_eval": 441247,
+          "current_mae_deg": 8.613286018371582,
+          "alpha_mask_mae_deg": 8.581964492797852,
+          "resize_note": ""
+        },
+        {
+          "scene": "car",
+          "frame": "r_100",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_100_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_100.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.1253515625,
+          "background_pixels_enter_eval": 559775,
+          "current_mae_deg": 18.71672248840332,
+          "alpha_mask_mae_deg": 13.575164794921875,
+          "resize_note": ""
+        },
+        {
+          "scene": "car",
+          "frame": "r_101",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_101_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_101.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.1261453125,
+          "background_pixels_enter_eval": 559267,
+          "current_mae_deg": 16.481969833374023,
+          "alpha_mask_mae_deg": 13.315043449401855,
+          "resize_note": ""
+        },
+        {
+          "scene": "car",
+          "frame": "r_102",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_102_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_102.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.130953125,
+          "background_pixels_enter_eval": 556190,
+          "current_mae_deg": 16.544225692749023,
+          "alpha_mask_mae_deg": 14.036458969116211,
+          "resize_note": ""
+        },
+        {
+          "scene": "car",
+          "frame": "r_103",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_103_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_103.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.14003125,
+          "background_pixels_enter_eval": 550380,
+          "current_mae_deg": 16.976177215576172,
+          "alpha_mask_mae_deg": 14.565778732299805,
+          "resize_note": ""
+        },
+        {
+          "scene": "car",
+          "frame": "r_104",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_104_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_104.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.148528125,
+          "background_pixels_enter_eval": 544942,
+          "current_mae_deg": 17.598207473754883,
+          "alpha_mask_mae_deg": 14.44819450378418,
+          "resize_note": ""
+        },
+        {
+          "scene": "car",
+          "frame": "r_105",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_105_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_105.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.156628125,
+          "background_pixels_enter_eval": 539758,
+          "current_mae_deg": 17.524412155151367,
+          "alpha_mask_mae_deg": 15.577116012573242,
+          "resize_note": ""
+        },
+        {
+          "scene": "car",
+          "frame": "r_106",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_106_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_106.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.1641765625,
+          "background_pixels_enter_eval": 534927,
+          "current_mae_deg": 16.896907806396484,
+          "alpha_mask_mae_deg": 15.470760345458984,
+          "resize_note": ""
+        },
+        {
+          "scene": "car",
+          "frame": "r_107",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_107_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_107.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.1710625,
+          "background_pixels_enter_eval": 530520,
+          "current_mae_deg": 18.065603256225586,
+          "alpha_mask_mae_deg": 15.202685356140137,
+          "resize_note": ""
+        },
+        {
+          "scene": "car",
+          "frame": "r_108",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_108_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_108.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.1773703125,
+          "background_pixels_enter_eval": 526483,
+          "current_mae_deg": 17.171934127807617,
+          "alpha_mask_mae_deg": 15.277652740478516,
+          "resize_note": ""
+        }
+      ]
+    },
+    "ball": {
+      "frames_evaluated": 200,
+      "current_eval_mean_frame_mae_deg": 3.7090284299850462,
+      "current_eval_valid_pixels": 999997,
+      "image_alpha_available_frames": 0,
+      "alpha_mask_mean_frame_mae_deg": null,
+      "alpha_mask_valid_pixels": 0,
+      "background_pixels_entering_current_eval_where_alpha_available": 0,
+      "mae_pixels_per_frame": 5000,
+      "sweep_pixels_per_frame": 1000,
+      "sample_masks": [
+        {
+          "scene": "ball",
+          "frame": "r_0",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_0_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_0.png",
+          "image_mode": "RGB",
+          "image_has_alpha": false,
+          "current_mask_source": "explicit_mask_file",
+          "current_mask_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_0_alpha.png",
+          "current_valid_ratio": 0.505425,
+          "alpha_valid_ratio": null,
+          "background_pixels_enter_eval": null,
+          "current_mae_deg": 4.1888556480407715,
+          "alpha_mask_mae_deg": null,
+          "resize_note": ""
+        },
+        {
+          "scene": "ball",
+          "frame": "r_1",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_1_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_1.png",
+          "image_mode": "RGB",
+          "image_has_alpha": false,
+          "current_mask_source": "explicit_mask_file",
+          "current_mask_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_1_alpha.png",
+          "current_valid_ratio": 0.505425,
+          "alpha_valid_ratio": null,
+          "background_pixels_enter_eval": null,
+          "current_mae_deg": 4.205331802368164,
+          "alpha_mask_mae_deg": null,
+          "resize_note": ""
+        },
+        {
+          "scene": "ball",
+          "frame": "r_10",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_10_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_10.png",
+          "image_mode": "RGB",
+          "image_has_alpha": false,
+          "current_mask_source": "explicit_mask_file",
+          "current_mask_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_10_alpha.png",
+          "current_valid_ratio": 0.505425,
+          "alpha_valid_ratio": null,
+          "background_pixels_enter_eval": null,
+          "current_mae_deg": 4.254622459411621,
+          "alpha_mask_mae_deg": null,
+          "resize_note": ""
+        },
+        {
+          "scene": "ball",
+          "frame": "r_100",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_100_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_100.png",
+          "image_mode": "RGB",
+          "image_has_alpha": false,
+          "current_mask_source": "explicit_mask_file",
+          "current_mask_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_100_alpha.png",
+          "current_valid_ratio": 0.505425,
+          "alpha_valid_ratio": null,
+          "background_pixels_enter_eval": null,
+          "current_mae_deg": 3.7821898460388184,
+          "alpha_mask_mae_deg": null,
+          "resize_note": ""
+        },
+        {
+          "scene": "ball",
+          "frame": "r_101",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_101_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_101.png",
+          "image_mode": "RGB",
+          "image_has_alpha": false,
+          "current_mask_source": "explicit_mask_file",
+          "current_mask_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_101_alpha.png",
+          "current_valid_ratio": 0.505425,
+          "alpha_valid_ratio": null,
+          "background_pixels_enter_eval": null,
+          "current_mae_deg": 3.9696741104125977,
+          "alpha_mask_mae_deg": null,
+          "resize_note": ""
+        },
+        {
+          "scene": "ball",
+          "frame": "r_102",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_102_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_102.png",
+          "image_mode": "RGB",
+          "image_has_alpha": false,
+          "current_mask_source": "explicit_mask_file",
+          "current_mask_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_102_alpha.png",
+          "current_valid_ratio": 0.505425,
+          "alpha_valid_ratio": null,
+          "background_pixels_enter_eval": null,
+          "current_mae_deg": 3.8057968616485596,
+          "alpha_mask_mae_deg": null,
+          "resize_note": ""
+        },
+        {
+          "scene": "ball",
+          "frame": "r_103",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_103_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_103.png",
+          "image_mode": "RGB",
+          "image_has_alpha": false,
+          "current_mask_source": "explicit_mask_file",
+          "current_mask_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_103_alpha.png",
+          "current_valid_ratio": 0.505425,
+          "alpha_valid_ratio": null,
+          "background_pixels_enter_eval": null,
+          "current_mae_deg": 3.8617773056030273,
+          "alpha_mask_mae_deg": null,
+          "resize_note": ""
+        },
+        {
+          "scene": "ball",
+          "frame": "r_104",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_104_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_104.png",
+          "image_mode": "RGB",
+          "image_has_alpha": false,
+          "current_mask_source": "explicit_mask_file",
+          "current_mask_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_104_alpha.png",
+          "current_valid_ratio": 0.505425,
+          "alpha_valid_ratio": null,
+          "background_pixels_enter_eval": null,
+          "current_mae_deg": 3.7693488597869873,
+          "alpha_mask_mae_deg": null,
+          "resize_note": ""
+        },
+        {
+          "scene": "ball",
+          "frame": "r_105",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_105_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_105.png",
+          "image_mode": "RGB",
+          "image_has_alpha": false,
+          "current_mask_source": "explicit_mask_file",
+          "current_mask_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_105_alpha.png",
+          "current_valid_ratio": 0.505425,
+          "alpha_valid_ratio": null,
+          "background_pixels_enter_eval": null,
+          "current_mae_deg": 3.6842234134674072,
+          "alpha_mask_mae_deg": null,
+          "resize_note": ""
+        },
+        {
+          "scene": "ball",
+          "frame": "r_106",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_106_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_106.png",
+          "image_mode": "RGB",
+          "image_has_alpha": false,
+          "current_mask_source": "explicit_mask_file",
+          "current_mask_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_106_alpha.png",
+          "current_valid_ratio": 0.505425,
+          "alpha_valid_ratio": null,
+          "background_pixels_enter_eval": null,
+          "current_mae_deg": 3.7695586681365967,
+          "alpha_mask_mae_deg": null,
+          "resize_note": ""
+        },
+        {
+          "scene": "ball",
+          "frame": "r_107",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_107_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_107.png",
+          "image_mode": "RGB",
+          "image_has_alpha": false,
+          "current_mask_source": "explicit_mask_file",
+          "current_mask_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_107_alpha.png",
+          "current_valid_ratio": 0.505425,
+          "alpha_valid_ratio": null,
+          "background_pixels_enter_eval": null,
+          "current_mae_deg": 3.8650519847869873,
+          "alpha_mask_mae_deg": null,
+          "resize_note": ""
+        },
+        {
+          "scene": "ball",
+          "frame": "r_108",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_108_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_108.png",
+          "image_mode": "RGB",
+          "image_has_alpha": false,
+          "current_mask_source": "explicit_mask_file",
+          "current_mask_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_108_alpha.png",
+          "current_valid_ratio": 0.505425,
+          "alpha_valid_ratio": null,
+          "background_pixels_enter_eval": null,
+          "current_mae_deg": 3.780644416809082,
+          "alpha_mask_mae_deg": null,
+          "resize_note": ""
+        }
+      ]
+    },
+    "teapot": {
+      "frames_evaluated": 200,
+      "current_eval_mean_frame_mae_deg": 8.522221732139588,
+      "current_eval_valid_pixels": 95830,
+      "image_alpha_available_frames": 200,
+      "alpha_mask_mean_frame_mae_deg": 7.648886342048645,
+      "alpha_mask_valid_pixels": 999280,
+      "background_pixels_entering_current_eval_where_alpha_available": 115839123,
+      "mae_pixels_per_frame": 5000,
+      "sweep_pixels_per_frame": 1000,
+      "sample_masks": [
+        {
+          "scene": "teapot",
+          "frame": "r_0",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_0_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_0.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.1119984375,
+          "background_pixels_enter_eval": 568321,
+          "current_mae_deg": 7.685420036315918,
+          "alpha_mask_mae_deg": 7.033107280731201,
+          "resize_note": ""
+        },
+        {
+          "scene": "teapot",
+          "frame": "r_1",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_1_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_1.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.1122265625,
+          "background_pixels_enter_eval": 568175,
+          "current_mae_deg": 7.048161506652832,
+          "alpha_mask_mae_deg": 7.347740650177002,
+          "resize_note": ""
+        },
+        {
+          "scene": "teapot",
+          "frame": "r_10",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_10_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_10.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.1108328125,
+          "background_pixels_enter_eval": 569067,
+          "current_mae_deg": 8.027277946472168,
+          "alpha_mask_mae_deg": 7.173349380493164,
+          "resize_note": ""
+        },
+        {
+          "scene": "teapot",
+          "frame": "r_100",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_100_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_100.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.088653125,
+          "background_pixels_enter_eval": 583262,
+          "current_mae_deg": 8.919330596923828,
+          "alpha_mask_mae_deg": 7.164362907409668,
+          "resize_note": ""
+        },
+        {
+          "scene": "teapot",
+          "frame": "r_101",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_101_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_101.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.088946875,
+          "background_pixels_enter_eval": 583074,
+          "current_mae_deg": 8.084705352783203,
+          "alpha_mask_mae_deg": 7.136396884918213,
+          "resize_note": ""
+        },
+        {
+          "scene": "teapot",
+          "frame": "r_102",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_102_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_102.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.0891125,
+          "background_pixels_enter_eval": 582968,
+          "current_mae_deg": 9.13347053527832,
+          "alpha_mask_mae_deg": 6.964996337890625,
+          "resize_note": ""
+        },
+        {
+          "scene": "teapot",
+          "frame": "r_103",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_103_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_103.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.0893328125,
+          "background_pixels_enter_eval": 582827,
+          "current_mae_deg": 9.089856147766113,
+          "alpha_mask_mae_deg": 7.278873443603516,
+          "resize_note": ""
+        },
+        {
+          "scene": "teapot",
+          "frame": "r_104",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_104_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_104.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.0894203125,
+          "background_pixels_enter_eval": 582771,
+          "current_mae_deg": 7.377974033355713,
+          "alpha_mask_mae_deg": 6.8357343673706055,
+          "resize_note": ""
+        },
+        {
+          "scene": "teapot",
+          "frame": "r_105",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_105_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_105.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.089503125,
+          "background_pixels_enter_eval": 582718,
+          "current_mae_deg": 9.303702354431152,
+          "alpha_mask_mae_deg": 7.142880916595459,
+          "resize_note": ""
+        },
+        {
+          "scene": "teapot",
+          "frame": "r_106",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_106_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_106.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.0895171875,
+          "background_pixels_enter_eval": 582709,
+          "current_mae_deg": 9.792340278625488,
+          "alpha_mask_mae_deg": 7.5068230628967285,
+          "resize_note": ""
+        },
+        {
+          "scene": "teapot",
+          "frame": "r_107",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_107_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_107.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.089371875,
+          "background_pixels_enter_eval": 582802,
+          "current_mae_deg": 6.439826965332031,
+          "alpha_mask_mae_deg": 6.826349258422852,
+          "resize_note": ""
+        },
+        {
+          "scene": "teapot",
+          "frame": "r_108",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_108_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_108.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.089353125,
+          "background_pixels_enter_eval": 582814,
+          "current_mae_deg": 6.3319573402404785,
+          "alpha_mask_mae_deg": 6.960136413574219,
+          "resize_note": ""
+        }
+      ]
+    },
+    "coffee": {
+      "frames_evaluated": 200,
+      "current_eval_mean_frame_mae_deg": 11.086041717529296,
+      "current_eval_valid_pixels": 354208,
+      "image_alpha_available_frames": 200,
+      "alpha_mask_mean_frame_mae_deg": 10.500437226295471,
+      "alpha_mask_valid_pixels": 999361,
+      "background_pixels_entering_current_eval_where_alpha_available": 82878572,
+      "mae_pixels_per_frame": 5000,
+      "sweep_pixels_per_frame": 1000,
+      "sample_masks": [
+        {
+          "scene": "coffee",
+          "frame": "r_0",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_0_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_0.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.410571875,
+          "background_pixels_enter_eval": 377234,
+          "current_mae_deg": 10.660905838012695,
+          "alpha_mask_mae_deg": 10.905223846435547,
+          "resize_note": ""
+        },
+        {
+          "scene": "coffee",
+          "frame": "r_1",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_1_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_1.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.410759375,
+          "background_pixels_enter_eval": 377114,
+          "current_mae_deg": 11.436704635620117,
+          "alpha_mask_mae_deg": 11.095002174377441,
+          "resize_note": ""
+        },
+        {
+          "scene": "coffee",
+          "frame": "r_10",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_10_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_10.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.4133953125,
+          "background_pixels_enter_eval": 375427,
+          "current_mae_deg": 11.324193954467773,
+          "alpha_mask_mae_deg": 11.4500093460083,
+          "resize_note": ""
+        },
+        {
+          "scene": "coffee",
+          "frame": "r_100",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_100_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_100.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.2457421875,
+          "background_pixels_enter_eval": 482725,
+          "current_mae_deg": 12.935744285583496,
+          "alpha_mask_mae_deg": 11.20022201538086,
+          "resize_note": ""
+        },
+        {
+          "scene": "coffee",
+          "frame": "r_101",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_101_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_101.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.2449421875,
+          "background_pixels_enter_eval": 483237,
+          "current_mae_deg": 11.140944480895996,
+          "alpha_mask_mae_deg": 11.060425758361816,
+          "resize_note": ""
+        },
+        {
+          "scene": "coffee",
+          "frame": "r_102",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_102_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_102.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.244146875,
+          "background_pixels_enter_eval": 483746,
+          "current_mae_deg": 11.4251127243042,
+          "alpha_mask_mae_deg": 11.27880573272705,
+          "resize_note": ""
+        },
+        {
+          "scene": "coffee",
+          "frame": "r_103",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_103_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_103.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.2433375,
+          "background_pixels_enter_eval": 484264,
+          "current_mae_deg": 13.7703857421875,
+          "alpha_mask_mae_deg": 10.885046005249023,
+          "resize_note": ""
+        },
+        {
+          "scene": "coffee",
+          "frame": "r_104",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_104_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_104.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.24261875,
+          "background_pixels_enter_eval": 484724,
+          "current_mae_deg": 12.694841384887695,
+          "alpha_mask_mae_deg": 11.830402374267578,
+          "resize_note": ""
+        },
+        {
+          "scene": "coffee",
+          "frame": "r_105",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_105_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_105.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.242084375,
+          "background_pixels_enter_eval": 485066,
+          "current_mae_deg": 11.978856086730957,
+          "alpha_mask_mae_deg": 11.741996765136719,
+          "resize_note": ""
+        },
+        {
+          "scene": "coffee",
+          "frame": "r_106",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_106_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_106.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.2418421875,
+          "background_pixels_enter_eval": 485221,
+          "current_mae_deg": 12.538902282714844,
+          "alpha_mask_mae_deg": 12.048116683959961,
+          "resize_note": ""
+        },
+        {
+          "scene": "coffee",
+          "frame": "r_107",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_107_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_107.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.241746875,
+          "background_pixels_enter_eval": 485282,
+          "current_mae_deg": 13.042065620422363,
+          "alpha_mask_mae_deg": 10.877004623413086,
+          "resize_note": ""
+        },
+        {
+          "scene": "coffee",
+          "frame": "r_108",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_108_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_108.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.2416609375,
+          "background_pixels_enter_eval": 485337,
+          "current_mae_deg": 12.970532417297363,
+          "alpha_mask_mae_deg": 11.52797794342041,
+          "resize_note": ""
+        }
+      ]
+    },
+    "toaster": {
+      "frames_evaluated": 200,
+      "current_eval_mean_frame_mae_deg": 11.872691333293915,
+      "current_eval_valid_pixels": 499999,
+      "image_alpha_available_frames": 200,
+      "alpha_mask_mean_frame_mae_deg": 11.232731382846833,
+      "alpha_mask_valid_pixels": 999600,
+      "background_pixels_entering_current_eval_where_alpha_available": 64518349,
+      "mae_pixels_per_frame": 5000,
+      "sweep_pixels_per_frame": 1000,
+      "sample_masks": [
+        {
+          "scene": "toaster",
+          "frame": "r_0",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_0_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_0.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.4454671875,
+          "background_pixels_enter_eval": 354901,
+          "current_mae_deg": 15.026622772216797,
+          "alpha_mask_mae_deg": 14.066083908081055,
+          "resize_note": ""
+        },
+        {
+          "scene": "toaster",
+          "frame": "r_1",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_1_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_1.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.445525,
+          "background_pixels_enter_eval": 354864,
+          "current_mae_deg": 15.362980842590332,
+          "alpha_mask_mae_deg": 14.455103874206543,
+          "resize_note": ""
+        },
+        {
+          "scene": "toaster",
+          "frame": "r_10",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_10_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_10.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.49616875,
+          "background_pixels_enter_eval": 322452,
+          "current_mae_deg": 12.682466506958008,
+          "alpha_mask_mae_deg": 12.159394264221191,
+          "resize_note": ""
+        },
+        {
+          "scene": "toaster",
+          "frame": "r_100",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_100_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_100.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.36959375,
+          "background_pixels_enter_eval": 403460,
+          "current_mae_deg": 10.09548568725586,
+          "alpha_mask_mae_deg": 9.783416748046875,
+          "resize_note": ""
+        },
+        {
+          "scene": "toaster",
+          "frame": "r_101",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_101_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_101.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.3696765625,
+          "background_pixels_enter_eval": 403407,
+          "current_mae_deg": 10.254233360290527,
+          "alpha_mask_mae_deg": 9.379342079162598,
+          "resize_note": ""
+        },
+        {
+          "scene": "toaster",
+          "frame": "r_102",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_102_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_102.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.3737015625,
+          "background_pixels_enter_eval": 400831,
+          "current_mae_deg": 11.002787590026855,
+          "alpha_mask_mae_deg": 9.590703010559082,
+          "resize_note": ""
+        },
+        {
+          "scene": "toaster",
+          "frame": "r_103",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_103_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_103.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.387021875,
+          "background_pixels_enter_eval": 392306,
+          "current_mae_deg": 11.380857467651367,
+          "alpha_mask_mae_deg": 10.152469635009766,
+          "resize_note": ""
+        },
+        {
+          "scene": "toaster",
+          "frame": "r_104",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_104_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_104.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.40545,
+          "background_pixels_enter_eval": 380512,
+          "current_mae_deg": 11.017827987670898,
+          "alpha_mask_mae_deg": 9.916211128234863,
+          "resize_note": ""
+        },
+        {
+          "scene": "toaster",
+          "frame": "r_105",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_105_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_105.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.42314375,
+          "background_pixels_enter_eval": 369188,
+          "current_mae_deg": 10.710322380065918,
+          "alpha_mask_mae_deg": 10.143454551696777,
+          "resize_note": ""
+        },
+        {
+          "scene": "toaster",
+          "frame": "r_106",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_106_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_106.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.437784375,
+          "background_pixels_enter_eval": 359818,
+          "current_mae_deg": 11.086871147155762,
+          "alpha_mask_mae_deg": 9.348660469055176,
+          "resize_note": ""
+        },
+        {
+          "scene": "toaster",
+          "frame": "r_107",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_107_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_107.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.450353125,
+          "background_pixels_enter_eval": 351774,
+          "current_mae_deg": 9.709114074707031,
+          "alpha_mask_mae_deg": 9.382515907287598,
+          "resize_note": ""
+        },
+        {
+          "scene": "toaster",
+          "frame": "r_108",
+          "gt_normal": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_108_normal.png",
+          "gt_normal_mode": "RGBA",
+          "gt_normal_shape": [
+            800,
+            800,
+            4
+          ],
+          "gt_normal_has_alpha": true,
+          "image_path": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_108.png",
+          "image_mode": "RGBA",
+          "image_has_alpha": true,
+          "current_mask_source": "gt_normal_norm_gt_eps",
+          "current_mask_path": null,
+          "current_valid_ratio": 1.0,
+          "alpha_valid_ratio": 0.462028125,
+          "background_pixels_enter_eval": 344302,
+          "current_mae_deg": 9.389338493347168,
+          "alpha_mask_mae_deg": 9.622264862060547,
+          "resize_note": ""
+        }
+      ]
+    }
+  },
+  "frame_alignment_diagnostics": {
+    "helmet": {
+      "transforms_test_frames": 200,
+      "predicted_normal_frames": 200,
+      "gt_normal_frames": 200,
+      "render_frames": 200,
+      "pred_missing_from_transforms": [],
+      "gt_missing_for_pred": [],
+      "pred_missing_for_gt": [],
+      "render_missing_for_pred": [],
+      "all_pred_frames_in_test_split": true,
+      "all_pred_frames_have_gt_normal": true,
+      "only_partial_test_evaluated": false
+    },
+    "car": {
+      "transforms_test_frames": 200,
+      "predicted_normal_frames": 200,
+      "gt_normal_frames": 200,
+      "render_frames": 200,
+      "pred_missing_from_transforms": [],
+      "gt_missing_for_pred": [],
+      "pred_missing_for_gt": [],
+      "render_missing_for_pred": [],
+      "all_pred_frames_in_test_split": true,
+      "all_pred_frames_have_gt_normal": true,
+      "only_partial_test_evaluated": false
+    },
+    "ball": {
+      "transforms_test_frames": 200,
+      "predicted_normal_frames": 200,
+      "gt_normal_frames": 200,
+      "render_frames": 200,
+      "pred_missing_from_transforms": [],
+      "gt_missing_for_pred": [],
+      "pred_missing_for_gt": [],
+      "render_missing_for_pred": [],
+      "all_pred_frames_in_test_split": true,
+      "all_pred_frames_have_gt_normal": true,
+      "only_partial_test_evaluated": false
+    },
+    "teapot": {
+      "transforms_test_frames": 200,
+      "predicted_normal_frames": 200,
+      "gt_normal_frames": 200,
+      "render_frames": 200,
+      "pred_missing_from_transforms": [],
+      "gt_missing_for_pred": [],
+      "pred_missing_for_gt": [],
+      "render_missing_for_pred": [],
+      "all_pred_frames_in_test_split": true,
+      "all_pred_frames_have_gt_normal": true,
+      "only_partial_test_evaluated": false
+    },
+    "coffee": {
+      "transforms_test_frames": 200,
+      "predicted_normal_frames": 200,
+      "gt_normal_frames": 200,
+      "render_frames": 200,
+      "pred_missing_from_transforms": [],
+      "gt_missing_for_pred": [],
+      "pred_missing_for_gt": [],
+      "render_missing_for_pred": [],
+      "all_pred_frames_in_test_split": true,
+      "all_pred_frames_have_gt_normal": true,
+      "only_partial_test_evaluated": false
+    },
+    "toaster": {
+      "transforms_test_frames": 200,
+      "predicted_normal_frames": 200,
+      "gt_normal_frames": 200,
+      "render_frames": 200,
+      "pred_missing_from_transforms": [],
+      "gt_missing_for_pred": [],
+      "pred_missing_for_gt": [],
+      "render_missing_for_pred": [],
+      "all_pred_frames_in_test_split": true,
+      "all_pred_frames_have_gt_normal": true,
+      "only_partial_test_evaluated": false
+    }
+  },
+  "convention_sweep_summary": {
+    "helmet": {
+      "best": {
+        "dataset": "refnerf",
+        "scene": "helmet",
+        "space_mode": "as_saved",
+        "flip_x": false,
+        "flip_y": false,
+        "flip_z": false,
+        "absolute_dot": true,
+        "normal_mae_deg": 4.944989612102509,
+        "frames": 200,
+        "valid_pixel_count": 85607
+      },
+      "current": {
+        "dataset": "refnerf",
+        "scene": "helmet",
+        "space_mode": "as_saved",
+        "flip_x": false,
+        "flip_y": false,
+        "flip_z": false,
+        "absolute_dot": false,
+        "normal_mae_deg": 5.4130853593349455,
+        "frames": 200,
+        "valid_pixel_count": 85607
+      },
+      "current_minus_best_mae_deg": 0.46809574723243674
+    },
+    "car": {
+      "best": {
+        "dataset": "refnerf",
+        "scene": "car",
+        "space_mode": "as_saved",
+        "flip_x": false,
+        "flip_y": false,
+        "flip_z": false,
+        "absolute_dot": true,
+        "normal_mae_deg": 11.519677586555481,
+        "frames": 200,
+        "valid_pixel_count": 52042
+      },
+      "current": {
+        "dataset": "refnerf",
+        "scene": "car",
+        "space_mode": "as_saved",
+        "flip_x": false,
+        "flip_y": false,
+        "flip_z": false,
+        "absolute_dot": false,
+        "normal_mae_deg": 12.408610072135925,
+        "frames": 200,
+        "valid_pixel_count": 52042
+      },
+      "current_minus_best_mae_deg": 0.8889324855804439
+    },
+    "ball": {
+      "best": {
+        "dataset": "refnerf",
+        "scene": "ball",
+        "space_mode": "as_saved",
+        "flip_x": false,
+        "flip_y": false,
+        "flip_z": false,
+        "absolute_dot": true,
+        "normal_mae_deg": 3.5728697538375855,
+        "frames": 200,
+        "valid_pixel_count": 199999
+      },
+      "current": {
+        "dataset": "refnerf",
+        "scene": "ball",
+        "space_mode": "as_saved",
+        "flip_x": false,
+        "flip_y": false,
+        "flip_z": false,
+        "absolute_dot": false,
+        "normal_mae_deg": 3.7296360468864442,
+        "frames": 200,
+        "valid_pixel_count": 199999
+      },
+      "current_minus_best_mae_deg": 0.1567662930488587
+    },
+    "teapot": {
+      "best": {
+        "dataset": "refnerf",
+        "scene": "teapot",
+        "space_mode": "as_saved",
+        "flip_x": false,
+        "flip_y": false,
+        "flip_z": false,
+        "absolute_dot": true,
+        "normal_mae_deg": 7.23360168337822,
+        "frames": 200,
+        "valid_pixel_count": 18870
+      },
+      "current": {
+        "dataset": "refnerf",
+        "scene": "teapot",
+        "space_mode": "as_saved",
+        "flip_x": false,
+        "flip_y": false,
+        "flip_z": false,
+        "absolute_dot": false,
+        "normal_mae_deg": 8.4749749147892,
+        "frames": 200,
+        "valid_pixel_count": 18870
+      },
+      "current_minus_best_mae_deg": 1.2413732314109804
+    },
+    "coffee": {
+      "best": {
+        "dataset": "refnerf",
+        "scene": "coffee",
+        "space_mode": "as_saved",
+        "flip_x": false,
+        "flip_y": false,
+        "flip_z": false,
+        "absolute_dot": true,
+        "normal_mae_deg": 10.16235391139984,
+        "frames": 200,
+        "valid_pixel_count": 70920
+      },
+      "current": {
+        "dataset": "refnerf",
+        "scene": "coffee",
+        "space_mode": "as_saved",
+        "flip_x": false,
+        "flip_y": false,
+        "flip_z": false,
+        "absolute_dot": false,
+        "normal_mae_deg": 11.142430710792542,
+        "frames": 200,
+        "valid_pixel_count": 70920
+      },
+      "current_minus_best_mae_deg": 0.9800767993927018
+    },
+    "toaster": {
+      "best": {
+        "dataset": "refnerf",
+        "scene": "toaster",
+        "space_mode": "as_saved",
+        "flip_x": false,
+        "flip_y": false,
+        "flip_z": false,
+        "absolute_dot": true,
+        "normal_mae_deg": 10.908842248916626,
+        "frames": 200,
+        "valid_pixel_count": 99938
+      },
+      "current": {
+        "dataset": "refnerf",
+        "scene": "toaster",
+        "space_mode": "as_saved",
+        "flip_x": false,
+        "flip_y": false,
+        "flip_z": false,
+        "absolute_dot": false,
+        "normal_mae_deg": 11.8526726603508,
+        "frames": 200,
+        "valid_pixel_count": 99938
+      },
+      "current_minus_best_mae_deg": 0.943830411434174
+    }
+  },
+  "training_quality_notes": {
+    "training_quality_possible_factor": true,
+    "rgb_metrics": {
+      "helmet": {
+        "psnr": 30.502142969767,
+        "ssim": 0.977920821706,
+        "lpips": 0.036615665052
+      },
+      "car": {
+        "psnr": 31.19614470164,
+        "ssim": 0.965285590291,
+        "lpips": 0.026168029827
+      },
+      "ball": {
+        "psnr": 30.037853832245,
+        "ssim": 0.971641098857,
+        "lpips": 0.081153388495
+      },
+      "teapot": {
+        "psnr": 35.109674542745,
+        "ssim": 0.991671136816,
+        "lpips": 0.016387838594
+      },
+      "coffee": {
+        "psnr": 31.92332408905,
+        "ssim": 0.968781870206,
+        "lpips": 0.065986671907
+      },
+      "toaster": {
+        "psnr": 27.754969348907,
+        "ssim": 0.950328499873,
+        "lpips": 0.067486603198
+      }
+    },
+    "checkpoint_notes": {
+      "helmet": {
+        "iteration_31000_exists": true,
+        "iteration_30000_exists": true,
+        "available_iterations": [
+          1000,
+          5000,
+          7000,
+          10000,
+          15000,
+          20000,
+          25000,
+          30000,
+          31000
+        ],
+        "cfg_args_excerpt": "Namespace(albedo_bias=0, alpha_weight=0.0, data_device='cuda', density_weight=0.0, depth_tv_weight=0.0, env_scope_center=[0.0, 0.0, 0.0], env_scope_radius=0.0, eval=True, gsrgb_loss=False, images='images', init_until_iter=0, model_path='output/repro_paper/refnerf/helmet', rand_init=False, resolution=-1, run_dim=256, sh_degree=3, source_path='/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet', tv_weight=0.0, white_background=False, xyz_axis=[0.0, 0.0, 0.0])"
+      },
+      "car": {
+        "iteration_31000_exists": true,
+        "iteration_30000_exists": true,
+        "available_iterations": [
+          1000,
+          5000,
+          7000,
+          10000,
+          15000,
+          20000,
+          25000,
+          30000,
+          31000
+        ],
+        "cfg_args_excerpt": "Namespace(albedo_bias=0, alpha_weight=0.0, data_device='cuda', density_weight=0.0, depth_tv_weight=0.0, env_scope_center=[0.0, 0.0, 0.0], env_scope_radius=0.0, eval=True, gsrgb_loss=False, images='images', init_until_iter=0, model_path='output/repro_paper/refnerf/car', rand_init=False, resolution=-1, run_dim=256, sh_degree=3, source_path='/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car', tv_weight=0.0, white_background=False, xyz_axis=[0.0, 0.0, 0.0])"
+      },
+      "ball": {
+        "iteration_31000_exists": true,
+        "iteration_30000_exists": true,
+        "available_iterations": [
+          1000,
+          5000,
+          7000,
+          10000,
+          15000,
+          20000,
+          25000,
+          30000,
+          31000
+        ],
+        "cfg_args_excerpt": "Namespace(albedo_bias=0, alpha_weight=0.0, data_device='cuda', density_weight=0.0, depth_tv_weight=0.0, env_scope_center=[0.0, 0.0, 0.0], env_scope_radius=0.0, eval=True, gsrgb_loss=False, images='images', init_until_iter=0, model_path='output/repro_paper/refnerf/ball', rand_init=False, resolution=-1, run_dim=256, sh_degree=3, source_path='/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball', tv_weight=0.0, white_background=False, xyz_axis=[0.0, 0.0, 0.0])"
+      },
+      "teapot": {
+        "iteration_31000_exists": true,
+        "iteration_30000_exists": true,
+        "available_iterations": [
+          1000,
+          5000,
+          7000,
+          10000,
+          15000,
+          20000,
+          25000,
+          30000,
+          31000
+        ],
+        "cfg_args_excerpt": "Namespace(albedo_bias=0, alpha_weight=0.0, data_device='cuda', density_weight=0.0, depth_tv_weight=0.0, env_scope_center=[0.0, 0.0, 0.0], env_scope_radius=0.0, eval=True, gsrgb_loss=False, images='images', init_until_iter=0, model_path='output/repro_paper/refnerf/teapot', rand_init=False, resolution=-1, run_dim=256, sh_degree=3, source_path='/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot', tv_weight=0.0, white_background=False, xyz_axis=[0.0, 0.0, 0.0])"
+      },
+      "coffee": {
+        "iteration_31000_exists": true,
+        "iteration_30000_exists": true,
+        "available_iterations": [
+          1000,
+          5000,
+          7000,
+          10000,
+          15000,
+          20000,
+          25000,
+          30000,
+          31000
+        ],
+        "cfg_args_excerpt": "Namespace(albedo_bias=0, alpha_weight=0.0, data_device='cuda', density_weight=0.0, depth_tv_weight=0.0, env_scope_center=[0.0, 0.0, 0.0], env_scope_radius=0.0, eval=True, gsrgb_loss=False, images='images', init_until_iter=0, model_path='output/repro_paper/refnerf/coffee', rand_init=False, resolution=-1, run_dim=256, sh_degree=3, source_path='/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee', tv_weight=0.0, white_background=False, xyz_axis=[0.0, 0.0, 0.0])"
+      },
+      "toaster": {
+        "iteration_31000_exists": true,
+        "iteration_30000_exists": true,
+        "available_iterations": [
+          1000,
+          5000,
+          7000,
+          10000,
+          15000,
+          20000,
+          25000,
+          30000,
+          31000
+        ],
+        "cfg_args_excerpt": "Namespace(albedo_bias=0, alpha_weight=0.0, data_device='cuda', density_weight=0.0, depth_tv_weight=0.0, env_scope_center=[0.0, 0.0, 0.0], env_scope_radius=0.0, eval=True, gsrgb_loss=False, images='images', init_until_iter=0, model_path='output/repro_paper/refnerf/toaster', rand_init=False, resolution=-1, run_dim=256, sh_degree=3, source_path='/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster', tv_weight=0.0, white_background=False, xyz_axis=[0.0, 0.0, 0.0])"
+      }
+    },
+    "notes": [
+      "RGB quality is complete and reasonably high, but RGB PSNR does not prove paper-level surface normals.",
+      "Saved 30000 and 31000 checkpoints permit optional offline comparison without retraining."
+    ]
+  },
+  "diagnostic_sampling": {
+    "normal_buffer_stats_files_per_scene": 3,
+    "mae_pixels_per_frame": 5000,
+    "sweep_pixels_per_frame": 1000,
+    "note": "Existing reproduced MAE values are read from geometry_metrics.csv; sampled recomputation is only diagnostic for mask and convention alternatives."
+  },
+  "evidence": {
+    "read_files": [
+      "logs/repro/summary.md",
+      "logs/repro/geometry_summary.md",
+      "logs/repro/geometry_metrics.csv",
+      "logs/repro/geometry_data_inventory.md",
+      "logs/repro/geometry_data_inventory.json",
+      "render.py",
+      "scripts/eval_geometry.py",
+      "scripts/run_geometry_eval.py",
+      "gaussian_renderer/__init__.py",
+      "utils/graphics_utils.py",
+      "utils/camera_utils.py",
+      "scene/dataset_readers.py",
+      "scene/cameras.py"
+    ],
+    "normal_convention_sweep_csv": "logs/repro/normal_convention_sweep.csv"
+  },
+  "recommended_fixes": [
+    "Do not change reported metrics in place; first add an eval-only branch that explicitly converts pred/GT normals to the same declared coordinate space.",
+    "Evaluate both `--normal-key surf_normal` and `--normal-key rend_normal` into a separate debug output root, then compare against GT with the same mask and convention sweep.",
+    "Make mask policy explicit: separate mask file, source RGBA alpha, GT normal alpha, or GT nonzero-normal mask; report valid-pixel ratio for every scene.",
+    "Extend convention sweep to the full test split before selecting a protocol; do not use the best sweep value as a paper result.",
+    "Optionally evaluate existing iteration_30000 geometry buffers in a separate output/log root if paper iteration is suspected, without retraining."
+  ],
+  "suspected_causes": [
+    {
+      "severity": "high",
+      "cause": "\u5f53\u524d\u5bfc\u51fa\u7684 normal key \u4e3a surf_normal\uff0c\u4f46\u8bba\u6587\u534f\u8bae\u672a\u786e\u8ba4\u662f surf_normal \u8fd8\u662f rend_normal",
+      "evidence": [
+        "geometry metadata records normal_key=surf_normal",
+        "render.py auto key order selects surf_normal before rend_normal",
+        "renderer also returns rend_normal with a different definition",
+        "sampled convention sweep remains far above 2.21 deg, so a simple flip alone does not explain the gap"
+      ],
+      "rank": 1
+    },
+    {
+      "severity": "high",
+      "cause": "mask/alpha \u534f\u8bae\u672a\u5bf9\u9f50\uff1aGT/source RGBA alpha \u5b58\u5728\uff0c\u4f46\u5f53\u524d eval \u591a\u6570\u573a\u666f\u4e0d\u8bfb\u53d6 RGBA alpha",
+      "evidence": [
+        "decode_normal_image() drops alpha channels",
+        "find_mask() searches only separate *_alpha/*_mask files and does not read source RGBA alpha",
+        "diagnostic found current mask includes large background regions for RGBA scenes; alpha-mask sampled MAE improves but does not fully close the paper gap"
+      ],
+      "rank": 2
+    },
+    {
+      "severity": "medium",
+      "cause": "normal-space \u53c2\u6570\u6ca1\u6709\u6267\u884c\u771f\u5b9e\u5750\u6807\u53d8\u6362",
+      "evidence": [
+        "`eval_geometry.py` accepts --normal-space but only writes row['normal_space']",
+        "sampled camera/world variants in the sweep did not beat the as-saved convention, so this is a confirmed eval-code bug but not sufficient evidence for the whole 8.8 vs 2.21 deg gap"
+      ],
+      "rank": 3
+    },
+    {
+      "severity": "medium",
+      "cause": "\u8bad\u7ec3\u51e0\u4f55\u8d28\u91cf\u6216\u516c\u5f00\u590d\u73b0\u8d85\u53c2\u4ecd\u53ef\u80fd\u5f71\u54cd\u6cd5\u7ebf\u8d28\u91cf",
+      "evidence": [
+        "RGB PSNR is reasonable but not proof of paper-level normals",
+        "all scenes use saved iteration_31000, and iteration_30000 checkpoints also exist for optional offline comparison"
+      ],
+      "rank": 4
+    }
+  ]
+}
