@@ -1,0 +1,19 @@
+/home/liuly/anaconda3/envs/ref_gs/lib/python3.7/site-packages/torch/functional.py:478: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at  /opt/conda/conda-bld/pytorch_1659484809535/work/aten/src/ATen/native/TensorShape.cpp:2894.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/liuly/anaconda3/envs/ref_gs/lib/python3.7/site-packages/torchvision/models/_utils.py:136: UserWarning: Using 'weights' as positional parameter(s) is deprecated since 0.13 and will be removed in 0.15. Please use keyword parameter(s) instead.
+  f"Using {sequence_to_str(tuple(keyword_only_kwargs.keys()), separate_last='and ')} as positional "
+/home/liuly/anaconda3/envs/ref_gs/lib/python3.7/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and will be removed in 0.15. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Looking for config file in output/repro_paper/nerf_synthetic/ficus/cfg_args
+Config file found: output/repro_paper/nerf_synthetic/ficus/cfg_args
+Rendering output/repro_paper/nerf_synthetic/ficus [07/07 23:11:26]
+SphMipEncoding ### level: 9   size: 512 [07/07 23:11:27]
+Loading trained model at iteration 31000 [07/07 23:11:27]
+Found transforms_train.json file, assuming Blender data set! [07/07 23:11:27]
+Reading Training Transforms [07/07 23:11:27]
+Reading Test Transforms [07/07 23:11:27]
+Generating random point cloud (100000)... [07/07 23:11:27]
+resolution_scales [1.0] [07/07 23:11:27]
+Loading Training Cameras [07/07 23:11:27]
+Loading Test Cameras [07/07 23:11:31]
+Load Path output/repro_paper/nerf_synthetic/ficus/point_cloud/iteration_31000/point_cloud.ply [07/07 23:11:37]
