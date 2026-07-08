@@ -1,0 +1,60 @@
+{
+  "rows": [
+    {
+      "dataset": "refnerf",
+      "scene": "coffee",
+      "strategy": "uniform_pose",
+      "views": 3,
+      "seed": 0,
+      "iteration": 31000,
+      "train_views": 3,
+      "test_views": 200,
+      "psnr": null,
+      "ssim": null,
+      "lpips": null,
+      "baseline_psnr": 31.92332408905,
+      "baseline_ssim": 0.968781870206,
+      "baseline_lpips": 0.065986671907,
+      "delta_psnr": null,
+      "delta_ssim": null,
+      "delta_lpips": null,
+      "checkpoint_exists": false,
+      "render_exists": false,
+      "metrics_exists": false,
+      "status": "missing_metrics",
+      "notes": "missing_metrics"
+    }
+  ],
+  "dataset_averages": [
+    {
+      "dataset": "refnerf",
+      "strategy": "uniform_pose",
+      "views": 3,
+      "seed": 0,
+      "scenes": 1,
+      "psnr": null,
+      "ssim": null,
+      "lpips": null,
+      "delta_psnr": null,
+      "delta_ssim": null,
+      "delta_lpips": null
+    }
+  ],
+  "cross_seed_averages": [
+    {
+      "dataset": "refnerf",
+      "strategy": "uniform_pose",
+      "views": 3,
+      "seeds": 1,
+      "psnr_mean": null,
+      "psnr_std": null,
+      "ssim_mean": null,
+      "ssim_std": null,
+      "lpips_mean": null,
+      "lpips_std": null,
+      "delta_psnr_mean": null,
+      "delta_ssim_mean": null,
+      "delta_lpips_mean": null
+    }
+  ]
+}

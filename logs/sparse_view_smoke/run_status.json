@@ -1,0 +1,32 @@
+[
+  {
+    "action": "train",
+    "scene": "coffee",
+    "model_path": "output/sparse_view_smoke/refnerf/uniform_pose/views_3/seed_0/coffee",
+    "log_path": "logs/sparse_view_smoke/refnerf/uniform_pose/views_3/seed_0/coffee/train",
+    "command": "CUDA_VISIBLE_DEVICES=1 python train.py -s /data/liuly/dataset/3DGS/SparseViewGenerated/refnerf/uniform_pose/views_3/seed_0/coffee -m output/sparse_view_smoke/refnerf/uniform_pose/views_3/seed_0/coffee --eval --run_dim 256 --albedo_bias 0 --albedo_lr 0.002 --iterations 10 > logs/sparse_view_smoke/refnerf/uniform_pose/views_3/seed_0/coffee/train 2>&1",
+    "status": "ok",
+    "returncode": 0,
+    "notes": ""
+  },
+  {
+    "action": "render",
+    "scene": "coffee",
+    "model_path": "output/sparse_view_smoke/refnerf/uniform_pose/views_3/seed_0/coffee",
+    "log_path": "logs/sparse_view_smoke/refnerf/uniform_pose/views_3/seed_0/coffee/render",
+    "command": "CUDA_VISIBLE_DEVICES=1 python render.py -s /data/liuly/dataset/3DGS/SparseViewGenerated/refnerf/uniform_pose/views_3/seed_0/coffee -m output/sparse_view_smoke/refnerf/uniform_pose/views_3/seed_0/coffee --iteration 10 --renderer refgs --split test > logs/sparse_view_smoke/refnerf/uniform_pose/views_3/seed_0/coffee/render 2>&1",
+    "status": "ok",
+    "returncode": 0,
+    "notes": ""
+  },
+  {
+    "action": "eval",
+    "scene": "coffee",
+    "model_path": "output/sparse_view_smoke/refnerf/uniform_pose/views_3/seed_0/coffee",
+    "log_path": "logs/sparse_view_smoke/refnerf/uniform_pose/views_3/seed_0/coffee/eval",
+    "command": "CUDA_VISIBLE_DEVICES=1 python render.py -s /data/liuly/dataset/3DGS/SparseViewGenerated/refnerf/uniform_pose/views_3/seed_0/coffee -m output/sparse_view_smoke/refnerf/uniform_pose/views_3/seed_0/coffee --iteration 10 --renderer refgs --split test --eval --metrics > logs/sparse_view_smoke/refnerf/uniform_pose/views_3/seed_0/coffee/eval 2>&1",
+    "status": "ok",
+    "returncode": 0,
+    "notes": ""
+  }
+]

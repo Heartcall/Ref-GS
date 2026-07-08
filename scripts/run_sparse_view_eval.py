@@ -1,0 +1,254 @@
+import argparse
+import json
+import os
+import subprocess
+import sys
+from pathlib import Path
+from typing import Iterable, List, Optional, Sequence
+
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from scripts.make_sparse_view_dataset import DEFAULT_OUTPUT_ROOT as DEFAULT_SPARSE_DATA_ROOT
+from scripts.make_sparse_view_dataset import generate_sparse_datasets, sparse_scene_path
+from scripts.refgs_runner import DATASET_CONFIGS, DEFAULT_DATA_ROOT, Job, selected_scenes
+from scripts.sparse_view_utils import SPARSE_DATASETS, SPARSE_STRATEGIES
+
+
+def _dataset_keys(dataset: str) -> List[str]:
+    return list(SPARSE_DATASETS) if dataset == "all" else [dataset]
+
+
+def sparse_model_path(output_root: Path, dataset: str, strategy: str, views: int, seed: int, scene: str) -> Path:
+    return output_root / dataset / strategy / f"views_{views}" / f"seed_{seed}" / scene
+
+
+def sparse_log_path(log_root: Path, dataset: str, strategy: str, views: int, seed: int, scene: str, action: str) -> Path:
+    return log_root / dataset / strategy / f"views_{views}" / f"seed_{seed}" / scene / action
+
+
+def should_skip_action(action: str, model_path: Path, iteration: int) -> bool:
+    split_dir = model_path / "test" / f"ours_{iteration}"
+    if action == "train":
+        return (model_path / "point_cloud" / f"iteration_{iteration}" / "point_cloud.ply").exists()
+    if action == "render":
+        render_dir = split_dir / "renders"
+        return render_dir.exists() and any(render_dir.iterdir())
+    if action == "eval":
+        return (split_dir / "results.json").exists() or (model_path / "results.json").exists()
+    raise ValueError(f"Unknown action: {action}")
+
+
+def build_sparse_jobs(
+    dataset_key: str,
+    scenes: Optional[Sequence[str]],
+    views: Sequence[int],
+    strategy: str,
+    seed: int,
+    sparse_data_root: Path,
+    output_root: Path,
+    log_root: Path,
+    gpu: Optional[str],
+    actions: Iterable[str],
+    python: str,
+    iteration: int,
+    extra_train_args: Sequence[str] = (),
+    extra_render_args: Sequence[str] = (),
+) -> List[Job]:
+    config = DATASET_CONFIGS[dataset_key]
+    env = {"CUDA_VISIBLE_DEVICES": gpu} if gpu is not None else {}
+    jobs = []
+    for scene in selected_scenes(config, scenes):
+        for view_count in views:
+            source_path = sparse_scene_path(sparse_data_root, dataset_key, strategy, view_count, seed, scene.name)
+            model_path = sparse_model_path(output_root, dataset_key, strategy, view_count, seed, scene.name)
+            for action in actions:
+                log_path = sparse_log_path(log_root, dataset_key, strategy, view_count, seed, scene.name, action)
+                if action == "train":
+                    command = [
+                        python,
+                        config.train_script,
+                        "-s",
+                        str(source_path),
+                        "-m",
+                        str(model_path),
+                        *scene.train_args,
+                        *extra_train_args,
+                    ]
+                elif action in {"render", "eval"}:
+                    command = [
+                        python,
+                        config.render_script,
+                        "-s",
+                        str(source_path),
+                        "-m",
+                        str(model_path),
+                        "--iteration",
+                        str(iteration),
+                        *config.render_args,
+                        "--split",
+                        "test",
+                        *extra_render_args,
+                    ]
+                    if action == "eval":
+                        command.extend(["--eval", "--metrics"])
+                        command.extend(config.eval_args)
+                else:
+                    raise ValueError(f"Unknown action: {action}")
+                jobs.append(Job(action=action, scene=scene.name, command=command, env=env, log_path=log_path))
+    return jobs
+
+
+def _check_sparse_scene(job: Job) -> Optional[str]:
+    if "-s" not in job.command:
+        return None
+    source = Path(job.command[job.command.index("-s") + 1])
+    missing = [name for name in ("transforms_train.json", "transforms_test.json") if not (source / name).exists()]
+    if missing:
+        return f"missing sparse scene files under {source}: {', '.join(missing)}"
+    return None
+
+
+def _model_path_from_job(job: Job) -> Path:
+    return Path(job.command[job.command.index("-m") + 1])
+
+
+def _write_status(log_root: Path, records: List[dict]) -> None:
+    log_root.mkdir(parents=True, exist_ok=True)
+    with (log_root / "run_status.json").open("w", encoding="utf-8") as handle:
+        json.dump(records, handle, indent=2)
+        handle.write("\n")
+
+
+def run_jobs(jobs: Sequence[Job], iteration: int, skip_existing: bool, dry_run: bool, log_root: Path) -> List[dict]:
+    records = []
+    for job in jobs:
+        model_path = _model_path_from_job(job)
+        record = {
+            "action": job.action,
+            "scene": job.scene,
+            "model_path": str(model_path),
+            "log_path": str(job.log_path) if job.log_path else None,
+            "command": job.display(),
+            "status": "pending",
+            "returncode": None,
+            "notes": "",
+        }
+        missing = _check_sparse_scene(job)
+        if missing:
+            record["status"] = "failed"
+            record["notes"] = missing
+            print(f"FAILED precheck {job.action} {job.scene}: {missing}")
+            records.append(record)
+            continue
+        if skip_existing and should_skip_action(job.action, model_path, iteration):
+            record["status"] = "skipped_existing"
+            print(f"SKIP existing {job.action} {job.scene}: {model_path}")
+            records.append(record)
+            continue
+
+        print(job.display())
+        if dry_run:
+            record["status"] = "dry_run"
+            records.append(record)
+            continue
+
+        if job.log_path is not None:
+            job.log_path.parent.mkdir(parents=True, exist_ok=True)
+        env = os.environ.copy()
+        env.update(job.env)
+        try:
+            if job.log_path is None:
+                completed = subprocess.run(job.command, check=False, env=env)
+            else:
+                with job.log_path.open("w", encoding="utf-8") as log_file:
+                    completed = subprocess.run(job.command, check=False, env=env, stdout=log_file, stderr=subprocess.STDOUT)
+            record["returncode"] = completed.returncode
+            record["status"] = "ok" if completed.returncode == 0 else "failed"
+            if completed.returncode != 0:
+                record["notes"] = f"see log: {job.log_path}"
+                print(f"FAILED {job.action} {job.scene}, log: {job.log_path}")
+        except Exception as exc:
+            record["status"] = "failed"
+            record["notes"] = f"{type(exc).__name__}: {exc}; log: {job.log_path}"
+            print(f"FAILED {job.action} {job.scene}: {record['notes']}")
+        records.append(record)
+        _write_status(log_root, records)
+    _write_status(log_root, records)
+    return records
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Run sparse-view Ref-GS train/render/eval jobs.")
+    parser.add_argument("--dataset", choices=SPARSE_DATASETS + ("all",), required=True)
+    parser.add_argument("--scene", nargs="+", default=None)
+    parser.add_argument("--views", nargs="+", type=int, required=True)
+    parser.add_argument("--strategy", choices=SPARSE_STRATEGIES, required=True)
+    parser.add_argument("--seed", type=int, default=0)
+    parser.add_argument("--gpu", default="1")
+    parser.add_argument("--data-root", type=Path, default=DEFAULT_DATA_ROOT)
+    parser.add_argument("--sparse-data-root", type=Path, default=DEFAULT_SPARSE_DATA_ROOT)
+    parser.add_argument("--output-root", type=Path, default=Path("output/sparse_view"))
+    parser.add_argument("--log-root", type=Path, default=Path("logs/sparse_view"))
+    parser.add_argument("--iteration", type=int, default=31000)
+    parser.add_argument("--train", action="store_true")
+    parser.add_argument("--render", action="store_true")
+    parser.add_argument("--eval", action="store_true")
+    parser.add_argument("--make-data", action="store_true")
+    parser.add_argument("--skip-existing", action="store_true")
+    parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--python", default="python")
+    parser.add_argument("--extra-train-arg", action="append", default=[])
+    parser.add_argument("--extra-render-arg", action="append", default=[])
+    parser.add_argument("--force-data", action="store_true", help="Overwrite generated sparse JSON files when --make-data is used.")
+    return parser.parse_args()
+
+
+def main() -> None:
+    args = parse_args()
+    actions = [name for name in ("train", "render", "eval") if getattr(args, name)]
+    if not actions:
+        if args.dry_run:
+            actions = ["train", "render", "eval"]
+        else:
+            raise SystemExit("Choose at least one action: --train, --render, --eval, or use --dry-run.")
+
+    if args.make_data:
+        generate_sparse_datasets(
+            dataset=args.dataset,
+            scenes=args.scene,
+            data_root=args.data_root,
+            source_subdir=None,
+            output_root=args.sparse_data_root,
+            views=args.views,
+            strategy=args.strategy,
+            seed=args.seed,
+            dry_run=args.dry_run,
+            force=args.force_data,
+        )
+
+    all_jobs = []
+    for dataset_key in _dataset_keys(args.dataset):
+        all_jobs.extend(
+            build_sparse_jobs(
+                dataset_key=dataset_key,
+                scenes=args.scene,
+                views=args.views,
+                strategy=args.strategy,
+                seed=args.seed,
+                sparse_data_root=args.sparse_data_root,
+                output_root=args.output_root,
+                log_root=args.log_root,
+                gpu=args.gpu,
+                actions=actions,
+                python=args.python,
+                iteration=args.iteration,
+                extra_train_args=args.extra_train_arg,
+                extra_render_args=args.extra_render_arg,
+            )
+        )
+    run_jobs(all_jobs, iteration=args.iteration, skip_existing=args.skip_existing, dry_run=args.dry_run, log_root=args.log_root)
+
+
+if __name__ == "__main__":
+    main()

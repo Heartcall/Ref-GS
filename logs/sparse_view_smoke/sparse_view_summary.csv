@@ -1,0 +1,2 @@
+dataset,scene,strategy,views,seed,iteration,train_views,test_views,psnr,ssim,lpips,baseline_psnr,baseline_ssim,baseline_lpips,delta_psnr,delta_ssim,delta_lpips,checkpoint_exists,render_exists,metrics_exists,status,notes
+refnerf,coffee,uniform_pose,3,0,10,3,200,7.156134719848633,0.34158166870474815,0.8905650734901428,31.92332408905,0.968781870206,0.065986671907,-24.767189369201365,-0.6272002015012519,0.8245784015831428,True,True,True,ok,

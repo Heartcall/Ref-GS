@@ -231,6 +231,150 @@ Still uncertain from the paper/released repo:
 - Whether LPIPS preprocessing matched the paper implementation beyond the standard Ref-GS image range used here.
 - Whether Glossy Synthetic scenes outside the original `train.sh` list should be included in paper-scale reproduction.
 
+## Sparse-View Evaluation
+
+Sparse-view evaluation uses the same Ref-GS training and rendering entrypoints
+as the full-view reproduction, but reduces only the training split. The generated
+scene keeps `transforms_test.json` byte-for-byte identical to the original full
+test split, and writes a new `transforms_train.json` containing the selected
+training frames. Original data under `/data/liuly/dataset/3DGS` is not modified.
+
+Generated sparse data is written by default to:
+
+```bash
+/data/liuly/dataset/3DGS/SparseViewGenerated/<dataset>/<strategy>/views_<N>/seed_<S>/<scene>/
+```
+
+Experiment outputs and logs are kept separate from the full-view reproduction:
+
+```bash
+output/sparse_view/<dataset>/<strategy>/views_<N>/seed_<S>/<scene>/
+logs/sparse_view/<dataset>/<strategy>/views_<N>/seed_<S>/<scene>/{train,render,eval}
+```
+
+Supported datasets are `refnerf`, `glossy_synthetic`, and `nerf_synthetic`.
+Supported selection strategies are:
+
+- `random`: seeded random subset, restored to original frame order.
+- `uniform_index`: uniformly spaced indices in the original train-frame order.
+- `uniform_pose`: uniformly spaced azimuths from camera centers, falling back to
+  `uniform_index` if poses are missing.
+- `farthest_pose`: seeded farthest-point selection over camera centers, falling
+  back to `uniform_index` if poses are missing.
+
+Dry-run a sparse split:
+
+```bash
+conda run -n ref_gs python scripts/make_sparse_view_dataset.py \
+  --dataset refnerf \
+  --scene coffee \
+  --views 3 \
+  --strategy uniform_pose \
+  --seed 0 \
+  --data-root /data/liuly/dataset/3DGS \
+  --output-root /data/liuly/dataset/3DGS/SparseViewGenerated \
+  --dry-run
+```
+
+Create that split:
+
+```bash
+conda run -n ref_gs python scripts/make_sparse_view_dataset.py \
+  --dataset refnerf \
+  --scene coffee \
+  --views 3 \
+  --strategy uniform_pose \
+  --seed 0 \
+  --data-root /data/liuly/dataset/3DGS \
+  --output-root /data/liuly/dataset/3DGS/SparseViewGenerated
+```
+
+Run a 10-step smoke test. The train iteration is passed to `train.py` through
+`--extra-train-arg`; `--iteration` controls render/eval checkpoint loading:
+
+```bash
+conda run -n ref_gs python scripts/run_sparse_view_eval.py \
+  --dataset refnerf \
+  --scene coffee \
+  --views 3 \
+  --strategy uniform_pose \
+  --seed 0 \
+  --gpu 1 \
+  --make-data \
+  --train --render --eval \
+  --iteration 10 \
+  --output-root output/sparse_view_smoke \
+  --log-root logs/sparse_view_smoke \
+  --extra-train-arg=--iterations \
+  --extra-train-arg=10
+```
+
+Main uniform-pose run:
+
+```bash
+conda run -n ref_gs python scripts/run_sparse_view_eval.py \
+  --dataset all \
+  --views 3 6 9 12 24 \
+  --strategy uniform_pose \
+  --seed 0 \
+  --gpu 1 \
+  --make-data \
+  --train --render --eval \
+  --iteration 31000 \
+  --data-root /data/liuly/dataset/3DGS \
+  --sparse-data-root /data/liuly/dataset/3DGS/SparseViewGenerated \
+  --output-root output/sparse_view \
+  --log-root logs/sparse_view \
+  --skip-existing
+```
+
+Random subsets should be run across multiple seeds because sparse camera choice
+can dominate scene quality:
+
+```bash
+for seed in 0 1 2; do
+  conda run -n ref_gs python scripts/run_sparse_view_eval.py \
+    --dataset all \
+    --views 3 6 9 12 24 \
+    --strategy random \
+    --seed ${seed} \
+    --gpu 4 \
+    --make-data \
+    --train --render --eval \
+    --iteration 31000 \
+    --data-root /data/liuly/dataset/3DGS \
+    --sparse-data-root /data/liuly/dataset/3DGS/SparseViewGenerated \
+    --output-root output/sparse_view \
+    --log-root logs/sparse_view \
+    --skip-existing
+done
+```
+
+Summarize sparse RGB metrics against the full-view baseline in
+`output/repro_paper` and `logs/repro/metrics_summary.csv`:
+
+```bash
+conda run -n ref_gs python scripts/summarize_sparse_view.py \
+  --sparse-output-root output/sparse_view \
+  --baseline-output-root output/repro_paper \
+  --log-root logs/sparse_view \
+  --iteration 31000
+```
+
+The summary files are:
+
+```bash
+logs/sparse_view/sparse_view_summary.md
+logs/sparse_view/sparse_view_summary.csv
+logs/sparse_view/sparse_view_summary.json
+```
+
+Sparse-view numbers are not directly interchangeable with the paper/full-view
+main table unless the same sparse-view protocol, selected views, strategy, seed,
+iteration, renderer, and test split are used. Geometry/proxy metrics should stay
+separate from the sparse-view RGB summary unless explicitly reported as optional
+geometry diagnostics.
+
 ## ✍️ Test
 We provide simple jupyter notebooks `notebook/test.ipynb` to explore the model.
 
