@@ -24,9 +24,9 @@ def display_command(command: Sequence[str], env: Dict[str, str]) -> str:
     return f"{prefix} {body}".strip()
 
 
-def geometry_exists(output_root: Path, dataset: str, scene: str, iteration: int, normal_key: str) -> bool:
+def geometry_exists(output_root: Path, dataset: str, scene: str, iteration: int, normal_key: str, expected_frame_count: int) -> bool:
     normal_dir = output_root / dataset / scene / f"iteration_{iteration}" / normal_key / "test" / f"ours_{iteration}" / "geometry" / "normal"
-    return normal_dir.exists() and any(normal_dir.glob("*.npy"))
+    return normal_dir.exists() and sum(1 for _ in normal_dir.glob("*.npy")) >= expected_frame_count
 
 
 def build_command(
@@ -38,13 +38,16 @@ def build_command(
     output_root: Path,
     source_output_root: Path,
     data_root: Path,
+    normal_dtype: str,
+    save_depth: bool,
+    save_vis: bool,
 ) -> List[str]:
     config = DATASET_CONFIGS[dataset]
     scene_config = config.scene_map()[scene]
     source = data_root / config.data_subdir / scene_config.source_dir
     model = source_output_root / config.output_subdir / scene_config.name
     geometry_root = output_root / config.output_subdir / scene_config.name / f"iteration_{iteration}" / normal_key
-    return [
+    command = [
         python,
         "render.py",
         "-s",
@@ -63,8 +66,15 @@ def build_command(
         "surf_depth",
         "--geometry-output-root",
         str(geometry_root),
+        "--geometry-normal-dtype",
+        normal_dtype,
         *config.render_args,
     ]
+    if not save_depth:
+        command.append("--skip-depth-geometry")
+    if not save_vis:
+        command.append("--skip-geometry-vis")
+    return command
 
 
 def parse_args() -> argparse.Namespace:
@@ -81,6 +91,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--force", action="store_true")
     parser.add_argument("--skip-existing", action="store_true")
     parser.add_argument("--python", default=sys.executable)
+    parser.add_argument("--expected-frame-count", type=int, default=200)
+    parser.add_argument("--normal-dtype", choices=("float32", "float16"), default="float16")
+    parser.add_argument("--save-depth", action="store_true")
+    parser.add_argument("--save-vis", action="store_true")
     return parser.parse_args()
 
 
@@ -99,7 +113,14 @@ def main() -> int:
                 print(f"[skip] {args.dataset}/{scene} iteration {iteration}: missing checkpoint {checkpoint}")
                 continue
             for normal_key in args.normal_key:
-                if args.skip_existing and not args.force and geometry_exists(args.output_root, config.output_subdir, scene, iteration, normal_key):
+                if args.skip_existing and not args.force and geometry_exists(
+                    args.output_root,
+                    config.output_subdir,
+                    scene,
+                    iteration,
+                    normal_key,
+                    args.expected_frame_count,
+                ):
                     print(f"[skip] {args.dataset}/{scene} iteration {iteration} {normal_key}: existing buffers")
                     continue
                 command = build_command(
@@ -111,6 +132,9 @@ def main() -> int:
                     args.output_root,
                     args.source_output_root,
                     args.data_root,
+                    args.normal_dtype,
+                    args.save_depth,
+                    args.save_vis,
                 )
                 if args.dry_run:
                     print(display_command(command, env))

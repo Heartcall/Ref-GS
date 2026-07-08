@@ -120,18 +120,20 @@ def _as_hwc(tensor: torch.Tensor) -> torch.Tensor:
     return tensor.contiguous()
 
 
-def _save_normal(tensor: torch.Tensor, npy_path: Path, vis_path: Path) -> None:
+def _save_normal(tensor: torch.Tensor, npy_path: Path, vis_path: Path, args) -> None:
     import torchvision
 
     normal = tensor.detach().float()
     if normal.ndim == 3 and normal.shape[0] != 3 and normal.shape[-1] == 3:
         normal = normal.permute(2, 0, 1)
     normal = F.normalize(normal[:3], dim=0)
-    hwc = _as_hwc(normal).numpy().astype(np.float32)
+    dtype = np.float16 if args.geometry_normal_dtype == "float16" else np.float32
+    hwc = _as_hwc(normal).numpy().astype(dtype)
     npy_path.parent.mkdir(parents=True, exist_ok=True)
     np.save(str(npy_path), hwc)
-    vis_path.parent.mkdir(parents=True, exist_ok=True)
-    torchvision.utils.save_image(torch.clamp((normal + 1.0) * 0.5, 0.0, 1.0), str(vis_path))
+    if not args.skip_geometry_vis:
+        vis_path.parent.mkdir(parents=True, exist_ok=True)
+        torchvision.utils.save_image(torch.clamp((normal + 1.0) * 0.5, 0.0, 1.0), str(vis_path))
 
 
 def _save_depth(tensor: torch.Tensor, npy_path: Path, vis_path: Path) -> None:
@@ -163,14 +165,22 @@ def _save_geometry(render_pkg: dict, split_dir: Path, image_name: str, args) -> 
             render_pkg[normal_key],
             split_dir / "geometry" / "normal" / f"{image_name}.npy",
             split_dir / "geometry" / "normal_vis" / f"{image_name}.png",
+            args,
         )
-    if depth_key is not None:
+    if depth_key is not None and not args.skip_depth_geometry:
         _save_depth(
             render_pkg[depth_key],
             split_dir / "geometry" / "depth" / f"{image_name}.npy",
             split_dir / "geometry" / "depth_vis" / f"{image_name}.png",
         )
-    return {"normal_key": normal_key, "depth_key": depth_key, "render_keys": sorted(render_pkg.keys())}
+    return {
+        "normal_key": normal_key,
+        "depth_key": None if args.skip_depth_geometry else depth_key,
+        "render_keys": sorted(render_pkg.keys()),
+        "normal_dtype": args.geometry_normal_dtype,
+        "skip_geometry_vis": args.skip_geometry_vis,
+        "skip_depth_geometry": args.skip_depth_geometry,
+    }
 
 
 def _dump_render_keys(render_pkg: dict) -> None:
@@ -229,6 +239,9 @@ def _evaluate_split(split: str, cameras, scene, render_func, pipe, background, a
             "iteration": scene.loaded_iter,
             "normal_key": geometry_keys["normal_key"] if geometry_keys else None,
             "depth_key": geometry_keys["depth_key"] if geometry_keys else None,
+            "normal_dtype": geometry_keys["normal_dtype"] if geometry_keys else None,
+            "skip_geometry_vis": geometry_keys["skip_geometry_vis"] if geometry_keys else None,
+            "skip_depth_geometry": geometry_keys["skip_depth_geometry"] if geometry_keys else None,
             "render_keys": geometry_keys["render_keys"] if geometry_keys else None,
             "command": " ".join(sys.argv),
             "git_commit": _git_text(["git", "rev-parse", "HEAD"]),
@@ -278,6 +291,9 @@ def main(default_renderer: str = "refgs") -> None:
     parser.add_argument("--normal-key", default="auto")
     parser.add_argument("--depth-key", default="auto")
     parser.add_argument("--geometry-output-root", default=None)
+    parser.add_argument("--geometry-normal-dtype", choices=("float32", "float16"), default="float32")
+    parser.add_argument("--skip-geometry-vis", action="store_true")
+    parser.add_argument("--skip-depth-geometry", action="store_true")
     parser.add_argument("--split", choices=("train", "test", "both"), default=None)
     parser.add_argument("--quiet", action="store_true")
     args = get_combined_args(parser)

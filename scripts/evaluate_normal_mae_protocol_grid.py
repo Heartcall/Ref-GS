@@ -43,7 +43,7 @@ FLIP_PRESETS = {
     "flip_z": (False, False, True),
     "flip_yz": (False, True, True),
 }
-MASK_POLICIES = ("explicit_mask", "source_rgba_alpha", "gt_normal_alpha", "gt_normal_nonzero", "auto")
+MASK_POLICIES = ("source_rgba_alpha", "gt_normal_alpha", "gt_normal_nonzero", "auto")
 NORMAL_SPACES = ("as_saved", "camera", "world")
 
 
