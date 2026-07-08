@@ -162,6 +162,59 @@ python scripts/run_refnerf.py --gpu 0 --render --eval --iteration -1
 
 The scripts never delete an existing output directory. Logs go to `logs/repro/<dataset>/<scene>/<action>` by default. Use `--output-root` and `--log-root` to separate experiments.
 
+### Geometry Evaluation
+
+RGB reproduction metrics are PSNR, SSIM, and LPIPS. The paper-comparable
+geometry metric handled by this repository is normal Mean Angular Error in
+degrees (`normal_mae_deg` / MAE°), when both Ref-GS rendered normal buffers and
+GT normal maps are available under the evaluated split.
+
+First inventory the dataset geometry assets:
+
+```bash
+python scripts/inventory_geometry_data.py \
+  --data-root /data/liuly/dataset/3DGS \
+  --output logs/repro/geometry_data_inventory.json \
+  --markdown logs/repro/geometry_data_inventory.md
+```
+
+Then export Ref-GS geometry buffers from existing checkpoints and evaluate:
+
+```bash
+python scripts/run_geometry_eval.py \
+  --dataset all \
+  --gpu 1 \
+  --iteration 31000 \
+  --output-root output/repro_paper \
+  --log-root logs/repro \
+  --data-root /data/liuly/dataset/3DGS \
+  --save-geometry \
+  --eval
+```
+
+`render.py --save-geometry --geometry-only` saves `.npy` precision normal/depth
+buffers plus visualization PNGs under each split directory. It uses the current
+Ref-GS renderer and checkpoint; it does not retrain or modify RGB metrics.
+
+Geometry outputs:
+
+```bash
+output/repro_paper/<dataset>/<scene>/geometry_metrics.json
+output/repro_paper/<dataset>/<scene>/geometry_metrics.csv
+output/repro_paper/<dataset>/geometry_summary.csv
+output/repro_paper/<dataset>/geometry_summary.json
+logs/repro/geometry_summary.md
+logs/repro/geometry_summary.csv
+logs/repro/geometry_summary.json
+```
+
+Chamfer/F-score values currently use saved Gaussian centers as the prediction
+point set unless an extracted surface mesh is explicitly supplied. Those rows
+are marked `metric_family=proxy_geometry` or carry notes that the
+Chamfer/F-score part is proxy-only, with `paper_comparable=false` for paper
+normal-MAE comparisons. Missing GT normal/depth/mesh is recorded as
+`missing_gt_*`; no metric is fabricated.
+
 ### Hyperparameter Provenance
 
 The runner preserves the important hyperparameters from the original `train.sh` comments:

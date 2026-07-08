@@ -1,0 +1,17 @@
+CUDA_VISIBLE_DEVICES=1 /home/liuly/anaconda3/envs/ref_gs/bin/python render.py -s '/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot' -m output/repro_paper/refnerf/teapot --iteration 31000 --save-geometry --geometry-only --split test --renderer refgs > logs/repro/refnerf/teapot/geometry_render 2>&1
+
+/home/liuly/anaconda3/envs/ref_gs/lib/python3.7/site-packages/torch/functional.py:478: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at  /opt/conda/conda-bld/pytorch_1659484809535/work/aten/src/ATen/native/TensorShape.cpp:2894.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Looking for config file in output/repro_paper/refnerf/teapot/cfg_args
+Config file found: output/repro_paper/refnerf/teapot/cfg_args
+Rendering output/repro_paper/refnerf/teapot [08/07 11:00:32]
+SphMipEncoding ### level: 9   size: 512 [08/07 11:00:33]
+Loading trained model at iteration 31000 [08/07 11:00:33]
+Found transforms_train.json file, assuming Blender data set! [08/07 11:00:33]
+Reading Training Transforms [08/07 11:00:33]
+Reading Test Transforms [08/07 11:00:33]
+Generating random point cloud (100000)... [08/07 11:00:33]
+resolution_scales [1.0] [08/07 11:00:34]
+Loading Training Cameras [08/07 11:00:34]
+Loading Test Cameras [08/07 11:00:38]
+Load Path output/repro_paper/refnerf/teapot/point_cloud/iteration_31000/point_cloud.ply [08/07 11:00:43]

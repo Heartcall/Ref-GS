@@ -5,7 +5,9 @@ from pathlib import Path
 from statistics import mean
 from typing import Dict, List, Optional
 
+import numpy as np
 import torch
+import torch.nn.functional as F
 
 from arguments import ModelParams, PipelineParams, get_combined_args
 from utils.image_utils import psnr
@@ -60,6 +62,15 @@ def _select_image(render_pkg: dict, image_key: str) -> torch.Tensor:
     raise KeyError(f"Renderer did not return {image_key!r}, 'pbr_rgb', or 'render'. Keys: {sorted(render_pkg)}")
 
 
+def _select_key(render_pkg: dict, requested: str, candidates: List[str]) -> Optional[str]:
+    if requested != "auto":
+        return requested if requested in render_pkg else None
+    for key in candidates:
+        if key in render_pkg:
+            return key
+    return None
+
+
 def _render_function(renderer: str):
     from gaussian_renderer import render, render_nerf, render_real
 
@@ -100,6 +111,83 @@ def _save_image(tensor: torch.Tensor, path: Path) -> None:
     torchvision.utils.save_image(torch.clamp(tensor.detach().cpu(), 0.0, 1.0), str(path))
 
 
+def _as_hwc(tensor: torch.Tensor) -> torch.Tensor:
+    tensor = tensor.detach().float().cpu()
+    if tensor.ndim == 3 and tensor.shape[0] in (1, 3, 4):
+        tensor = tensor.permute(1, 2, 0)
+    return tensor.contiguous()
+
+
+def _save_normal(tensor: torch.Tensor, npy_path: Path, vis_path: Path) -> None:
+    import torchvision
+
+    normal = tensor.detach().float()
+    if normal.ndim == 3 and normal.shape[0] != 3 and normal.shape[-1] == 3:
+        normal = normal.permute(2, 0, 1)
+    normal = F.normalize(normal[:3], dim=0)
+    hwc = _as_hwc(normal).numpy().astype(np.float32)
+    npy_path.parent.mkdir(parents=True, exist_ok=True)
+    np.save(str(npy_path), hwc)
+    vis_path.parent.mkdir(parents=True, exist_ok=True)
+    torchvision.utils.save_image(torch.clamp((normal + 1.0) * 0.5, 0.0, 1.0), str(vis_path))
+
+
+def _save_depth(tensor: torch.Tensor, npy_path: Path, vis_path: Path) -> None:
+    import torchvision
+
+    depth = tensor.detach().float().cpu()
+    if depth.ndim == 3:
+        depth = depth[0] if depth.shape[0] == 1 else depth[..., 0]
+    depth = depth.contiguous()
+    npy_path.parent.mkdir(parents=True, exist_ok=True)
+    np.save(str(npy_path), depth.numpy().astype(np.float32))
+    finite = torch.isfinite(depth)
+    vis = torch.zeros_like(depth)
+    if finite.any():
+        vals = depth[finite]
+        dmin = vals.min()
+        dmax = vals.max()
+        if (dmax - dmin) > 1e-8:
+            vis[finite] = (depth[finite] - dmin) / (dmax - dmin)
+    vis_path.parent.mkdir(parents=True, exist_ok=True)
+    torchvision.utils.save_image(vis[None], str(vis_path))
+
+
+def _save_geometry(render_pkg: dict, split_dir: Path, image_name: str, args) -> Dict[str, Optional[str]]:
+    normal_key = _select_key(render_pkg, args.normal_key, ["surf_normal", "rend_normal", "normal", "render_normal"])
+    depth_key = _select_key(render_pkg, args.depth_key, ["median_depth", "render_depth", "depth", "surf_depth", "rend_dist"])
+    if normal_key is not None:
+        _save_normal(
+            render_pkg[normal_key],
+            split_dir / "geometry" / "normal" / f"{image_name}.npy",
+            split_dir / "geometry" / "normal_vis" / f"{image_name}.png",
+        )
+    if depth_key is not None:
+        _save_depth(
+            render_pkg[depth_key],
+            split_dir / "geometry" / "depth" / f"{image_name}.npy",
+            split_dir / "geometry" / "depth_vis" / f"{image_name}.png",
+        )
+    return {"normal_key": normal_key, "depth_key": depth_key}
+
+
+def _dump_render_keys(render_pkg: dict) -> None:
+    print("Render package keys:")
+    for key in sorted(render_pkg):
+        value = render_pkg[key]
+        if torch.is_tensor(value):
+            detached = value.detach()
+            finite = detached[torch.isfinite(detached)] if detached.is_floating_point() else detached.reshape(-1)
+            if finite.numel() > 0:
+                min_val = float(finite.min().item())
+                max_val = float(finite.max().item())
+            else:
+                min_val = max_val = float("nan")
+            print(f"  {key}: shape={tuple(value.shape)} dtype={value.dtype} min={min_val:.6g} max={max_val:.6g}")
+        else:
+            print(f"  {key}: type={type(value).__name__}")
+
+
 def _write_metrics(output_dir: Path, rows: List[Dict], aggregate: Dict) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     with (output_dir / "results.json").open("w", encoding="utf-8") as handle:
@@ -116,15 +204,31 @@ def _evaluate_split(split: str, cameras, scene, render_func, pipe, background, a
     gt_dir = split_dir / "gt"
     rows = []
     render_kwargs = _render_kwargs(args.renderer, args)
-    for camera in cameras:
+    geometry_keys = None
+    for idx, camera in enumerate(cameras):
         render_pkg = render_func(camera, scene.gaussians, pipe, background, **render_kwargs)
-        pred = _select_image(render_pkg, args.image_key)
-        gt = composite_rgba(camera.original_image.to(pred.device), background)
-        _save_image(pred, render_dir / f"{camera.image_name}.png")
-        _save_image(gt, gt_dir / f"{camera.image_name}.png")
-        if args.metrics:
-            metrics = compute_image_metrics(pred, gt, lpips_fn=lpips_fn)
-            rows.append({"split": split, "image_name": camera.image_name, **metrics})
+        if args.dump_render_keys and idx == 0:
+            _dump_render_keys(render_pkg)
+        if args.save_geometry:
+            geometry_keys = _save_geometry(render_pkg, split_dir, camera.image_name, args)
+        if not args.geometry_only:
+            pred = _select_image(render_pkg, args.image_key)
+            gt = composite_rgba(camera.original_image.to(pred.device), background)
+            _save_image(pred, render_dir / f"{camera.image_name}.png")
+            _save_image(gt, gt_dir / f"{camera.image_name}.png")
+            if args.metrics:
+                metrics = compute_image_metrics(pred, gt, lpips_fn=lpips_fn)
+                rows.append({"split": split, "image_name": camera.image_name, **metrics})
+    if args.save_geometry:
+        meta = {
+            "split": split,
+            "iteration": scene.loaded_iter,
+            "normal_key": geometry_keys["normal_key"] if geometry_keys else None,
+            "depth_key": geometry_keys["depth_key"] if geometry_keys else None,
+        }
+        (split_dir / "geometry").mkdir(parents=True, exist_ok=True)
+        with (split_dir / "geometry" / "metadata.json").open("w", encoding="utf-8") as handle:
+            json.dump(meta, handle, indent=2)
     if args.metrics and rows:
         aggregate = {
             "split": split,
@@ -153,9 +257,24 @@ def main(default_renderer: str = "refgs") -> None:
     parser.add_argument("--skip_test", action="store_true")
     parser.add_argument("--metrics", action="store_true", help="Compute PSNR/SSIM/LPIPS and write results.json/metrics.csv.")
     parser.add_argument("--no-lpips", action="store_true")
+    parser.add_argument("--dump-render-keys", action="store_true")
+    parser.add_argument("--save-geometry", action="store_true")
+    parser.add_argument("--geometry-only", action="store_true")
+    parser.add_argument("--normal-key", default="auto")
+    parser.add_argument("--depth-key", default="auto")
+    parser.add_argument("--split", choices=("train", "test", "both"), default=None)
     parser.add_argument("--quiet", action="store_true")
     args = get_combined_args(parser)
     args.renderer = default_renderer if default_renderer == "real" else args.renderer
+    if args.split == "train":
+        args.skip_test = True
+        args.skip_train = False
+    elif args.split == "test":
+        args.skip_train = True
+        args.skip_test = False
+    elif args.split == "both":
+        args.skip_train = False
+        args.skip_test = False
 
     from utils.general_utils import safe_state
 

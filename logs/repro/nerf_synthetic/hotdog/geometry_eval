@@ -1,0 +1,3 @@
+/home/liuly/anaconda3/envs/ref_gs/bin/python scripts/eval_geometry.py --dataset nerf_synthetic --scene hotdog --data-root /data/liuly/dataset/3DGS --output-root output/repro_paper --log-root logs/repro --iteration 31000 --split test --metrics all > logs/repro/nerf_synthetic/hotdog/geometry_eval 2>&1
+
+Rows: 1, failures: 0

@@ -1,0 +1,552 @@
+[
+  {
+    "dataset": "refnerf",
+    "scene": "helmet",
+    "scene_root": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet",
+    "gt_normal_available": true,
+    "gt_depth_available": false,
+    "gt_mesh_available": true,
+    "normal_patterns": "*normal*",
+    "depth_patterns": "",
+    "normal_examples": [
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_0_normal.png",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_100_normal.png",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_101_normal.png",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_102_normal.png",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/test/r_103_normal.png"
+    ],
+    "depth_examples": [],
+    "mesh_examples": [
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/gt/helmet_gt_mesh.ply",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/helmet_gt_mesh.ply",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/points3d.ply"
+    ],
+    "mask_source": "rgba_alpha",
+    "transforms_train": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/transforms_train.json",
+    "transforms_test": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/helmet/transforms_test.json",
+    "can_measure_paper_normal_mae": true,
+    "notes": ""
+  },
+  {
+    "dataset": "refnerf",
+    "scene": "car",
+    "scene_root": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car",
+    "gt_normal_available": true,
+    "gt_depth_available": false,
+    "gt_mesh_available": true,
+    "normal_patterns": "*normal*",
+    "depth_patterns": "",
+    "normal_examples": [
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_0_normal.png",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_100_normal.png",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_101_normal.png",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_102_normal.png",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/test/r_103_normal.png"
+    ],
+    "depth_examples": [],
+    "mesh_examples": [
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/gt/car_gt_mesh.ply",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/car_gt_mesh.ply",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/points3d.ply"
+    ],
+    "mask_source": "rgba_alpha",
+    "transforms_train": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/transforms_train.json",
+    "transforms_test": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/car/transforms_test.json",
+    "can_measure_paper_normal_mae": true,
+    "notes": ""
+  },
+  {
+    "dataset": "refnerf",
+    "scene": "ball",
+    "scene_root": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball",
+    "gt_normal_available": true,
+    "gt_depth_available": false,
+    "gt_mesh_available": true,
+    "normal_patterns": "*normal*",
+    "depth_patterns": "",
+    "normal_examples": [
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_0_normal.png",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_100_normal.png",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_101_normal.png",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_102_normal.png",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/test/r_103_normal.png"
+    ],
+    "depth_examples": [],
+    "mesh_examples": [
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/gt/ball_gt_mesh.ply",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/ball_gt_mesh.ply",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/points3d.ply"
+    ],
+    "mask_source": "alpha_or_mask_file",
+    "transforms_train": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/transforms_train.json",
+    "transforms_test": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball/transforms_test.json",
+    "can_measure_paper_normal_mae": true,
+    "notes": ""
+  },
+  {
+    "dataset": "refnerf",
+    "scene": "teapot",
+    "scene_root": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot",
+    "gt_normal_available": true,
+    "gt_depth_available": false,
+    "gt_mesh_available": true,
+    "normal_patterns": "*normal*",
+    "depth_patterns": "",
+    "normal_examples": [
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_0_normal.png",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_100_normal.png",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_101_normal.png",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_102_normal.png",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/test/r_103_normal.png"
+    ],
+    "depth_examples": [],
+    "mesh_examples": [
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/gt/teapot_gt_mesh.ply",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/points3d.ply",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/teapot_gt_mesh.ply"
+    ],
+    "mask_source": "rgba_alpha",
+    "transforms_train": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/transforms_train.json",
+    "transforms_test": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/teapot/transforms_test.json",
+    "can_measure_paper_normal_mae": true,
+    "notes": ""
+  },
+  {
+    "dataset": "refnerf",
+    "scene": "coffee",
+    "scene_root": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee",
+    "gt_normal_available": true,
+    "gt_depth_available": false,
+    "gt_mesh_available": true,
+    "normal_patterns": "*normal*",
+    "depth_patterns": "",
+    "normal_examples": [
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_0_normal.png",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_100_normal.png",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_101_normal.png",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_102_normal.png",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/test/r_103_normal.png"
+    ],
+    "depth_examples": [],
+    "mesh_examples": [
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/gt/coffee_gt_mesh.ply",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/coffee_gt_mesh.ply",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/points3d.ply"
+    ],
+    "mask_source": "rgba_alpha",
+    "transforms_train": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/transforms_train.json",
+    "transforms_test": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/coffee/transforms_test.json",
+    "can_measure_paper_normal_mae": true,
+    "notes": ""
+  },
+  {
+    "dataset": "refnerf",
+    "scene": "toaster",
+    "scene_root": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster",
+    "gt_normal_available": true,
+    "gt_depth_available": false,
+    "gt_mesh_available": true,
+    "normal_patterns": "*normal*",
+    "depth_patterns": "",
+    "normal_examples": [
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_0_normal.png",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_100_normal.png",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_101_normal.png",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_102_normal.png",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/test/r_103_normal.png"
+    ],
+    "depth_examples": [],
+    "mesh_examples": [
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/gt/toaster_gt_mesh.ply",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/points3d.ply",
+      "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/toaster_gt_mesh.ply"
+    ],
+    "mask_source": "rgba_alpha",
+    "transforms_train": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/transforms_train.json",
+    "transforms_test": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/toaster/transforms_test.json",
+    "can_measure_paper_normal_mae": true,
+    "notes": ""
+  },
+  {
+    "dataset": "glossy_synthetic",
+    "scene": "bell_blender",
+    "scene_root": "/data/liuly/dataset/3DGS/GlossySyntheticConverted/bell_blender",
+    "gt_normal_available": false,
+    "gt_depth_available": true,
+    "gt_mesh_available": true,
+    "normal_patterns": "",
+    "depth_patterns": "*depth*",
+    "normal_examples": [],
+    "depth_examples": [
+      "/data/liuly/dataset/3DGS/GlossySynthetic/bell/0-depth.png",
+      "/data/liuly/dataset/3DGS/GlossySynthetic/bell/1-depth.png",
+      "/data/liuly/dataset/3DGS/GlossySynthetic/bell/10-depth.png",
+      "/data/liuly/dataset/3DGS/GlossySynthetic/bell/100-depth.png",
+      "/data/liuly/dataset/3DGS/GlossySynthetic/bell/101-depth.png"
+    ],
+    "mesh_examples": [
+      "/data/liuly/dataset/3DGS/GlossySyntheticConverted/bell_blender/eval_pts.ply",
+      "/data/liuly/dataset/3DGS/GlossySyntheticConverted/bell_blender/points.ply",
+      "/data/liuly/dataset/3DGS/GlossySyntheticConverted/bell_blender/points3d.ply"
+    ],
+    "mask_source": "rgba_alpha",
+    "transforms_train": "/data/liuly/dataset/3DGS/GlossySyntheticConverted/bell_blender/transforms_train.json",
+    "transforms_test": "/data/liuly/dataset/3DGS/GlossySyntheticConverted/bell_blender/transforms_test.json",
+    "can_measure_paper_normal_mae": false,
+    "notes": "raw GlossySynthetic depth exists, but converted frame-name alignment must be checked before paper-style depth comparison; missing_gt_normal"
+  },
+  {
+    "dataset": "glossy_synthetic",
+    "scene": "tbell_blender",
+    "scene_root": "/data/liuly/dataset/3DGS/GlossySyntheticConverted/tbell_blender",
+    "gt_normal_available": false,
+    "gt_depth_available": true,
+    "gt_mesh_available": true,
+    "normal_patterns": "",
+    "depth_patterns": "*depth*",
+    "normal_examples": [],
+    "depth_examples": [
+      "/data/liuly/dataset/3DGS/GlossySynthetic/tbell/0-depth.png",
+      "/data/liuly/dataset/3DGS/GlossySynthetic/tbell/1-depth.png",
+      "/data/liuly/dataset/3DGS/GlossySynthetic/tbell/10-depth.png",
+      "/data/liuly/dataset/3DGS/GlossySynthetic/tbell/100-depth.png",
+      "/data/liuly/dataset/3DGS/GlossySynthetic/tbell/101-depth.png"
+    ],
+    "mesh_examples": [
+      "/data/liuly/dataset/3DGS/GlossySyntheticConverted/tbell_blender/eval_pts.ply",
+      "/data/liuly/dataset/3DGS/GlossySyntheticConverted/tbell_blender/points.ply",
+      "/data/liuly/dataset/3DGS/GlossySyntheticConverted/tbell_blender/points3d.ply"
+    ],
+    "mask_source": "rgba_alpha",
+    "transforms_train": "/data/liuly/dataset/3DGS/GlossySyntheticConverted/tbell_blender/transforms_train.json",
+    "transforms_test": "/data/liuly/dataset/3DGS/GlossySyntheticConverted/tbell_blender/transforms_test.json",
+    "can_measure_paper_normal_mae": false,
+    "notes": "raw GlossySynthetic depth exists, but converted frame-name alignment must be checked before paper-style depth comparison; missing_gt_normal"
+  },
+  {
+    "dataset": "glossy_synthetic",
+    "scene": "potion_blender",
+    "scene_root": "/data/liuly/dataset/3DGS/GlossySyntheticConverted/potion_blender",
+    "gt_normal_available": false,
+    "gt_depth_available": true,
+    "gt_mesh_available": true,
+    "normal_patterns": "",
+    "depth_patterns": "*depth*",
+    "normal_examples": [],
+    "depth_examples": [
+      "/data/liuly/dataset/3DGS/GlossySynthetic/potion/0-depth.png",
+      "/data/liuly/dataset/3DGS/GlossySynthetic/potion/1-depth.png",
+      "/data/liuly/dataset/3DGS/GlossySynthetic/potion/10-depth.png",
+      "/data/liuly/dataset/3DGS/GlossySynthetic/potion/100-depth.png",
+      "/data/liuly/dataset/3DGS/GlossySynthetic/potion/101-depth.png"
+    ],
+    "mesh_examples": [
+      "/data/liuly/dataset/3DGS/GlossySyntheticConverted/potion_blender/eval_pts.ply",
+      "/data/liuly/dataset/3DGS/GlossySyntheticConverted/potion_blender/points.ply",
+      "/data/liuly/dataset/3DGS/GlossySyntheticConverted/potion_blender/points3d.ply"
+    ],
+    "mask_source": "rgba_alpha",
+    "transforms_train": "/data/liuly/dataset/3DGS/GlossySyntheticConverted/potion_blender/transforms_train.json",
+    "transforms_test": "/data/liuly/dataset/3DGS/GlossySyntheticConverted/potion_blender/transforms_test.json",
+    "can_measure_paper_normal_mae": false,
+    "notes": "raw GlossySynthetic depth exists, but converted frame-name alignment must be checked before paper-style depth comparison; missing_gt_normal"
+  },
+  {
+    "dataset": "glossy_synthetic",
+    "scene": "teapot_blender",
+    "scene_root": "/data/liuly/dataset/3DGS/GlossySyntheticConverted/teapot_blender",
+    "gt_normal_available": false,
+    "gt_depth_available": true,
+    "gt_mesh_available": true,
+    "normal_patterns": "",
+    "depth_patterns": "*depth*",
+    "normal_examples": [],
+    "depth_examples": [
+      "/data/liuly/dataset/3DGS/GlossySynthetic/teapot/0-depth.png",
+      "/data/liuly/dataset/3DGS/GlossySynthetic/teapot/1-depth.png",
+      "/data/liuly/dataset/3DGS/GlossySynthetic/teapot/10-depth.png",
+      "/data/liuly/dataset/3DGS/GlossySynthetic/teapot/100-depth.png",
+      "/data/liuly/dataset/3DGS/GlossySynthetic/teapot/101-depth.png"
+    ],
+    "mesh_examples": [
+      "/data/liuly/dataset/3DGS/GlossySyntheticConverted/teapot_blender/eval_pts.ply",
+      "/data/liuly/dataset/3DGS/GlossySyntheticConverted/teapot_blender/points.ply",
+      "/data/liuly/dataset/3DGS/GlossySyntheticConverted/teapot_blender/points3d.ply"
+    ],
+    "mask_source": "rgba_alpha",
+    "transforms_train": "/data/liuly/dataset/3DGS/GlossySyntheticConverted/teapot_blender/transforms_train.json",
+    "transforms_test": "/data/liuly/dataset/3DGS/GlossySyntheticConverted/teapot_blender/transforms_test.json",
+    "can_measure_paper_normal_mae": false,
+    "notes": "raw GlossySynthetic depth exists, but converted frame-name alignment must be checked before paper-style depth comparison; missing_gt_normal"
+  },
+  {
+    "dataset": "glossy_synthetic",
+    "scene": "luyu_blender",
+    "scene_root": "/data/liuly/dataset/3DGS/GlossySyntheticConverted/luyu_blender",
+    "gt_normal_available": false,
+    "gt_depth_available": true,
+    "gt_mesh_available": true,
+    "normal_patterns": "",
+    "depth_patterns": "*depth*",
+    "normal_examples": [],
+    "depth_examples": [
+      "/data/liuly/dataset/3DGS/GlossySynthetic/luyu/0-depth.png",
+      "/data/liuly/dataset/3DGS/GlossySynthetic/luyu/1-depth.png",
+      "/data/liuly/dataset/3DGS/GlossySynthetic/luyu/10-depth.png",
+      "/data/liuly/dataset/3DGS/GlossySynthetic/luyu/100-depth.png",
+      "/data/liuly/dataset/3DGS/GlossySynthetic/luyu/101-depth.png"
+    ],
+    "mesh_examples": [
+      "/data/liuly/dataset/3DGS/GlossySyntheticConverted/luyu_blender/eval_pts.ply",
+      "/data/liuly/dataset/3DGS/GlossySyntheticConverted/luyu_blender/points.ply",
+      "/data/liuly/dataset/3DGS/GlossySyntheticConverted/luyu_blender/points3d.ply"
+    ],
+    "mask_source": "rgba_alpha",
+    "transforms_train": "/data/liuly/dataset/3DGS/GlossySyntheticConverted/luyu_blender/transforms_train.json",
+    "transforms_test": "/data/liuly/dataset/3DGS/GlossySyntheticConverted/luyu_blender/transforms_test.json",
+    "can_measure_paper_normal_mae": false,
+    "notes": "raw GlossySynthetic depth exists, but converted frame-name alignment must be checked before paper-style depth comparison; missing_gt_normal"
+  },
+  {
+    "dataset": "glossy_synthetic",
+    "scene": "cat_blender",
+    "scene_root": "/data/liuly/dataset/3DGS/GlossySyntheticConverted/cat_blender",
+    "gt_normal_available": false,
+    "gt_depth_available": true,
+    "gt_mesh_available": true,
+    "normal_patterns": "",
+    "depth_patterns": "*depth*",
+    "normal_examples": [],
+    "depth_examples": [
+      "/data/liuly/dataset/3DGS/GlossySynthetic/cat/0-depth.png",
+      "/data/liuly/dataset/3DGS/GlossySynthetic/cat/1-depth.png",
+      "/data/liuly/dataset/3DGS/GlossySynthetic/cat/10-depth.png",
+      "/data/liuly/dataset/3DGS/GlossySynthetic/cat/100-depth.png",
+      "/data/liuly/dataset/3DGS/GlossySynthetic/cat/101-depth.png"
+    ],
+    "mesh_examples": [
+      "/data/liuly/dataset/3DGS/GlossySyntheticConverted/cat_blender/eval_pts.ply",
+      "/data/liuly/dataset/3DGS/GlossySyntheticConverted/cat_blender/points.ply",
+      "/data/liuly/dataset/3DGS/GlossySyntheticConverted/cat_blender/points3d.ply"
+    ],
+    "mask_source": "rgba_alpha",
+    "transforms_train": "/data/liuly/dataset/3DGS/GlossySyntheticConverted/cat_blender/transforms_train.json",
+    "transforms_test": "/data/liuly/dataset/3DGS/GlossySyntheticConverted/cat_blender/transforms_test.json",
+    "can_measure_paper_normal_mae": false,
+    "notes": "raw GlossySynthetic depth exists, but converted frame-name alignment must be checked before paper-style depth comparison; missing_gt_normal"
+  },
+  {
+    "dataset": "nerf_synthetic",
+    "scene": "ship",
+    "scene_root": "/data/liuly/dataset/3DGS/NeRF Synthetic/ship",
+    "gt_normal_available": true,
+    "gt_depth_available": true,
+    "gt_mesh_available": true,
+    "normal_patterns": "*normal*",
+    "depth_patterns": "*depth*",
+    "normal_examples": [
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/ship/test/r_0_normal_0002.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/ship/test/r_102_normal_0002.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/ship/test/r_114_normal_0002.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/ship/test/r_121_normal_0002.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/ship/test/r_126_normal_0002.png"
+    ],
+    "depth_examples": [
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/ship/test/r_0_depth_0002.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/ship/test/r_100_depth_0002.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/ship/test/r_101_depth_0002.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/ship/test/r_102_depth_0002.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/ship/test/r_103_depth_0002.png"
+    ],
+    "mesh_examples": [
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/ship/points3d.ply"
+    ],
+    "mask_source": "rgba_alpha",
+    "transforms_train": "/data/liuly/dataset/3DGS/NeRF Synthetic/ship/transforms_train.json",
+    "transforms_test": "/data/liuly/dataset/3DGS/NeRF Synthetic/ship/transforms_test.json",
+    "can_measure_paper_normal_mae": false,
+    "notes": "points3d.ply is generated/proxy geometry and is not accepted GT"
+  },
+  {
+    "dataset": "nerf_synthetic",
+    "scene": "ficus",
+    "scene_root": "/data/liuly/dataset/3DGS/NeRF Synthetic/ficus",
+    "gt_normal_available": false,
+    "gt_depth_available": true,
+    "gt_mesh_available": true,
+    "normal_patterns": "",
+    "depth_patterns": "*depth*",
+    "normal_examples": [],
+    "depth_examples": [
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/ficus/test/r_0_depth_0136.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/ficus/test/r_100_depth_0136.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/ficus/test/r_101_depth_0136.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/ficus/test/r_102_depth_0136.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/ficus/test/r_103_depth_0136.png"
+    ],
+    "mesh_examples": [
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/ficus/points3d.ply"
+    ],
+    "mask_source": "rgba_alpha",
+    "transforms_train": "/data/liuly/dataset/3DGS/NeRF Synthetic/ficus/transforms_train.json",
+    "transforms_test": "/data/liuly/dataset/3DGS/NeRF Synthetic/ficus/transforms_test.json",
+    "can_measure_paper_normal_mae": false,
+    "notes": "points3d.ply is generated/proxy geometry and is not accepted GT; missing_gt_normal"
+  },
+  {
+    "dataset": "nerf_synthetic",
+    "scene": "lego",
+    "scene_root": "/data/liuly/dataset/3DGS/NeRF Synthetic/lego",
+    "gt_normal_available": false,
+    "gt_depth_available": true,
+    "gt_mesh_available": true,
+    "normal_patterns": "",
+    "depth_patterns": "*depth*",
+    "normal_examples": [],
+    "depth_examples": [
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/lego/test/r_0_depth_0001.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/lego/test/r_100_depth_0001.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/lego/test/r_101_depth_0001.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/lego/test/r_102_depth_0001.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/lego/test/r_103_depth_0001.png"
+    ],
+    "mesh_examples": [
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/lego/points3d.ply"
+    ],
+    "mask_source": "rgba_alpha",
+    "transforms_train": "/data/liuly/dataset/3DGS/NeRF Synthetic/lego/transforms_train.json",
+    "transforms_test": "/data/liuly/dataset/3DGS/NeRF Synthetic/lego/transforms_test.json",
+    "can_measure_paper_normal_mae": false,
+    "notes": "points3d.ply is generated/proxy geometry and is not accepted GT; missing_gt_normal"
+  },
+  {
+    "dataset": "nerf_synthetic",
+    "scene": "mic",
+    "scene_root": "/data/liuly/dataset/3DGS/NeRF Synthetic/mic",
+    "gt_normal_available": false,
+    "gt_depth_available": true,
+    "gt_mesh_available": true,
+    "normal_patterns": "",
+    "depth_patterns": "*depth*",
+    "normal_examples": [],
+    "depth_examples": [
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/mic/test/r_0_depth_0186.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/mic/test/r_100_depth_0186.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/mic/test/r_101_depth_0186.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/mic/test/r_102_depth_0186.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/mic/test/r_103_depth_0186.png"
+    ],
+    "mesh_examples": [
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/mic/points3d.ply"
+    ],
+    "mask_source": "rgba_alpha",
+    "transforms_train": "/data/liuly/dataset/3DGS/NeRF Synthetic/mic/transforms_train.json",
+    "transforms_test": "/data/liuly/dataset/3DGS/NeRF Synthetic/mic/transforms_test.json",
+    "can_measure_paper_normal_mae": false,
+    "notes": "points3d.ply is generated/proxy geometry and is not accepted GT; missing_gt_normal"
+  },
+  {
+    "dataset": "nerf_synthetic",
+    "scene": "hotdog",
+    "scene_root": "/data/liuly/dataset/3DGS/NeRF Synthetic/hotdog",
+    "gt_normal_available": false,
+    "gt_depth_available": true,
+    "gt_mesh_available": true,
+    "normal_patterns": "",
+    "depth_patterns": "*depth*",
+    "normal_examples": [],
+    "depth_examples": [
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/hotdog/test/r_0_depth_0029.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/hotdog/test/r_100_depth_0029.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/hotdog/test/r_101_depth_0029.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/hotdog/test/r_102_depth_0029.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/hotdog/test/r_103_depth_0029.png"
+    ],
+    "mesh_examples": [
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/hotdog/points3d.ply"
+    ],
+    "mask_source": "rgba_alpha",
+    "transforms_train": "/data/liuly/dataset/3DGS/NeRF Synthetic/hotdog/transforms_train.json",
+    "transforms_test": "/data/liuly/dataset/3DGS/NeRF Synthetic/hotdog/transforms_test.json",
+    "can_measure_paper_normal_mae": false,
+    "notes": "points3d.ply is generated/proxy geometry and is not accepted GT; missing_gt_normal"
+  },
+  {
+    "dataset": "nerf_synthetic",
+    "scene": "chair",
+    "scene_root": "/data/liuly/dataset/3DGS/NeRF Synthetic/chair",
+    "gt_normal_available": false,
+    "gt_depth_available": true,
+    "gt_mesh_available": true,
+    "normal_patterns": "",
+    "depth_patterns": "*depth*",
+    "normal_examples": [],
+    "depth_examples": [
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/chair/test/r_0_depth_0000.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/chair/test/r_100_depth_0000.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/chair/test/r_101_depth_0000.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/chair/test/r_102_depth_0000.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/chair/test/r_103_depth_0000.png"
+    ],
+    "mesh_examples": [
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/chair/points3d.ply"
+    ],
+    "mask_source": "rgba_alpha",
+    "transforms_train": "/data/liuly/dataset/3DGS/NeRF Synthetic/chair/transforms_train.json",
+    "transforms_test": "/data/liuly/dataset/3DGS/NeRF Synthetic/chair/transforms_test.json",
+    "can_measure_paper_normal_mae": false,
+    "notes": "points3d.ply is generated/proxy geometry and is not accepted GT; missing_gt_normal"
+  },
+  {
+    "dataset": "nerf_synthetic",
+    "scene": "materials",
+    "scene_root": "/data/liuly/dataset/3DGS/NeRF Synthetic/materials",
+    "gt_normal_available": false,
+    "gt_depth_available": true,
+    "gt_mesh_available": true,
+    "normal_patterns": "",
+    "depth_patterns": "*depth*",
+    "normal_examples": [],
+    "depth_examples": [
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/materials/test/r_0_depth_0000.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/materials/test/r_100_depth_0000.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/materials/test/r_101_depth_0000.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/materials/test/r_102_depth_0000.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/materials/test/r_103_depth_0000.png"
+    ],
+    "mesh_examples": [
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/materials/points3d.ply"
+    ],
+    "mask_source": "rgba_alpha",
+    "transforms_train": "/data/liuly/dataset/3DGS/NeRF Synthetic/materials/transforms_train.json",
+    "transforms_test": "/data/liuly/dataset/3DGS/NeRF Synthetic/materials/transforms_test.json",
+    "can_measure_paper_normal_mae": false,
+    "notes": "points3d.ply is generated/proxy geometry and is not accepted GT; missing_gt_normal"
+  },
+  {
+    "dataset": "nerf_synthetic",
+    "scene": "drums",
+    "scene_root": "/data/liuly/dataset/3DGS/NeRF Synthetic/drums",
+    "gt_normal_available": false,
+    "gt_depth_available": true,
+    "gt_mesh_available": true,
+    "normal_patterns": "",
+    "depth_patterns": "*depth*",
+    "normal_examples": [],
+    "depth_examples": [
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/drums/test/r_0_depth_0001.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/drums/test/r_100_depth_0001.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/drums/test/r_101_depth_0001.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/drums/test/r_102_depth_0001.png",
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/drums/test/r_103_depth_0001.png"
+    ],
+    "mesh_examples": [
+      "/data/liuly/dataset/3DGS/NeRF Synthetic/drums/points3d.ply"
+    ],
+    "mask_source": "rgba_alpha",
+    "transforms_train": "/data/liuly/dataset/3DGS/NeRF Synthetic/drums/transforms_train.json",
+    "transforms_test": "/data/liuly/dataset/3DGS/NeRF Synthetic/drums/transforms_test.json",
+    "can_measure_paper_normal_mae": false,
+    "notes": "points3d.ply is generated/proxy geometry and is not accepted GT; missing_gt_normal"
+  }
+]

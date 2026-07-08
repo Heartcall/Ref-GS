@@ -69,30 +69,37 @@ completed on GPUs 1 and 4.
 
 ## Geometry Metrics
 
-Geometry metrics were added after the RGB/LPIPS summary. They compare saved
-Ref-GS Gaussian point-cloud centers against available dataset geometry in raw
-coordinates, with no ICP, scale fitting, or similarity alignment.
+Geometry metrics were repaired after the RGB/LPIPS summary. RGB metrics are
+PSNR/SSIM/LPIPS. The paper-comparable geometry metric is normal Mean Angular
+Error in degrees (`normal_mae_deg` / MAE°), measured from Ref-GS renderer
+geometry buffers saved from `iteration_31000`.
 
 Reference protocol:
 
-- Ref-NeRF/Shiny Blender Synthetic: sampled scene GT mesh, accepted GT.
-- GlossySynthetic: `eval_pts.ply`, accepted evaluation points.
-- NeRF Synthetic: `points3d.ply`, proxy only and not accepted GT.
+- Ref-NeRF/Shiny Blender Synthetic: GT normal maps exist; normal MAE° is
+  paper-comparable in metric family.
+- GlossySynthetic: no GT normal maps in the converted evaluation data; normal
+  MAE° is `missing_gt_normal`.
+- NeRF Synthetic: most scenes lack GT normals; `ship` has auxiliary normal/depth
+  files but is not treated as paper-comparable Ref-GS normal MAE°.
 
-Normal-angle metrics are reported as `NA` because the saved Ref-GS prediction
-point clouds do not contain normals.
+Chamfer/F-score values are still computed from saved Gaussian centers, not an
+extracted Ref-GS surface mesh. They are proxy geometry diagnostics and are not
+directly comparable to the paper normal MAE°.
 
-| Dataset | Rows | Protocol | Chamfer-L1 | Chamfer-L2 | Hausdorff | F@0.5% | F@1% | F@2% |
-|---|---:|---|---:|---:|---:|---:|---:|---:|
-| Ref-NeRF | 6 | accepted GT | 0.021572 | 0.002087 | 0.452548 | 0.6018 | 0.8202 | 0.9237 |
-| GlossySynthetic | 6 | accepted GT | 0.010846 | 0.000365 | 0.337523 | 0.7694 | 0.9332 | 0.9796 |
-| NeRF Synthetic | 8 | proxy only | 0.184408 | 0.084345 | 1.048907 | 0.0736 | 0.1754 | 0.2671 |
+| Dataset | Rows | Normal MAE measured | Avg normal MAE deg | Paper comparable rows | Missing GT normal |
+|---|---:|---:|---:|---:|---:|
+| Ref-NeRF | 6 | 6 | 8.826000 | 6 | 0 |
+| GlossySynthetic | 6 | 0 | NA | 0 | 6 |
+| NeRF Synthetic | 8 | 1 | 67.142690 | 0 | 7 |
 
 Geometry metric files:
 
 - `logs/repro/geometry_summary.md`
-- `logs/repro/geometry_metrics.csv`
-- `logs/repro/geometry_metrics.json`
+- `logs/repro/geometry_summary.csv`
+- `logs/repro/geometry_summary.json`
+- `logs/repro/geometry_data_inventory.md`
+- `logs/repro/geometry_data_inventory.json`
 
 ## Success And Failure Summary
 

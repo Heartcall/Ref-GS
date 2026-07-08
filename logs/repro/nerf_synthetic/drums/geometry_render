@@ -1,0 +1,17 @@
+CUDA_VISIBLE_DEVICES=1 /home/liuly/anaconda3/envs/ref_gs/bin/python render.py -s '/data/liuly/dataset/3DGS/NeRF Synthetic/drums' -m output/repro_paper/nerf_synthetic/drums --iteration 31000 --save-geometry --geometry-only --split test --renderer nerf > logs/repro/nerf_synthetic/drums/geometry_render 2>&1
+
+/home/liuly/anaconda3/envs/ref_gs/lib/python3.7/site-packages/torch/functional.py:478: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at  /opt/conda/conda-bld/pytorch_1659484809535/work/aten/src/ATen/native/TensorShape.cpp:2894.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Looking for config file in output/repro_paper/nerf_synthetic/drums/cfg_args
+Config file found: output/repro_paper/nerf_synthetic/drums/cfg_args
+Rendering output/repro_paper/nerf_synthetic/drums [08/07 11:11:11]
+SphMipEncoding ### level: 9   size: 512 [08/07 11:11:12]
+Loading trained model at iteration 31000 [08/07 11:11:12]
+Found transforms_train.json file, assuming Blender data set! [08/07 11:11:12]
+Reading Training Transforms [08/07 11:11:12]
+Reading Test Transforms [08/07 11:11:12]
+Generating random point cloud (100000)... [08/07 11:11:12]
+resolution_scales [1.0] [08/07 11:11:12]
+Loading Training Cameras [08/07 11:11:12]
+Loading Test Cameras [08/07 11:11:16]
+Load Path output/repro_paper/nerf_synthetic/drums/point_cloud/iteration_31000/point_cloud.ply [08/07 11:11:23]
