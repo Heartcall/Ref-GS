@@ -88,6 +88,36 @@ class SparseViewSummaryTests(unittest.TestCase):
             self.assertEqual(rows[0]["test_views"], 200)
             self.assertEqual(rows[0]["status"], "missing_metrics")
 
+    def test_failed_sparse_manifest_is_reported_as_failed(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            sparse_data = root / "SparseViewGenerated"
+            manifest_dir = sparse_data / "refnerf" / "uniform_pose" / "views_3" / "seed_0" / "coffee"
+            manifest_dir.mkdir(parents=True)
+            (manifest_dir / "sparse_view_manifest.json").write_text(
+                json.dumps(
+                    {
+                        "train_frames_selected": None,
+                        "test_frames": None,
+                        "status": "failed",
+                        "notes": "FileNotFoundError: missing source scene",
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            rows = collect_sparse_rows(
+                sparse_output_root=root / "missing_output",
+                baseline_output_root=root / "baseline",
+                baseline_metrics_csv=root / "missing.csv",
+                sparse_data_root=sparse_data,
+                iteration=31000,
+            )
+
+            self.assertEqual(len(rows), 1)
+            self.assertEqual(rows[0]["status"], "failed")
+            self.assertIn("missing source scene", rows[0]["notes"])
+
     def test_write_summary_creates_csv_json_and_markdown(self):
         with tempfile.TemporaryDirectory() as tmp:
             log_root = Path(tmp)

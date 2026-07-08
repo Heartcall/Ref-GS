@@ -86,8 +86,7 @@ def build_sparse_jobs(
                         "--iteration",
                         str(iteration),
                         *config.render_args,
-                        "--split",
-                        "test",
+                        "--skip_train",
                         *extra_render_args,
                     ]
                     if action == "eval":
@@ -197,7 +196,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--make-data", action="store_true")
     parser.add_argument("--skip-existing", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
-    parser.add_argument("--python", default="python")
+    parser.add_argument("--python", default=sys.executable)
     parser.add_argument("--extra-train-arg", action="append", default=[])
     parser.add_argument("--extra-render-arg", action="append", default=[])
     parser.add_argument("--force-data", action="store_true", help="Overwrite generated sparse JSON files when --make-data is used.")
@@ -225,6 +224,7 @@ def main() -> None:
             seed=args.seed,
             dry_run=args.dry_run,
             force=args.force_data,
+            continue_on_error=True,
         )
 
     all_jobs = []

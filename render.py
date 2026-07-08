@@ -16,6 +16,34 @@ from utils.image_utils import psnr
 from utils.loss_utils import ssim
 
 
+RENDER_ARG_DEFAULTS = {
+    "renderer": "refgs",
+    "dataset": None,
+    "image_key": "pbr_rgb",
+    "skip_train": False,
+    "skip_test": False,
+    "metrics": False,
+    "no_lpips": False,
+    "dump_render_keys": False,
+    "save_geometry": False,
+    "geometry_only": False,
+    "normal_key": "auto",
+    "depth_key": "auto",
+    "split": None,
+    "geometry_output_root": None,
+    "geometry_normal_dtype": "float32",
+    "skip_geometry_vis": False,
+    "skip_depth_geometry": False,
+    "quiet": False,
+}
+
+
+def _ensure_render_arg_defaults(args) -> None:
+    for name, value in RENDER_ARG_DEFAULTS.items():
+        if not hasattr(args, name):
+            setattr(args, name, value)
+
+
 def composite_rgba(image: torch.Tensor, background: torch.Tensor) -> torch.Tensor:
     if image.shape[0] < 4:
         return image[:3]
@@ -297,6 +325,7 @@ def main(default_renderer: str = "refgs") -> None:
     parser.add_argument("--split", choices=("train", "test", "both"), default=None)
     parser.add_argument("--quiet", action="store_true")
     args = get_combined_args(parser)
+    _ensure_render_arg_defaults(args)
     args.renderer = default_renderer if default_renderer == "real" else args.renderer
     if args.split == "train":
         args.skip_test = True

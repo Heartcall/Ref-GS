@@ -1,8 +1,11 @@
+import sys
 import tempfile
 import unittest
+from unittest import mock
 from pathlib import Path
 
-from scripts.run_sparse_view_eval import build_sparse_jobs, should_skip_action
+from scripts.make_sparse_view_dataset import generate_sparse_datasets, sparse_scene_path
+from scripts.run_sparse_view_eval import build_sparse_jobs, parse_args, should_skip_action
 
 
 class SparseViewRunnerTests(unittest.TestCase):
@@ -33,8 +36,8 @@ class SparseViewRunnerTests(unittest.TestCase):
 
         render = jobs[1]
         self.assertEqual(render.command[:2], ["python", "render.py"])
-        self.assertIn("--split", render.command)
-        self.assertIn("test", render.command)
+        self.assertIn("--skip_train", render.command)
+        self.assertNotIn("--split", render.command)
         self.assertNotIn("--metrics", render.command)
 
         eval_job = jobs[2]
@@ -59,6 +62,46 @@ class SparseViewRunnerTests(unittest.TestCase):
             self.assertFalse(should_skip_action("eval", model, 10))
             (model / "test" / "ours_10" / "results.json").write_text("{}", encoding="utf-8")
             self.assertTrue(should_skip_action("eval", model, 10))
+
+    def test_generate_sparse_datasets_can_record_failed_scene_and_continue(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            output_root = root / "SparseViewGenerated"
+
+            manifests = generate_sparse_datasets(
+                dataset="refnerf",
+                scenes=["coffee"],
+                data_root=root / "missing_data",
+                source_subdir=None,
+                output_root=output_root,
+                views=[3],
+                strategy="uniform_pose",
+                seed=0,
+                continue_on_error=True,
+            )
+
+            self.assertEqual(len(manifests), 1)
+            manifest = manifests[0]
+            self.assertEqual(manifest["status"], "failed")
+            self.assertIn("Missing transforms_train.json", manifest["notes"])
+            manifest_path = sparse_scene_path(output_root, "refnerf", "uniform_pose", 3, 0, "coffee") / "sparse_view_manifest.json"
+            self.assertTrue(manifest_path.exists())
+
+    def test_runner_defaults_child_python_to_current_interpreter(self):
+        argv = [
+            "run_sparse_view_eval.py",
+            "--dataset",
+            "refnerf",
+            "--views",
+            "3",
+            "--strategy",
+            "uniform_pose",
+            "--dry-run",
+        ]
+        with mock.patch("sys.argv", argv):
+            args = parse_args()
+
+        self.assertEqual(args.python, sys.executable)
 
 
 if __name__ == "__main__":

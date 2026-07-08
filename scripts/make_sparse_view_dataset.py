@@ -7,7 +7,13 @@ if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from scripts.refgs_runner import DATASET_CONFIGS, DEFAULT_DATA_ROOT
-from scripts.sparse_view_utils import SPARSE_DATASETS, SPARSE_STRATEGIES, generate_sparse_scene, iter_dataset_scene_specs
+from scripts.sparse_view_utils import (
+    SPARSE_DATASETS,
+    SPARSE_STRATEGIES,
+    generate_sparse_scene,
+    iter_dataset_scene_specs,
+    write_json,
+)
 
 
 DEFAULT_OUTPUT_ROOT = DEFAULT_DATA_ROOT / "SparseViewGenerated"
@@ -32,6 +38,7 @@ def generate_sparse_datasets(
     seed: int,
     dry_run: bool = False,
     force: bool = False,
+    continue_on_error: bool = False,
 ) -> List[dict]:
     manifests = []
     for dataset_key, config, scene in iter_dataset_scene_specs(dataset_keys(dataset), scenes):
@@ -39,20 +46,44 @@ def generate_sparse_datasets(
         source_scene = data_root / subdir / scene.source_dir
         for view_count in views:
             output_scene = sparse_scene_path(output_root, dataset_key, strategy, view_count, seed, scene.name)
-            manifest = generate_sparse_scene(
-                dataset=dataset_key,
-                scene=scene.name,
-                source_scene=source_scene,
-                output_scene=output_scene,
-                views=view_count,
-                strategy=strategy,
-                seed=seed,
-                dry_run=dry_run,
-                force=force,
-            )
+            try:
+                manifest = generate_sparse_scene(
+                    dataset=dataset_key,
+                    scene=scene.name,
+                    source_scene=source_scene,
+                    output_scene=output_scene,
+                    views=view_count,
+                    strategy=strategy,
+                    seed=seed,
+                    dry_run=dry_run,
+                    force=force,
+                )
+            except Exception as exc:
+                if not continue_on_error:
+                    raise
+                manifest = {
+                    "dataset": dataset_key,
+                    "scene": scene.name,
+                    "source_scene": str(source_scene),
+                    "output_scene": str(output_scene),
+                    "strategy": strategy,
+                    "seed": seed,
+                    "requested_views": view_count,
+                    "train_frames_available": None,
+                    "train_frames_selected": None,
+                    "test_frames": None,
+                    "selected_indices": [],
+                    "selected_file_paths": [],
+                    "status": "failed",
+                    "notes": f"{type(exc).__name__}: {exc}",
+                    "dry_run": dry_run,
+                    "reused_existing": False,
+                }
+                if not dry_run:
+                    write_json(output_scene / "sparse_view_manifest.json", manifest)
             manifests.append(manifest)
             status = manifest["status"]
-            prefix = "DRY-RUN" if dry_run else "EXISTS" if manifest.get("reused_existing") else "WROTE"
+            prefix = "FAILED" if status == "failed" else "DRY-RUN" if dry_run else "EXISTS" if manifest.get("reused_existing") else "WROTE"
             print(
                 f"{prefix} {dataset_key}/{scene.name} views={view_count} strategy={strategy} "
                 f"seed={seed} selected={manifest['train_frames_selected']}/"

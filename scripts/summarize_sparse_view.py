@@ -148,15 +148,22 @@ def load_baselines(baseline_output_root: Path, baseline_metrics_csv: Path) -> Di
     return baselines
 
 
-def _manifest_counts(sparse_data_root: Path, dataset: str, strategy: str, views: int, seed: int, scene: str) -> Tuple[Optional[int], Optional[int], str]:
+def _manifest_counts(
+    sparse_data_root: Path, dataset: str, strategy: str, views: int, seed: int, scene: str
+) -> Tuple[Optional[int], Optional[int], str, str]:
     manifest_path = sparse_data_root / dataset / strategy / f"views_{views}" / f"seed_{seed}" / scene / "sparse_view_manifest.json"
     if not manifest_path.exists():
-        return None, None, "missing sparse manifest"
+        return None, None, "missing", "missing sparse manifest"
     try:
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     except json.JSONDecodeError as exc:
-        return None, None, f"bad sparse manifest: {exc}"
-    return manifest.get("train_frames_selected"), manifest.get("test_frames"), manifest.get("notes", "")
+        return None, None, "failed", f"bad sparse manifest: {exc}"
+    return (
+        manifest.get("train_frames_selected"),
+        manifest.get("test_frames"),
+        manifest.get("status", "ok"),
+        manifest.get("notes", ""),
+    )
 
 
 def _row_for_model(model_dir: Path, sparse_output_root: Path, baselines: Dict[Tuple[str, str], dict], sparse_data_root: Path, iteration: int) -> Optional[dict]:
@@ -178,14 +185,19 @@ def _row_for_model(model_dir: Path, sparse_output_root: Path, baselines: Dict[Tu
     ssim = _to_float(aggregate.get("ssim")) if aggregate else None
     lpips = _to_float(aggregate.get("lpips")) if aggregate else None
     baseline = baselines.get((dataset, scene), {})
-    train_views, test_views, manifest_notes = _manifest_counts(sparse_data_root, dataset, strategy, views, seed, scene)
+    train_views, test_views, manifest_status, manifest_notes = _manifest_counts(sparse_data_root, dataset, strategy, views, seed, scene)
     checkpoint_exists = (model_dir / "point_cloud" / f"iteration_{iteration}" / "point_cloud.ply").exists()
     render_dir = split_dir / "renders"
     render_exists = render_dir.exists() and any(render_dir.iterdir())
     notes = manifest_notes or ""
+    if manifest_status == "failed":
+        row_status = "failed"
+    elif not metrics_exists:
+        row_status = "missing_metrics"
+    else:
+        row_status = "ok"
     if not metrics_exists:
         notes = "; ".join(part for part in [notes, status] if part)
-    row_status = "ok" if metrics_exists else "missing_metrics"
     return {
         "dataset": dataset,
         "scene": scene,

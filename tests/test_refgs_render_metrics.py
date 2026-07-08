@@ -1,8 +1,9 @@
 import unittest
+from argparse import Namespace
 
 import torch
 
-from render import composite_rgba, compute_image_metrics
+from render import _ensure_render_arg_defaults, composite_rgba, compute_image_metrics
 
 
 class RefGSRenderMetricsTests(unittest.TestCase):
@@ -31,6 +32,15 @@ class RefGSRenderMetricsTests(unittest.TestCase):
         self.assertGreater(metrics["psnr"], 60.0)
         self.assertAlmostEqual(metrics["ssim"], 1.0, places=5)
         self.assertIsNone(metrics["lpips"])
+
+    def test_render_arg_defaults_are_backfilled_after_cfg_merge(self):
+        args = Namespace()
+
+        _ensure_render_arg_defaults(args)
+
+        self.assertIsNone(args.split)
+        self.assertIsNone(args.geometry_output_root)
+        self.assertEqual(args.normal_key, "auto")
 
 
 if __name__ == "__main__":
