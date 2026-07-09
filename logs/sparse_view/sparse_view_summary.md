@@ -3,26 +3,26 @@
 ## Coverage
 
 - Sparse rows discovered: 100
-- Rows with metrics: 31
-- Rows missing metrics: 69
-- Rows with checkpoints: 31
-- Rows with rendered test images: 31
-- Completed: 31
-- Running: 2
-- Missing: 67
+- Rows with metrics: 61
+- Rows missing metrics: 39
+- Rows with checkpoints: 61
+- Rows with rendered test images: 61
+- Completed: 61
+- Running: 1
+- Missing: 38
 - Failed: 0
 
 ## Completion By Dataset/View
 
 | dataset | strategy | views | seed | total | completed | running | missing | failed | completion_rate |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| glossy_synthetic | uniform_pose | 3 | 0 | 6 | 1 | 1 | 4 | 0 | 0.166667 |
-| glossy_synthetic | uniform_pose | 6 | 0 | 6 | 0 | 1 | 5 | 0 | 0.000000 |
-| glossy_synthetic | uniform_pose | 9 | 0 | 6 | 0 | 0 | 6 | 0 | 0.000000 |
-| glossy_synthetic | uniform_pose | 12 | 0 | 6 | 0 | 0 | 6 | 0 | 0.000000 |
-| glossy_synthetic | uniform_pose | 24 | 0 | 6 | 0 | 0 | 6 | 0 | 0.000000 |
-| nerf_synthetic | uniform_pose | 3 | 0 | 8 | 0 | 0 | 8 | 0 | 0.000000 |
-| nerf_synthetic | uniform_pose | 6 | 0 | 8 | 0 | 0 | 8 | 0 | 0.000000 |
+| glossy_synthetic | uniform_pose | 3 | 0 | 6 | 6 | 0 | 0 | 0 | 1.000000 |
+| glossy_synthetic | uniform_pose | 6 | 0 | 6 | 6 | 0 | 0 | 0 | 1.000000 |
+| glossy_synthetic | uniform_pose | 9 | 0 | 6 | 6 | 0 | 0 | 0 | 1.000000 |
+| glossy_synthetic | uniform_pose | 12 | 0 | 6 | 6 | 0 | 0 | 0 | 1.000000 |
+| glossy_synthetic | uniform_pose | 24 | 0 | 6 | 6 | 0 | 0 | 0 | 1.000000 |
+| nerf_synthetic | uniform_pose | 3 | 0 | 8 | 1 | 0 | 7 | 0 | 0.125000 |
+| nerf_synthetic | uniform_pose | 6 | 0 | 8 | 0 | 1 | 7 | 0 | 0.000000 |
 | nerf_synthetic | uniform_pose | 9 | 0 | 8 | 0 | 0 | 8 | 0 | 0.000000 |
 | nerf_synthetic | uniform_pose | 12 | 0 | 8 | 0 | 0 | 8 | 0 | 0.000000 |
 | nerf_synthetic | uniform_pose | 24 | 0 | 8 | 0 | 0 | 8 | 0 | 0.000000 |
@@ -36,12 +36,12 @@
 
 | dataset | strategy | views | seed | scenes | completed_scenes | psnr | ssim | lpips | delta_psnr | delta_ssim | delta_lpips |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| glossy_synthetic | uniform_pose | 3 | 0 | 6 | 1 | 14.831776 | 0.705753 | 0.386508 | -15.287082 | -0.264170 | 0.363225 |
-| glossy_synthetic | uniform_pose | 6 | 0 | 6 | 0 | NA | NA | NA | NA | NA | NA |
-| glossy_synthetic | uniform_pose | 9 | 0 | 6 | 0 | NA | NA | NA | NA | NA | NA |
-| glossy_synthetic | uniform_pose | 12 | 0 | 6 | 0 | NA | NA | NA | NA | NA | NA |
-| glossy_synthetic | uniform_pose | 24 | 0 | 6 | 0 | NA | NA | NA | NA | NA | NA |
-| nerf_synthetic | uniform_pose | 3 | 0 | 8 | 0 | NA | NA | NA | NA | NA | NA |
+| glossy_synthetic | uniform_pose | 3 | 0 | 6 | 6 | 15.685350 | 0.673214 | 0.376699 | -14.059153 | -0.289684 | 0.343359 |
+| glossy_synthetic | uniform_pose | 6 | 0 | 6 | 6 | 19.976883 | 0.816954 | 0.159549 | -9.767620 | -0.145944 | 0.126209 |
+| glossy_synthetic | uniform_pose | 9 | 0 | 6 | 6 | 21.974053 | 0.847900 | 0.120449 | -7.770450 | -0.114998 | 0.087109 |
+| glossy_synthetic | uniform_pose | 12 | 0 | 6 | 6 | 22.926368 | 0.864717 | 0.105026 | -6.818135 | -0.098181 | 0.071686 |
+| glossy_synthetic | uniform_pose | 24 | 0 | 6 | 6 | 25.729414 | 0.911772 | 0.066220 | -4.015089 | -0.051126 | 0.032880 |
+| nerf_synthetic | uniform_pose | 3 | 0 | 8 | 1 | 17.861407 | 0.626856 | 0.363679 | -10.488863 | -0.247700 | 0.233543 |
 | nerf_synthetic | uniform_pose | 6 | 0 | 8 | 0 | NA | NA | NA | NA | NA | NA |
 | nerf_synthetic | uniform_pose | 9 | 0 | 8 | 0 | NA | NA | NA | NA | NA | NA |
 | nerf_synthetic | uniform_pose | 12 | 0 | 8 | 0 | NA | NA | NA | NA | NA | NA |
@@ -56,12 +56,12 @@
 
 | dataset | strategy | views | seeds | psnr_mean | psnr_std | ssim_mean | ssim_std | lpips_mean | lpips_std | delta_psnr_mean | delta_ssim_mean | delta_lpips_mean |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| glossy_synthetic | uniform_pose | 3 | 1 | 14.831776 | NA | 0.705753 | NA | 0.386508 | NA | -15.287082 | -0.264170 | 0.363225 |
-| glossy_synthetic | uniform_pose | 6 | 1 | NA | NA | NA | NA | NA | NA | NA | NA | NA |
-| glossy_synthetic | uniform_pose | 9 | 1 | NA | NA | NA | NA | NA | NA | NA | NA | NA |
-| glossy_synthetic | uniform_pose | 12 | 1 | NA | NA | NA | NA | NA | NA | NA | NA | NA |
-| glossy_synthetic | uniform_pose | 24 | 1 | NA | NA | NA | NA | NA | NA | NA | NA | NA |
-| nerf_synthetic | uniform_pose | 3 | 1 | NA | NA | NA | NA | NA | NA | NA | NA | NA |
+| glossy_synthetic | uniform_pose | 3 | 1 | 15.685350 | 0.828204 | 0.673214 | 0.065127 | 0.376699 | 0.081349 | -14.059153 | -0.289684 | 0.343359 |
+| glossy_synthetic | uniform_pose | 6 | 1 | 19.976883 | 1.342352 | 0.816954 | 0.026754 | 0.159549 | 0.041185 | -9.767620 | -0.145944 | 0.126209 |
+| glossy_synthetic | uniform_pose | 9 | 1 | 21.974053 | 1.978641 | 0.847900 | 0.029724 | 0.120449 | 0.021782 | -7.770450 | -0.114998 | 0.087109 |
+| glossy_synthetic | uniform_pose | 12 | 1 | 22.926368 | 1.854010 | 0.864717 | 0.027621 | 0.105026 | 0.029688 | -6.818135 | -0.098181 | 0.071686 |
+| glossy_synthetic | uniform_pose | 24 | 1 | 25.729414 | 1.926732 | 0.911772 | 0.020866 | 0.066220 | 0.016493 | -4.015089 | -0.051126 | 0.032880 |
+| nerf_synthetic | uniform_pose | 3 | 1 | 17.861407 | NA | 0.626856 | NA | 0.363679 | NA | -10.488863 | -0.247700 | 0.233543 |
 | nerf_synthetic | uniform_pose | 6 | 1 | NA | NA | NA | NA | NA | NA | NA | NA | NA |
 | nerf_synthetic | uniform_pose | 9 | 1 | NA | NA | NA | NA | NA | NA | NA | NA | NA |
 | nerf_synthetic | uniform_pose | 12 | 1 | NA | NA | NA | NA | NA | NA | NA | NA | NA |
@@ -77,35 +77,35 @@
 | dataset | scene | strategy | views | seed | train_views | test_views | psnr | ssim | lpips | baseline_psnr | baseline_ssim | baseline_lpips | delta_psnr | delta_ssim | delta_lpips | status | failure_reason | notes |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | glossy_synthetic | bell_blender | uniform_pose | 3 | 0 | 3 | 16 | 14.831776 | 0.705753 | 0.386508 | 30.118858 | 0.969923 | 0.023283 | -15.287082 | -0.264170 | 0.363225 | completed |  |  |
-| glossy_synthetic | cat_blender | uniform_pose | 3 | 0 | 3 | 16 | NA | NA | NA | 30.920703 | 0.971890 | 0.025718 | NA | NA | NA | missing |  | missing_metrics |
-| glossy_synthetic | luyu_blender | uniform_pose | 3 | 0 | 3 | 16 | NA | NA | NA | 29.274393 | 0.955103 | 0.033163 | NA | NA | NA | missing |  | missing_metrics |
-| glossy_synthetic | potion_blender | uniform_pose | 3 | 0 | 3 | 16 | NA | NA | NA | 29.926326 | 0.959533 | 0.046309 | NA | NA | NA | missing |  | missing_metrics |
-| glossy_synthetic | tbell_blender | uniform_pose | 3 | 0 | 3 | 16 | NA | NA | NA | 31.215519 | 0.967600 | 0.033669 | NA | NA | NA | missing |  | missing_metrics |
-| glossy_synthetic | teapot_blender | uniform_pose | 3 | 0 | 3 | 16 | NA | NA | NA | 27.011217 | 0.953340 | 0.037896 | NA | NA | NA | running |  | missing_metrics |
-| glossy_synthetic | bell_blender | uniform_pose | 6 | 0 | 6 | 16 | NA | NA | NA | 30.118858 | 0.969923 | 0.023283 | NA | NA | NA | running |  | missing_metrics |
-| glossy_synthetic | cat_blender | uniform_pose | 6 | 0 | 6 | 16 | NA | NA | NA | 30.920703 | 0.971890 | 0.025718 | NA | NA | NA | missing |  | missing_metrics |
-| glossy_synthetic | luyu_blender | uniform_pose | 6 | 0 | 6 | 16 | NA | NA | NA | 29.274393 | 0.955103 | 0.033163 | NA | NA | NA | missing |  | missing_metrics |
-| glossy_synthetic | potion_blender | uniform_pose | 6 | 0 | 6 | 16 | NA | NA | NA | 29.926326 | 0.959533 | 0.046309 | NA | NA | NA | missing |  | missing_metrics |
-| glossy_synthetic | tbell_blender | uniform_pose | 6 | 0 | 6 | 16 | NA | NA | NA | 31.215519 | 0.967600 | 0.033669 | NA | NA | NA | missing |  | missing_metrics |
-| glossy_synthetic | teapot_blender | uniform_pose | 6 | 0 | 6 | 16 | NA | NA | NA | 27.011217 | 0.953340 | 0.037896 | NA | NA | NA | missing |  | missing_metrics |
-| glossy_synthetic | bell_blender | uniform_pose | 9 | 0 | 9 | 16 | NA | NA | NA | 30.118858 | 0.969923 | 0.023283 | NA | NA | NA | missing |  | missing_metrics |
-| glossy_synthetic | cat_blender | uniform_pose | 9 | 0 | 9 | 16 | NA | NA | NA | 30.920703 | 0.971890 | 0.025718 | NA | NA | NA | missing |  | missing_metrics |
-| glossy_synthetic | luyu_blender | uniform_pose | 9 | 0 | 9 | 16 | NA | NA | NA | 29.274393 | 0.955103 | 0.033163 | NA | NA | NA | missing |  | missing_metrics |
-| glossy_synthetic | potion_blender | uniform_pose | 9 | 0 | 9 | 16 | NA | NA | NA | 29.926326 | 0.959533 | 0.046309 | NA | NA | NA | missing |  | missing_metrics |
-| glossy_synthetic | tbell_blender | uniform_pose | 9 | 0 | 9 | 16 | NA | NA | NA | 31.215519 | 0.967600 | 0.033669 | NA | NA | NA | missing |  | missing_metrics |
-| glossy_synthetic | teapot_blender | uniform_pose | 9 | 0 | 9 | 16 | NA | NA | NA | 27.011217 | 0.953340 | 0.037896 | NA | NA | NA | missing |  | missing_metrics |
-| glossy_synthetic | bell_blender | uniform_pose | 12 | 0 | 12 | 16 | NA | NA | NA | 30.118858 | 0.969923 | 0.023283 | NA | NA | NA | missing |  | missing_metrics |
-| glossy_synthetic | cat_blender | uniform_pose | 12 | 0 | 12 | 16 | NA | NA | NA | 30.920703 | 0.971890 | 0.025718 | NA | NA | NA | missing |  | missing_metrics |
-| glossy_synthetic | luyu_blender | uniform_pose | 12 | 0 | 12 | 16 | NA | NA | NA | 29.274393 | 0.955103 | 0.033163 | NA | NA | NA | missing |  | missing_metrics |
-| glossy_synthetic | potion_blender | uniform_pose | 12 | 0 | 12 | 16 | NA | NA | NA | 29.926326 | 0.959533 | 0.046309 | NA | NA | NA | missing |  | missing_metrics |
-| glossy_synthetic | tbell_blender | uniform_pose | 12 | 0 | 12 | 16 | NA | NA | NA | 31.215519 | 0.967600 | 0.033669 | NA | NA | NA | missing |  | missing_metrics |
-| glossy_synthetic | teapot_blender | uniform_pose | 12 | 0 | 12 | 16 | NA | NA | NA | 27.011217 | 0.953340 | 0.037896 | NA | NA | NA | missing |  | missing_metrics |
-| glossy_synthetic | bell_blender | uniform_pose | 24 | 0 | 24 | 16 | NA | NA | NA | 30.118858 | 0.969923 | 0.023283 | NA | NA | NA | missing |  | missing_metrics |
-| glossy_synthetic | cat_blender | uniform_pose | 24 | 0 | 24 | 16 | NA | NA | NA | 30.920703 | 0.971890 | 0.025718 | NA | NA | NA | missing |  | missing_metrics |
-| glossy_synthetic | luyu_blender | uniform_pose | 24 | 0 | 24 | 16 | NA | NA | NA | 29.274393 | 0.955103 | 0.033163 | NA | NA | NA | missing |  | missing_metrics |
-| glossy_synthetic | potion_blender | uniform_pose | 24 | 0 | 24 | 16 | NA | NA | NA | 29.926326 | 0.959533 | 0.046309 | NA | NA | NA | missing |  | missing_metrics |
-| glossy_synthetic | tbell_blender | uniform_pose | 24 | 0 | 24 | 16 | NA | NA | NA | 31.215519 | 0.967600 | 0.033669 | NA | NA | NA | missing |  | missing_metrics |
-| glossy_synthetic | teapot_blender | uniform_pose | 24 | 0 | 24 | 16 | NA | NA | NA | 27.011217 | 0.953340 | 0.037896 | NA | NA | NA | missing |  | missing_metrics |
+| glossy_synthetic | cat_blender | uniform_pose | 3 | 0 | 3 | 16 | 14.513207 | 0.656219 | 0.423452 | 30.920703 | 0.971890 | 0.025718 | -16.407496 | -0.315671 | 0.397734 | completed |  |  |
+| glossy_synthetic | luyu_blender | uniform_pose | 3 | 0 | 3 | 16 | 15.851377 | 0.653345 | 0.372223 | 29.274393 | 0.955103 | 0.033163 | -13.423016 | -0.301759 | 0.339060 | completed |  |  |
+| glossy_synthetic | potion_blender | uniform_pose | 3 | 0 | 3 | 16 | 16.112568 | 0.563507 | 0.493296 | 29.926326 | 0.959533 | 0.046309 | -13.813757 | -0.396026 | 0.446988 | completed |  |  |
+| glossy_synthetic | tbell_blender | uniform_pose | 3 | 0 | 3 | 16 | 16.614932 | 0.708690 | 0.330860 | 31.215519 | 0.967600 | 0.033669 | -14.600587 | -0.258910 | 0.297191 | completed |  |  |
+| glossy_synthetic | teapot_blender | uniform_pose | 3 | 0 | 3 | 16 | 16.188240 | 0.751769 | 0.253856 | 27.011217 | 0.953340 | 0.037896 | -10.822977 | -0.201572 | 0.215959 | completed |  |  |
+| glossy_synthetic | bell_blender | uniform_pose | 6 | 0 | 6 | 16 | 19.424870 | 0.828779 | 0.164298 | 30.118858 | 0.969923 | 0.023283 | -10.693988 | -0.141144 | 0.141015 | completed |  |  |
+| glossy_synthetic | cat_blender | uniform_pose | 6 | 0 | 6 | 16 | 21.949278 | 0.862704 | 0.120340 | 30.920703 | 0.971890 | 0.025718 | -8.971425 | -0.109186 | 0.094622 | completed |  |  |
+| glossy_synthetic | luyu_blender | uniform_pose | 6 | 0 | 6 | 16 | 19.971264 | 0.792285 | 0.126237 | 29.274393 | 0.955103 | 0.033163 | -9.303129 | -0.162818 | 0.093074 | completed |  |  |
+| glossy_synthetic | potion_blender | uniform_pose | 6 | 0 | 6 | 16 | 21.154302 | 0.799033 | 0.207327 | 29.926326 | 0.959533 | 0.046309 | -8.772023 | -0.160499 | 0.161018 | completed |  |  |
+| glossy_synthetic | tbell_blender | uniform_pose | 6 | 0 | 6 | 16 | 18.865757 | 0.797131 | 0.210343 | 31.215519 | 0.967600 | 0.033669 | -12.349762 | -0.170469 | 0.176674 | completed |  |  |
+| glossy_synthetic | teapot_blender | uniform_pose | 6 | 0 | 6 | 16 | 18.495825 | 0.821793 | 0.128750 | 27.011217 | 0.953340 | 0.037896 | -8.515393 | -0.131547 | 0.090853 | completed |  |  |
+| glossy_synthetic | bell_blender | uniform_pose | 9 | 0 | 9 | 16 | 22.854769 | 0.869260 | 0.104016 | 30.118858 | 0.969923 | 0.023283 | -7.264089 | -0.100664 | 0.080733 | completed |  |  |
+| glossy_synthetic | cat_blender | uniform_pose | 9 | 0 | 9 | 16 | 24.349994 | 0.892065 | 0.099073 | 30.920703 | 0.971890 | 0.025718 | -6.570709 | -0.079824 | 0.073355 | completed |  |  |
+| glossy_synthetic | luyu_blender | uniform_pose | 9 | 0 | 9 | 16 | 21.090343 | 0.815849 | 0.104093 | 29.274393 | 0.955103 | 0.033163 | -8.184050 | -0.139254 | 0.070929 | completed |  |  |
+| glossy_synthetic | potion_blender | uniform_pose | 9 | 0 | 9 | 16 | 23.358887 | 0.843364 | 0.144861 | 29.926326 | 0.959533 | 0.046309 | -6.567439 | -0.116169 | 0.098552 | completed |  |  |
+| glossy_synthetic | tbell_blender | uniform_pose | 9 | 0 | 9 | 16 | 21.398076 | 0.849927 | 0.148347 | 31.215519 | 0.967600 | 0.033669 | -9.817443 | -0.117673 | 0.114678 | completed |  |  |
+| glossy_synthetic | teapot_blender | uniform_pose | 9 | 0 | 9 | 16 | 18.792246 | 0.816935 | 0.122303 | 27.011217 | 0.953340 | 0.037896 | -8.218971 | -0.136405 | 0.084406 | completed |  |  |
+| glossy_synthetic | bell_blender | uniform_pose | 12 | 0 | 12 | 16 | 23.898506 | 0.881039 | 0.094681 | 30.118858 | 0.969923 | 0.023283 | -6.220352 | -0.088884 | 0.071398 | completed |  |  |
+| glossy_synthetic | cat_blender | uniform_pose | 12 | 0 | 12 | 16 | 25.747784 | 0.911528 | 0.074355 | 30.920703 | 0.971890 | 0.025718 | -5.172919 | -0.060361 | 0.048637 | completed |  |  |
+| glossy_synthetic | luyu_blender | uniform_pose | 12 | 0 | 12 | 16 | 21.885583 | 0.838108 | 0.082048 | 29.274393 | 0.955103 | 0.033163 | -7.388810 | -0.116995 | 0.048885 | completed |  |  |
+| glossy_synthetic | potion_blender | uniform_pose | 12 | 0 | 12 | 16 | 23.144076 | 0.846264 | 0.147122 | 29.926326 | 0.959533 | 0.046309 | -6.782250 | -0.113269 | 0.100814 | completed |  |  |
+| glossy_synthetic | tbell_blender | uniform_pose | 12 | 0 | 12 | 16 | 22.611348 | 0.864199 | 0.136213 | 31.215519 | 0.967600 | 0.033669 | -8.604171 | -0.103400 | 0.102544 | completed |  |  |
+| glossy_synthetic | teapot_blender | uniform_pose | 12 | 0 | 12 | 16 | 20.270912 | 0.847165 | 0.095735 | 27.011217 | 0.953340 | 0.037896 | -6.740306 | -0.106176 | 0.057838 | completed |  |  |
+| glossy_synthetic | bell_blender | uniform_pose | 24 | 0 | 24 | 16 | 26.469224 | 0.920928 | 0.060969 | 30.118858 | 0.969923 | 0.023283 | -3.649634 | -0.048995 | 0.037686 | completed |  |  |
+| glossy_synthetic | cat_blender | uniform_pose | 24 | 0 | 24 | 16 | 27.965874 | 0.941041 | 0.047897 | 30.920703 | 0.971890 | 0.025718 | -2.954829 | -0.030849 | 0.022179 | completed |  |  |
+| glossy_synthetic | luyu_blender | uniform_pose | 24 | 0 | 24 | 16 | 25.002220 | 0.897138 | 0.050524 | 29.274393 | 0.955103 | 0.033163 | -4.272173 | -0.057965 | 0.017361 | completed |  |  |
+| glossy_synthetic | potion_blender | uniform_pose | 24 | 0 | 24 | 16 | 26.340409 | 0.903443 | 0.091845 | 29.926326 | 0.959533 | 0.046309 | -3.585917 | -0.056090 | 0.045537 | completed |  |  |
+| glossy_synthetic | tbell_blender | uniform_pose | 24 | 0 | 24 | 16 | 26.301910 | 0.924454 | 0.072467 | 31.215519 | 0.967600 | 0.033669 | -4.913608 | -0.043146 | 0.038798 | completed |  |  |
+| glossy_synthetic | teapot_blender | uniform_pose | 24 | 0 | 24 | 16 | 22.296846 | 0.883628 | 0.073617 | 27.011217 | 0.953340 | 0.037896 | -4.714371 | -0.069712 | 0.035721 | completed |  |  |
 | nerf_synthetic | chair | uniform_pose | 3 | 0 | 3 | 200 | NA | NA | NA | 29.053885 | 0.976026 | 0.028086 | NA | NA | NA | missing |  | missing_metrics |
 | nerf_synthetic | drums | uniform_pose | 3 | 0 | 3 | 200 | NA | NA | NA | 24.823498 | 0.933557 | 0.060275 | NA | NA | NA | missing |  | missing_metrics |
 | nerf_synthetic | ficus | uniform_pose | 3 | 0 | 3 | 200 | NA | NA | NA | 24.411800 | 0.925269 | 0.074030 | NA | NA | NA | missing |  | missing_metrics |
@@ -113,7 +113,7 @@
 | nerf_synthetic | lego | uniform_pose | 3 | 0 | 3 | 200 | NA | NA | NA | 30.542826 | 0.972603 | 0.027694 | NA | NA | NA | missing |  | missing_metrics |
 | nerf_synthetic | materials | uniform_pose | 3 | 0 | 3 | 200 | NA | NA | NA | 30.285471 | 0.949973 | 0.050605 | NA | NA | NA | missing |  | missing_metrics |
 | nerf_synthetic | mic | uniform_pose | 3 | 0 | 3 | 200 | NA | NA | NA | 32.366114 | 0.978492 | 0.030150 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | ship | uniform_pose | 3 | 0 | 3 | 200 | NA | NA | NA | 28.350269 | 0.874557 | 0.130135 | NA | NA | NA | missing |  | missing_metrics |
+| nerf_synthetic | ship | uniform_pose | 3 | 0 | 3 | 200 | 17.861407 | 0.626856 | 0.363679 | 28.350269 | 0.874557 | 0.130135 | -10.488863 | -0.247700 | 0.233543 | completed |  |  |
 | nerf_synthetic | chair | uniform_pose | 6 | 0 | 6 | 200 | NA | NA | NA | 29.053885 | 0.976026 | 0.028086 | NA | NA | NA | missing |  | missing_metrics |
 | nerf_synthetic | drums | uniform_pose | 6 | 0 | 6 | 200 | NA | NA | NA | 24.823498 | 0.933557 | 0.060275 | NA | NA | NA | missing |  | missing_metrics |
 | nerf_synthetic | ficus | uniform_pose | 6 | 0 | 6 | 200 | NA | NA | NA | 24.411800 | 0.925269 | 0.074030 | NA | NA | NA | missing |  | missing_metrics |
@@ -121,7 +121,7 @@
 | nerf_synthetic | lego | uniform_pose | 6 | 0 | 6 | 200 | NA | NA | NA | 30.542826 | 0.972603 | 0.027694 | NA | NA | NA | missing |  | missing_metrics |
 | nerf_synthetic | materials | uniform_pose | 6 | 0 | 6 | 200 | NA | NA | NA | 30.285471 | 0.949973 | 0.050605 | NA | NA | NA | missing |  | missing_metrics |
 | nerf_synthetic | mic | uniform_pose | 6 | 0 | 6 | 200 | NA | NA | NA | 32.366114 | 0.978492 | 0.030150 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | ship | uniform_pose | 6 | 0 | 6 | 200 | NA | NA | NA | 28.350269 | 0.874557 | 0.130135 | NA | NA | NA | missing |  | missing_metrics |
+| nerf_synthetic | ship | uniform_pose | 6 | 0 | 6 | 200 | NA | NA | NA | 28.350269 | 0.874557 | 0.130135 | NA | NA | NA | running |  | missing_metrics |
 | nerf_synthetic | chair | uniform_pose | 9 | 0 | 9 | 200 | NA | NA | NA | 29.053885 | 0.976026 | 0.028086 | NA | NA | NA | missing |  | missing_metrics |
 | nerf_synthetic | drums | uniform_pose | 9 | 0 | 9 | 200 | NA | NA | NA | 24.823498 | 0.933557 | 0.060275 | NA | NA | NA | missing |  | missing_metrics |
 | nerf_synthetic | ficus | uniform_pose | 9 | 0 | 9 | 200 | NA | NA | NA | 24.411800 | 0.925269 | 0.074030 | NA | NA | NA | missing |  | missing_metrics |
@@ -181,35 +181,6 @@
 
 | dataset | scene | strategy | views | seed | status | failure_reason | notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| glossy_synthetic | cat_blender | uniform_pose | 3 | 0 | missing |  | missing_metrics |
-| glossy_synthetic | luyu_blender | uniform_pose | 3 | 0 | missing |  | missing_metrics |
-| glossy_synthetic | potion_blender | uniform_pose | 3 | 0 | missing |  | missing_metrics |
-| glossy_synthetic | tbell_blender | uniform_pose | 3 | 0 | missing |  | missing_metrics |
-| glossy_synthetic | teapot_blender | uniform_pose | 3 | 0 | running |  | missing_metrics |
-| glossy_synthetic | bell_blender | uniform_pose | 6 | 0 | running |  | missing_metrics |
-| glossy_synthetic | cat_blender | uniform_pose | 6 | 0 | missing |  | missing_metrics |
-| glossy_synthetic | luyu_blender | uniform_pose | 6 | 0 | missing |  | missing_metrics |
-| glossy_synthetic | potion_blender | uniform_pose | 6 | 0 | missing |  | missing_metrics |
-| glossy_synthetic | tbell_blender | uniform_pose | 6 | 0 | missing |  | missing_metrics |
-| glossy_synthetic | teapot_blender | uniform_pose | 6 | 0 | missing |  | missing_metrics |
-| glossy_synthetic | bell_blender | uniform_pose | 9 | 0 | missing |  | missing_metrics |
-| glossy_synthetic | cat_blender | uniform_pose | 9 | 0 | missing |  | missing_metrics |
-| glossy_synthetic | luyu_blender | uniform_pose | 9 | 0 | missing |  | missing_metrics |
-| glossy_synthetic | potion_blender | uniform_pose | 9 | 0 | missing |  | missing_metrics |
-| glossy_synthetic | tbell_blender | uniform_pose | 9 | 0 | missing |  | missing_metrics |
-| glossy_synthetic | teapot_blender | uniform_pose | 9 | 0 | missing |  | missing_metrics |
-| glossy_synthetic | bell_blender | uniform_pose | 12 | 0 | missing |  | missing_metrics |
-| glossy_synthetic | cat_blender | uniform_pose | 12 | 0 | missing |  | missing_metrics |
-| glossy_synthetic | luyu_blender | uniform_pose | 12 | 0 | missing |  | missing_metrics |
-| glossy_synthetic | potion_blender | uniform_pose | 12 | 0 | missing |  | missing_metrics |
-| glossy_synthetic | tbell_blender | uniform_pose | 12 | 0 | missing |  | missing_metrics |
-| glossy_synthetic | teapot_blender | uniform_pose | 12 | 0 | missing |  | missing_metrics |
-| glossy_synthetic | bell_blender | uniform_pose | 24 | 0 | missing |  | missing_metrics |
-| glossy_synthetic | cat_blender | uniform_pose | 24 | 0 | missing |  | missing_metrics |
-| glossy_synthetic | luyu_blender | uniform_pose | 24 | 0 | missing |  | missing_metrics |
-| glossy_synthetic | potion_blender | uniform_pose | 24 | 0 | missing |  | missing_metrics |
-| glossy_synthetic | tbell_blender | uniform_pose | 24 | 0 | missing |  | missing_metrics |
-| glossy_synthetic | teapot_blender | uniform_pose | 24 | 0 | missing |  | missing_metrics |
 | nerf_synthetic | chair | uniform_pose | 3 | 0 | missing |  | missing_metrics |
 | nerf_synthetic | drums | uniform_pose | 3 | 0 | missing |  | missing_metrics |
 | nerf_synthetic | ficus | uniform_pose | 3 | 0 | missing |  | missing_metrics |
@@ -217,7 +188,6 @@
 | nerf_synthetic | lego | uniform_pose | 3 | 0 | missing |  | missing_metrics |
 | nerf_synthetic | materials | uniform_pose | 3 | 0 | missing |  | missing_metrics |
 | nerf_synthetic | mic | uniform_pose | 3 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | ship | uniform_pose | 3 | 0 | missing |  | missing_metrics |
 | nerf_synthetic | chair | uniform_pose | 6 | 0 | missing |  | missing_metrics |
 | nerf_synthetic | drums | uniform_pose | 6 | 0 | missing |  | missing_metrics |
 | nerf_synthetic | ficus | uniform_pose | 6 | 0 | missing |  | missing_metrics |
@@ -225,7 +195,7 @@
 | nerf_synthetic | lego | uniform_pose | 6 | 0 | missing |  | missing_metrics |
 | nerf_synthetic | materials | uniform_pose | 6 | 0 | missing |  | missing_metrics |
 | nerf_synthetic | mic | uniform_pose | 6 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | ship | uniform_pose | 6 | 0 | missing |  | missing_metrics |
+| nerf_synthetic | ship | uniform_pose | 6 | 0 | running |  | missing_metrics |
 | nerf_synthetic | chair | uniform_pose | 9 | 0 | missing |  | missing_metrics |
 | nerf_synthetic | drums | uniform_pose | 9 | 0 | missing |  | missing_metrics |
 | nerf_synthetic | ficus | uniform_pose | 9 | 0 | missing |  | missing_metrics |

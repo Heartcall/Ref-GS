@@ -1,0 +1,19 @@
+/home/liuly/anaconda3/envs/ref_gs/lib/python3.7/site-packages/torch/functional.py:478: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at  /opt/conda/conda-bld/pytorch_1659484809535/work/aten/src/ATen/native/TensorShape.cpp:2894.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+/home/liuly/anaconda3/envs/ref_gs/lib/python3.7/site-packages/torchvision/models/_utils.py:136: UserWarning: Using 'weights' as positional parameter(s) is deprecated since 0.13 and will be removed in 0.15. Please use keyword parameter(s) instead.
+  f"Using {sequence_to_str(tuple(keyword_only_kwargs.keys()), separate_last='and ')} as positional "
+/home/liuly/anaconda3/envs/ref_gs/lib/python3.7/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and will be removed in 0.15. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Looking for config file in output/sparse_view/glossy_synthetic/uniform_pose/views_9/seed_0/luyu_blender/cfg_args
+Config file found: output/sparse_view/glossy_synthetic/uniform_pose/views_9/seed_0/luyu_blender/cfg_args
+Rendering output/sparse_view/glossy_synthetic/uniform_pose/views_9/seed_0/luyu_blender [09/07 14:09:59]
+SphMipEncoding ### level: 9   size: 512 [09/07 14:10:01]
+Loading trained model at iteration 31000 [09/07 14:10:01]
+Found transforms_train.json file, assuming Blender data set! [09/07 14:10:01]
+Reading Training Transforms [09/07 14:10:01]
+Reading Test Transforms [09/07 14:10:01]
+Generating random point cloud (100000)... [09/07 14:10:01]
+resolution_scales [1.0] [09/07 14:10:02]
+Loading Training Cameras [09/07 14:10:02]
+Loading Test Cameras [09/07 14:10:04]
+Load Path output/sparse_view/glossy_synthetic/uniform_pose/views_9/seed_0/luyu_blender/point_cloud/iteration_31000/point_cloud.ply [09/07 14:10:05]
