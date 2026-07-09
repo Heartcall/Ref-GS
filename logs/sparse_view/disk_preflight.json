@@ -1,0 +1,31 @@
+{
+  "output_root": "output/sparse_view",
+  "data_root": "/data/liuly/dataset/3DGS",
+  "storage_root": "/data/liuly/refgs_sparse_view_storage",
+  "filesystems": [
+    {
+      "label": "output_root",
+      "path": "output/sparse_view",
+      "checked_path": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/output/sparse_view",
+      "total_gb": 438.548,
+      "used_gb": 388.882,
+      "free_gb": 27.319
+    },
+    {
+      "label": "data_root",
+      "path": "/data/liuly/dataset/3DGS",
+      "checked_path": "/data/liuly/dataset/3DGS",
+      "total_gb": 1759.351,
+      "used_gb": 1651.785,
+      "free_gb": 18.126
+    },
+    {
+      "label": "storage_root",
+      "path": "/data/liuly/refgs_sparse_view_storage",
+      "checked_path": "/data/liuly",
+      "total_gb": 1759.351,
+      "used_gb": 1651.785,
+      "free_gb": 18.126
+    }
+  ]
+}

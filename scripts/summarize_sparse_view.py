@@ -36,8 +36,20 @@ FIELDNAMES = [
     "render_exists",
     "metrics_exists",
     "status",
+    "failure_reason",
     "notes",
 ]
+
+ERROR_MARKERS = (
+    "CUDA out of memory",
+    "RuntimeError:",
+    "Traceback",
+    "KeyboardInterrupt",
+    "No space left on device",
+    "FileNotFoundError:",
+    "ValueError:",
+    "ImportError:",
+)
 
 
 def _to_float(value):
@@ -64,6 +76,39 @@ def _load_results(path: Path) -> Tuple[Optional[dict], str]:
         return None, f"bad_metrics_json: {exc}"
     aggregate = data.get("aggregate", data)
     return aggregate, "ok"
+
+
+def _read_failure_reason(path: Path) -> str:
+    if not path.exists():
+        return ""
+    try:
+        text = path.read_text(encoding="utf-8", errors="replace")
+    except OSError as exc:
+        return f"could not read log: {exc}"
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
+    for marker in ERROR_MARKERS:
+        for line in reversed(lines):
+            if marker in line:
+                return line[-500:]
+    return ""
+
+
+def _log_failure_reason(log_root: Optional[Path], dataset: str, strategy: str, views: int, seed: int, scene: str) -> str:
+    if log_root is None:
+        return ""
+    log_dir = log_root / dataset / strategy / f"views_{views}" / f"seed_{seed}" / scene
+    for action in ("train", "render", "eval"):
+        reason = _read_failure_reason(log_dir / action)
+        if reason:
+            return f"{action}: {reason}"
+    return ""
+
+
+def _has_any_action_log(log_root: Optional[Path], dataset: str, strategy: str, views: int, seed: int, scene: str) -> bool:
+    if log_root is None:
+        return False
+    log_dir = log_root / dataset / strategy / f"views_{views}" / f"seed_{seed}" / scene
+    return any((log_dir / action).exists() for action in ("train", "render", "eval"))
 
 
 def _parse_sparse_model_dir(path: Path, sparse_output_root: Path) -> Optional[dict]:
@@ -166,7 +211,14 @@ def _manifest_counts(
     )
 
 
-def _row_for_model(model_dir: Path, sparse_output_root: Path, baselines: Dict[Tuple[str, str], dict], sparse_data_root: Path, iteration: int) -> Optional[dict]:
+def _row_for_model(
+    model_dir: Path,
+    sparse_output_root: Path,
+    baselines: Dict[Tuple[str, str], dict],
+    sparse_data_root: Path,
+    iteration: int,
+    log_root: Optional[Path] = None,
+) -> Optional[dict]:
     parsed = _parse_sparse_model_dir(model_dir, sparse_output_root)
     if parsed is None:
         return None
@@ -189,15 +241,24 @@ def _row_for_model(model_dir: Path, sparse_output_root: Path, baselines: Dict[Tu
     checkpoint_exists = (model_dir / "point_cloud" / f"iteration_{iteration}" / "point_cloud.ply").exists()
     render_dir = split_dir / "renders"
     render_exists = render_dir.exists() and any(render_dir.iterdir())
+    failure_reason = _log_failure_reason(log_root, dataset, strategy, views, seed, scene)
+    has_action_log = _has_any_action_log(log_root, dataset, strategy, views, seed, scene)
     notes = manifest_notes or ""
     if manifest_status == "failed":
         row_status = "failed"
+        failure_reason = failure_reason or notes
+    elif failure_reason:
+        row_status = "failed"
+    elif metrics_exists:
+        row_status = "completed"
+    elif has_action_log:
+        row_status = "running"
     elif not metrics_exists:
-        row_status = "missing_metrics"
-    else:
-        row_status = "ok"
+        row_status = "missing"
     if not metrics_exists:
         notes = "; ".join(part for part in [notes, status] if part)
+    if failure_reason and failure_reason not in notes:
+        notes = "; ".join(part for part in [notes, failure_reason] if part)
     return {
         "dataset": dataset,
         "scene": scene,
@@ -220,6 +281,7 @@ def _row_for_model(model_dir: Path, sparse_output_root: Path, baselines: Dict[Tu
         "render_exists": render_exists,
         "metrics_exists": metrics_exists,
         "status": row_status,
+        "failure_reason": failure_reason,
         "notes": notes,
     }
 
@@ -230,6 +292,7 @@ def collect_sparse_rows(
     baseline_metrics_csv: Path,
     sparse_data_root: Path,
     iteration: int,
+    log_root: Optional[Path] = None,
 ) -> List[dict]:
     baselines = load_baselines(baseline_output_root, baseline_metrics_csv)
     rows = []
@@ -240,7 +303,7 @@ def collect_sparse_rows(
             model_dirs.append(model_dir)
             known.add(str(model_dir))
     for model_dir in model_dirs:
-        row = _row_for_model(model_dir, sparse_output_root, baselines, sparse_data_root, iteration)
+        row = _row_for_model(model_dir, sparse_output_root, baselines, sparse_data_root, iteration, log_root=log_root)
         if row is not None:
             rows.append(row)
     return sorted(rows, key=lambda row: (row["dataset"], row["strategy"], row["views"], row["seed"], row["scene"]))
@@ -290,6 +353,7 @@ def _dataset_averages(rows: List[dict]) -> List[dict]:
                 "views": views,
                 "seed": seed,
                 "scenes": len(group),
+                "completed_scenes": sum(1 for row in group if row["status"] == "completed"),
                 "psnr": _mean(row["psnr"] for row in group),
                 "ssim": _mean(row["ssim"] for row in group),
                 "lpips": _mean(row["lpips"] for row in group),
@@ -299,6 +363,37 @@ def _dataset_averages(rows: List[dict]) -> List[dict]:
             }
         )
     return averages
+
+
+def _progress_counts(rows: List[dict]) -> dict:
+    counts = {"completed": 0, "running": 0, "missing": 0, "failed": 0}
+    for row in rows:
+        status = row["status"]
+        if status in counts:
+            counts[status] += 1
+        else:
+            counts["missing"] += 1
+    return counts
+
+
+def _progress_by_dataset_views(rows: List[dict]) -> List[dict]:
+    progress = []
+    for key, group in sorted(_group_rows(rows, ("dataset", "strategy", "views", "seed")).items()):
+        dataset, strategy, views, seed = key
+        counts = _progress_counts(group)
+        total = len(group)
+        progress.append(
+            {
+                "dataset": dataset,
+                "strategy": strategy,
+                "views": views,
+                "seed": seed,
+                "total": total,
+                **counts,
+                "completion_rate": counts["completed"] / total if total else 0.0,
+            }
+        )
+    return progress
 
 
 def _cross_seed_averages(rows: List[dict]) -> List[dict]:
@@ -332,8 +427,8 @@ def _markdown_table(headers: List[str], rows: List[dict]) -> List[str]:
     return lines
 
 
-def _write_markdown(path: Path, rows: List[dict], dataset_avg: List[dict], cross_seed_avg: List[dict]) -> None:
-    failures = [row for row in rows if row["status"] != "ok"]
+def _write_markdown(path: Path, rows: List[dict], dataset_avg: List[dict], cross_seed_avg: List[dict], progress_counts: dict, progress_by_dataset_views: List[dict]) -> None:
+    failures = [row for row in rows if row["status"] in ("failed", "missing", "running")]
     lines = [
         "# Sparse-View Evaluation Summary",
         "",
@@ -344,13 +439,30 @@ def _write_markdown(path: Path, rows: List[dict], dataset_avg: List[dict], cross
         f"- Rows missing metrics: {sum(1 for row in rows if not row['metrics_exists'])}",
         f"- Rows with checkpoints: {sum(1 for row in rows if row['checkpoint_exists'])}",
         f"- Rows with rendered test images: {sum(1 for row in rows if row['render_exists'])}",
+        f"- Completed: {progress_counts['completed']}",
+        f"- Running: {progress_counts['running']}",
+        f"- Missing: {progress_counts['missing']}",
+        f"- Failed: {progress_counts['failed']}",
         "",
-        "## Dataset Averages",
+        "## Completion By Dataset/View",
         "",
     ]
     lines.extend(
         _markdown_table(
-            ["dataset", "strategy", "views", "seed", "scenes", "psnr", "ssim", "lpips", "delta_psnr", "delta_ssim", "delta_lpips"],
+            ["dataset", "strategy", "views", "seed", "total", "completed", "running", "missing", "failed", "completion_rate"],
+            progress_by_dataset_views,
+        )
+    )
+    lines.extend(
+        [
+        "",
+        "## Dataset Averages",
+        "",
+        ]
+    )
+    lines.extend(
+        _markdown_table(
+            ["dataset", "strategy", "views", "seed", "scenes", "completed_scenes", "psnr", "ssim", "lpips", "delta_psnr", "delta_ssim", "delta_lpips"],
             dataset_avg,
         )
     )
@@ -396,6 +508,7 @@ def _write_markdown(path: Path, rows: List[dict], dataset_avg: List[dict], cross
                 "delta_ssim",
                 "delta_lpips",
                 "status",
+                "failure_reason",
                 "notes",
             ],
             rows,
@@ -403,7 +516,7 @@ def _write_markdown(path: Path, rows: List[dict], dataset_avg: List[dict], cross
     )
     lines.extend(["", "## Failure Summary", ""])
     if failures:
-        lines.extend(_markdown_table(["dataset", "scene", "strategy", "views", "seed", "status", "notes"], failures))
+        lines.extend(_markdown_table(["dataset", "scene", "strategy", "views", "seed", "status", "failure_reason", "notes"], failures))
     else:
         lines.append("No sparse rows with failed or missing metrics were found.")
     lines.extend(
@@ -432,18 +545,22 @@ def write_summary(rows: List[dict], log_root: Path) -> None:
 
     dataset_avg = _dataset_averages(rows)
     cross_seed_avg = _cross_seed_averages(rows)
+    progress_counts = _progress_counts(rows)
+    progress_by_dataset_views = _progress_by_dataset_views(rows)
     with (log_root / "sparse_view_summary.json").open("w", encoding="utf-8") as handle:
         json.dump(
             {
                 "rows": rows,
                 "dataset_averages": dataset_avg,
                 "cross_seed_averages": cross_seed_avg,
+                "progress_counts": progress_counts,
+                "progress_by_dataset_views": progress_by_dataset_views,
             },
             handle,
             indent=2,
         )
         handle.write("\n")
-    _write_markdown(log_root / "sparse_view_summary.md", rows, dataset_avg, cross_seed_avg)
+    _write_markdown(log_root / "sparse_view_summary.md", rows, dataset_avg, cross_seed_avg, progress_counts, progress_by_dataset_views)
 
 
 def parse_args() -> argparse.Namespace:
@@ -465,6 +582,7 @@ def main() -> None:
         baseline_metrics_csv=args.baseline_metrics_csv,
         sparse_data_root=args.sparse_data_root,
         iteration=args.iteration,
+        log_root=args.log_root,
     )
     write_summary(rows, args.log_root)
     print(f"Wrote {len(rows)} sparse rows to {args.log_root / 'sparse_view_summary.csv'}")

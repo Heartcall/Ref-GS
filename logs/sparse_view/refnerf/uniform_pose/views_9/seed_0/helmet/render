@@ -1,0 +1,15 @@
+/home/liuly/anaconda3/envs/ref_gs/lib/python3.7/site-packages/torch/functional.py:478: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at  /opt/conda/conda-bld/pytorch_1659484809535/work/aten/src/ATen/native/TensorShape.cpp:2894.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Looking for config file in output/sparse_view/refnerf/uniform_pose/views_9/seed_0/helmet/cfg_args
+Config file found: output/sparse_view/refnerf/uniform_pose/views_9/seed_0/helmet/cfg_args
+Rendering output/sparse_view/refnerf/uniform_pose/views_9/seed_0/helmet [09/07 00:37:25]
+SphMipEncoding ### level: 9   size: 512 [09/07 00:37:26]
+Loading trained model at iteration 31000 [09/07 00:37:26]
+Found transforms_train.json file, assuming Blender data set! [09/07 00:37:26]
+Reading Training Transforms [09/07 00:37:26]
+Reading Test Transforms [09/07 00:37:26]
+Generating random point cloud (100000)... [09/07 00:37:26]
+resolution_scales [1.0] [09/07 00:37:27]
+Loading Training Cameras [09/07 00:37:27]
+Loading Test Cameras [09/07 00:37:28]
+Load Path output/sparse_view/refnerf/uniform_pose/views_9/seed_0/helmet/point_cloud/iteration_31000/point_cloud.ply [09/07 00:37:37]

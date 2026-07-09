@@ -1,6 +1,7 @@
 import argparse
 import json
 import os
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -13,6 +14,18 @@ from scripts.make_sparse_view_dataset import DEFAULT_OUTPUT_ROOT as DEFAULT_SPAR
 from scripts.make_sparse_view_dataset import generate_sparse_datasets, sparse_scene_path
 from scripts.refgs_runner import DATASET_CONFIGS, DEFAULT_DATA_ROOT, Job, selected_scenes
 from scripts.sparse_view_utils import SPARSE_DATASETS, SPARSE_STRATEGIES
+
+
+ERROR_MARKERS = (
+    "CUDA out of memory",
+    "RuntimeError:",
+    "Traceback",
+    "KeyboardInterrupt",
+    "No space left on device",
+    "FileNotFoundError:",
+    "ValueError:",
+    "ImportError:",
+)
 
 
 def _dataset_keys(dataset: str) -> List[str]:
@@ -37,6 +50,82 @@ def should_skip_action(action: str, model_path: Path, iteration: int) -> bool:
     if action == "eval":
         return (split_dir / "results.json").exists() or (model_path / "results.json").exists()
     raise ValueError(f"Unknown action: {action}")
+
+
+def extract_failure_reason(log_path: Optional[Path]) -> str:
+    if log_path is None or not log_path.exists():
+        return ""
+    try:
+        text = log_path.read_text(encoding="utf-8", errors="replace")
+    except OSError as exc:
+        return f"could not read log: {exc}"
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
+    for marker in ERROR_MARKERS:
+        for line in reversed(lines):
+            if marker in line:
+                return line[-500:]
+    return lines[-1][-500:] if lines else ""
+
+
+def _nearest_existing(path: Path) -> Path:
+    current = path.resolve() if path.exists() else path.absolute()
+    while not current.exists() and current.parent != current:
+        current = current.parent
+    return current
+
+
+def _disk_record(label: str, path: Path) -> dict:
+    existing = _nearest_existing(path)
+    usage = shutil.disk_usage(str(existing))
+    return {
+        "label": label,
+        "path": str(path),
+        "checked_path": str(existing),
+        "total_gb": round(usage.total / (1024**3), 3),
+        "used_gb": round(usage.used / (1024**3), 3),
+        "free_gb": round(usage.free / (1024**3), 3),
+    }
+
+
+def write_disk_preflight(log_root: Path, output_root: Path, data_root: Path, storage_root: Path) -> dict:
+    report = {
+        "output_root": str(output_root),
+        "data_root": str(data_root),
+        "storage_root": str(storage_root),
+        "filesystems": [
+            _disk_record("output_root", output_root),
+            _disk_record("data_root", data_root),
+            _disk_record("storage_root", storage_root),
+        ],
+    }
+    log_root.mkdir(parents=True, exist_ok=True)
+    with (log_root / "disk_preflight.json").open("w", encoding="utf-8") as handle:
+        json.dump(report, handle, indent=2)
+        handle.write("\n")
+    return report
+
+
+def maybe_relocate_output_root(output_root: Path, storage_root: Path, min_free_gb: float, log_root: Path, data_root: Path) -> Path:
+    report = write_disk_preflight(log_root, output_root, data_root, storage_root)
+    output_free = report["filesystems"][0]["free_gb"]
+    if output_free >= min_free_gb or output_root.is_symlink():
+        return output_root
+
+    target = storage_root
+    target.parent.mkdir(parents=True, exist_ok=True)
+    output_root.parent.mkdir(parents=True, exist_ok=True)
+    if output_root.exists():
+        if target.exists():
+            raise FileExistsError(f"Cannot relocate {output_root}: target already exists: {target}")
+        shutil.move(str(output_root), str(target))
+    else:
+        target.mkdir(parents=True, exist_ok=True)
+    output_root.symlink_to(target, target_is_directory=True)
+    report["relocated_output_root"] = {"link": str(output_root), "target": str(target), "reason": f"free_gb {output_free} < {min_free_gb}"}
+    with (log_root / "disk_preflight.json").open("w", encoding="utf-8") as handle:
+        json.dump(report, handle, indent=2)
+        handle.write("\n")
+    return output_root
 
 
 def build_sparse_jobs(
@@ -121,8 +210,10 @@ def _write_status(log_root: Path, records: List[dict]) -> None:
 
 def run_jobs(jobs: Sequence[Job], iteration: int, skip_existing: bool, dry_run: bool, log_root: Path) -> List[dict]:
     records = []
+    failed_cells = set()
     for job in jobs:
         model_path = _model_path_from_job(job)
+        cell_key = str(model_path)
         record = {
             "action": job.action,
             "scene": job.scene,
@@ -132,24 +223,38 @@ def run_jobs(jobs: Sequence[Job], iteration: int, skip_existing: bool, dry_run: 
             "status": "pending",
             "returncode": None,
             "notes": "",
+            "failure_reason": "",
         }
+        if job.action in {"render", "eval"} and cell_key in failed_cells:
+            record["status"] = "failed"
+            record["notes"] = "skipped because an earlier action failed for this cell"
+            record["failure_reason"] = record["notes"]
+            records.append(record)
+            _write_status(log_root, records)
+            print(f"FAILED dependency {job.action} {job.scene}: {record['notes']}")
+            continue
         missing = _check_sparse_scene(job)
         if missing:
             record["status"] = "failed"
             record["notes"] = missing
+            record["failure_reason"] = missing
+            failed_cells.add(cell_key)
             print(f"FAILED precheck {job.action} {job.scene}: {missing}")
             records.append(record)
+            _write_status(log_root, records)
             continue
         if skip_existing and should_skip_action(job.action, model_path, iteration):
             record["status"] = "skipped_existing"
             print(f"SKIP existing {job.action} {job.scene}: {model_path}")
             records.append(record)
+            _write_status(log_root, records)
             continue
 
         print(job.display())
         if dry_run:
             record["status"] = "dry_run"
             records.append(record)
+            _write_status(log_root, records)
             continue
 
         if job.log_path is not None:
@@ -165,11 +270,15 @@ def run_jobs(jobs: Sequence[Job], iteration: int, skip_existing: bool, dry_run: 
             record["returncode"] = completed.returncode
             record["status"] = "ok" if completed.returncode == 0 else "failed"
             if completed.returncode != 0:
-                record["notes"] = f"see log: {job.log_path}"
+                record["failure_reason"] = extract_failure_reason(job.log_path)
+                record["notes"] = f"{record['failure_reason']}; see log: {job.log_path}" if record["failure_reason"] else f"see log: {job.log_path}"
+                failed_cells.add(cell_key)
                 print(f"FAILED {job.action} {job.scene}, log: {job.log_path}")
         except Exception as exc:
             record["status"] = "failed"
-            record["notes"] = f"{type(exc).__name__}: {exc}; log: {job.log_path}"
+            record["failure_reason"] = f"{type(exc).__name__}: {exc}"
+            record["notes"] = f"{record['failure_reason']}; log: {job.log_path}"
+            failed_cells.add(cell_key)
             print(f"FAILED {job.action} {job.scene}: {record['notes']}")
         records.append(record)
         _write_status(log_root, records)
@@ -200,6 +309,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--extra-train-arg", action="append", default=[])
     parser.add_argument("--extra-render-arg", action="append", default=[])
     parser.add_argument("--force-data", action="store_true", help="Overwrite generated sparse JSON files when --make-data is used.")
+    parser.add_argument("--storage-root", type=Path, default=Path("/data/liuly/refgs_sparse_view_storage"))
+    parser.add_argument("--min-output-free-gb", type=float, default=40.0)
+    parser.add_argument("--no-auto-relocate-output", action="store_true")
     return parser.parse_args()
 
 
@@ -211,6 +323,17 @@ def main() -> None:
             actions = ["train", "render", "eval"]
         else:
             raise SystemExit("Choose at least one action: --train, --render, --eval, or use --dry-run.")
+
+    if args.no_auto_relocate_output:
+        write_disk_preflight(args.log_root, args.output_root, args.data_root, args.storage_root)
+    else:
+        args.output_root = maybe_relocate_output_root(
+            output_root=args.output_root,
+            storage_root=args.storage_root,
+            min_free_gb=args.min_output_free_gb,
+            log_root=args.log_root,
+            data_root=args.data_root,
+        )
 
     if args.make_data:
         generate_sparse_datasets(

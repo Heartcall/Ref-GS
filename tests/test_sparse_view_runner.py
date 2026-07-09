@@ -1,3 +1,4 @@
+import json
 import sys
 import tempfile
 import unittest
@@ -5,7 +6,8 @@ from unittest import mock
 from pathlib import Path
 
 from scripts.make_sparse_view_dataset import generate_sparse_datasets, sparse_scene_path
-from scripts.run_sparse_view_eval import build_sparse_jobs, parse_args, should_skip_action
+from scripts.refgs_runner import Job
+from scripts.run_sparse_view_eval import build_sparse_jobs, parse_args, run_jobs, should_skip_action
 
 
 class SparseViewRunnerTests(unittest.TestCase):
@@ -102,6 +104,32 @@ class SparseViewRunnerTests(unittest.TestCase):
             args = parse_args()
 
         self.assertEqual(args.python, sys.executable)
+
+    def test_run_jobs_records_failure_reason_from_log(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            model = root / "model"
+            log_root = root / "logs"
+            log_path = log_root / "train"
+            job = Job(
+                action="train",
+                scene="coffee",
+                command=[
+                    sys.executable,
+                    "-c",
+                    "import sys; print('RuntimeError: CUDA out of memory'); sys.exit(2)",
+                    "-m",
+                    str(model),
+                ],
+                log_path=log_path,
+            )
+
+            records = run_jobs([job], iteration=10, skip_existing=False, dry_run=False, log_root=log_root)
+
+            self.assertEqual(records[0]["status"], "failed")
+            self.assertIn("CUDA out of memory", records[0]["failure_reason"])
+            status = json.loads((log_root / "run_status.json").read_text(encoding="utf-8"))
+            self.assertIn("failure_reason", status[0])
 
 
 if __name__ == "__main__":

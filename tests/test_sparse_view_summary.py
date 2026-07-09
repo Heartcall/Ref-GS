@@ -40,7 +40,7 @@ class SparseViewSummaryTests(unittest.TestCase):
 
             self.assertEqual(len(rows), 1)
             row = rows[0]
-            self.assertEqual(row["status"], "ok")
+            self.assertEqual(row["status"], "completed")
             self.assertAlmostEqual(row["delta_psnr"], -10.0)
             self.assertAlmostEqual(row["delta_ssim"], -0.1)
             self.assertAlmostEqual(row["delta_lpips"], 0.1)
@@ -61,7 +61,7 @@ class SparseViewSummaryTests(unittest.TestCase):
             )
 
             self.assertEqual(len(rows), 1)
-            self.assertEqual(rows[0]["status"], "missing_metrics")
+            self.assertEqual(rows[0]["status"], "missing")
 
     def test_manifest_without_model_output_is_reported_missing_metrics(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -86,7 +86,7 @@ class SparseViewSummaryTests(unittest.TestCase):
             self.assertEqual(rows[0]["dataset"], "refnerf")
             self.assertEqual(rows[0]["train_views"], 3)
             self.assertEqual(rows[0]["test_views"], 200)
-            self.assertEqual(rows[0]["status"], "missing_metrics")
+            self.assertEqual(rows[0]["status"], "missing")
 
     def test_failed_sparse_manifest_is_reported_as_failed(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -118,6 +118,32 @@ class SparseViewSummaryTests(unittest.TestCase):
             self.assertEqual(rows[0]["status"], "failed")
             self.assertIn("missing source scene", rows[0]["notes"])
 
+    def test_log_failure_reason_is_reported_and_counted(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            sparse_data = root / "SparseViewGenerated"
+            manifest_dir = sparse_data / "refnerf" / "uniform_pose" / "views_3" / "seed_0" / "coffee"
+            manifest_dir.mkdir(parents=True)
+            (manifest_dir / "sparse_view_manifest.json").write_text(
+                json.dumps({"train_frames_selected": 3, "test_frames": 200, "notes": ""}),
+                encoding="utf-8",
+            )
+            log_dir = root / "logs" / "refnerf" / "uniform_pose" / "views_3" / "seed_0" / "coffee"
+            log_dir.mkdir(parents=True)
+            (log_dir / "train").write_text("Traceback...\nRuntimeError: CUDA out of memory\n", encoding="utf-8")
+
+            rows = collect_sparse_rows(
+                sparse_output_root=root / "output" / "sparse_view",
+                baseline_output_root=root / "baseline",
+                baseline_metrics_csv=root / "missing.csv",
+                sparse_data_root=sparse_data,
+                iteration=31000,
+                log_root=root / "logs",
+            )
+
+            self.assertEqual(rows[0]["status"], "failed")
+            self.assertIn("CUDA out of memory", rows[0]["failure_reason"])
+
     def test_write_summary_creates_csv_json_and_markdown(self):
         with tempfile.TemporaryDirectory() as tmp:
             log_root = Path(tmp)
@@ -143,8 +169,9 @@ class SparseViewSummaryTests(unittest.TestCase):
                     "checkpoint_exists": False,
                     "render_exists": False,
                     "metrics_exists": True,
-                    "status": "ok",
+                    "status": "completed",
                     "notes": "",
+                    "failure_reason": "",
                 }
             ]
 
@@ -156,6 +183,9 @@ class SparseViewSummaryTests(unittest.TestCase):
             self.assertIn("Coverage", md)
             self.assertIn("Dataset Averages", md)
             self.assertIn("Failure Summary", md)
+            data = json.loads((log_root / "sparse_view_summary.json").read_text(encoding="utf-8"))
+            self.assertEqual(data["progress_counts"]["completed"], 1)
+            self.assertEqual(data["progress_by_dataset_views"][0]["completion_rate"], 1.0)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,167 @@
+[
+  {
+    "action": "train",
+    "scene": "teapot_blender",
+    "model_path": "output/sparse_view/glossy_synthetic/uniform_pose/views_3/seed_0/teapot_blender",
+    "log_path": "logs/sparse_view/glossy_synthetic/uniform_pose/views_3/seed_0/teapot_blender/train",
+    "command": "CUDA_VISIBLE_DEVICES=6 /home/liuly/anaconda3/envs/ref_gs/bin/python train-NeRO.py -s /data/liuly/dataset/3DGS/SparseViewGenerated/glossy_synthetic/uniform_pose/views_3/seed_0/teapot_blender -m output/sparse_view/glossy_synthetic/uniform_pose/views_3/seed_0/teapot_blender --eval --run_dim 256 --albedo_bias 2 --albedo_lr 0.0005 --init_until_iter 3000 --save_iterations 31000 --test_iterations 31000 > logs/sparse_view/glossy_synthetic/uniform_pose/views_3/seed_0/teapot_blender/train 2>&1",
+    "status": "ok",
+    "returncode": 0,
+    "notes": "",
+    "failure_reason": ""
+  },
+  {
+    "action": "render",
+    "scene": "teapot_blender",
+    "model_path": "output/sparse_view/glossy_synthetic/uniform_pose/views_3/seed_0/teapot_blender",
+    "log_path": "logs/sparse_view/glossy_synthetic/uniform_pose/views_3/seed_0/teapot_blender/render",
+    "command": "CUDA_VISIBLE_DEVICES=6 /home/liuly/anaconda3/envs/ref_gs/bin/python render.py -s /data/liuly/dataset/3DGS/SparseViewGenerated/glossy_synthetic/uniform_pose/views_3/seed_0/teapot_blender -m output/sparse_view/glossy_synthetic/uniform_pose/views_3/seed_0/teapot_blender --iteration 31000 --renderer refgs --dataset glossy --skip_train > logs/sparse_view/glossy_synthetic/uniform_pose/views_3/seed_0/teapot_blender/render 2>&1",
+    "status": "ok",
+    "returncode": 0,
+    "notes": "",
+    "failure_reason": ""
+  },
+  {
+    "action": "eval",
+    "scene": "teapot_blender",
+    "model_path": "output/sparse_view/glossy_synthetic/uniform_pose/views_3/seed_0/teapot_blender",
+    "log_path": "logs/sparse_view/glossy_synthetic/uniform_pose/views_3/seed_0/teapot_blender/eval",
+    "command": "CUDA_VISIBLE_DEVICES=6 /home/liuly/anaconda3/envs/ref_gs/bin/python render.py -s /data/liuly/dataset/3DGS/SparseViewGenerated/glossy_synthetic/uniform_pose/views_3/seed_0/teapot_blender -m output/sparse_view/glossy_synthetic/uniform_pose/views_3/seed_0/teapot_blender --iteration 31000 --renderer refgs --dataset glossy --skip_train --eval --metrics > logs/sparse_view/glossy_synthetic/uniform_pose/views_3/seed_0/teapot_blender/eval 2>&1",
+    "status": "ok",
+    "returncode": 0,
+    "notes": "",
+    "failure_reason": ""
+  },
+  {
+    "action": "train",
+    "scene": "teapot_blender",
+    "model_path": "output/sparse_view/glossy_synthetic/uniform_pose/views_6/seed_0/teapot_blender",
+    "log_path": "logs/sparse_view/glossy_synthetic/uniform_pose/views_6/seed_0/teapot_blender/train",
+    "command": "CUDA_VISIBLE_DEVICES=6 /home/liuly/anaconda3/envs/ref_gs/bin/python train-NeRO.py -s /data/liuly/dataset/3DGS/SparseViewGenerated/glossy_synthetic/uniform_pose/views_6/seed_0/teapot_blender -m output/sparse_view/glossy_synthetic/uniform_pose/views_6/seed_0/teapot_blender --eval --run_dim 256 --albedo_bias 2 --albedo_lr 0.0005 --init_until_iter 3000 --save_iterations 31000 --test_iterations 31000 > logs/sparse_view/glossy_synthetic/uniform_pose/views_6/seed_0/teapot_blender/train 2>&1",
+    "status": "ok",
+    "returncode": 0,
+    "notes": "",
+    "failure_reason": ""
+  },
+  {
+    "action": "render",
+    "scene": "teapot_blender",
+    "model_path": "output/sparse_view/glossy_synthetic/uniform_pose/views_6/seed_0/teapot_blender",
+    "log_path": "logs/sparse_view/glossy_synthetic/uniform_pose/views_6/seed_0/teapot_blender/render",
+    "command": "CUDA_VISIBLE_DEVICES=6 /home/liuly/anaconda3/envs/ref_gs/bin/python render.py -s /data/liuly/dataset/3DGS/SparseViewGenerated/glossy_synthetic/uniform_pose/views_6/seed_0/teapot_blender -m output/sparse_view/glossy_synthetic/uniform_pose/views_6/seed_0/teapot_blender --iteration 31000 --renderer refgs --dataset glossy --skip_train > logs/sparse_view/glossy_synthetic/uniform_pose/views_6/seed_0/teapot_blender/render 2>&1",
+    "status": "ok",
+    "returncode": 0,
+    "notes": "",
+    "failure_reason": ""
+  },
+  {
+    "action": "eval",
+    "scene": "teapot_blender",
+    "model_path": "output/sparse_view/glossy_synthetic/uniform_pose/views_6/seed_0/teapot_blender",
+    "log_path": "logs/sparse_view/glossy_synthetic/uniform_pose/views_6/seed_0/teapot_blender/eval",
+    "command": "CUDA_VISIBLE_DEVICES=6 /home/liuly/anaconda3/envs/ref_gs/bin/python render.py -s /data/liuly/dataset/3DGS/SparseViewGenerated/glossy_synthetic/uniform_pose/views_6/seed_0/teapot_blender -m output/sparse_view/glossy_synthetic/uniform_pose/views_6/seed_0/teapot_blender --iteration 31000 --renderer refgs --dataset glossy --skip_train --eval --metrics > logs/sparse_view/glossy_synthetic/uniform_pose/views_6/seed_0/teapot_blender/eval 2>&1",
+    "status": "ok",
+    "returncode": 0,
+    "notes": "",
+    "failure_reason": ""
+  },
+  {
+    "action": "train",
+    "scene": "teapot_blender",
+    "model_path": "output/sparse_view/glossy_synthetic/uniform_pose/views_9/seed_0/teapot_blender",
+    "log_path": "logs/sparse_view/glossy_synthetic/uniform_pose/views_9/seed_0/teapot_blender/train",
+    "command": "CUDA_VISIBLE_DEVICES=6 /home/liuly/anaconda3/envs/ref_gs/bin/python train-NeRO.py -s /data/liuly/dataset/3DGS/SparseViewGenerated/glossy_synthetic/uniform_pose/views_9/seed_0/teapot_blender -m output/sparse_view/glossy_synthetic/uniform_pose/views_9/seed_0/teapot_blender --eval --run_dim 256 --albedo_bias 2 --albedo_lr 0.0005 --init_until_iter 3000 --save_iterations 31000 --test_iterations 31000 > logs/sparse_view/glossy_synthetic/uniform_pose/views_9/seed_0/teapot_blender/train 2>&1",
+    "status": "ok",
+    "returncode": 0,
+    "notes": "",
+    "failure_reason": ""
+  },
+  {
+    "action": "render",
+    "scene": "teapot_blender",
+    "model_path": "output/sparse_view/glossy_synthetic/uniform_pose/views_9/seed_0/teapot_blender",
+    "log_path": "logs/sparse_view/glossy_synthetic/uniform_pose/views_9/seed_0/teapot_blender/render",
+    "command": "CUDA_VISIBLE_DEVICES=6 /home/liuly/anaconda3/envs/ref_gs/bin/python render.py -s /data/liuly/dataset/3DGS/SparseViewGenerated/glossy_synthetic/uniform_pose/views_9/seed_0/teapot_blender -m output/sparse_view/glossy_synthetic/uniform_pose/views_9/seed_0/teapot_blender --iteration 31000 --renderer refgs --dataset glossy --skip_train > logs/sparse_view/glossy_synthetic/uniform_pose/views_9/seed_0/teapot_blender/render 2>&1",
+    "status": "ok",
+    "returncode": 0,
+    "notes": "",
+    "failure_reason": ""
+  },
+  {
+    "action": "eval",
+    "scene": "teapot_blender",
+    "model_path": "output/sparse_view/glossy_synthetic/uniform_pose/views_9/seed_0/teapot_blender",
+    "log_path": "logs/sparse_view/glossy_synthetic/uniform_pose/views_9/seed_0/teapot_blender/eval",
+    "command": "CUDA_VISIBLE_DEVICES=6 /home/liuly/anaconda3/envs/ref_gs/bin/python render.py -s /data/liuly/dataset/3DGS/SparseViewGenerated/glossy_synthetic/uniform_pose/views_9/seed_0/teapot_blender -m output/sparse_view/glossy_synthetic/uniform_pose/views_9/seed_0/teapot_blender --iteration 31000 --renderer refgs --dataset glossy --skip_train --eval --metrics > logs/sparse_view/glossy_synthetic/uniform_pose/views_9/seed_0/teapot_blender/eval 2>&1",
+    "status": "ok",
+    "returncode": 0,
+    "notes": "",
+    "failure_reason": ""
+  },
+  {
+    "action": "train",
+    "scene": "teapot_blender",
+    "model_path": "output/sparse_view/glossy_synthetic/uniform_pose/views_12/seed_0/teapot_blender",
+    "log_path": "logs/sparse_view/glossy_synthetic/uniform_pose/views_12/seed_0/teapot_blender/train",
+    "command": "CUDA_VISIBLE_DEVICES=6 /home/liuly/anaconda3/envs/ref_gs/bin/python train-NeRO.py -s /data/liuly/dataset/3DGS/SparseViewGenerated/glossy_synthetic/uniform_pose/views_12/seed_0/teapot_blender -m output/sparse_view/glossy_synthetic/uniform_pose/views_12/seed_0/teapot_blender --eval --run_dim 256 --albedo_bias 2 --albedo_lr 0.0005 --init_until_iter 3000 --save_iterations 31000 --test_iterations 31000 > logs/sparse_view/glossy_synthetic/uniform_pose/views_12/seed_0/teapot_blender/train 2>&1",
+    "status": "ok",
+    "returncode": 0,
+    "notes": "",
+    "failure_reason": ""
+  },
+  {
+    "action": "render",
+    "scene": "teapot_blender",
+    "model_path": "output/sparse_view/glossy_synthetic/uniform_pose/views_12/seed_0/teapot_blender",
+    "log_path": "logs/sparse_view/glossy_synthetic/uniform_pose/views_12/seed_0/teapot_blender/render",
+    "command": "CUDA_VISIBLE_DEVICES=6 /home/liuly/anaconda3/envs/ref_gs/bin/python render.py -s /data/liuly/dataset/3DGS/SparseViewGenerated/glossy_synthetic/uniform_pose/views_12/seed_0/teapot_blender -m output/sparse_view/glossy_synthetic/uniform_pose/views_12/seed_0/teapot_blender --iteration 31000 --renderer refgs --dataset glossy --skip_train > logs/sparse_view/glossy_synthetic/uniform_pose/views_12/seed_0/teapot_blender/render 2>&1",
+    "status": "ok",
+    "returncode": 0,
+    "notes": "",
+    "failure_reason": ""
+  },
+  {
+    "action": "eval",
+    "scene": "teapot_blender",
+    "model_path": "output/sparse_view/glossy_synthetic/uniform_pose/views_12/seed_0/teapot_blender",
+    "log_path": "logs/sparse_view/glossy_synthetic/uniform_pose/views_12/seed_0/teapot_blender/eval",
+    "command": "CUDA_VISIBLE_DEVICES=6 /home/liuly/anaconda3/envs/ref_gs/bin/python render.py -s /data/liuly/dataset/3DGS/SparseViewGenerated/glossy_synthetic/uniform_pose/views_12/seed_0/teapot_blender -m output/sparse_view/glossy_synthetic/uniform_pose/views_12/seed_0/teapot_blender --iteration 31000 --renderer refgs --dataset glossy --skip_train --eval --metrics > logs/sparse_view/glossy_synthetic/uniform_pose/views_12/seed_0/teapot_blender/eval 2>&1",
+    "status": "ok",
+    "returncode": 0,
+    "notes": "",
+    "failure_reason": ""
+  },
+  {
+    "action": "train",
+    "scene": "teapot_blender",
+    "model_path": "output/sparse_view/glossy_synthetic/uniform_pose/views_24/seed_0/teapot_blender",
+    "log_path": "logs/sparse_view/glossy_synthetic/uniform_pose/views_24/seed_0/teapot_blender/train",
+    "command": "CUDA_VISIBLE_DEVICES=6 /home/liuly/anaconda3/envs/ref_gs/bin/python train-NeRO.py -s /data/liuly/dataset/3DGS/SparseViewGenerated/glossy_synthetic/uniform_pose/views_24/seed_0/teapot_blender -m output/sparse_view/glossy_synthetic/uniform_pose/views_24/seed_0/teapot_blender --eval --run_dim 256 --albedo_bias 2 --albedo_lr 0.0005 --init_until_iter 3000 --save_iterations 31000 --test_iterations 31000 > logs/sparse_view/glossy_synthetic/uniform_pose/views_24/seed_0/teapot_blender/train 2>&1",
+    "status": "ok",
+    "returncode": 0,
+    "notes": "",
+    "failure_reason": ""
+  },
+  {
+    "action": "render",
+    "scene": "teapot_blender",
+    "model_path": "output/sparse_view/glossy_synthetic/uniform_pose/views_24/seed_0/teapot_blender",
+    "log_path": "logs/sparse_view/glossy_synthetic/uniform_pose/views_24/seed_0/teapot_blender/render",
+    "command": "CUDA_VISIBLE_DEVICES=6 /home/liuly/anaconda3/envs/ref_gs/bin/python render.py -s /data/liuly/dataset/3DGS/SparseViewGenerated/glossy_synthetic/uniform_pose/views_24/seed_0/teapot_blender -m output/sparse_view/glossy_synthetic/uniform_pose/views_24/seed_0/teapot_blender --iteration 31000 --renderer refgs --dataset glossy --skip_train > logs/sparse_view/glossy_synthetic/uniform_pose/views_24/seed_0/teapot_blender/render 2>&1",
+    "status": "ok",
+    "returncode": 0,
+    "notes": "",
+    "failure_reason": ""
+  },
+  {
+    "action": "eval",
+    "scene": "teapot_blender",
+    "model_path": "output/sparse_view/glossy_synthetic/uniform_pose/views_24/seed_0/teapot_blender",
+    "log_path": "logs/sparse_view/glossy_synthetic/uniform_pose/views_24/seed_0/teapot_blender/eval",
+    "command": "CUDA_VISIBLE_DEVICES=6 /home/liuly/anaconda3/envs/ref_gs/bin/python render.py -s /data/liuly/dataset/3DGS/SparseViewGenerated/glossy_synthetic/uniform_pose/views_24/seed_0/teapot_blender -m output/sparse_view/glossy_synthetic/uniform_pose/views_24/seed_0/teapot_blender --iteration 31000 --renderer refgs --dataset glossy --skip_train --eval --metrics > logs/sparse_view/glossy_synthetic/uniform_pose/views_24/seed_0/teapot_blender/eval 2>&1",
+    "status": "ok",
+    "returncode": 0,
+    "notes": "",
+    "failure_reason": ""
+  }
+]
