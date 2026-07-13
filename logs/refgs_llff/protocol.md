@@ -97,7 +97,7 @@ Stage completion is evidence based:
 - failed/blocked metrics remain null.
 
 The persisted smoke certificate is versioned and bound to the current runner
-SHA-256. It revalidates the exact horns/1_8/GPU-1/10,000 tuple, all four stage
+SHA-256. It revalidates the exact horns/1_8/GPU-2/10,000 tuple, all four stage
 records, strict prepared links, model/manifest fingerprint, shared evaluator,
 and clean logs before it can unlock another cell. A stale boolean alone cannot
 unlock batch execution.

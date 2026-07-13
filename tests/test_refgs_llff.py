@@ -331,7 +331,7 @@ class RunnerTests(unittest.TestCase):
         self.assertFalse(smoke_certificate_header_valid(weak, "abc"))
         current = {
             "status": "completed", "smoke_gate_passed": True,
-            "scene": "horns", "resolution": "1_8", "gpu": 1, "iteration": 10000,
+            "scene": "horns", "resolution": "1_8", "gpu": 2, "iteration": 10000,
             "smoke_certification": {"version": 2, "runner_sha256": "abc"},
         }
         self.assertTrue(smoke_certificate_header_valid(current, "abc"))
@@ -370,11 +370,11 @@ class RunnerTests(unittest.TestCase):
             self.assertFalse(protocol_fingerprint_matches(prepared, model))
     def test_only_exact_horns_smoke_can_run_before_gate(self):
         from scripts.run_refgs_llff import validate_execution_request
-        validate_execution_request("horns", "1_8", "1", 10000, False)
+        validate_execution_request("horns", "1_8", "2", 10000, False)
         invalid = (
-            ("horns", "1_8", "2", 10000),
+            ("horns", "1_8", "1", 10000),
             ("horns", "1_4", "1", 10000),
-            ("horns", "1_8", "1", 5000),
+            ("horns", "1_8", "2", 5000),
             ("fern", "1_8", "1", 10000),
         )
         for scene, resolution, gpu, iteration in invalid:
@@ -384,13 +384,13 @@ class RunnerTests(unittest.TestCase):
     def test_smoke_certification_requires_all_four_fresh_stages(self):
         from scripts.run_refgs_llff import can_certify_smoke
         complete = {stage: {"status": "completed"} for stage in ("prepare", "train", "render", "eval")}
-        self.assertTrue(can_certify_smoke("horns", "1_8", "1", 10000, complete, False))
+        self.assertTrue(can_certify_smoke("horns", "1_8", "2", 10000, complete, False))
         partial = {"eval": {"status": "completed"}}
-        self.assertFalse(can_certify_smoke("horns", "1_8", "1", 10000, partial, False))
+        self.assertFalse(can_certify_smoke("horns", "1_8", "2", 10000, partial, False))
         stale = dict(complete)
         stale["train"] = {"status": "completed", "skipped_existing": True}
-        self.assertFalse(can_certify_smoke("horns", "1_8", "1", 10000, stale, False))
-        self.assertTrue(can_certify_smoke("horns", "1_8", "1", 10000, stale, True))
+        self.assertFalse(can_certify_smoke("horns", "1_8", "2", 10000, stale, False))
+        self.assertTrue(can_certify_smoke("horns", "1_8", "2", 10000, stale, True))
 
     def test_shared_eval_requires_provenance_and_fsgs_gate(self):
         from scripts.run_refgs_llff import shared_eval_complete

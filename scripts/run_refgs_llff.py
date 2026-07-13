@@ -38,6 +38,7 @@ DEFAULT_LOG_ROOT = REPO_ROOT / "logs" / "refgs_llff"
 MIN_GPU_FREE_MIB = 22000
 MIN_STORAGE_FREE_BYTES = 10 * 1024 ** 3
 SMOKE_CERTIFICATION_VERSION = 2
+SMOKE_PHYSICAL_GPU = 2
 
 
 def resolve_runtime_paths(args, launch_cwd):
@@ -154,7 +155,7 @@ def smoke_certificate_header_valid(payload, runner_sha256):
     return (
         payload.get("status") == "completed" and payload.get("smoke_gate_passed") is True
         and payload.get("scene") == "horns" and payload.get("resolution") == "1_8"
-        and payload.get("gpu") == 1 and payload.get("iteration") == 10000
+        and payload.get("gpu") == SMOKE_PHYSICAL_GPU and payload.get("iteration") == 10000
         and certificate.get("version") == SMOKE_CERTIFICATION_VERSION
         and certificate.get("runner_sha256") == runner_sha256
     )
@@ -180,7 +181,7 @@ def smoke_artifact_checks(log_root, prepared_root, output_root):
         "all_stage_records_complete": set(stages) == {"prepare", "train", "render", "eval"}
         and all(stages[stage].get("status") == "completed" for stage in stages),
         "train_command_exact": "--iterations 10000" in stages.get("train", {}).get("command", "")
-        and stages.get("train", {}).get("physical_gpu") == 1,
+        and stages.get("train", {}).get("physical_gpu") == SMOKE_PHYSICAL_GPU,
         "training_logged_three_views": "Training set length 3" in all_logs,
         "test_cameras_deferred": "REFGS_LLFF_TEST_CAMERAS_DEFERRED count=8" in all_logs,
         "no_traceback": "Traceback" not in all_logs,
@@ -206,7 +207,7 @@ def certify_existing_smoke(args):
     if not all(checks.values()):
         raise RuntimeError("existing smoke artifacts fail current certification: {}".format(checks))
     payload.update({
-        "scene": "horns", "resolution": "1_8", "gpu": 1, "iteration": 10000,
+        "scene": "horns", "resolution": "1_8", "gpu": SMOKE_PHYSICAL_GPU, "iteration": 10000,
         "status": "completed", "smoke_gate_passed": True,
         "smoke_certification": {
             "version": SMOKE_CERTIFICATION_VERSION,
@@ -225,15 +226,18 @@ def validate_execution_request(scene, resolution, gpu, iteration, prior_smoke_pa
         raise ValueError("formal LLFF protocol requires exactly 10000 iterations")
     if str(gpu) not in {"1", "2"}:
         raise ValueError("only physical GPU 1 or 2 is permitted")
-    exact_smoke = scene == "horns" and resolution == "1_8" and str(gpu) == "1"
+    exact_smoke = scene == "horns" and resolution == "1_8" and int(gpu) == SMOKE_PHYSICAL_GPU
     if not prior_smoke_passed and not exact_smoke:
-        raise RuntimeError("only horns 1/8 on physical GPU 1 may run before the smoke gate")
+        raise RuntimeError("only horns 1/8 on physical GPU {} may run before the smoke gate".format(SMOKE_PHYSICAL_GPU))
 
 
 def can_certify_smoke(scene, resolution, gpu, iteration, stage_results, prior_smoke_passed):
     if prior_smoke_passed:
         return True
-    if not (scene == "horns" and resolution == "1_8" and str(gpu) == "1" and int(iteration) == 10000):
+    if not (
+        scene == "horns" and resolution == "1_8"
+        and int(gpu) == SMOKE_PHYSICAL_GPU and int(iteration) == 10000
+    ):
         return False
     required = {"prepare", "train", "render", "eval"}
     if set(stage_results) != required:
