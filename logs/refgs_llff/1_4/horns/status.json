@@ -1,0 +1,51 @@
+{
+  "checkpoint_exists": false,
+  "metrics": null,
+  "metrics_exists": false,
+  "pointcloud": {
+    "bbox_max": [
+      39.42698669433594,
+      41.96894073486328,
+      153.34005737304688
+    ],
+    "bbox_min": [
+      -63.47414779663086,
+      -32.51755142211914,
+      13.747246742248535
+    ],
+    "path": "/data1/liuly/FSGS_LLFF/author_preprocessed/nerf_llff_data/horns/3_views/dense/fused.ply",
+    "properties": [
+      "x",
+      "y",
+      "z",
+      "nx",
+      "ny",
+      "nz",
+      "red",
+      "green",
+      "blue"
+    ],
+    "sha256": "2adda809bc9aaa71b7d5db51336527e22b4ec2b25dfb1b3090ebb62310253cde",
+    "source_kind": "author_fused_ply",
+    "vertex_count": 19397
+  },
+  "render_exists": false,
+  "resolution": "1_4",
+  "scene": "horns",
+  "status": "pending",
+  "test_images": [
+    "DJI_20200223_163016_842.jpg",
+    "DJI_20200223_163024_597.jpg",
+    "DJI_20200223_163033_432.jpg",
+    "DJI_20200223_163047_307.jpg",
+    "DJI_20200223_163055_437.jpg",
+    "DJI_20200223_163103_777.jpg",
+    "DJI_20200223_163201_633.jpg",
+    "DJI_20200223_163208_938.jpg"
+  ],
+  "train_images": [
+    "DJI_20200223_163017_967.jpg",
+    "DJI_20200223_163053_863.jpg",
+    "DJI_20200223_163225_243.jpg"
+  ]
+}

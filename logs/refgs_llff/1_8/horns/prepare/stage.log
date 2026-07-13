@@ -1,0 +1,111 @@
+$ CUDA_VISIBLE_DEVICES=1 REFGS_PHYSICAL_GPU=1 /home/liuly/anaconda3/envs/ref_gs/bin/python /home/liuly/Surface_Reconstruction/Glossy/Ref-GS/scripts/prepare_refgs_llff.py --scene horns --resolution 1_8 --data-root /data1/liuly/FSGS_LLFF/dataset/nerf_llff_data --author-preprocessed-root /data1/liuly/FSGS_LLFF/author_preprocessed --prepared-root /data1/liuly/RefGS_LLFF/prepared --log-root logs/refgs_llff
+{
+  "author_images_txt": "/data1/liuly/FSGS_LLFF/author_preprocessed/nerf_llff_data/horns/3_views/triangulated/images.txt",
+  "candidate_train_count": 54,
+  "experiment": "Ref-GS under the FSGS LLFF 3-view protocol",
+  "full_scene_pointcloud_used": false,
+  "intrinsics": {
+    "original": {
+      "camera_id": 1,
+      "cx": 2016.0,
+      "cy": 1512.0,
+      "fx": 3368.8237176028883,
+      "fy": 3368.8237176028883,
+      "height": 3024,
+      "model": "SIMPLE_RADIAL",
+      "radial": 0.012300143763124053,
+      "width": 4032
+    },
+    "scaled": {
+      "camera_id": 1,
+      "cx": 252.0,
+      "cy": 189.0,
+      "fx": 421.10296470036104,
+      "fy": 421.10296470036104,
+      "height": 378,
+      "model": "SIMPLE_RADIAL",
+      "radial": 0.012300143763124053,
+      "scale_x": 0.125,
+      "scale_y": 0.125,
+      "width": 504
+    }
+  },
+  "normalization": {
+    "radius": 6.323975468624577,
+    "source": "three_training_cameras_only",
+    "translate": [
+      -0.8588296213727434,
+      0.07499574324105085,
+      -0.02368265192712667
+    ]
+  },
+  "original_cameras_bin": "/data1/liuly/FSGS_LLFF/dataset/nerf_llff_data/horns/sparse/0/cameras.bin",
+  "original_images_bin": "/data1/liuly/FSGS_LLFF/dataset/nerf_llff_data/horns/sparse/0/images.bin",
+  "pointcloud": {
+    "bbox_max": [
+      39.42698669433594,
+      41.96894073486328,
+      153.34005737304688
+    ],
+    "bbox_min": [
+      -63.47414779663086,
+      -32.51755142211914,
+      13.747246742248535
+    ],
+    "path": "/data1/liuly/FSGS_LLFF/author_preprocessed/nerf_llff_data/horns/3_views/dense/fused.ply",
+    "properties": [
+      "x",
+      "y",
+      "z",
+      "nx",
+      "ny",
+      "nz",
+      "red",
+      "green",
+      "blue"
+    ],
+    "sha256": "2adda809bc9aaa71b7d5db51336527e22b4ec2b25dfb1b3090ebb62310253cde",
+    "source_kind": "author_fused_ply",
+    "vertex_count": 19397
+  },
+  "resolution": "1_8",
+  "resolution_directory": "images_8",
+  "scene": "horns",
+  "schema_version": 1,
+  "test_images": [
+    "DJI_20200223_163016_842.jpg",
+    "DJI_20200223_163024_597.jpg",
+    "DJI_20200223_163033_432.jpg",
+    "DJI_20200223_163047_307.jpg",
+    "DJI_20200223_163055_437.jpg",
+    "DJI_20200223_163103_777.jpg",
+    "DJI_20200223_163201_633.jpg",
+    "DJI_20200223_163208_938.jpg"
+  ],
+  "train_images": [
+    "DJI_20200223_163017_967.jpg",
+    "DJI_20200223_163053_863.jpg",
+    "DJI_20200223_163225_243.jpg"
+  ],
+  "train_test_overlap": [],
+  "training_pose_audit": [
+    {
+      "camera_center_l2": 0.0,
+      "image_name": "DJI_20200223_163017_967.jpg",
+      "rotation_frobenius": 0.0,
+      "rotation_max_abs": 0.0
+    },
+    {
+      "camera_center_l2": 0.0,
+      "image_name": "DJI_20200223_163053_863.jpg",
+      "rotation_frobenius": 0.0,
+      "rotation_max_abs": 0.0
+    },
+    {
+      "camera_center_l2": 0.0,
+      "image_name": "DJI_20200223_163225_243.jpg",
+      "rotation_frobenius": 0.0,
+      "rotation_max_abs": 0.0
+    }
+  ]
+}

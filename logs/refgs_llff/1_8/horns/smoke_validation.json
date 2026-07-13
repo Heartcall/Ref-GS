@@ -1,0 +1,52 @@
+{
+  "checks": {
+    "status_completed": true,
+    "smoke_gate_passed": true,
+    "train_count_3": true,
+    "test_deferred": true,
+    "test_count_8": true,
+    "pointcloud_sha_matches": true,
+    "model_input_identical": true,
+    "iter5000_nonempty": true,
+    "iter10000_nonempty": true,
+    "render_names_exact": true,
+    "gt_names_exact": true,
+    "finite_metrics": true,
+    "no_traceback": true,
+    "no_oom": true,
+    "no_download": true,
+    "no_full_pointcloud_in_prepared": true,
+    "vgg_metadata": true
+  },
+  "metrics": {
+    "lpips": 0.36643192917108536,
+    "psnr": 16.164878010749817,
+    "ssim": 0.5018186420202255
+  },
+  "train_seconds": 389.234038450988,
+  "peak_memory_used_mib": 24093,
+  "checkpoint_sizes": {
+    "5000": 51043079,
+    "10000": 47815823
+  },
+  "render_names": [
+    "DJI_20200223_163016_842.png",
+    "DJI_20200223_163024_597.png",
+    "DJI_20200223_163033_432.png",
+    "DJI_20200223_163047_307.png",
+    "DJI_20200223_163055_437.png",
+    "DJI_20200223_163103_777.png",
+    "DJI_20200223_163201_633.png",
+    "DJI_20200223_163208_938.png"
+  ],
+  "gt_names": [
+    "DJI_20200223_163016_842.png",
+    "DJI_20200223_163024_597.png",
+    "DJI_20200223_163033_432.png",
+    "DJI_20200223_163047_307.png",
+    "DJI_20200223_163055_437.png",
+    "DJI_20200223_163103_777.png",
+    "DJI_20200223_163201_633.png",
+    "DJI_20200223_163208_938.png"
+  ]
+}

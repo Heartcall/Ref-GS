@@ -1,0 +1,47 @@
+{
+  "checkpoint_exists": false,
+  "metrics": null,
+  "metrics_exists": false,
+  "pointcloud": {
+    "bbox_max": [
+      272.83074951171875,
+      157.27870178222656,
+      806.0973510742188
+    ],
+    "bbox_min": [
+      -274.1194763183594,
+      -264.0810546875,
+      27.963184356689453
+    ],
+    "path": "/data1/liuly/FSGS_LLFF/author_preprocessed/nerf_llff_data/leaves/3_views/dense/fused.ply",
+    "properties": [
+      "x",
+      "y",
+      "z",
+      "nx",
+      "ny",
+      "nz",
+      "red",
+      "green",
+      "blue"
+    ],
+    "sha256": "a8169c26d8469637c0495a12c57a1847f33bbe85b8bdd90ca9b708c627ed6a72",
+    "source_kind": "author_fused_ply",
+    "vertex_count": 6607
+  },
+  "render_exists": false,
+  "resolution": "1_8",
+  "scene": "leaves",
+  "status": "pending",
+  "test_images": [
+    "IMG_2997.JPG",
+    "IMG_3006.JPG",
+    "IMG_3014.JPG",
+    "IMG_3022.JPG"
+  ],
+  "train_images": [
+    "IMG_2998.JPG",
+    "IMG_3010.JPG",
+    "IMG_3023.JPG"
+  ]
+}

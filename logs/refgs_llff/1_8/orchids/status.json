@@ -1,0 +1,47 @@
+{
+  "checkpoint_exists": false,
+  "metrics": null,
+  "metrics_exists": false,
+  "pointcloud": {
+    "bbox_max": [
+      56.566078186035156,
+      31.317771911621094,
+      172.32374572753906
+    ],
+    "bbox_min": [
+      -54.99277114868164,
+      -43.7305908203125,
+      13.992925643920898
+    ],
+    "path": "/data1/liuly/FSGS_LLFF/author_preprocessed/nerf_llff_data/orchids/3_views/dense/fused.ply",
+    "properties": [
+      "x",
+      "y",
+      "z",
+      "nx",
+      "ny",
+      "nz",
+      "red",
+      "green",
+      "blue"
+    ],
+    "sha256": "8474b23866354a00c179a29d24424191b4754e0e11f1ffb745af20a8c5f7fb4c",
+    "source_kind": "author_fused_ply",
+    "vertex_count": 12439
+  },
+  "render_exists": false,
+  "resolution": "1_8",
+  "scene": "orchids",
+  "status": "pending",
+  "test_images": [
+    "IMG_4467.JPG",
+    "IMG_4475.JPG",
+    "IMG_4483.JPG",
+    "IMG_4491.JPG"
+  ],
+  "train_images": [
+    "IMG_4468.JPG",
+    "IMG_4479.JPG",
+    "IMG_4490.JPG"
+  ]
+}

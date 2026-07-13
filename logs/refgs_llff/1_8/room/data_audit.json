@@ -1,0 +1,108 @@
+{
+  "author_images_txt": "/data1/liuly/FSGS_LLFF/author_preprocessed/nerf_llff_data/room/3_views/triangulated/images.txt",
+  "candidate_train_count": 35,
+  "experiment": "Ref-GS under the FSGS LLFF 3-view protocol",
+  "full_scene_pointcloud_used": false,
+  "intrinsics": {
+    "original": {
+      "camera_id": 1,
+      "cx": 2016.0,
+      "cy": 1512.0,
+      "fx": 3070.63827088164,
+      "fy": 3070.63827088164,
+      "height": 3024,
+      "model": "SIMPLE_RADIAL",
+      "radial": 0.009615941992791891,
+      "width": 4032
+    },
+    "scaled": {
+      "camera_id": 1,
+      "cx": 252.0,
+      "cy": 189.0,
+      "fx": 383.829783860205,
+      "fy": 383.829783860205,
+      "height": 378,
+      "model": "SIMPLE_RADIAL",
+      "radial": 0.009615941992791891,
+      "scale_x": 0.125,
+      "scale_y": 0.125,
+      "width": 504
+    }
+  },
+  "normalization": {
+    "radius": 4.892981362153721,
+    "source": "three_training_cameras_only",
+    "translate": [
+      1.2657254261203157,
+      0.03431328620791837,
+      -0.09071019772894602
+    ]
+  },
+  "original_cameras_bin": "/data1/liuly/FSGS_LLFF/dataset/nerf_llff_data/room/sparse/0/cameras.bin",
+  "original_images_bin": "/data1/liuly/FSGS_LLFF/dataset/nerf_llff_data/room/sparse/0/images.bin",
+  "pointcloud": {
+    "bbox_max": [
+      29.288330078125,
+      10.304499626159668,
+      85.88755798339844
+    ],
+    "bbox_min": [
+      -20.114173889160156,
+      -26.181591033935547,
+      16.481380462646484
+    ],
+    "path": "/data1/liuly/FSGS_LLFF/author_preprocessed/nerf_llff_data/room/3_views/dense/fused.ply",
+    "properties": [
+      "x",
+      "y",
+      "z",
+      "nx",
+      "ny",
+      "nz",
+      "red",
+      "green",
+      "blue"
+    ],
+    "sha256": "c656a1e8a3a782108928fd906fabc8f4d5db3c3bbb638b49d80b5e0fb9a7f335",
+    "source_kind": "author_fused_ply",
+    "vertex_count": 18357
+  },
+  "resolution": "1_8",
+  "resolution_directory": "images_8",
+  "scene": "room",
+  "schema_version": 1,
+  "test_images": [
+    "DJI_20200226_143850_006.JPG",
+    "DJI_20200226_143901_419.JPG",
+    "DJI_20200226_143912_008.JPG",
+    "DJI_20200226_143926_241.JPG",
+    "DJI_20200226_143938_168.JPG",
+    "DJI_20200226_143948_113.JPG"
+  ],
+  "train_images": [
+    "DJI_20200226_143851_396.JPG",
+    "DJI_20200226_143918_576.JPG",
+    "DJI_20200226_143946_704.JPG"
+  ],
+  "train_test_overlap": [],
+  "training_pose_audit": [
+    {
+      "camera_center_l2": 0.0,
+      "image_name": "DJI_20200226_143851_396.JPG",
+      "rotation_frobenius": 0.0,
+      "rotation_max_abs": 0.0
+    },
+    {
+      "camera_center_l2": 0.0,
+      "image_name": "DJI_20200226_143918_576.JPG",
+      "rotation_frobenius": 0.0,
+      "rotation_max_abs": 0.0
+    },
+    {
+      "camera_center_l2": 0.0,
+      "image_name": "DJI_20200226_143946_704.JPG",
+      "rotation_frobenius": 0.0,
+      "rotation_max_abs": 0.0
+    }
+  ]
+}

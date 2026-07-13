@@ -1,0 +1,49 @@
+{
+  "checkpoint_exists": false,
+  "metrics": null,
+  "metrics_exists": false,
+  "pointcloud": {
+    "bbox_max": [
+      29.288330078125,
+      10.304499626159668,
+      85.88755798339844
+    ],
+    "bbox_min": [
+      -20.114173889160156,
+      -26.181591033935547,
+      16.481380462646484
+    ],
+    "path": "/data1/liuly/FSGS_LLFF/author_preprocessed/nerf_llff_data/room/3_views/dense/fused.ply",
+    "properties": [
+      "x",
+      "y",
+      "z",
+      "nx",
+      "ny",
+      "nz",
+      "red",
+      "green",
+      "blue"
+    ],
+    "sha256": "c656a1e8a3a782108928fd906fabc8f4d5db3c3bbb638b49d80b5e0fb9a7f335",
+    "source_kind": "author_fused_ply",
+    "vertex_count": 18357
+  },
+  "render_exists": false,
+  "resolution": "1_8",
+  "scene": "room",
+  "status": "pending",
+  "test_images": [
+    "DJI_20200226_143850_006.JPG",
+    "DJI_20200226_143901_419.JPG",
+    "DJI_20200226_143912_008.JPG",
+    "DJI_20200226_143926_241.JPG",
+    "DJI_20200226_143938_168.JPG",
+    "DJI_20200226_143948_113.JPG"
+  ],
+  "train_images": [
+    "DJI_20200226_143851_396.JPG",
+    "DJI_20200226_143918_576.JPG",
+    "DJI_20200226_143946_704.JPG"
+  ]
+}

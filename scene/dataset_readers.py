@@ -299,7 +299,72 @@ def readNerfSyntheticInfo(path, white_background, eval, extension=".png"):
                            ply_path=ply_path)
     return scene_info
 
+
+def readRefGSLLFFManifestInfo(path, load_test_cameras=True):
+    from scripts.refgs_llff_common import file_sha256, validate_manifest_payload
+
+    manifest_path = Path(path) / "refgs_llff_manifest.json"
+    with manifest_path.open(encoding="utf-8") as handle:
+        manifest = json.load(handle)
+    validate_manifest_payload(manifest, manifest.get("scene"), manifest.get("resolution"))
+
+    def camera_infos(records):
+        result = []
+        for index, record in enumerate(records):
+            intrinsics = record["intrinsics"]
+            image_path = record.get("prepared_image_path") or record["image_path"]
+            with Image.open(image_path) as source_image:
+                image = source_image.copy()
+            if image.size != (int(intrinsics["width"]), int(intrinsics["height"])):
+                raise RuntimeError("manifest image dimensions do not match scaled intrinsics")
+            rotation_w2c = np.asarray(record["rotation_w2c"], dtype=np.float64)
+            result.append(CameraInfo(
+                uid=index,
+                R=np.transpose(rotation_w2c),
+                T=np.asarray(record["tvec"], dtype=np.float64),
+                FovY=focal2fov(float(intrinsics["fy"]), int(intrinsics["height"])),
+                FovX=focal2fov(float(intrinsics["fx"]), int(intrinsics["width"])),
+                image=image,
+                image_path=str(image_path),
+                image_name=record["image_name"],
+                width=int(intrinsics["width"]),
+                height=int(intrinsics["height"]),
+            ))
+        return result
+
+    train_cam_infos = camera_infos(manifest["train"])
+    test_cam_infos = camera_infos(manifest["test"]) if load_test_cameras else []
+    if not load_test_cameras:
+        print("REFGS_LLFF_TEST_CAMERAS_DEFERRED count={}".format(len(manifest["test"])))
+    if len(train_cam_infos) != 3:
+        raise RuntimeError("Ref-GS LLFF manifest must contain exactly three training cameras")
+
+    pointcloud = manifest["pointcloud"]
+    ply_path = Path(pointcloud["prepared_path"])
+    if not ply_path.is_absolute():
+        ply_path = Path(path) / ply_path
+    actual_hash = file_sha256(ply_path)
+    if actual_hash != pointcloud["sha256"]:
+        raise RuntimeError("blocked_pointcloud: loader hash mismatch")
+    pcd = fetchPly(str(ply_path))
+    if pcd is None or len(pcd.points) != int(pointcloud["vertex_count"]):
+        raise RuntimeError("blocked_pointcloud: loader point count mismatch")
+    print("REFGS_LLFF_PLY_READ path={} sha256={} points={} bbox_min={} bbox_max={}".format(
+        ply_path.resolve(), actual_hash, len(pcd.points),
+        pointcloud["bbox_min"], pointcloud["bbox_max"],
+    ))
+    normalization = getNerfppNorm(train_cam_infos)
+    normalization["source"] = "three_training_cameras_only"
+    return SceneInfo(
+        point_cloud=pcd,
+        train_cameras=train_cam_infos,
+        test_cameras=test_cam_infos,
+        nerf_normalization=normalization,
+        ply_path=str(ply_path),
+    )
+
 sceneLoadTypeCallbacks = {
     "Colmap": readColmapSceneInfo,
-    "Blender" : readNerfSyntheticInfo
+    "Blender" : readNerfSyntheticInfo,
+    "RefGSLLFF": readRefGSLLFFManifestInfo,
 }

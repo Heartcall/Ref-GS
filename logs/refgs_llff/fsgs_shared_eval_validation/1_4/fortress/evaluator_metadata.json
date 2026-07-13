@@ -1,0 +1,12 @@
+{
+  "alpha_handling": "first three channels; LLFF inputs are opaque RGB",
+  "clipping": "none before metrics; decoded PNG values are in [0,1]",
+  "color_space": "PIL decoded RGB, no linearization",
+  "evaluator_path": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/scripts/evaluate_refgs_llff.py",
+  "evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+  "fsgs_metrics_path": "/home/liuly/Surface_Reconstruction/Sparse/FSGS/metrics.py",
+  "fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+  "image_range": "[0,1]",
+  "lpips_backbone": "vgg",
+  "protocol": "shared FSGS LLFF evaluator"
+}

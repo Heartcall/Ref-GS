@@ -1,0 +1,14 @@
+CUDA_PROBE {"cuda_available": true, "cuda_visible_devices": "1", "current_device": 0, "device_count": 1, "gpu_name": "NVIDIA RTX A5000", "passes": true, "physical_gpu": "1", "returncode": 0, "stderr": ""}
+$ CUDA_VISIBLE_DEVICES=1 REFGS_PHYSICAL_GPU=1 /home/liuly/anaconda3/envs/ref_gs/bin/python /home/liuly/Surface_Reconstruction/Glossy/Ref-GS/render.py -s /data1/liuly/RefGS_LLFF/prepared/1_8/horns -m /data1/liuly/RefGS_LLFF/output/llff_sparse/1_8/horns --iteration 10000 --renderer refgs --image-key pbr_rgb --skip_train
+/home/liuly/anaconda3/envs/ref_gs/lib/python3.7/site-packages/torch/functional.py:478: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at  /opt/conda/conda-bld/pytorch_1659484809535/work/aten/src/ATen/native/TensorShape.cpp:2894.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Looking for config file in /data1/liuly/RefGS_LLFF/output/llff_sparse/1_8/horns/cfg_args
+Config file found: /data1/liuly/RefGS_LLFF/output/llff_sparse/1_8/horns/cfg_args
+Rendering /data1/liuly/RefGS_LLFF/output/llff_sparse/1_8/horns [13/07 11:45:33]
+SphMipEncoding ### level: 9   size: 512 [13/07 11:45:34]
+Loading trained model at iteration 10000 [13/07 11:45:34]
+REFGS_LLFF_PLY_READ path=/data1/liuly/FSGS_LLFF/author_preprocessed/nerf_llff_data/horns/3_views/dense/fused.ply sha256=2adda809bc9aaa71b7d5db51336527e22b4ec2b25dfb1b3090ebb62310253cde points=19397 bbox_min=[-63.47414779663086, -32.51755142211914, 13.747246742248535] bbox_max=[39.42698669433594, 41.96894073486328, 153.34005737304688] [13/07 11:45:34]
+resolution_scales [1.0] [13/07 11:45:34]
+Loading Training Cameras [13/07 11:45:34]
+Loading Test Cameras [13/07 11:45:35]
+Load Path /data1/liuly/RefGS_LLFF/output/llff_sparse/1_8/horns/point_cloud/iteration_10000/point_cloud.ply [13/07 11:45:35]

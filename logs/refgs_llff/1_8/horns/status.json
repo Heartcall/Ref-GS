@@ -1,0 +1,189 @@
+{
+  "checkpoint_exists": true,
+  "failure_reason": "",
+  "gpu": 1,
+  "gt_count": 8,
+  "iteration": 10000,
+  "metrics": {
+    "lpips": 0.36643192917108536,
+    "psnr": 16.164878010749817,
+    "ssim": 0.5018186420202255
+  },
+  "metrics_exists": true,
+  "pointcloud": {
+    "bbox_max": [
+      39.42698669433594,
+      41.96894073486328,
+      153.34005737304688
+    ],
+    "bbox_min": [
+      -63.47414779663086,
+      -32.51755142211914,
+      13.747246742248535
+    ],
+    "path": "/data1/liuly/FSGS_LLFF/author_preprocessed/nerf_llff_data/horns/3_views/dense/fused.ply",
+    "properties": [
+      "x",
+      "y",
+      "z",
+      "nx",
+      "ny",
+      "nz",
+      "red",
+      "green",
+      "blue"
+    ],
+    "sha256": "2adda809bc9aaa71b7d5db51336527e22b4ec2b25dfb1b3090ebb62310253cde",
+    "source_kind": "author_fused_ply",
+    "vertex_count": 19397
+  },
+  "protocol_fingerprint_matches": true,
+  "render_count": 8,
+  "render_exists": true,
+  "resolution": "1_8",
+  "scene": "horns",
+  "smoke_certification": {
+    "certified_at": "2026-07-13T06:19:32.183575+00:00",
+    "checks": {
+      "all_stage_records_complete": true,
+      "checkpoint_complete": true,
+      "exact_train_test_counts": true,
+      "no_network_download": true,
+      "no_oom": true,
+      "no_traceback": true,
+      "prepared_complete": true,
+      "protocol_fingerprint_matches": true,
+      "render_complete": true,
+      "shared_eval_complete": true,
+      "test_cameras_deferred": true,
+      "train_command_exact": true,
+      "training_logged_three_views": true
+    },
+    "runner_sha256": "302333712ee51858a7bfc7058eb66e088b2fa9ece447e1b297cc34b89e1c23b2",
+    "version": 2
+  },
+  "smoke_gate_passed": true,
+  "stages": {
+    "eval": {
+      "command": "CUDA_VISIBLE_DEVICES=1 REFGS_PHYSICAL_GPU=1 /home/liuly/anaconda3/envs/ref_gs/bin/python /home/liuly/Surface_Reconstruction/Glossy/Ref-GS/scripts/evaluate_refgs_llff.py --model-path /data1/liuly/RefGS_LLFF/output/llff_sparse/1_8/horns --iteration 10000 --manifest /data1/liuly/RefGS_LLFF/prepared/1_8/horns/refgs_llff_manifest.json",
+      "competing_compute_processes": [],
+      "cuda_probe": {
+        "cuda_available": true,
+        "cuda_visible_devices": "1",
+        "current_device": 0,
+        "device_count": 1,
+        "gpu_name": "NVIDIA RTX A5000",
+        "passes": true,
+        "physical_gpu": "1",
+        "returncode": 0,
+        "stderr": ""
+      },
+      "cuda_visible_devices": "1",
+      "elapsed_seconds": 15.445041871163994,
+      "failure_reason": "",
+      "gpu_before": {
+        "memory_free_mib": 24244,
+        "memory_used_mib": 3,
+        "name": "NVIDIA RTX A5000",
+        "physical_index": 1,
+        "utilization_percent": 0
+      },
+      "peak_increment_mib": 1826,
+      "peak_memory_used_mib": 1829,
+      "physical_gpu": 1,
+      "returncode": 0,
+      "stage": "eval",
+      "status": "completed"
+    },
+    "prepare": {
+      "command": "CUDA_VISIBLE_DEVICES=1 REFGS_PHYSICAL_GPU=1 /home/liuly/anaconda3/envs/ref_gs/bin/python /home/liuly/Surface_Reconstruction/Glossy/Ref-GS/scripts/prepare_refgs_llff.py --scene horns --resolution 1_8 --data-root /data1/liuly/FSGS_LLFF/dataset/nerf_llff_data --author-preprocessed-root /data1/liuly/FSGS_LLFF/author_preprocessed --prepared-root /data1/liuly/RefGS_LLFF/prepared --log-root logs/refgs_llff",
+      "cuda_probe": null,
+      "cuda_visible_devices": "1",
+      "elapsed_seconds": 2.004550071200356,
+      "failure_reason": "",
+      "gpu_before": null,
+      "peak_increment_mib": null,
+      "peak_memory_used_mib": null,
+      "physical_gpu": 1,
+      "returncode": 0,
+      "stage": "prepare",
+      "status": "completed"
+    },
+    "render": {
+      "command": "CUDA_VISIBLE_DEVICES=1 REFGS_PHYSICAL_GPU=1 /home/liuly/anaconda3/envs/ref_gs/bin/python /home/liuly/Surface_Reconstruction/Glossy/Ref-GS/render.py -s /data1/liuly/RefGS_LLFF/prepared/1_8/horns -m /data1/liuly/RefGS_LLFF/output/llff_sparse/1_8/horns --iteration 10000 --renderer refgs --image-key pbr_rgb --skip_train",
+      "cuda_probe": {
+        "cuda_available": true,
+        "cuda_visible_devices": "1",
+        "current_device": 0,
+        "device_count": 1,
+        "gpu_name": "NVIDIA RTX A5000",
+        "passes": true,
+        "physical_gpu": "1",
+        "returncode": 0,
+        "stderr": ""
+      },
+      "cuda_visible_devices": "1",
+      "elapsed_seconds": 5.562937055947259,
+      "failure_reason": "",
+      "gpu_before": {
+        "memory_free_mib": 24244,
+        "memory_used_mib": 3,
+        "name": "NVIDIA RTX A5000",
+        "physical_index": 1,
+        "utilization_percent": 0
+      },
+      "peak_increment_mib": 3482,
+      "peak_memory_used_mib": 3485,
+      "physical_gpu": 1,
+      "returncode": 0,
+      "stage": "render",
+      "status": "completed"
+    },
+    "train": {
+      "command": "CUDA_VISIBLE_DEVICES=1 REFGS_PHYSICAL_GPU=1 /home/liuly/anaconda3/envs/ref_gs/bin/python /home/liuly/Surface_Reconstruction/Glossy/Ref-GS/train.py -s /data1/liuly/RefGS_LLFF/prepared/1_8/horns -m /data1/liuly/RefGS_LLFF/output/llff_sparse/1_8/horns --eval --iterations 10000 --save_iterations 5000 10000",
+      "cuda_probe": {
+        "cuda_available": true,
+        "cuda_visible_devices": "1",
+        "current_device": 0,
+        "device_count": 1,
+        "gpu_name": "NVIDIA RTX A5000",
+        "passes": true,
+        "physical_gpu": "1",
+        "returncode": 0,
+        "stderr": ""
+      },
+      "cuda_visible_devices": "1",
+      "elapsed_seconds": 389.234038450988,
+      "failure_reason": "",
+      "gpu_before": {
+        "memory_free_mib": 24244,
+        "memory_used_mib": 3,
+        "name": "NVIDIA RTX A5000",
+        "physical_index": 1,
+        "utilization_percent": 0
+      },
+      "peak_increment_mib": 24090,
+      "peak_memory_used_mib": 24093,
+      "physical_gpu": 1,
+      "returncode": 0,
+      "stage": "train",
+      "status": "completed"
+    }
+  },
+  "status": "completed",
+  "test_images": [
+    "DJI_20200223_163016_842.jpg",
+    "DJI_20200223_163024_597.jpg",
+    "DJI_20200223_163033_432.jpg",
+    "DJI_20200223_163047_307.jpg",
+    "DJI_20200223_163055_437.jpg",
+    "DJI_20200223_163103_777.jpg",
+    "DJI_20200223_163201_633.jpg",
+    "DJI_20200223_163208_938.jpg"
+  ],
+  "train_images": [
+    "DJI_20200223_163017_967.jpg",
+    "DJI_20200223_163053_863.jpg",
+    "DJI_20200223_163225_243.jpg"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "checkpoint_exists": false,
+  "metrics": null,
+  "metrics_exists": false,
+  "pointcloud": {
+    "bbox_max": [
+      50.798580169677734,
+      45.53849792480469,
+      285.0494079589844
+    ],
+    "bbox_min": [
+      -104.96521759033203,
+      -57.08025360107422,
+      12.079025268554688
+    ],
+    "path": "/data1/liuly/FSGS_LLFF/author_preprocessed/nerf_llff_data/flower/3_views/dense/fused.ply",
+    "properties": [
+      "x",
+      "y",
+      "z",
+      "nx",
+      "ny",
+      "nz",
+      "red",
+      "green",
+      "blue"
+    ],
+    "sha256": "867120768de512d8953a3d3c1e815326ceed547bc421e760e8f09bcd8b770026",
+    "source_kind": "author_fused_ply",
+    "vertex_count": 3948
+  },
+  "render_exists": false,
+  "resolution": "1_4",
+  "scene": "flower",
+  "status": "pending",
+  "test_images": [
+    "IMG_2962.JPG",
+    "IMG_2970.JPG",
+    "IMG_2978.JPG",
+    "IMG_2986.JPG",
+    "IMG_2994.JPG"
+  ],
+  "train_images": [
+    "IMG_2963.JPG",
+    "IMG_2979.JPG",
+    "IMG_2995.JPG"
+  ]
+}

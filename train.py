@@ -1,5 +1,4 @@
 import os
-os.environ['CUDA_LAUNCH_BLOCKING'] = '1'
 
 import sys
 import uuid
@@ -23,10 +22,18 @@ try:
 except ImportError:
     TENSORBOARD_FOUND = False
 
+
+def training_target(image, background):
+    if image.shape[0] < 4:
+        return image[:3], None
+    alpha = image[3:4]
+    return image[:3] * alpha + (1 - alpha) * background[:, None, None], alpha
+
 def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoint_iterations, checkpoint):
     first_iter = 0
     tb_writer = prepare_output_and_logger(dataset)
     gaussians = GaussianModel(dataset.sh_degree, dataset)
+    dataset.load_test_cameras = False
     
     scene = Scene(dataset, gaussians, resolution_scales=[1.0])
     
@@ -73,8 +80,7 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
         visibility_filter = render_pkg["visibility_filter"]
         radii = render_pkg["radii"]
         
-        gt_image = viewpoint_cam.original_image.cuda()
-        gt_image = gt_image[:3,...] * gt_image[3:,...] + (1-gt_image[3:,...]) * bg[:, None, None]
+        gt_image, gt_mask = training_target(viewpoint_cam.original_image.cuda(), bg)
             
         loss = 0.0
         
@@ -83,8 +89,7 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
         loss_pbr = (1.0 - opt.lambda_dssim) * Ll1 + opt.lambda_dssim * (1.0 - ssim(pbr_rgb, gt_image))
         loss += loss_pbr
 
-        if iteration < 3000:
-            gt_mask = viewpoint_cam.original_image.cuda()[3:,...]
+        if iteration < 3000 and gt_mask is not None:
             alpha_loss = binary_cross_entropy(render_pkg["rend_alpha"], gt_mask)
             loss += alpha_loss
 

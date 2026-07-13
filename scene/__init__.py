@@ -12,6 +12,7 @@
 import os
 import random
 import json
+import shutil
 from utils.system_utils import searchForMaxIteration
 from scene.dataset_readers import sceneLoadTypeCallbacks
 from scene.gaussian_model import GaussianModel
@@ -40,7 +41,12 @@ class Scene:
         self.train_cameras = {}
         self.test_cameras = {}
 
-        if os.path.exists(os.path.join(args.source_path, "sparse")):
+        if os.path.exists(os.path.join(args.source_path, "refgs_llff_manifest.json")):
+            scene_info = sceneLoadTypeCallbacks["RefGSLLFF"](
+                args.source_path,
+                load_test_cameras=getattr(args, "load_test_cameras", True),
+            )
+        elif os.path.exists(os.path.join(args.source_path, "sparse")):
             scene_info = sceneLoadTypeCallbacks["Colmap"](args.source_path, args.images, args.eval)
         elif os.path.exists(os.path.join(args.source_path, "transforms_train.json")):
             print("Found transforms_train.json file, assuming Blender data set!")
@@ -61,6 +67,21 @@ class Scene:
                 json_cams.append(camera_to_JSON(id, cam))
             with open(os.path.join(self.model_path, "cameras.json"), 'w') as file:
                 json.dump(json_cams, file)
+            llff_manifest = os.path.join(args.source_path, "refgs_llff_manifest.json")
+            if os.path.isfile(llff_manifest):
+                from scripts.refgs_llff_common import file_sha256
+                manifest_snapshot = os.path.join(self.model_path, "refgs_llff_manifest.json")
+                shutil.copy2(llff_manifest, manifest_snapshot)
+                with open(llff_manifest, encoding="utf-8") as file:
+                    llff_payload = json.load(file)
+                with open(os.path.join(self.model_path, "llff_protocol.json"), "w", encoding="utf-8") as file:
+                    json.dump({
+                        "manifest_sha256": file_sha256(llff_manifest),
+                        "pointcloud_sha256": llff_payload["pointcloud"]["sha256"],
+                        "scene": llff_payload["scene"],
+                        "resolution": llff_payload["resolution"],
+                        "recorded_by": "scene_initialization",
+                    }, file, indent=2)
 
         if shuffle:
             random.shuffle(scene_info.train_cameras)  # Multi-res consistent random shuffling
