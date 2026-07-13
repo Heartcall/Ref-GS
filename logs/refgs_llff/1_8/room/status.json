@@ -1,7 +1,15 @@
 {
-  "checkpoint_exists": false,
-  "metrics": null,
-  "metrics_exists": false,
+  "checkpoint_exists": true,
+  "failure_reason": "",
+  "gpu": 1,
+  "gt_count": 6,
+  "iteration": 10000,
+  "metrics": {
+    "lpips": 0.3908570160468419,
+    "psnr": 16.93183135986328,
+    "ssim": 0.6389108896255493
+  },
+  "metrics_exists": true,
   "pointcloud": {
     "bbox_max": [
       29.288330078125,
@@ -29,10 +37,113 @@
     "source_kind": "author_fused_ply",
     "vertex_count": 18357
   },
-  "render_exists": false,
+  "prepared_complete": true,
+  "protocol_fingerprint_matches": true,
+  "render_count": 6,
+  "render_exists": true,
   "resolution": "1_8",
   "scene": "room",
-  "status": "pending",
+  "stages": {
+    "eval": {
+      "command": "CUDA_VISIBLE_DEVICES=1 REFGS_PHYSICAL_GPU=1 /home/liuly/anaconda3/envs/ref_gs/bin/python /home/liuly/Surface_Reconstruction/Glossy/Ref-GS/scripts/evaluate_refgs_llff.py --model-path /data1/liuly/RefGS_LLFF/output/llff_sparse/1_8/room --iteration 10000 --manifest /data1/liuly/RefGS_LLFF/prepared/1_8/room/refgs_llff_manifest.json",
+      "competing_compute_processes": [],
+      "cuda_probe": {
+        "cuda_available": true,
+        "cuda_visible_devices": "1",
+        "current_device": 0,
+        "device_count": 1,
+        "gpu_name": "NVIDIA RTX A5000",
+        "passes": true,
+        "physical_gpu": "1",
+        "returncode": 0,
+        "stderr": ""
+      },
+      "cuda_visible_devices": "1",
+      "elapsed_seconds": 12.202714045066386,
+      "failure_reason": "",
+      "gpu_before": {
+        "memory_free_mib": 24244,
+        "memory_used_mib": 3,
+        "name": "NVIDIA RTX A5000",
+        "physical_index": 1,
+        "utilization_percent": 0
+      },
+      "peak_increment_mib": 1826,
+      "peak_memory_used_mib": 1829,
+      "physical_gpu": 1,
+      "returncode": 0,
+      "stage": "eval",
+      "status": "completed"
+    },
+    "prepare": {
+      "skipped_existing": true,
+      "stage": "prepare",
+      "status": "completed"
+    },
+    "render": {
+      "command": "CUDA_VISIBLE_DEVICES=1 REFGS_PHYSICAL_GPU=1 /home/liuly/anaconda3/envs/ref_gs/bin/python /home/liuly/Surface_Reconstruction/Glossy/Ref-GS/render.py -s /data1/liuly/RefGS_LLFF/prepared/1_8/room -m /data1/liuly/RefGS_LLFF/output/llff_sparse/1_8/room --iteration 10000 --renderer refgs --image-key pbr_rgb --skip_train",
+      "competing_compute_processes": [],
+      "cuda_probe": {
+        "cuda_available": true,
+        "cuda_visible_devices": "1",
+        "current_device": 0,
+        "device_count": 1,
+        "gpu_name": "NVIDIA RTX A5000",
+        "passes": true,
+        "physical_gpu": "1",
+        "returncode": 0,
+        "stderr": ""
+      },
+      "cuda_visible_devices": "1",
+      "elapsed_seconds": 5.5485955639742315,
+      "failure_reason": "",
+      "gpu_before": {
+        "memory_free_mib": 24244,
+        "memory_used_mib": 3,
+        "name": "NVIDIA RTX A5000",
+        "physical_index": 1,
+        "utilization_percent": 0
+      },
+      "peak_increment_mib": 3014,
+      "peak_memory_used_mib": 3017,
+      "physical_gpu": 1,
+      "returncode": 0,
+      "stage": "render",
+      "status": "completed"
+    },
+    "train": {
+      "command": "CUDA_VISIBLE_DEVICES=1 REFGS_PHYSICAL_GPU=1 /home/liuly/anaconda3/envs/ref_gs/bin/python /home/liuly/Surface_Reconstruction/Glossy/Ref-GS/train.py -s /data1/liuly/RefGS_LLFF/prepared/1_8/room -m /data1/liuly/RefGS_LLFF/output/llff_sparse/1_8/room --eval --iterations 10000 --save_iterations 5000 10000",
+      "competing_compute_processes": [],
+      "cuda_probe": {
+        "cuda_available": true,
+        "cuda_visible_devices": "1",
+        "current_device": 0,
+        "device_count": 1,
+        "gpu_name": "NVIDIA RTX A5000",
+        "passes": true,
+        "physical_gpu": "1",
+        "returncode": 0,
+        "stderr": ""
+      },
+      "cuda_visible_devices": "1",
+      "elapsed_seconds": 375.2017871958669,
+      "failure_reason": "",
+      "gpu_before": {
+        "memory_free_mib": 24244,
+        "memory_used_mib": 3,
+        "name": "NVIDIA RTX A5000",
+        "physical_index": 1,
+        "utilization_percent": 0
+      },
+      "peak_increment_mib": 24004,
+      "peak_memory_used_mib": 24007,
+      "physical_gpu": 1,
+      "returncode": 0,
+      "stage": "train",
+      "status": "completed"
+    }
+  },
+  "status": "completed",
   "test_images": [
     "DJI_20200226_143850_006.JPG",
     "DJI_20200226_143901_419.JPG",

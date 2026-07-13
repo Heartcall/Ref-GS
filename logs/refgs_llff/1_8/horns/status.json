@@ -43,133 +43,25 @@
   "render_exists": true,
   "resolution": "1_8",
   "scene": "horns",
-  "smoke_certification": {
-    "certified_at": "2026-07-13T07:26:43.064524+00:00",
-    "checks": {
-      "all_stage_records_complete": true,
-      "checkpoint_complete": true,
-      "exact_train_test_counts": true,
-      "no_network_download": true,
-      "no_oom": true,
-      "no_traceback": true,
-      "prepared_complete": true,
-      "protocol_fingerprint_matches": true,
-      "render_complete": true,
-      "shared_eval_complete": true,
-      "test_cameras_deferred": true,
-      "train_command_exact": true,
-      "training_logged_three_views": true
-    },
-    "runner_sha256": "352fd387ee905ce14a2c19d4c55bbe6061f93cab10a55decd5bf73a2639a185a",
-    "version": 2
-  },
   "smoke_gate_passed": true,
   "stages": {
     "eval": {
-      "command": "CUDA_VISIBLE_DEVICES=2 REFGS_PHYSICAL_GPU=2 /home/liuly/anaconda3/envs/ref_gs/bin/python /home/liuly/Surface_Reconstruction/Glossy/Ref-GS/scripts/evaluate_refgs_llff.py --model-path /data1/liuly/RefGS_LLFF/output/llff_sparse/1_8/horns --iteration 10000 --manifest /data1/liuly/RefGS_LLFF/prepared/1_8/horns/refgs_llff_manifest.json",
-      "competing_compute_processes": [],
-      "cuda_probe": {
-        "cuda_available": true,
-        "cuda_visible_devices": "2",
-        "current_device": 0,
-        "device_count": 1,
-        "gpu_name": "NVIDIA RTX A5000",
-        "passes": true,
-        "physical_gpu": "2",
-        "returncode": 0,
-        "stderr": ""
-      },
-      "cuda_visible_devices": "2",
-      "elapsed_seconds": 16.59844731609337,
-      "failure_reason": "",
-      "gpu_before": {
-        "memory_free_mib": 24244,
-        "memory_used_mib": 3,
-        "name": "NVIDIA RTX A5000",
-        "physical_index": 2,
-        "utilization_percent": 0
-      },
-      "peak_increment_mib": 1826,
-      "peak_memory_used_mib": 1829,
-      "physical_gpu": 2,
-      "returncode": 0,
+      "skipped_existing": true,
       "stage": "eval",
       "status": "completed"
     },
     "prepare": {
-      "command": "CUDA_VISIBLE_DEVICES=2 REFGS_PHYSICAL_GPU=2 /home/liuly/anaconda3/envs/ref_gs/bin/python /home/liuly/Surface_Reconstruction/Glossy/Ref-GS/scripts/prepare_refgs_llff.py --scene horns --resolution 1_8 --data-root /data1/liuly/FSGS_LLFF/dataset/nerf_llff_data --author-preprocessed-root /data1/liuly/FSGS_LLFF/author_preprocessed --prepared-root /data1/liuly/RefGS_LLFF/prepared --log-root /home/liuly/Surface_Reconstruction/Glossy/Ref-GS/logs/refgs_llff",
-      "competing_compute_processes": [],
-      "cuda_probe": null,
-      "cuda_visible_devices": "2",
-      "elapsed_seconds": 2.0051121131982654,
-      "failure_reason": "",
-      "gpu_before": null,
-      "peak_increment_mib": null,
-      "peak_memory_used_mib": null,
-      "physical_gpu": 2,
-      "returncode": 0,
+      "skipped_existing": true,
       "stage": "prepare",
       "status": "completed"
     },
     "render": {
-      "command": "CUDA_VISIBLE_DEVICES=2 REFGS_PHYSICAL_GPU=2 /home/liuly/anaconda3/envs/ref_gs/bin/python /home/liuly/Surface_Reconstruction/Glossy/Ref-GS/render.py -s /data1/liuly/RefGS_LLFF/prepared/1_8/horns -m /data1/liuly/RefGS_LLFF/output/llff_sparse/1_8/horns --iteration 10000 --renderer refgs --image-key pbr_rgb --skip_train",
-      "competing_compute_processes": [],
-      "cuda_probe": {
-        "cuda_available": true,
-        "cuda_visible_devices": "2",
-        "current_device": 0,
-        "device_count": 1,
-        "gpu_name": "NVIDIA RTX A5000",
-        "passes": true,
-        "physical_gpu": "2",
-        "returncode": 0,
-        "stderr": ""
-      },
-      "cuda_visible_devices": "2",
-      "elapsed_seconds": 5.576172194909304,
-      "failure_reason": "",
-      "gpu_before": {
-        "memory_free_mib": 24244,
-        "memory_used_mib": 3,
-        "name": "NVIDIA RTX A5000",
-        "physical_index": 2,
-        "utilization_percent": 0
-      },
-      "peak_increment_mib": 3102,
-      "peak_memory_used_mib": 3105,
-      "physical_gpu": 2,
-      "returncode": 0,
+      "skipped_existing": true,
       "stage": "render",
       "status": "completed"
     },
     "train": {
-      "command": "CUDA_VISIBLE_DEVICES=2 REFGS_PHYSICAL_GPU=2 /home/liuly/anaconda3/envs/ref_gs/bin/python /home/liuly/Surface_Reconstruction/Glossy/Ref-GS/train.py -s /data1/liuly/RefGS_LLFF/prepared/1_8/horns -m /data1/liuly/RefGS_LLFF/output/llff_sparse/1_8/horns --eval --iterations 10000 --save_iterations 5000 10000",
-      "competing_compute_processes": [],
-      "cuda_probe": {
-        "cuda_available": true,
-        "cuda_visible_devices": "2",
-        "current_device": 0,
-        "device_count": 1,
-        "gpu_name": "NVIDIA RTX A5000",
-        "passes": true,
-        "physical_gpu": "2",
-        "returncode": 0,
-        "stderr": ""
-      },
-      "cuda_visible_devices": "2",
-      "elapsed_seconds": 391.54413582384586,
-      "failure_reason": "",
-      "gpu_before": {
-        "memory_free_mib": 24244,
-        "memory_used_mib": 3,
-        "name": "NVIDIA RTX A5000",
-        "physical_index": 2,
-        "utilization_percent": 0
-      },
-      "peak_increment_mib": 24090,
-      "peak_memory_used_mib": 24093,
-      "physical_gpu": 2,
-      "returncode": 0,
+      "skipped_existing": true,
       "stage": "train",
       "status": "completed"
     }

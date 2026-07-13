@@ -1,0 +1,273 @@
+===== GPU 2 / flower / 2026年 07月 13日 星期一 15:51:19 CST =====
+{
+  "checkpoint_exists": true,
+  "failure_reason": "",
+  "gpu": 2,
+  "gt_count": 5,
+  "iteration": 10000,
+  "metrics": {
+    "lpips": 0.46538727879524233,
+    "psnr": 14.997223281860352,
+    "ssim": 0.33817635774612426
+  },
+  "metrics_exists": true,
+  "pointcloud": {
+    "bbox_max": [
+      50.798580169677734,
+      45.53849792480469,
+      285.0494079589844
+    ],
+    "bbox_min": [
+      -104.96521759033203,
+      -57.08025360107422,
+      12.079025268554688
+    ],
+    "path": "/data1/liuly/FSGS_LLFF/author_preprocessed/nerf_llff_data/flower/3_views/dense/fused.ply",
+    "properties": [
+      "x",
+      "y",
+      "z",
+      "nx",
+      "ny",
+      "nz",
+      "red",
+      "green",
+      "blue"
+    ],
+    "sha256": "867120768de512d8953a3d3c1e815326ceed547bc421e760e8f09bcd8b770026",
+    "source_kind": "author_fused_ply",
+    "vertex_count": 3948
+  },
+  "prepared_complete": true,
+  "protocol_fingerprint_matches": true,
+  "render_count": 5,
+  "render_exists": true,
+  "resolution": "1_8",
+  "scene": "flower",
+  "smoke_certification": {
+    "certified_at": "2026-07-13T07:58:04.332015+00:00",
+    "checks": {
+      "all_stage_records_complete": true,
+      "checkpoint_complete": true,
+      "exact_train_test_counts": true,
+      "no_network_download": true,
+      "no_oom": true,
+      "no_traceback": true,
+      "prepared_complete": true,
+      "protocol_fingerprint_matches": true,
+      "render_complete": true,
+      "shared_eval_complete": true,
+      "test_cameras_deferred": true,
+      "train_command_exact": true,
+      "training_logged_three_views": true
+    },
+    "runner_sha256": "352fd387ee905ce14a2c19d4c55bbe6061f93cab10a55decd5bf73a2639a185a",
+    "version": 2
+  },
+  "smoke_gate_passed": true,
+  "stages": {
+    "eval": {
+      "command": "CUDA_VISIBLE_DEVICES=2 REFGS_PHYSICAL_GPU=2 /home/liuly/anaconda3/envs/ref_gs/bin/python /home/liuly/Surface_Reconstruction/Glossy/Ref-GS/scripts/evaluate_refgs_llff.py --model-path /data1/liuly/RefGS_LLFF/output/llff_sparse/1_8/flower --iteration 10000 --manifest /data1/liuly/RefGS_LLFF/prepared/1_8/flower/refgs_llff_manifest.json",
+      "competing_compute_processes": [],
+      "cuda_probe": {
+        "cuda_available": true,
+        "cuda_visible_devices": "2",
+        "current_device": 0,
+        "device_count": 1,
+        "gpu_name": "NVIDIA RTX A5000",
+        "passes": true,
+        "physical_gpu": "2",
+        "returncode": 0,
+        "stderr": ""
+      },
+      "cuda_visible_devices": "2",
+      "elapsed_seconds": 12.177477603079751,
+      "failure_reason": "",
+      "gpu_before": {
+        "memory_free_mib": 24244,
+        "memory_used_mib": 3,
+        "name": "NVIDIA RTX A5000",
+        "physical_index": 2,
+        "utilization_percent": 0
+      },
+      "peak_increment_mib": 1826,
+      "peak_memory_used_mib": 1829,
+      "physical_gpu": 2,
+      "returncode": 0,
+      "stage": "eval",
+      "status": "completed"
+    },
+    "prepare": {
+      "skipped_existing": true,
+      "stage": "prepare",
+      "status": "completed"
+    },
+    "render": {
+      "command": "CUDA_VISIBLE_DEVICES=2 REFGS_PHYSICAL_GPU=2 /home/liuly/anaconda3/envs/ref_gs/bin/python /home/liuly/Surface_Reconstruction/Glossy/Ref-GS/render.py -s /data1/liuly/RefGS_LLFF/prepared/1_8/flower -m /data1/liuly/RefGS_LLFF/output/llff_sparse/1_8/flower --iteration 10000 --renderer refgs --image-key pbr_rgb --skip_train",
+      "competing_compute_processes": [],
+      "cuda_probe": {
+        "cuda_available": true,
+        "cuda_visible_devices": "2",
+        "current_device": 0,
+        "device_count": 1,
+        "gpu_name": "NVIDIA RTX A5000",
+        "passes": true,
+        "physical_gpu": "2",
+        "returncode": 0,
+        "stderr": ""
+      },
+      "cuda_visible_devices": "2",
+      "elapsed_seconds": 5.574792966945097,
+      "failure_reason": "",
+      "gpu_before": {
+        "memory_free_mib": 24244,
+        "memory_used_mib": 3,
+        "name": "NVIDIA RTX A5000",
+        "physical_index": 2,
+        "utilization_percent": 0
+      },
+      "peak_increment_mib": 2878,
+      "peak_memory_used_mib": 2881,
+      "physical_gpu": 2,
+      "returncode": 0,
+      "stage": "render",
+      "status": "completed"
+    },
+    "train": {
+      "command": "CUDA_VISIBLE_DEVICES=2 REFGS_PHYSICAL_GPU=2 /home/liuly/anaconda3/envs/ref_gs/bin/python /home/liuly/Surface_Reconstruction/Glossy/Ref-GS/train.py -s /data1/liuly/RefGS_LLFF/prepared/1_8/flower -m /data1/liuly/RefGS_LLFF/output/llff_sparse/1_8/flower --eval --iterations 10000 --save_iterations 5000 10000",
+      "competing_compute_processes": [],
+      "cuda_probe": {
+        "cuda_available": true,
+        "cuda_visible_devices": "2",
+        "current_device": 0,
+        "device_count": 1,
+        "gpu_name": "NVIDIA RTX A5000",
+        "passes": true,
+        "physical_gpu": "2",
+        "returncode": 0,
+        "stderr": ""
+      },
+      "cuda_visible_devices": "2",
+      "elapsed_seconds": 383.3815443010535,
+      "failure_reason": "",
+      "gpu_before": {
+        "memory_free_mib": 24244,
+        "memory_used_mib": 3,
+        "name": "NVIDIA RTX A5000",
+        "physical_index": 2,
+        "utilization_percent": 0
+      },
+      "peak_increment_mib": 17276,
+      "peak_memory_used_mib": 17279,
+      "physical_gpu": 2,
+      "returncode": 0,
+      "stage": "train",
+      "status": "completed"
+    }
+  },
+  "status": "completed",
+  "test_images": [
+    "IMG_2962.JPG",
+    "IMG_2970.JPG",
+    "IMG_2978.JPG",
+    "IMG_2986.JPG",
+    "IMG_2994.JPG"
+  ],
+  "train_images": [
+    "IMG_2963.JPG",
+    "IMG_2979.JPG",
+    "IMG_2995.JPG"
+  ]
+}
+===== GPU 2 / horns / 2026年 07月 13日 星期一 15:58:04 CST =====
+{
+  "checkpoint_exists": true,
+  "failure_reason": "",
+  "gpu": 2,
+  "gt_count": 8,
+  "iteration": 10000,
+  "metrics": {
+    "lpips": 0.36761368438601494,
+    "psnr": 16.261910319328308,
+    "ssim": 0.5077221058309078
+  },
+  "metrics_exists": true,
+  "pointcloud": {
+    "bbox_max": [
+      39.42698669433594,
+      41.96894073486328,
+      153.34005737304688
+    ],
+    "bbox_min": [
+      -63.47414779663086,
+      -32.51755142211914,
+      13.747246742248535
+    ],
+    "path": "/data1/liuly/FSGS_LLFF/author_preprocessed/nerf_llff_data/horns/3_views/dense/fused.ply",
+    "properties": [
+      "x",
+      "y",
+      "z",
+      "nx",
+      "ny",
+      "nz",
+      "red",
+      "green",
+      "blue"
+    ],
+    "sha256": "2adda809bc9aaa71b7d5db51336527e22b4ec2b25dfb1b3090ebb62310253cde",
+    "source_kind": "author_fused_ply",
+    "vertex_count": 19397
+  },
+  "prepared_complete": true,
+  "protocol_fingerprint_matches": true,
+  "render_count": 8,
+  "render_exists": true,
+  "resolution": "1_8",
+  "scene": "horns",
+  "smoke_gate_passed": true,
+  "stages": {
+    "eval": {
+      "skipped_existing": true,
+      "stage": "eval",
+      "status": "completed"
+    },
+    "prepare": {
+      "skipped_existing": true,
+      "stage": "prepare",
+      "status": "completed"
+    },
+    "render": {
+      "skipped_existing": true,
+      "stage": "render",
+      "status": "completed"
+    },
+    "train": {
+      "skipped_existing": true,
+      "stage": "train",
+      "status": "completed"
+    }
+  },
+  "status": "completed",
+  "test_images": [
+    "DJI_20200223_163016_842.jpg",
+    "DJI_20200223_163024_597.jpg",
+    "DJI_20200223_163033_432.jpg",
+    "DJI_20200223_163047_307.jpg",
+    "DJI_20200223_163055_437.jpg",
+    "DJI_20200223_163103_777.jpg",
+    "DJI_20200223_163201_633.jpg",
+    "DJI_20200223_163208_938.jpg"
+  ],
+  "train_images": [
+    "DJI_20200223_163017_967.jpg",
+    "DJI_20200223_163053_863.jpg",
+    "DJI_20200223_163225_243.jpg"
+  ]
+}
+===== GPU 2 / orchids / 2026年 07月 13日 星期一 15:58:04 CST =====
+only horns 1/8 on physical GPU 2 may run before the smoke gate
+orchids returncode=2
+===== GPU 2 / trex / 2026年 07月 13日 星期一 15:58:04 CST =====
+only horns 1/8 on physical GPU 2 may run before the smoke gate
+trex returncode=2
