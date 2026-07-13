@@ -1,8 +1,9 @@
 {
-  "recorded_at": "2026-07-13T11:20:37+08:00",
+  "recorded_at": "2026-07-13T15:26:43+08:00",
   "repository": {
     "root": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS",
     "implementation_base_commit": "e3e14906cabb9cc74cc8b81deec67cfa1e588173",
+    "smoke_code_commit": "cd48de6f4cc168ee256a6d9d4632eef6b3aac2a4",
     "branch": "master",
     "pre_existing_experiment_outputs_preserved": true,
     "new_or_modified_source_paths": [
@@ -15,7 +16,9 @@
       "scripts/run_refgs_llff.py",
       "scripts/evaluate_refgs_llff.py",
       "scripts/summarize_refgs_llff.py",
-      "tests/test_refgs_llff.py"
+      "scripts/audit_fsgs_shared_eval_cache.py",
+      "tests/test_refgs_llff.py",
+      "tests/test_fsgs_cache_audit.py"
     ]
   },
   "python": {
@@ -24,7 +27,7 @@
     "torch": "1.12.1",
     "torch_cuda": "11.3",
     "host_visible_probe": {
-      "cuda_visible_devices": "1",
+      "cuda_visible_devices": "2",
       "cuda_available": true,
       "device_count": 1,
       "current_device": 0,
@@ -75,7 +78,9 @@
     "metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
     "shared_metric_backbone": "vgg",
     "fsgs_validation_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
-    "refgs_formal_evaluator_sha256": "ab33c0e0c574795d63da93d219fee4267b2e0c122f6f966e2f128b52b42d7e19"
+    "refgs_formal_evaluator_sha256": "ab33c0e0c574795d63da93d219fee4267b2e0c122f6f966e2f128b52b42d7e19",
+    "cache_identity_note": "whole evaluator SHA alone does not invalidate numerical cache; see provenance.json",
+    "cache_validation_complete": true
   },
   "storage": {
     "data_root": "/data1/liuly/FSGS_LLFF/dataset/nerf_llff_data",
@@ -89,7 +94,7 @@
   "pre_smoke_test_gate": {
     "py_compile_exit_code": 0,
     "unittest_command": "/home/liuly/anaconda3/envs/ref_gs/bin/python -m unittest discover -s tests",
-    "tests_run": 88,
+    "tests_run": 97,
     "failures": 0,
     "errors": 0
   }

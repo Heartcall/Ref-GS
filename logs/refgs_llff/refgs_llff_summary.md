@@ -15,7 +15,7 @@ Ref-GS original-paper LLFF three-view result: 原论文未提供
 | fern |  |  |  | 3/3 | False | False | False | pending |
 | flower |  |  |  | 3/5 | False | False | False | pending |
 | fortress |  |  |  | 3/6 | False | False | False | pending |
-| horns | 16.1649 | 0.501819 | 0.366432 | 3/8 | True | True | True | completed |
+| horns | 16.2619 | 0.507722 | 0.367614 | 3/8 | True | True | True | completed |
 | leaves |  |  |  | 3/4 | False | False | False | pending |
 | orchids |  |  |  | 3/4 | False | False | False | pending |
 | room |  |  |  | 3/6 | False | False | False | pending |

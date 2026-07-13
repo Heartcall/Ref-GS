@@ -89,18 +89,18 @@
     {
       "checkpoint_exists": true,
       "failure_reason": "",
-      "lpips": 0.36643192917108536,
+      "lpips": 0.36761368438601494,
       "metrics_exists": true,
       "peak_memory_used_mib": 24093,
       "pointcloud_source": "/data1/liuly/FSGS_LLFF/author_preprocessed/nerf_llff_data/horns/3_views/dense/fused.ply",
-      "psnr": 16.164878010749817,
+      "psnr": 16.261910319328308,
       "render_exists": true,
       "resolution": "1_8",
       "scene": "horns",
-      "ssim": 0.5018186420202255,
+      "ssim": 0.5077221058309078,
       "status": "completed",
       "test_views": 8,
-      "train_seconds": 389.234038450988,
+      "train_seconds": 391.54413582384586,
       "train_views": 3
     },
     {

@@ -1,30 +1,30 @@
 {
-  "command": "CUDA_VISIBLE_DEVICES=1 REFGS_PHYSICAL_GPU=1 /home/liuly/anaconda3/envs/ref_gs/bin/python /home/liuly/Surface_Reconstruction/Glossy/Ref-GS/scripts/evaluate_refgs_llff.py --model-path /data1/liuly/RefGS_LLFF/output/llff_sparse/1_8/horns --iteration 10000 --manifest /data1/liuly/RefGS_LLFF/prepared/1_8/horns/refgs_llff_manifest.json",
+  "command": "CUDA_VISIBLE_DEVICES=2 REFGS_PHYSICAL_GPU=2 /home/liuly/anaconda3/envs/ref_gs/bin/python /home/liuly/Surface_Reconstruction/Glossy/Ref-GS/scripts/evaluate_refgs_llff.py --model-path /data1/liuly/RefGS_LLFF/output/llff_sparse/1_8/horns --iteration 10000 --manifest /data1/liuly/RefGS_LLFF/prepared/1_8/horns/refgs_llff_manifest.json",
   "competing_compute_processes": [],
   "cuda_probe": {
     "cuda_available": true,
-    "cuda_visible_devices": "1",
+    "cuda_visible_devices": "2",
     "current_device": 0,
     "device_count": 1,
     "gpu_name": "NVIDIA RTX A5000",
     "passes": true,
-    "physical_gpu": "1",
+    "physical_gpu": "2",
     "returncode": 0,
     "stderr": ""
   },
-  "cuda_visible_devices": "1",
-  "elapsed_seconds": 15.445041871163994,
+  "cuda_visible_devices": "2",
+  "elapsed_seconds": 16.59844731609337,
   "failure_reason": "",
   "gpu_before": {
     "memory_free_mib": 24244,
     "memory_used_mib": 3,
     "name": "NVIDIA RTX A5000",
-    "physical_index": 1,
+    "physical_index": 2,
     "utilization_percent": 0
   },
   "peak_increment_mib": 1826,
   "peak_memory_used_mib": 1829,
-  "physical_gpu": 1,
+  "physical_gpu": 2,
   "returncode": 0,
   "stage": "eval",
   "status": "completed"

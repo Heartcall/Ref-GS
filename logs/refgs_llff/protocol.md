@@ -121,5 +121,5 @@ better.
 ## Execution gate
 
 After deterministic preparation and tests, only `horns`, `1_8`, physical GPU
-1 may run through prepare, train, render, and shared evaluation. Any failed
+2 may run through prepare, train, render, and shared evaluation. Any failed
 smoke predicate stops execution before every other scene.

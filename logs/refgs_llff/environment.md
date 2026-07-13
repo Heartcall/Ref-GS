@@ -2,11 +2,12 @@
 
 - Repository: `/home/liuly/Surface_Reconstruction/Glossy/Ref-GS`
 - implementation base commit: `e3e14906cabb9cc74cc8b81deec67cfa1e588173`
+- smoke code commit: `cd48de6f4cc168ee256a6d9d4632eef6b3aac2a4`
 - Python: `/home/liuly/anaconda3/envs/ref_gs/bin/python`, Python 3.7.12
 - PyTorch/CUDA runtime: PyTorch 1.12.1, CUDA 11.3
-- Host-visible GPU-1 probe: CUDA available, one visible device, logical
+- Host-visible GPU-2 probe: CUDA available, one visible device, logical
   `cuda:0`, NVIDIA RTX A5000
-- Smoke GPU before launch: physical GPU 1, 24,244 MiB free, 3 MiB used
+- Smoke GPU before launch: physical GPU 2, 24,244 MiB free, 3 MiB used
 - Restricted sandbox probe reported no CUDA devices. This is a launch-context
   artifact and is not used as the execution gate.
 
@@ -49,5 +50,5 @@ The downloaded author preprocessing contains only `images.txt` and
 
 ## Pre-smoke verification
 
-`py_compile` passed. The exact unit-test gate completed 88 tests with zero
+`py_compile` passed. The final unit-test gate completed 97 tests with zero
 failures and zero errors. No environment package was installed or upgraded.
