@@ -261,13 +261,71 @@ def aggregate_matches_per_view(aggregate, per_view, tolerance=1e-6):
     return True
 
 
+def fsgs_cache_validation_complete(log_root, tolerance=1e-6):
+    validation_root = Path(log_root) / "fsgs_shared_eval_validation"
+    index = read_json(validation_root / "validation_index.json", {}) or {}
+    provenance = read_json(validation_root / "provenance.json", {}) or {}
+    summary = read_json(validation_root / "validation_summary.json", {}) or {}
+    cells = index.get("cells", {})
+    provenance_cells = provenance.get("cells", {})
+    expected_keys = {
+        "{}/{}".format(resolution, scene)
+        for resolution in ("1_8", "1_4") for scene in LLFF_SCENES
+    }
+    guarantees = provenance.get("guarantees", {})
+    numeric_fingerprint = provenance.get("numeric_evaluator_fingerprint")
+    runtime_fingerprint = provenance.get("shared_evaluator_runtime_fingerprint")
+    if (
+        set(cells) != expected_keys or set(provenance_cells) != expected_keys
+        or provenance.get("mode") != "cache-status-only"
+        or guarantees.get("gpu_used") is not False
+        or guarantees.get("metrics_computed") is not False
+        or guarantees.get("lpips_imported") is not False
+        or not isinstance(provenance.get("original_fsgs_training_runtime"), dict)
+        or not isinstance(provenance.get("shared_evaluator_runtime"), dict)
+        or len(str(numeric_fingerprint or "")) != 64
+        or len(str(runtime_fingerprint or "")) != 64
+    ):
+        return False
+    for key in expected_keys:
+        cell = cells[key]
+        if (
+            cell.get("status") not in {"reusable", "reusable_registered"}
+            or provenance_cells[key].get("status") not in {"reusable", "reusable_registered"}
+            or len(str(cell.get("input_fingerprint", ""))) != 64
+            or len(str(cell.get("recorded_evaluator_sha256", ""))) != 64
+            or len(str(cell.get("recorded_fsgs_metrics_sha256", ""))) != 64
+            or cell.get("numeric_evaluator_fingerprint") != numeric_fingerprint
+            or cell.get("shared_evaluator_runtime_fingerprint") != runtime_fingerprint
+            or cell.get("lpips_backbone") != "vgg"
+            or finite_metrics(cell.get("metrics", {})) is None
+        ):
+            return False
+    for resolution in ("1_8", "1_4"):
+        resolution_cells = [cells["{}/{}".format(resolution, scene)] for scene in LLFF_SCENES]
+        computed = {
+            metric: sum(float(cell["metrics"][metric]) for cell in resolution_cells) / len(resolution_cells)
+            for metric in ("PSNR", "SSIM", "LPIPS")
+        }
+        recorded = summary.get(resolution, {}).get("mean", {})
+        if summary.get(resolution, {}).get("passes_1e-6") is not True:
+            return False
+        if any(
+            not isinstance(recorded.get(metric), (int, float))
+            or not math.isfinite(recorded[metric])
+            or abs(computed[metric] - float(recorded[metric])) > tolerance
+            for metric in ("PSNR", "SSIM", "LPIPS")
+        ):
+            return False
+    return True
+
+
 def shared_eval_complete(model, iteration, expected_names, log_root):
     model = Path(model)
     method = "ours_{}".format(iteration)
     results = read_json(model / "results.json", {}) or {}
     per_view = read_json(model / "per_view.json", {}) or {}
     metadata = read_json(model / "evaluator_metadata.json", {}) or {}
-    validation = read_json(Path(log_root) / "fsgs_shared_eval_validation" / "validation_summary.json", {}) or {}
     if finite_metrics(results) is None or set(results) != {method} or set(per_view) != {method}:
         return False
     per_method = per_view[method]
@@ -289,13 +347,7 @@ def shared_eval_complete(model, iteration, expected_names, log_root):
         or metadata.get("fsgs_metrics_sha256") != file_sha256(fsgs_metrics)
     ):
         return False
-    if (
-        validation.get("evaluator_sha256") != file_sha256(evaluator)
-        or validation.get("fsgs_metrics_sha256") != file_sha256(fsgs_metrics)
-        or validation.get("lpips_backbone") != "vgg"
-    ):
-        return False
-    return all(validation.get(resolution, {}).get("passes_1e-6") is True for resolution in ("1_8", "1_4"))
+    return fsgs_cache_validation_complete(log_root)
 
 
 def resolve_cell_status(artifact_complete, stage_results, requested):

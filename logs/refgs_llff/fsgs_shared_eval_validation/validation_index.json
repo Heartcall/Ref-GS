@@ -1,0 +1,279 @@
+{
+  "cells": {
+    "1_4/fern": {
+      "gt_manifest_sha256": "139e0dd1e1fc72076b50fcc572ba895d6d0b16d163b597b0119fa8c97200dd41",
+      "input_fingerprint": "e5013384173923aa799dd7974f6be960e95245e2ddb6a492cc0f2c00364b5ca7",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.27005694309870404,
+        "PSNR": 20.487263361612957,
+        "SSIM": 0.6759879390398661
+      },
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "render_manifest_sha256": "5adc120f7eff7f9404d88984efe416636aec5a9349762b124fdf0cd603bac94d",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_4/flower": {
+      "gt_manifest_sha256": "3dae94819e43cbaae0e6948dfa2e9857b741e00308f2a82bea1fe959ce9b36e0",
+      "input_fingerprint": "02aa5773118325b50f6b7fc8d027ec8f345e38579565dd654d324d73986400af",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.32533183991909026,
+        "PSNR": 19.808190155029298,
+        "SSIM": 0.610483956336975
+      },
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "render_manifest_sha256": "f41ef68ee059f6a06b10cd2694944e9ed130c5e0afd328f27763cd12dd42304f",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_4/fortress": {
+      "gt_manifest_sha256": "dbbf9b112174267522c2c85f8022cef7cbb9ebbe2d83eb59d645e036c8ccc2ce",
+      "input_fingerprint": "b0f46898234085cf9968016ae53843ccc34301374782e32930fd7d0f3d7edc15",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.23885968327522278,
+        "PSNR": 22.974521001180012,
+        "SSIM": 0.7066468596458435
+      },
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "render_manifest_sha256": "3fd3c7896143f78ed8b3008baaac11fbe08747e0170e7f0a02bd075880f750a7",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_4/horns": {
+      "gt_manifest_sha256": "7164f15dc97c88a317cd66e5adbf5b02cf3114312177678086eb5eb04fac70ce",
+      "input_fingerprint": "56aa8c72b0143214a64eb568bd0754486a680a698c31a30477cc4a4ceee66a6f",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.3025121074169874,
+        "PSNR": 19.777807235717773,
+        "SSIM": 0.67507304251194
+      },
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "render_manifest_sha256": "64ba5d5ee7e4a3283640f0490a7d89fb50f0633a81c5663a5ffcc9b63bf19b39",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_4/leaves": {
+      "gt_manifest_sha256": "ca67b526e0b794191d86333818931046b1ae69b42ffb1e67d68bfd793b631238",
+      "input_fingerprint": "fc9039d11fa3e5a60798a40b9540a0b83d2e37eee68ddec6949d25e27182d4ce",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.2806432843208313,
+        "PSNR": 16.77147150039673,
+        "SSIM": 0.5381445661187172
+      },
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "render_manifest_sha256": "d3d7fa30b739f002e70b340ac858419e46f1ceefc562a811d78cb7fe75ce368a",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_4/orchids": {
+      "gt_manifest_sha256": "5222f0d80159b09c753a41bfaf09e039093418156aefffbea8086edfaa6999fc",
+      "input_fingerprint": "3c1255eeef7f1e58658299ec8c2acfa54ab7542c739756176386f8840bd99f0c",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.33253127336502075,
+        "PSNR": 15.757877588272095,
+        "SSIM": 0.4598599448800087
+      },
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "render_manifest_sha256": "c529a0af37de2648c247e81dceec94abbd87ff0050a127f63d7337c220f2a169",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_4/room": {
+      "gt_manifest_sha256": "3fc9e2f75a0859bd4625c6739e318b661a85503472b68a32e08538f9aa7e56a6",
+      "input_fingerprint": "0c8a7353321470b66d3efd55d67c9d133281d558af5d9a336d5f607ab84f9d02",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.18665091941754022,
+        "PSNR": 21.47659397125244,
+        "SSIM": 0.8566584090391794
+      },
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "render_manifest_sha256": "9cdab15af8ca74801483d88aee3992c019a43302b9c1d3a2b310ea6d44703a0c",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_4/trex": {
+      "gt_manifest_sha256": "c290723e35fcceb82872ac45db5c28474b6d17ac7455ebb53b861c2487de69ee",
+      "input_fingerprint": "b15f3c61f1a56cb1bc62a97a917f8b3c688ffa5ccd01903b4953b3ef6da94e58",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.22252739540168218,
+        "PSNR": 21.125464303152903,
+        "SSIM": 0.7888720376150948
+      },
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "render_manifest_sha256": "15c8ba4c99d0aa3b281d10eec90cad348de994ecaab1dd5b1f71412adbf008d1",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_8/fern": {
+      "gt_manifest_sha256": "f1491ae28fc38dbe90561b5cd4d230bc9d2f7ce526ee20a0d0abe766fd4f48a5",
+      "input_fingerprint": "05cc960372a6d68759e0db53ea543271dec4f55d64ec8861993407399b72ff0b",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.1984920154015223,
+        "PSNR": 21.91853968302409,
+        "SSIM": 0.7208865880966187
+      },
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "ab33c0e0c574795d63da93d219fee4267b2e0c122f6f966e2f128b52b42d7e19",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "render_manifest_sha256": "66f553a2dd80721ceec5aaa6d93ab76ae913ebb1551400d1108b58e65fe59ca4",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_8/flower": {
+      "gt_manifest_sha256": "5aa217cef2fea4298e1f32da2e14c16e92a329d68603893630fd93c6197a15f9",
+      "input_fingerprint": "6af43e6bc5b1bc0fb90deee92592400ee0bf105e33c594336842bcf4b8a57f97",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.2450692504644394,
+        "PSNR": 20.462041664123536,
+        "SSIM": 0.6311795055866242
+      },
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "ab33c0e0c574795d63da93d219fee4267b2e0c122f6f966e2f128b52b42d7e19",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "render_manifest_sha256": "9337186d064f825e74cc96ed4065d2fbaefa5d0f558ae5931f09e8d40401ce1e",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_8/fortress": {
+      "gt_manifest_sha256": "28b2fb8d87e06dca99911bbfcbf4e2db88aec8de47225ec10d657a1c6d476a9d",
+      "input_fingerprint": "bf6ce332aeadb9104381acaabe64b4fbd86403832704062435e6c4e6e56498e6",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.17570690313975015,
+        "PSNR": 23.46843655904134,
+        "SSIM": 0.728224128484726
+      },
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "render_manifest_sha256": "1880c2782247acdd22bfa7840c9bb5fa0c9c5bfab7adba9856e042c7b5a2db63",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_8/horns": {
+      "gt_manifest_sha256": "d042b11d38180d73a299961b6e80e037d1d426681df3b2e9d130bd85b78fd40e",
+      "input_fingerprint": "e4e2c21732e2fab077cf58b7220110b7ed1d887ab3bf4a17f808fa416787b87a",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.227823032066226,
+        "PSNR": 20.51098895072937,
+        "SSIM": 0.7138616591691971
+      },
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "render_manifest_sha256": "0d79a20d4e73dc803ba582bf3bed87dcc96623091aa6f4eb70664f7dcd79af8d",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_8/leaves": {
+      "gt_manifest_sha256": "a170d2f1cd4110bdebe97d8de5193ec22dd5fa02a209b1f7e933cea496d8a325",
+      "input_fingerprint": "521a0396d9c281cbefbf38d122bdb0aa331717329eb1d2cd916daa6e1e4e36e3",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.20964427292346954,
+        "PSNR": 17.76478624343872,
+        "SSIM": 0.632229819893837
+      },
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "render_manifest_sha256": "39ed08d12358b6d32125b3fc92ac68aaeb0e0df67bf983817a1c7efea5dfa506",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_8/orchids": {
+      "gt_manifest_sha256": "c36efd84cc09a6b864e42f4b1da1be30d59b2b4f2047bcc18daf6750ad7bd13e",
+      "input_fingerprint": "613a1f4bcfd27c62c7322975f1d262d67ac00f8a6a28907b98988100b952dada",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.25432969257235527,
+        "PSNR": 16.438672304153442,
+        "SSIM": 0.5168814957141876
+      },
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "render_manifest_sha256": "2d75d7a0dba6733b3ff1689edb421843b13a8acde44b5f1f231d6168e26c760b",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_8/room": {
+      "gt_manifest_sha256": "13547fc893786db44d4da037b3e6cd2a939d9700f1e8d2c956591a99bb927a97",
+      "input_fingerprint": "0512280e3ec5eed7378b87d920a82356d1e805368cb1da83c2bc0ad37a406dc2",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.1655116081237793,
+        "PSNR": 21.25847625732422,
+        "SSIM": 0.8449338972568512
+      },
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "render_manifest_sha256": "612a9ef732b891b4150fc9988329ce896f1ddde62963a27d39771cc8d06ddbf4",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_8/trex": {
+      "gt_manifest_sha256": "e107e080bd7bc7e55eb707a1ea6ced2ec400824f10d562fd27a8bfdfee406cf3",
+      "input_fingerprint": "d07d735c49ba973699fe2ef39bf2b98b13af9e10338fa19ebc68f851b167d25b",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.1557182084236826,
+        "PSNR": 21.873391015189036,
+        "SSIM": 0.8102683680398124
+      },
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "render_manifest_sha256": "87d72122d344ac4221409de4f6c292f10ea885859d10e0760720af651204854a",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    }
+  },
+  "generated_at": "2026-07-13T07:06:19.737940+00:00",
+  "mode": "cache-status-only",
+  "schema_version": 2
+}

@@ -266,6 +266,54 @@ class EvaluatorTests(unittest.TestCase):
 
 
 class RunnerTests(unittest.TestCase):
+    def test_fsgs_cache_gate_accepts_saved_legacy_evaluator_fingerprints(self):
+        from scripts.run_refgs_llff import fsgs_cache_validation_complete
+        scenes = ("fern", "flower", "fortress", "horns", "leaves", "orchids", "room", "trex")
+        means = {
+            "1_8": {"PSNR": 20.0, "SSIM": 0.7, "LPIPS": 0.2},
+            "1_4": {"PSNR": 19.0, "SSIM": 0.6, "LPIPS": 0.3},
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "fsgs_shared_eval_validation"
+            root.mkdir(parents=True)
+            cells = {}
+            provenance_cells = {}
+            for resolution, metrics in means.items():
+                for index, scene in enumerate(scenes):
+                    key = resolution + "/" + scene
+                    evaluator = ("1" if index % 2 else "2") * 64
+                    cells[key] = {
+                        "status": "reusable", "input_fingerprint": "3" * 64,
+                        "recorded_evaluator_sha256": evaluator,
+                        "recorded_fsgs_metrics_sha256": "4" * 64,
+                        "numeric_evaluator_fingerprint": "5" * 64,
+                        "shared_evaluator_runtime_fingerprint": "6" * 64,
+                        "lpips_backbone": "vgg", "metrics": metrics,
+                    }
+                    provenance_cells[key] = {"status": "reusable", "reason": "cache_identity_matches"}
+            (root / "validation_index.json").write_text(json.dumps({"cells": cells}))
+            (root / "provenance.json").write_text(json.dumps({
+                "mode": "cache-status-only",
+                "guarantees": {"gpu_used": False, "metrics_computed": False, "lpips_imported": False},
+                "original_fsgs_training_runtime": {"torch_cuda_version": "11.6"},
+                "shared_evaluator_runtime": {"torch_cuda_version": "11.3"},
+                "numeric_evaluator_fingerprint": "5" * 64,
+                "shared_evaluator_runtime_fingerprint": "6" * 64,
+                "cells": provenance_cells,
+            }))
+            (root / "validation_summary.json").write_text(json.dumps({
+                resolution: {"mean": metrics, "passes_1e-6": True}
+                for resolution, metrics in means.items()
+            }))
+            self.assertTrue(fsgs_cache_validation_complete(Path(directory)))
+            del cells["1_8/horns"]["numeric_evaluator_fingerprint"]
+            (root / "validation_index.json").write_text(json.dumps({"cells": cells}))
+            self.assertFalse(fsgs_cache_validation_complete(Path(directory)))
+            cells["1_8/horns"]["numeric_evaluator_fingerprint"] = "5" * 64
+            cells["1_8/horns"]["status"] = "external_access_unknown"
+            (root / "validation_index.json").write_text(json.dumps({"cells": cells}))
+            self.assertFalse(fsgs_cache_validation_complete(Path(directory)))
+
     def test_aggregate_must_match_finite_per_view_mean(self):
         from scripts.run_refgs_llff import aggregate_matches_per_view
         per_view = {metric: {"a.png": value, "b.png": value} for metric, value in (

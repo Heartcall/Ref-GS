@@ -1,0 +1,2897 @@
+{
+  "cells": {
+    "1_4/fern": {
+      "access": {
+        "cache": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": false,
+          "readable": true,
+          "realpath": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/logs/refgs_llff/fsgs_shared_eval_validation/1_4/fern",
+          "requested_path": "logs/refgs_llff/fsgs_shared_eval_validation/1_4/fern",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "gt": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/fern/test/ours_10000/gt",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/fern/test/ours_10000/gt",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "model": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/fern",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/fern",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "renders": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/fern/test/ours_10000/renders",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/fern/test/ours_10000/renders",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        }
+      },
+      "cached_runtime": null,
+      "current_evaluator_sha256": "ab33c0e0c574795d63da93d219fee4267b2e0c122f6f966e2f128b52b42d7e19",
+      "current_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "evaluator_file_changed": true,
+      "gt": {
+        "count": 3,
+        "files": [
+          {
+            "mtime_ns": 1783874611332228406,
+            "name": "IMG_4026.png",
+            "sha256": "f8dec98b5bec8efbcd377ebbadcbf6ece6b3c5a11ef5abc5ae87e18b0591b13a",
+            "size_bytes": 1288158
+          },
+          {
+            "mtime_ns": 1783874611820228532,
+            "name": "IMG_4034.png",
+            "sha256": "834b911029320d67ff23827b330ee3271bc2243be28d9f1bc6a17e2e88bc4eaa",
+            "size_bytes": 1199316
+          },
+          {
+            "mtime_ns": 1783874612304228659,
+            "name": "IMG_4042.png",
+            "sha256": "9ebd97ca2eb259ce1f4d8b7d76fe9e8e129c74f37b99eb672ed16623c29cb24b",
+            "size_bytes": 1222373
+          }
+        ],
+        "latest_mtime_ns": 1783874612304228659,
+        "manifest_sha256": "139e0dd1e1fc72076b50fcc572ba895d6d0b16d163b597b0119fa8c97200dd41",
+        "names": [
+          "IMG_4026.png",
+          "IMG_4034.png",
+          "IMG_4042.png"
+        ]
+      },
+      "input_fingerprint": "e5013384173923aa799dd7974f6be960e95245e2ddb6a492cc0f2c00364b5ca7",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.27005694309870404,
+        "PSNR": 20.487263361612957,
+        "SSIM": 0.6759879390398661
+      },
+      "numeric_change_proven": false,
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "per_view_count": 3,
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "renders": {
+        "count": 3,
+        "files": [
+          {
+            "mtime_ns": 1783874611112228348,
+            "name": "IMG_4026.png",
+            "sha256": "8523a4c9351779bb5354e0bde4ae6d42ae648cfebd798c94c41637c449c16edd",
+            "size_bytes": 1123831
+          },
+          {
+            "mtime_ns": 1783874611580228470,
+            "name": "IMG_4034.png",
+            "sha256": "a74ab3b25aa3995f2144de99e1e4121d2799acf80f6ac57a6dada3d0d56745d2",
+            "size_bytes": 1092809
+          },
+          {
+            "mtime_ns": 1783874612068228597,
+            "name": "IMG_4042.png",
+            "sha256": "231d3e27ffef7cd9cc51d7d1c4b33211a454d9e09d0635dc7d74164715e9317e",
+            "size_bytes": 1115283
+          }
+        ],
+        "latest_mtime_ns": 1783874612068228597,
+        "manifest_sha256": "5adc120f7eff7f9404d88984efe416636aec5a9349762b124fdf0cd603bac94d",
+        "names": [
+          "IMG_4026.png",
+          "IMG_4034.png",
+          "IMG_4042.png"
+        ]
+      },
+      "resolution": "1_4",
+      "scene": "fern",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_4/flower": {
+      "access": {
+        "cache": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": false,
+          "readable": true,
+          "realpath": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/logs/refgs_llff/fsgs_shared_eval_validation/1_4/flower",
+          "requested_path": "logs/refgs_llff/fsgs_shared_eval_validation/1_4/flower",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "gt": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/flower/test/ours_10000/gt",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/flower/test/ours_10000/gt",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "model": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/flower",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/flower",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "renders": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/flower/test/ours_10000/renders",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/flower/test/ours_10000/renders",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        }
+      },
+      "cached_runtime": null,
+      "current_evaluator_sha256": "ab33c0e0c574795d63da93d219fee4267b2e0c122f6f966e2f128b52b42d7e19",
+      "current_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "evaluator_file_changed": true,
+      "gt": {
+        "count": 5,
+        "files": [
+          {
+            "mtime_ns": 1783874782556285155,
+            "name": "IMG_2962.png",
+            "sha256": "7cefd7e4ef8091e413543e7c67cacb4498aea586b42d5ec8b921b4013ce8badc",
+            "size_bytes": 1241613
+          },
+          {
+            "mtime_ns": 1783874783188285405,
+            "name": "IMG_2970.png",
+            "sha256": "185810d73dafccf9c15b6ef49ec9083c96373e52f856cbbae080b11d855fd25b",
+            "size_bytes": 1241928
+          },
+          {
+            "mtime_ns": 1783874783836285661,
+            "name": "IMG_2978.png",
+            "sha256": "53a7ca5a91bb66c8ad5497590e65519911f6bc50ae90510c3757c68b1157f761",
+            "size_bytes": 1235436
+          },
+          {
+            "mtime_ns": 1783874784476285915,
+            "name": "IMG_2986.png",
+            "sha256": "04ed4b1cb462e7df5fd52e23e97227b3d492862a6d3777107afc9a99bbac79cf",
+            "size_bytes": 1214349
+          },
+          {
+            "mtime_ns": 1783874785132286174,
+            "name": "IMG_2994.png",
+            "sha256": "75412f8d04d4a70f5303b52dbbcf7be6d81faf355826237ec2501a00d57884dd",
+            "size_bytes": 1207787
+          }
+        ],
+        "latest_mtime_ns": 1783874785132286174,
+        "manifest_sha256": "3dae94819e43cbaae0e6948dfa2e9857b741e00308f2a82bea1fe959ce9b36e0",
+        "names": [
+          "IMG_2962.png",
+          "IMG_2970.png",
+          "IMG_2978.png",
+          "IMG_2986.png",
+          "IMG_2994.png"
+        ]
+      },
+      "input_fingerprint": "02aa5773118325b50f6b7fc8d027ec8f345e38579565dd654d324d73986400af",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.32533183991909026,
+        "PSNR": 19.808190155029298,
+        "SSIM": 0.610483956336975
+      },
+      "numeric_change_proven": false,
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "per_view_count": 5,
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "renders": {
+        "count": 5,
+        "files": [
+          {
+            "mtime_ns": 1783874782268285041,
+            "name": "IMG_2962.png",
+            "sha256": "0e31f4f74cc514a2aedd852f14fbd792baae526255b1fc54e93a74fb0ca779d0",
+            "size_bytes": 1095368
+          },
+          {
+            "mtime_ns": 1783874782896285290,
+            "name": "IMG_2970.png",
+            "sha256": "f401a0c9ad57f35c8b44cc8134c63c2b6b268b02a56af07edf300aed8910ea21",
+            "size_bytes": 1108941
+          },
+          {
+            "mtime_ns": 1783874783544285546,
+            "name": "IMG_2978.png",
+            "sha256": "050bfd12d3a51312f4bcd90f2b6aa8a24f1d82dfeabbad72a59615f2f2351b36",
+            "size_bytes": 1089234
+          },
+          {
+            "mtime_ns": 1783874784176285796,
+            "name": "IMG_2986.png",
+            "sha256": "11a1c42d2819c11218c351c371ecd5e1fe6584e58a4d7e549666f3e20f87a104",
+            "size_bytes": 1101253
+          },
+          {
+            "mtime_ns": 1783874784836286057,
+            "name": "IMG_2994.png",
+            "sha256": "99930cbbf757a433151d42397e352c4bab156f838f82cdaf05d7805a448ec261",
+            "size_bytes": 1081526
+          }
+        ],
+        "latest_mtime_ns": 1783874784836286057,
+        "manifest_sha256": "f41ef68ee059f6a06b10cd2694944e9ed130c5e0afd328f27763cd12dd42304f",
+        "names": [
+          "IMG_2962.png",
+          "IMG_2970.png",
+          "IMG_2978.png",
+          "IMG_2986.png",
+          "IMG_2994.png"
+        ]
+      },
+      "resolution": "1_4",
+      "scene": "flower",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_4/fortress": {
+      "access": {
+        "cache": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": false,
+          "readable": true,
+          "realpath": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/logs/refgs_llff/fsgs_shared_eval_validation/1_4/fortress",
+          "requested_path": "logs/refgs_llff/fsgs_shared_eval_validation/1_4/fortress",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "gt": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/fortress/test/ours_10000/gt",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/fortress/test/ours_10000/gt",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "model": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/fortress",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/fortress",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "renders": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/fortress/test/ours_10000/renders",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/fortress/test/ours_10000/renders",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        }
+      },
+      "cached_runtime": null,
+      "current_evaluator_sha256": "ab33c0e0c574795d63da93d219fee4267b2e0c122f6f966e2f128b52b42d7e19",
+      "current_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "evaluator_file_changed": true,
+      "gt": {
+        "count": 6,
+        "files": [
+          {
+            "mtime_ns": 1783875821852896128,
+            "name": "IMG_1800.png",
+            "sha256": "74d046515e54a5cb144fb69e5179a2fc4b8a97801804c3a457e37e193d3a7378",
+            "size_bytes": 1160628
+          },
+          {
+            "mtime_ns": 1783875822636896668,
+            "name": "IMG_1808.png",
+            "sha256": "8b38cd4237e735bed2b8ce680194e7425ad536f17dacfec3be0fa35b79af75e9",
+            "size_bytes": 1144479
+          },
+          {
+            "mtime_ns": 1783875823272897105,
+            "name": "IMG_1816.png",
+            "sha256": "6a6b74d3744fd399035acbd3f9c661a0ab9327828e92bc312bf0299a50bdf09a",
+            "size_bytes": 1095575
+          },
+          {
+            "mtime_ns": 1783875823884897526,
+            "name": "IMG_1824.png",
+            "sha256": "e9fd4f36c843f8961f9bd605e90c607a81788523e01852c3206303f94e7d4e0b",
+            "size_bytes": 1180761
+          },
+          {
+            "mtime_ns": 1783875824508897956,
+            "name": "IMG_1832.png",
+            "sha256": "abe0c42d5efd86a4c29da6b607c0dc4d0d4d70f5502618d4e4df347c93107e20",
+            "size_bytes": 1151940
+          },
+          {
+            "mtime_ns": 1783875825156898401,
+            "name": "IMG_1840.png",
+            "sha256": "a4d1b92aeaa1fc8fbe758ba4fbfa3a2c0bdf1979fe69b8689deff6f5e86c4848",
+            "size_bytes": 1063958
+          }
+        ],
+        "latest_mtime_ns": 1783875825156898401,
+        "manifest_sha256": "dbbf9b112174267522c2c85f8022cef7cbb9ebbe2d83eb59d645e036c8ccc2ce",
+        "names": [
+          "IMG_1800.png",
+          "IMG_1808.png",
+          "IMG_1816.png",
+          "IMG_1824.png",
+          "IMG_1832.png",
+          "IMG_1840.png"
+        ]
+      },
+      "input_fingerprint": "b0f46898234085cf9968016ae53843ccc34301374782e32930fd7d0f3d7edc15",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.23885968327522278,
+        "PSNR": 22.974521001180012,
+        "SSIM": 0.7066468596458435
+      },
+      "numeric_change_proven": false,
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "per_view_count": 6,
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "renders": {
+        "count": 6,
+        "files": [
+          {
+            "mtime_ns": 1783875821500895886,
+            "name": "IMG_1800.png",
+            "sha256": "b1f4999fee6c448e59efc2c30c84aefe757b7693e1952e73e2fd7ffe369a21a6",
+            "size_bytes": 1029853
+          },
+          {
+            "mtime_ns": 1783875822308896442,
+            "name": "IMG_1808.png",
+            "sha256": "10f8bcee7578c948bacd3060914949812762d33e64e5f1858e1eec70632ee339",
+            "size_bytes": 1050075
+          },
+          {
+            "mtime_ns": 1783875822976896902,
+            "name": "IMG_1816.png",
+            "sha256": "83b02fb893722522c47eded75368bf8c32edc4cd9041f55664e0b5b33f2face4",
+            "size_bytes": 1048059
+          },
+          {
+            "mtime_ns": 1783875823612897339,
+            "name": "IMG_1824.png",
+            "sha256": "44e3843a62e32c907f2013c583ce20624238ef7a413cf9aa80e1253ca9520a7d",
+            "size_bytes": 994221
+          },
+          {
+            "mtime_ns": 1783875824224897760,
+            "name": "IMG_1832.png",
+            "sha256": "4dacae4897eed6d63ce006378239ff7f2e3cac9dbfa047ffae79ddaef4cab1d3",
+            "size_bytes": 1033060
+          },
+          {
+            "mtime_ns": 1783875824848898189,
+            "name": "IMG_1840.png",
+            "sha256": "f0078c7ff5d0680f0d9cc7acbb305d0ea06d06bb13686837217245e75b130971",
+            "size_bytes": 1031617
+          }
+        ],
+        "latest_mtime_ns": 1783875824848898189,
+        "manifest_sha256": "3fd3c7896143f78ed8b3008baaac11fbe08747e0170e7f0a02bd075880f750a7",
+        "names": [
+          "IMG_1800.png",
+          "IMG_1808.png",
+          "IMG_1816.png",
+          "IMG_1824.png",
+          "IMG_1832.png",
+          "IMG_1840.png"
+        ]
+      },
+      "resolution": "1_4",
+      "scene": "fortress",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_4/horns": {
+      "access": {
+        "cache": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": false,
+          "readable": true,
+          "realpath": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/logs/refgs_llff/fsgs_shared_eval_validation/1_4/horns",
+          "requested_path": "logs/refgs_llff/fsgs_shared_eval_validation/1_4/horns",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "gt": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/horns/test/ours_10000/gt",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/horns/test/ours_10000/gt",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "model": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/horns",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/horns",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "renders": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/horns/test/ours_10000/renders",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/horns/test/ours_10000/renders",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        }
+      },
+      "cached_runtime": null,
+      "current_evaluator_sha256": "ab33c0e0c574795d63da93d219fee4267b2e0c122f6f966e2f128b52b42d7e19",
+      "current_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "evaluator_file_changed": true,
+      "gt": {
+        "count": 8,
+        "files": [
+          {
+            "mtime_ns": 1783876105763547762,
+            "name": "DJI_20200223_163016_842.png",
+            "sha256": "0ebf18d006d214409c6349630a10b680a13bfaa9d15cc2eb059f5756c8d495c8",
+            "size_bytes": 1311968
+          },
+          {
+            "mtime_ns": 1783876106335544509,
+            "name": "DJI_20200223_163024_597.png",
+            "sha256": "1aeb428718b8bd1a2192714b689f8d1034d75f4d8adeb92de98970f4714c5bfe",
+            "size_bytes": 1350781
+          },
+          {
+            "mtime_ns": 1783876106947541030,
+            "name": "DJI_20200223_163033_432.png",
+            "sha256": "195ce553cbc75e1284fde4be4277fc452d23d1539f4d6dfd6b4adc8d17412136",
+            "size_bytes": 1295276
+          },
+          {
+            "mtime_ns": 1783876107587537398,
+            "name": "DJI_20200223_163047_307.png",
+            "sha256": "f3107d601c9b038d89708c086845e6822e9d7065a8dc10f837ef8c1693af60a2",
+            "size_bytes": 1253629
+          },
+          {
+            "mtime_ns": 1783876108227533768,
+            "name": "DJI_20200223_163055_437.png",
+            "sha256": "40d5a345d53f702b163baf20b2d27cf8680826745612ff3755ffe6750b7c24e5",
+            "size_bytes": 1200818
+          },
+          {
+            "mtime_ns": 1783876108875530097,
+            "name": "DJI_20200223_163103_777.png",
+            "sha256": "b3dc7a253d439e77fdcf2edcf36c190d1e20f3e0fd00877b831679fa0b9b7bcf",
+            "size_bytes": 1166360
+          },
+          {
+            "mtime_ns": 1783876109515526476,
+            "name": "DJI_20200223_163201_633.png",
+            "sha256": "2745f284de068e04b8ed99b5636090b030d8584469627328249d12e513c9823e",
+            "size_bytes": 1255505
+          },
+          {
+            "mtime_ns": 1783876110163522813,
+            "name": "DJI_20200223_163208_938.png",
+            "sha256": "ed1f2e402fa642361285e17ca1fdd7be0ab1985c97beee78bd20e1047fb15ea1",
+            "size_bytes": 1138141
+          }
+        ],
+        "latest_mtime_ns": 1783876110163522813,
+        "manifest_sha256": "7164f15dc97c88a317cd66e5adbf5b02cf3114312177678086eb5eb04fac70ce",
+        "names": [
+          "DJI_20200223_163016_842.png",
+          "DJI_20200223_163024_597.png",
+          "DJI_20200223_163033_432.png",
+          "DJI_20200223_163047_307.png",
+          "DJI_20200223_163055_437.png",
+          "DJI_20200223_163103_777.png",
+          "DJI_20200223_163201_633.png",
+          "DJI_20200223_163208_938.png"
+        ]
+      },
+      "input_fingerprint": "56aa8c72b0143214a64eb568bd0754486a680a698c31a30477cc4a4ceee66a6f",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.3025121074169874,
+        "PSNR": 19.777807235717773,
+        "SSIM": 0.67507304251194
+      },
+      "numeric_change_proven": false,
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "per_view_count": 8,
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "renders": {
+        "count": 8,
+        "files": [
+          {
+            "mtime_ns": 1783876105515549174,
+            "name": "DJI_20200223_163016_842.png",
+            "sha256": "dd2caa7b0b10e66478eb57e725a260ccf9d64f212d48618d87d3840ed375caf6",
+            "size_bytes": 1048248
+          },
+          {
+            "mtime_ns": 1783876106079545964,
+            "name": "DJI_20200223_163024_597.png",
+            "sha256": "2f0e62644882e276bafc0c8b0fab04b209bb9983f1fe20b5c82b5bdb250b9858",
+            "size_bytes": 1098434
+          },
+          {
+            "mtime_ns": 1783876106647542736,
+            "name": "DJI_20200223_163033_432.png",
+            "sha256": "888010a64a0fb15b1b0453993aaf6a0eef9f932af23ac795fb08b537e5e78f2a",
+            "size_bytes": 1060157
+          },
+          {
+            "mtime_ns": 1783876107283539123,
+            "name": "DJI_20200223_163047_307.png",
+            "sha256": "ea7ad435c129bc985785da34e10bbdc1ff166faf5638949ffa38786e41a34c60",
+            "size_bytes": 1085305
+          },
+          {
+            "mtime_ns": 1783876107919535513,
+            "name": "DJI_20200223_163055_437.png",
+            "sha256": "e84251ecdc682cfb8341f9b29537e5099b29e8650118eebd72d502037f6320af",
+            "size_bytes": 1087813
+          },
+          {
+            "mtime_ns": 1783876108563531864,
+            "name": "DJI_20200223_163103_777.png",
+            "sha256": "df4826d1ff092cdf916ea4c8cd012dd3c18dd6e0b1ffb259b66a354b22ad6698",
+            "size_bytes": 1052001
+          },
+          {
+            "mtime_ns": 1783876109211528196,
+            "name": "DJI_20200223_163201_633.png",
+            "sha256": "9f6e5a6889cceabf18b0a0eedf8729f0decb889277cf088867f64d605c14333f",
+            "size_bytes": 1084282
+          },
+          {
+            "mtime_ns": 1783876109863524509,
+            "name": "DJI_20200223_163208_938.png",
+            "sha256": "103f3a5be71bddb436822182fb3fa54d827783ce77bf7b2bb9cfb8cd7e2dbce5",
+            "size_bytes": 1006953
+          }
+        ],
+        "latest_mtime_ns": 1783876109863524509,
+        "manifest_sha256": "64ba5d5ee7e4a3283640f0490a7d89fb50f0633a81c5663a5ffcc9b63bf19b39",
+        "names": [
+          "DJI_20200223_163016_842.png",
+          "DJI_20200223_163024_597.png",
+          "DJI_20200223_163033_432.png",
+          "DJI_20200223_163047_307.png",
+          "DJI_20200223_163055_437.png",
+          "DJI_20200223_163103_777.png",
+          "DJI_20200223_163201_633.png",
+          "DJI_20200223_163208_938.png"
+        ]
+      },
+      "resolution": "1_4",
+      "scene": "horns",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_4/leaves": {
+      "access": {
+        "cache": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": false,
+          "readable": true,
+          "realpath": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/logs/refgs_llff/fsgs_shared_eval_validation/1_4/leaves",
+          "requested_path": "logs/refgs_llff/fsgs_shared_eval_validation/1_4/leaves",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "gt": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/leaves/test/ours_10000/gt",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/leaves/test/ours_10000/gt",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "model": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/leaves",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/leaves",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "renders": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/leaves/test/ours_10000/renders",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/leaves/test/ours_10000/renders",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        }
+      },
+      "cached_runtime": null,
+      "current_evaluator_sha256": "ab33c0e0c574795d63da93d219fee4267b2e0c122f6f966e2f128b52b42d7e19",
+      "current_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "evaluator_file_changed": true,
+      "gt": {
+        "count": 4,
+        "files": [
+          {
+            "mtime_ns": 1783877660812058944,
+            "name": "IMG_2997.png",
+            "sha256": "224fd944ab451a6b5727e35a37541e2babf4bf200b9e31c1e1752738e21b4587",
+            "size_bytes": 1622634
+          },
+          {
+            "mtime_ns": 1783877661220058572,
+            "name": "IMG_3006.png",
+            "sha256": "7512a14dc324af6796328553531b580eb18acad1e7be03119e8946951b0323d9",
+            "size_bytes": 1593638
+          },
+          {
+            "mtime_ns": 1783877661628058200,
+            "name": "IMG_3014.png",
+            "sha256": "bc15bc5dffcf5be653e400a57112a12d9fcb7463e40fdda9c5f8e18b83f3a26f",
+            "size_bytes": 1560928
+          },
+          {
+            "mtime_ns": 1783877662048057818,
+            "name": "IMG_3022.png",
+            "sha256": "a2a2841d74078e16861be60733cf44838bb894e0907b980e495bc059a5fc3b85",
+            "size_bytes": 1517864
+          }
+        ],
+        "latest_mtime_ns": 1783877662048057818,
+        "manifest_sha256": "ca67b526e0b794191d86333818931046b1ae69b42ffb1e67d68bfd793b631238",
+        "names": [
+          "IMG_2997.png",
+          "IMG_3006.png",
+          "IMG_3014.png",
+          "IMG_3022.png"
+        ]
+      },
+      "input_fingerprint": "fc9039d11fa3e5a60798a40b9540a0b83d2e37eee68ddec6949d25e27182d4ce",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.2806432843208313,
+        "PSNR": 16.77147150039673,
+        "SSIM": 0.5381445661187172
+      },
+      "numeric_change_proven": false,
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "per_view_count": 4,
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "renders": {
+        "count": 4,
+        "files": [
+          {
+            "mtime_ns": 1783877660632059108,
+            "name": "IMG_2997.png",
+            "sha256": "a889a28dc444af8b20d8464ffbb79ba02ed0d342faadddf452dc30d9f9c0de35",
+            "size_bytes": 1547183
+          },
+          {
+            "mtime_ns": 1783877661032058744,
+            "name": "IMG_3006.png",
+            "sha256": "9728b9fdb02e51538c7fc35b9f0d93e67997f938253916abdae6d213b6430244",
+            "size_bytes": 1509747
+          },
+          {
+            "mtime_ns": 1783877661440058372,
+            "name": "IMG_3014.png",
+            "sha256": "8d950edb39d7c5a9da5e2a2c8e1cd44aa59511b395e5eddb84748c9efa7af9e6",
+            "size_bytes": 1489775
+          },
+          {
+            "mtime_ns": 1783877661848058001,
+            "name": "IMG_3022.png",
+            "sha256": "2555917a7f0639e0ad4ae2dc98ddd22b5d3641195b472455ee76f53709904716",
+            "size_bytes": 1488641
+          }
+        ],
+        "latest_mtime_ns": 1783877661848058001,
+        "manifest_sha256": "d3d7fa30b739f002e70b340ac858419e46f1ceefc562a811d78cb7fe75ce368a",
+        "names": [
+          "IMG_2997.png",
+          "IMG_3006.png",
+          "IMG_3014.png",
+          "IMG_3022.png"
+        ]
+      },
+      "resolution": "1_4",
+      "scene": "leaves",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_4/orchids": {
+      "access": {
+        "cache": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": false,
+          "readable": true,
+          "realpath": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/logs/refgs_llff/fsgs_shared_eval_validation/1_4/orchids",
+          "requested_path": "logs/refgs_llff/fsgs_shared_eval_validation/1_4/orchids",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "gt": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/orchids/test/ours_10000/gt",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/orchids/test/ours_10000/gt",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "model": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/orchids",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/orchids",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "renders": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/orchids/test/ours_10000/renders",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/orchids/test/ours_10000/renders",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        }
+      },
+      "cached_runtime": null,
+      "current_evaluator_sha256": "ab33c0e0c574795d63da93d219fee4267b2e0c122f6f966e2f128b52b42d7e19",
+      "current_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "evaluator_file_changed": true,
+      "gt": {
+        "count": 4,
+        "files": [
+          {
+            "mtime_ns": 1783877255456479442,
+            "name": "IMG_4467.png",
+            "sha256": "8cf6c36b73dda135aa6655ebdc7fe064e51454d06140feb703044f8705fa0f2f",
+            "size_bytes": 1423130
+          },
+          {
+            "mtime_ns": 1783877255952478846,
+            "name": "IMG_4475.png",
+            "sha256": "f9b7269f0467e467a077c2298f5ef8b0905aaf4a94379f649030b025b4421ace",
+            "size_bytes": 1452089
+          },
+          {
+            "mtime_ns": 1783877256424478279,
+            "name": "IMG_4483.png",
+            "sha256": "7aac9474c6ea9cb989c0766de4032f5b32be017a9267923aa4a1fa3310292683",
+            "size_bytes": 1536062
+          },
+          {
+            "mtime_ns": 1783877256912477693,
+            "name": "IMG_4491.png",
+            "sha256": "6daeb08948288ef75f54cf0a9af91df616489e2a08adb48ba349ed2f0303df97",
+            "size_bytes": 1523400
+          }
+        ],
+        "latest_mtime_ns": 1783877256912477693,
+        "manifest_sha256": "5222f0d80159b09c753a41bfaf09e039093418156aefffbea8086edfaa6999fc",
+        "names": [
+          "IMG_4467.png",
+          "IMG_4475.png",
+          "IMG_4483.png",
+          "IMG_4491.png"
+        ]
+      },
+      "input_fingerprint": "3c1255eeef7f1e58658299ec8c2acfa54ab7542c739756176386f8840bd99f0c",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.33253127336502075,
+        "PSNR": 15.757877588272095,
+        "SSIM": 0.4598599448800087
+      },
+      "numeric_change_proven": false,
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "per_view_count": 4,
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "renders": {
+        "count": 4,
+        "files": [
+          {
+            "mtime_ns": 1783877255216479731,
+            "name": "IMG_4467.png",
+            "sha256": "ada6722666b69665e8c4da286787cf76e944a18f8f205476bae360a0b6b45fea",
+            "size_bytes": 1335719
+          },
+          {
+            "mtime_ns": 1783877255728479115,
+            "name": "IMG_4475.png",
+            "sha256": "20f1337e0866960c9ca90b730027900018f0b527c5eb7d8b93fe03e10372109f",
+            "size_bytes": 1338046
+          },
+          {
+            "mtime_ns": 1783877256220478524,
+            "name": "IMG_4483.png",
+            "sha256": "f59fca0b6a31e856e9ba6dd5b4526c7214baceb72e2bc024926dec287b6bc5ad",
+            "size_bytes": 1362080
+          },
+          {
+            "mtime_ns": 1783877256700477948,
+            "name": "IMG_4491.png",
+            "sha256": "4baff1c9a6116874513250ee658073c43853b7a70fff9b27e9f5dc81a8958dd3",
+            "size_bytes": 1354032
+          }
+        ],
+        "latest_mtime_ns": 1783877256700477948,
+        "manifest_sha256": "c529a0af37de2648c247e81dceec94abbd87ff0050a127f63d7337c220f2a169",
+        "names": [
+          "IMG_4467.png",
+          "IMG_4475.png",
+          "IMG_4483.png",
+          "IMG_4491.png"
+        ]
+      },
+      "resolution": "1_4",
+      "scene": "orchids",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_4/room": {
+      "access": {
+        "cache": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": false,
+          "readable": true,
+          "realpath": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/logs/refgs_llff/fsgs_shared_eval_validation/1_4/room",
+          "requested_path": "logs/refgs_llff/fsgs_shared_eval_validation/1_4/room",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "gt": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/room/test/ours_10000/gt",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/room/test/ours_10000/gt",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "model": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/room",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/room",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "renders": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/room/test/ours_10000/renders",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/room/test/ours_10000/renders",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        }
+      },
+      "cached_runtime": null,
+      "current_evaluator_sha256": "ab33c0e0c574795d63da93d219fee4267b2e0c122f6f966e2f128b52b42d7e19",
+      "current_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "evaluator_file_changed": true,
+      "gt": {
+        "count": 6,
+        "files": [
+          {
+            "mtime_ns": 1783878748077852162,
+            "name": "DJI_20200226_143850_006.png",
+            "sha256": "63e859ef356fa4f7e820823bac0c8c7d338013903644c4a5412172b7a2bbf5f3",
+            "size_bytes": 740876
+          },
+          {
+            "mtime_ns": 1783878748585854036,
+            "name": "DJI_20200226_143901_419.png",
+            "sha256": "e628fb7b2d512e735ed7c126a25c4c4672a98905cc2941aab5cdbb8f9074e641",
+            "size_bytes": 738347
+          },
+          {
+            "mtime_ns": 1783878749125856029,
+            "name": "DJI_20200226_143912_008.png",
+            "sha256": "303198f09b27074d4cb97fd2a2e515c5e2714c66169d089852e9e4e874f7c6a4",
+            "size_bytes": 733943
+          },
+          {
+            "mtime_ns": 1783878749649857959,
+            "name": "DJI_20200226_143926_241.png",
+            "sha256": "5d3582f0a1d5dfd45a0e393d8f4c0ef39a586b837ef6fcb94bc237ccc2748222",
+            "size_bytes": 693720
+          },
+          {
+            "mtime_ns": 1783878750157859831,
+            "name": "DJI_20200226_143938_168.png",
+            "sha256": "aa5baeecc3c6c9757c5b931528bb8381bc573dac391da6b83613f8c66bf76f95",
+            "size_bytes": 738147
+          },
+          {
+            "mtime_ns": 1783878750665861700,
+            "name": "DJI_20200226_143948_113.png",
+            "sha256": "fb6d76208ecc84e1d81d27eff2d7095457b4f9a366016e1e7afa11620544db01",
+            "size_bytes": 705225
+          }
+        ],
+        "latest_mtime_ns": 1783878750665861700,
+        "manifest_sha256": "3fc9e2f75a0859bd4625c6739e318b661a85503472b68a32e08538f9aa7e56a6",
+        "names": [
+          "DJI_20200226_143850_006.png",
+          "DJI_20200226_143901_419.png",
+          "DJI_20200226_143912_008.png",
+          "DJI_20200226_143926_241.png",
+          "DJI_20200226_143938_168.png",
+          "DJI_20200226_143948_113.png"
+        ]
+      },
+      "input_fingerprint": "0c8a7353321470b66d3efd55d67c9d133281d558af5d9a336d5f607ab84f9d02",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.18665091941754022,
+        "PSNR": 21.47659397125244,
+        "SSIM": 0.8566584090391794
+      },
+      "numeric_change_proven": false,
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "per_view_count": 6,
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "renders": {
+        "count": 6,
+        "files": [
+          {
+            "mtime_ns": 1783878747801851142,
+            "name": "DJI_20200226_143850_006.png",
+            "sha256": "b818824c6cef491ef465a2b9dfacdcf8526543bf490b15be02633d96ec71979b",
+            "size_bytes": 578858
+          },
+          {
+            "mtime_ns": 1783878748313853033,
+            "name": "DJI_20200226_143901_419.png",
+            "sha256": "927ec995fe9533510f612dd52dfbe4fbb475b3605967c6b9f6d044c841f43272",
+            "size_bytes": 585539
+          },
+          {
+            "mtime_ns": 1783878748849855011,
+            "name": "DJI_20200226_143912_008.png",
+            "sha256": "c71fd0d00000db7b29d6db530306f5c74b1526810643193dd07f3922129ab0df",
+            "size_bytes": 633662
+          },
+          {
+            "mtime_ns": 1783878749373856943,
+            "name": "DJI_20200226_143926_241.png",
+            "sha256": "a215bc6d590b1e6b74c74ce37b37a3fee920aeaff7ecf60883c7b28278bb8c55",
+            "size_bytes": 575516
+          },
+          {
+            "mtime_ns": 1783878749889858844,
+            "name": "DJI_20200226_143938_168.png",
+            "sha256": "4b535c45e61327ab49c455e265e7eadd83b69ca87563edce6a74fd52c2592645",
+            "size_bytes": 581348
+          },
+          {
+            "mtime_ns": 1783878750393860698,
+            "name": "DJI_20200226_143948_113.png",
+            "sha256": "262d8641cc1846b10fb810a3f8f1ccf88ae073d074eb2eec662499d20eb75a29",
+            "size_bytes": 579861
+          }
+        ],
+        "latest_mtime_ns": 1783878750393860698,
+        "manifest_sha256": "9cdab15af8ca74801483d88aee3992c019a43302b9c1d3a2b310ea6d44703a0c",
+        "names": [
+          "DJI_20200226_143850_006.png",
+          "DJI_20200226_143901_419.png",
+          "DJI_20200226_143912_008.png",
+          "DJI_20200226_143926_241.png",
+          "DJI_20200226_143938_168.png",
+          "DJI_20200226_143948_113.png"
+        ]
+      },
+      "resolution": "1_4",
+      "scene": "room",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_4/trex": {
+      "access": {
+        "cache": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": false,
+          "readable": true,
+          "realpath": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/logs/refgs_llff/fsgs_shared_eval_validation/1_4/trex",
+          "requested_path": "logs/refgs_llff/fsgs_shared_eval_validation/1_4/trex",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "gt": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/trex/test/ours_10000/gt",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/trex/test/ours_10000/gt",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "model": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/trex",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/trex",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "renders": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/trex/test/ours_10000/renders",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_4/trex/test/ours_10000/renders",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        }
+      },
+      "cached_runtime": null,
+      "current_evaluator_sha256": "ab33c0e0c574795d63da93d219fee4267b2e0c122f6f966e2f128b52b42d7e19",
+      "current_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "evaluator_file_changed": true,
+      "gt": {
+        "count": 7,
+        "files": [
+          {
+            "mtime_ns": 1783878502056752481,
+            "name": "DJI_20200223_163548_810.png",
+            "sha256": "7eeb17758743a94c1713ad1239a4b4c702ea29ee92beca533cadb036e2c7a53b",
+            "size_bytes": 1032606
+          },
+          {
+            "mtime_ns": 1783878502552755149,
+            "name": "DJI_20200223_163557_660.png",
+            "sha256": "580e724a0e8b3c5107738db02d6b15f57ae42848e3b0ec3fd7ab963867fe9ae0",
+            "size_bytes": 1119435
+          },
+          {
+            "mtime_ns": 1783878503040757772,
+            "name": "DJI_20200223_163604_605.png",
+            "sha256": "0b3c9fd79f152c7178672a6ecbc61dbcd0bed7b215fa15260b7c0c19ed0274fa",
+            "size_bytes": 1160346
+          },
+          {
+            "mtime_ns": 1783878503560760564,
+            "name": "DJI_20200223_163611_160.png",
+            "sha256": "8e2a5d55f0cfff2e654c978cecd63538621099a13d20aaeea7a3a957c8b39ff3",
+            "size_bytes": 1231357
+          },
+          {
+            "mtime_ns": 1783878504064763270,
+            "name": "DJI_20200223_163620_700.png",
+            "sha256": "c8bf1df137b42b3d3c4c80ac5b8b7780fb6df4e5eecc4883cdeeb054b3da5e89",
+            "size_bytes": 1147512
+          },
+          {
+            "mtime_ns": 1783878504560765929,
+            "name": "DJI_20200223_163639_916.png",
+            "sha256": "03aefcd85edc06df09d072ac13b4dc60c7fde9c2f4aec3c778d0b680496372ca",
+            "size_bytes": 1101197
+          },
+          {
+            "mtime_ns": 1783878505072768673,
+            "name": "DJI_20200223_163646_755.png",
+            "sha256": "a571542dc555c807b696758370fb983ee74e859ad38df45853ce5604135c548b",
+            "size_bytes": 1185685
+          }
+        ],
+        "latest_mtime_ns": 1783878505072768673,
+        "manifest_sha256": "c290723e35fcceb82872ac45db5c28474b6d17ac7455ebb53b861c2487de69ee",
+        "names": [
+          "DJI_20200223_163548_810.png",
+          "DJI_20200223_163557_660.png",
+          "DJI_20200223_163604_605.png",
+          "DJI_20200223_163611_160.png",
+          "DJI_20200223_163620_700.png",
+          "DJI_20200223_163639_916.png",
+          "DJI_20200223_163646_755.png"
+        ]
+      },
+      "input_fingerprint": "b15f3c61f1a56cb1bc62a97a917f8b3c688ffa5ccd01903b4953b3ef6da94e58",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.22252739540168218,
+        "PSNR": 21.125464303152903,
+        "SSIM": 0.7888720376150948
+      },
+      "numeric_change_proven": false,
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "per_view_count": 7,
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "renders": {
+        "count": 7,
+        "files": [
+          {
+            "mtime_ns": 1783878501804751124,
+            "name": "DJI_20200223_163548_810.png",
+            "sha256": "70621ba614023500b858bb84bfdd27129c286dce6c3656b59c22d1d7ee699f99",
+            "size_bytes": 905205
+          },
+          {
+            "mtime_ns": 1783878502304753815,
+            "name": "DJI_20200223_163557_660.png",
+            "sha256": "2abb4fffb296bf51a389abfd8b5275b808a0f93a52d0e0dd6c4579ed9771dfa1",
+            "size_bytes": 998893
+          },
+          {
+            "mtime_ns": 1783878502804756504,
+            "name": "DJI_20200223_163604_605.png",
+            "sha256": "4845e7b6bc220ddaf9ece1820f21c5227bcbed066804ccbb1dcb41ee9ec34bfd",
+            "size_bytes": 990631
+          },
+          {
+            "mtime_ns": 1783878503312759233,
+            "name": "DJI_20200223_163611_160.png",
+            "sha256": "89f4477fefe0ba51d5d4e408b97b4e490a99726d57d7057880cfdf8fd770f83e",
+            "size_bytes": 1049855
+          },
+          {
+            "mtime_ns": 1783878503820761960,
+            "name": "DJI_20200223_163620_700.png",
+            "sha256": "09407495c91c9c811bd80722a3a307eb9f894b5f07a66a95a21585989cb4a60d",
+            "size_bytes": 1003621
+          },
+          {
+            "mtime_ns": 1783878504320764642,
+            "name": "DJI_20200223_163639_916.png",
+            "sha256": "9f138dfa434137a807f90a7448d127b4a0efeb52da0ec93035c2d2f01d5b4449",
+            "size_bytes": 953629
+          },
+          {
+            "mtime_ns": 1783878504800767215,
+            "name": "DJI_20200223_163646_755.png",
+            "sha256": "65c533ef6082a9e5c646c2f9a5d34d7537de63feb1dcf65da9d827fdefa910ce",
+            "size_bytes": 988480
+          }
+        ],
+        "latest_mtime_ns": 1783878504800767215,
+        "manifest_sha256": "15c8ba4c99d0aa3b281d10eec90cad348de994ecaab1dd5b1f71412adbf008d1",
+        "names": [
+          "DJI_20200223_163548_810.png",
+          "DJI_20200223_163557_660.png",
+          "DJI_20200223_163604_605.png",
+          "DJI_20200223_163611_160.png",
+          "DJI_20200223_163620_700.png",
+          "DJI_20200223_163639_916.png",
+          "DJI_20200223_163646_755.png"
+        ]
+      },
+      "resolution": "1_4",
+      "scene": "trex",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_8/fern": {
+      "access": {
+        "cache": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": false,
+          "readable": true,
+          "realpath": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/logs/refgs_llff/fsgs_shared_eval_validation/1_8/fern",
+          "requested_path": "logs/refgs_llff/fsgs_shared_eval_validation/1_8/fern",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "gt": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/fern/test/ours_10000/gt",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/fern/test/ours_10000/gt",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "model": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/fern",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/fern",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "renders": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/fern/test/ours_10000/renders",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/fern/test/ours_10000/renders",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        }
+      },
+      "cached_runtime": {
+        "numpy": "1.21.6",
+        "pillow": "9.4.0",
+        "python": "3.7.12",
+        "torch": "1.12.1",
+        "torch_cuda": "11.3"
+      },
+      "current_evaluator_sha256": "ab33c0e0c574795d63da93d219fee4267b2e0c122f6f966e2f128b52b42d7e19",
+      "current_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "evaluator_file_changed": false,
+      "gt": {
+        "count": 3,
+        "files": [
+          {
+            "mtime_ns": 1783852810140577323,
+            "name": "IMG_4026.png",
+            "sha256": "5807b14875bb5bbb72d1ff1a00af7c225417fbbd1e362a847a0eddccc8f7552e",
+            "size_bytes": 350187
+          },
+          {
+            "mtime_ns": 1783852810296577294,
+            "name": "IMG_4034.png",
+            "sha256": "d3ad956a69037302871422c9d874e584f31b3c917caa939f16604311f7aff953",
+            "size_bytes": 334170
+          },
+          {
+            "mtime_ns": 1783852810456577265,
+            "name": "IMG_4042.png",
+            "sha256": "65387a0c0d6a6a6fc2bd130944374bfeac1785ce7ee7a81a91ec6912b77dee9e",
+            "size_bytes": 336724
+          }
+        ],
+        "latest_mtime_ns": 1783852810456577265,
+        "manifest_sha256": "f1491ae28fc38dbe90561b5cd4d230bc9d2f7ce526ee20a0d0abe766fd4f48a5",
+        "names": [
+          "IMG_4026.png",
+          "IMG_4034.png",
+          "IMG_4042.png"
+        ]
+      },
+      "input_fingerprint": "05cc960372a6d68759e0db53ea543271dec4f55d64ec8861993407399b72ff0b",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.1984920154015223,
+        "PSNR": 21.91853968302409,
+        "SSIM": 0.7208865880966187
+      },
+      "numeric_change_proven": false,
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "per_view_count": 3,
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "ab33c0e0c574795d63da93d219fee4267b2e0c122f6f966e2f128b52b42d7e19",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "renders": {
+        "count": 3,
+        "files": [
+          {
+            "mtime_ns": 1783852810076577334,
+            "name": "IMG_4026.png",
+            "sha256": "0330e7cc707eb96958141684b4769c19ca1ff1046cf71d85d657a6ca014f4ad3",
+            "size_bytes": 327279
+          },
+          {
+            "mtime_ns": 1783852810220577308,
+            "name": "IMG_4034.png",
+            "sha256": "8e34ea714b5cc3365a833be4517167eb840a480d92eeb6fb71607c530d08b8f8",
+            "size_bytes": 317975
+          },
+          {
+            "mtime_ns": 1783852810380577278,
+            "name": "IMG_4042.png",
+            "sha256": "07db017bfc88b0d0c32009008da6e6665b82a1f254a9e2b271f8b1998e2e4306",
+            "size_bytes": 326560
+          }
+        ],
+        "latest_mtime_ns": 1783852810380577278,
+        "manifest_sha256": "66f553a2dd80721ceec5aaa6d93ab76ae913ebb1551400d1108b58e65fe59ca4",
+        "names": [
+          "IMG_4026.png",
+          "IMG_4034.png",
+          "IMG_4042.png"
+        ]
+      },
+      "resolution": "1_8",
+      "scene": "fern",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_8/flower": {
+      "access": {
+        "cache": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": false,
+          "readable": true,
+          "realpath": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/logs/refgs_llff/fsgs_shared_eval_validation/1_8/flower",
+          "requested_path": "logs/refgs_llff/fsgs_shared_eval_validation/1_8/flower",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "gt": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/flower/test/ours_10000/gt",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/flower/test/ours_10000/gt",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "model": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/flower",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/flower",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "renders": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/flower/test/ours_10000/renders",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/flower/test/ours_10000/renders",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        }
+      },
+      "cached_runtime": {
+        "numpy": "1.21.6",
+        "pillow": "9.4.0",
+        "python": "3.7.12",
+        "torch": "1.12.1",
+        "torch_cuda": "11.3"
+      },
+      "current_evaluator_sha256": "ab33c0e0c574795d63da93d219fee4267b2e0c122f6f966e2f128b52b42d7e19",
+      "current_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "evaluator_file_changed": false,
+      "gt": {
+        "count": 5,
+        "files": [
+          {
+            "mtime_ns": 1783856287693808241,
+            "name": "IMG_2962.png",
+            "sha256": "097ad426a48ddbf57b727a4ce28f88167851524679baf16da26c705537965edf",
+            "size_bytes": 360001
+          },
+          {
+            "mtime_ns": 1783856287809808390,
+            "name": "IMG_2970.png",
+            "sha256": "7e09d9e86aff1ea9a8db386c4a08e4bf86c6b45766f2bf9791b2bb13db4d44b7",
+            "size_bytes": 360978
+          },
+          {
+            "mtime_ns": 1783856287937808554,
+            "name": "IMG_2978.png",
+            "sha256": "0eb2063c3b3a8771b4be529a9e3759e140e96e4579af4d79f66ea30ab1f5ac5c",
+            "size_bytes": 358829
+          },
+          {
+            "mtime_ns": 1783856288057808707,
+            "name": "IMG_2986.png",
+            "sha256": "0ea580e668e9442ee11ff5ade03ebe8a0c553b0bd7973f43e11e317ded98fff0",
+            "size_bytes": 354090
+          },
+          {
+            "mtime_ns": 1783856288185808871,
+            "name": "IMG_2994.png",
+            "sha256": "49e12ed719653ceb0f3f628eb744c749db01a1017b141110fb883695f95c45bf",
+            "size_bytes": 352723
+          }
+        ],
+        "latest_mtime_ns": 1783856288185808871,
+        "manifest_sha256": "5aa217cef2fea4298e1f32da2e14c16e92a329d68603893630fd93c6197a15f9",
+        "names": [
+          "IMG_2962.png",
+          "IMG_2970.png",
+          "IMG_2978.png",
+          "IMG_2986.png",
+          "IMG_2994.png"
+        ]
+      },
+      "input_fingerprint": "6af43e6bc5b1bc0fb90deee92592400ee0bf105e33c594336842bcf4b8a57f97",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.2450692504644394,
+        "PSNR": 20.462041664123536,
+        "SSIM": 0.6311795055866242
+      },
+      "numeric_change_proven": false,
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "per_view_count": 5,
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "ab33c0e0c574795d63da93d219fee4267b2e0c122f6f966e2f128b52b42d7e19",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "renders": {
+        "count": 5,
+        "files": [
+          {
+            "mtime_ns": 1783856287637808169,
+            "name": "IMG_2962.png",
+            "sha256": "f3e242f4c221b4b3878234bca0089022ea56385f1b2fcaec7dd3c46993bd249d",
+            "size_bytes": 347190
+          },
+          {
+            "mtime_ns": 1783856287753808319,
+            "name": "IMG_2970.png",
+            "sha256": "748f88087ab95e3903c2eb240d7098e876f4ee5ebabccf306e80de76394798f5",
+            "size_bytes": 352465
+          },
+          {
+            "mtime_ns": 1783856287877808477,
+            "name": "IMG_2978.png",
+            "sha256": "89fdf3f58a7145b5c7dda4b6d7ee37131ad32a53e5ddcc8a2daa63eec1c6605e",
+            "size_bytes": 346041
+          },
+          {
+            "mtime_ns": 1783856287997808631,
+            "name": "IMG_2986.png",
+            "sha256": "4ddd4fcca6cabe9aa1297854c549ecd94950e627fd4e25670b83d2478d0e7fa9",
+            "size_bytes": 350428
+          },
+          {
+            "mtime_ns": 1783856288125808794,
+            "name": "IMG_2994.png",
+            "sha256": "cfb12af59900327880e1eda533706deeca8e83ae653040ecdd16f21a5724ccc0",
+            "size_bytes": 341760
+          }
+        ],
+        "latest_mtime_ns": 1783856288125808794,
+        "manifest_sha256": "9337186d064f825e74cc96ed4065d2fbaefa5d0f558ae5931f09e8d40401ce1e",
+        "names": [
+          "IMG_2962.png",
+          "IMG_2970.png",
+          "IMG_2978.png",
+          "IMG_2986.png",
+          "IMG_2994.png"
+        ]
+      },
+      "resolution": "1_8",
+      "scene": "flower",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_8/fortress": {
+      "access": {
+        "cache": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": false,
+          "readable": true,
+          "realpath": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/logs/refgs_llff/fsgs_shared_eval_validation/1_8/fortress",
+          "requested_path": "logs/refgs_llff/fsgs_shared_eval_validation/1_8/fortress",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "gt": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/fortress/test/ours_10000/gt",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/fortress/test/ours_10000/gt",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "model": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/fortress",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/fortress",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "renders": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/fortress/test/ours_10000/renders",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/fortress/test/ours_10000/renders",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        }
+      },
+      "cached_runtime": null,
+      "current_evaluator_sha256": "ab33c0e0c574795d63da93d219fee4267b2e0c122f6f966e2f128b52b42d7e19",
+      "current_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "evaluator_file_changed": true,
+      "gt": {
+        "count": 6,
+        "files": [
+          {
+            "mtime_ns": 1783857463283053981,
+            "name": "IMG_1800.png",
+            "sha256": "853dc209f2b1c619896645cbd9b9e58c301fae11ed7e18884a47344146516fbd",
+            "size_bytes": 334120
+          },
+          {
+            "mtime_ns": 1783857463427054119,
+            "name": "IMG_1808.png",
+            "sha256": "7c20bcb66fe3330b8cbe53f4c0084d44772a6412c68c8082e609c52cf70f46a1",
+            "size_bytes": 331710
+          },
+          {
+            "mtime_ns": 1783857463571054256,
+            "name": "IMG_1816.png",
+            "sha256": "017e5b31e8894164a4b89e43be1db02b16ce78e4547c57327a52e73625144472",
+            "size_bytes": 324603
+          },
+          {
+            "mtime_ns": 1783857463719054397,
+            "name": "IMG_1824.png",
+            "sha256": "334e60cb5afdb4eda6dbed69cb3359ef5575d71a6db6eb497fb77e7d1e8f638c",
+            "size_bytes": 338018
+          },
+          {
+            "mtime_ns": 1783857463855054527,
+            "name": "IMG_1832.png",
+            "sha256": "f4ccad9de52565947c400f47be98be2f939fab23d47eeb7c82c222f6a2bda76b",
+            "size_bytes": 334607
+          },
+          {
+            "mtime_ns": 1783857464007054672,
+            "name": "IMG_1840.png",
+            "sha256": "048fb099b757612b010ece092fca87b65548274dd133a64d6782547988fed74e",
+            "size_bytes": 318130
+          }
+        ],
+        "latest_mtime_ns": 1783857464007054672,
+        "manifest_sha256": "28b2fb8d87e06dca99911bbfcbf4e2db88aec8de47225ec10d657a1c6d476a9d",
+        "names": [
+          "IMG_1800.png",
+          "IMG_1808.png",
+          "IMG_1816.png",
+          "IMG_1824.png",
+          "IMG_1832.png",
+          "IMG_1840.png"
+        ]
+      },
+      "input_fingerprint": "bf6ce332aeadb9104381acaabe64b4fbd86403832704062435e6c4e6e56498e6",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.17570690313975015,
+        "PSNR": 23.46843655904134,
+        "SSIM": 0.728224128484726
+      },
+      "numeric_change_proven": false,
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "per_view_count": 6,
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "renders": {
+        "count": 6,
+        "files": [
+          {
+            "mtime_ns": 1783857463223053924,
+            "name": "IMG_1800.png",
+            "sha256": "b7a622312b4bb25144f9e83f977d0cd0955a631c0adf7df00ebcccfb73b366db",
+            "size_bytes": 312362
+          },
+          {
+            "mtime_ns": 1783857463359054054,
+            "name": "IMG_1808.png",
+            "sha256": "dba5344c5956328c5f0e384d58cd7d46399dceee0c5296e0faa7229363c7a700",
+            "size_bytes": 318652
+          },
+          {
+            "mtime_ns": 1783857463507054195,
+            "name": "IMG_1816.png",
+            "sha256": "fe82961d211f9d570d32847bad48f03921db3f8669f1cbe5c787526ad9f35b1f",
+            "size_bytes": 318136
+          },
+          {
+            "mtime_ns": 1783857463659054340,
+            "name": "IMG_1824.png",
+            "sha256": "960931807021149deb4707a6ed1ab3cd11672d5b567e5b68e280e907cdec3fbc",
+            "size_bytes": 303553
+          },
+          {
+            "mtime_ns": 1783857463795054470,
+            "name": "IMG_1832.png",
+            "sha256": "3715bee2d1ed598a5eea200161f8d3d3354664670ded18519c24e4d25e214785",
+            "size_bytes": 314813
+          },
+          {
+            "mtime_ns": 1783857463943054610,
+            "name": "IMG_1840.png",
+            "sha256": "573db588a98d5f069a1222c7e965e601f3035ae8293d0528c29f76c7505d8129",
+            "size_bytes": 313866
+          }
+        ],
+        "latest_mtime_ns": 1783857463943054610,
+        "manifest_sha256": "1880c2782247acdd22bfa7840c9bb5fa0c9c5bfab7adba9856e042c7b5a2db63",
+        "names": [
+          "IMG_1800.png",
+          "IMG_1808.png",
+          "IMG_1816.png",
+          "IMG_1824.png",
+          "IMG_1832.png",
+          "IMG_1840.png"
+        ]
+      },
+      "resolution": "1_8",
+      "scene": "fortress",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_8/horns": {
+      "access": {
+        "cache": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": false,
+          "readable": true,
+          "realpath": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/logs/refgs_llff/fsgs_shared_eval_validation/1_8/horns",
+          "requested_path": "logs/refgs_llff/fsgs_shared_eval_validation/1_8/horns",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "gt": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/horns/test/ours_10000/gt",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/horns/test/ours_10000/gt",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "model": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/horns",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/horns",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "renders": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/horns/test/ours_10000/renders",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/horns/test/ours_10000/renders",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        }
+      },
+      "cached_runtime": null,
+      "current_evaluator_sha256": "ab33c0e0c574795d63da93d219fee4267b2e0c122f6f966e2f128b52b42d7e19",
+      "current_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "evaluator_file_changed": true,
+      "gt": {
+        "count": 8,
+        "files": [
+          {
+            "mtime_ns": 1783841585197669374,
+            "name": "DJI_20200223_163016_842.png",
+            "sha256": "0fcbf54eb25a02484fecc9ad3b7fb7ba231d06c06a8522975d861cd8caaaa1a9",
+            "size_bytes": 342662
+          },
+          {
+            "mtime_ns": 1783841585333668991,
+            "name": "DJI_20200223_163024_597.png",
+            "sha256": "98eb12d01e910d117e4ca4856d7eecb6d5e292a10be2464c33c427114f85282b",
+            "size_bytes": 357656
+          },
+          {
+            "mtime_ns": 1783841585469668608,
+            "name": "DJI_20200223_163033_432.png",
+            "sha256": "830a5d3a581ff2f3c84245fb0ed2f55a091e92d72458ba5c143cbf63d7e0278c",
+            "size_bytes": 340356
+          },
+          {
+            "mtime_ns": 1783841585605668225,
+            "name": "DJI_20200223_163047_307.png",
+            "sha256": "472fbf29f35fb74eca7c6f90a1ec3618f77f1f603ddc4b11b5b8211b8488766b",
+            "size_bytes": 339792
+          },
+          {
+            "mtime_ns": 1783841585745667832,
+            "name": "DJI_20200223_163055_437.png",
+            "sha256": "3d24b1a4d52d2c881deef2147d1e755986793ca79d36ab161900ec8c02361b8a",
+            "size_bytes": 335869
+          },
+          {
+            "mtime_ns": 1783841585881667449,
+            "name": "DJI_20200223_163103_777.png",
+            "sha256": "7cc868b4fe7ec8cd63dd2710a17be79b05a3e0235225b99321561a963ce288fa",
+            "size_bytes": 324372
+          },
+          {
+            "mtime_ns": 1783841586013667078,
+            "name": "DJI_20200223_163201_633.png",
+            "sha256": "2aab90f0bbabd2bedc497936a3a40504b1d71d32623edf0d6173d28ec05e71f8",
+            "size_bytes": 343951
+          },
+          {
+            "mtime_ns": 1783841586157666674,
+            "name": "DJI_20200223_163208_938.png",
+            "sha256": "812db8cc03a0fc9bfa28d724c6b13d7658c2e57dcf845ec7bf1499bf7a715f88",
+            "size_bytes": 309478
+          }
+        ],
+        "latest_mtime_ns": 1783841586157666674,
+        "manifest_sha256": "d042b11d38180d73a299961b6e80e037d1d426681df3b2e9d130bd85b78fd40e",
+        "names": [
+          "DJI_20200223_163016_842.png",
+          "DJI_20200223_163024_597.png",
+          "DJI_20200223_163033_432.png",
+          "DJI_20200223_163047_307.png",
+          "DJI_20200223_163055_437.png",
+          "DJI_20200223_163103_777.png",
+          "DJI_20200223_163201_633.png",
+          "DJI_20200223_163208_938.png"
+        ]
+      },
+      "input_fingerprint": "e4e2c21732e2fab077cf58b7220110b7ed1d887ab3bf4a17f808fa416787b87a",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.227823032066226,
+        "PSNR": 20.51098895072937,
+        "SSIM": 0.7138616591691971
+      },
+      "numeric_change_proven": false,
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "per_view_count": 8,
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "renders": {
+        "count": 8,
+        "files": [
+          {
+            "mtime_ns": 1783841585133669552,
+            "name": "DJI_20200223_163016_842.png",
+            "sha256": "7e03730b31946482f9df3034b404763a6e4ae38ae6ff07d014c2991117e8ad78",
+            "size_bytes": 310348
+          },
+          {
+            "mtime_ns": 1783841585273669160,
+            "name": "DJI_20200223_163024_597.png",
+            "sha256": "8ad923b390a5e4de7b1cc05c2181765fb6a0724381c8dc335273e8f8900cc7ca",
+            "size_bytes": 330431
+          },
+          {
+            "mtime_ns": 1783841585405668789,
+            "name": "DJI_20200223_163033_432.png",
+            "sha256": "cab706d14e70d1f2013b410bcbc81e2e61a15b45cdafc32c8c241ad94e6c178e",
+            "size_bytes": 310703
+          },
+          {
+            "mtime_ns": 1783841585545668394,
+            "name": "DJI_20200223_163047_307.png",
+            "sha256": "2cbfd7599fb562f8bf503c80e4d134dc4b9529912f4d4ce2f37a4ad39e9cb578",
+            "size_bytes": 318743
+          },
+          {
+            "mtime_ns": 1783841585681668012,
+            "name": "DJI_20200223_163055_437.png",
+            "sha256": "cd9bcb6d0920d66cfc33afc4128a58d9e0f66148de6454f5f60a9cfb4510bc3e",
+            "size_bytes": 319221
+          },
+          {
+            "mtime_ns": 1783841585817667629,
+            "name": "DJI_20200223_163103_777.png",
+            "sha256": "a4a60b72913b7c8de4cfd1fb83f5bbeea6cb8693a942c7e3cf383d97f8086f24",
+            "size_bytes": 303125
+          },
+          {
+            "mtime_ns": 1783841585949667258,
+            "name": "DJI_20200223_163201_633.png",
+            "sha256": "3efc571cf1affd2b750802bf45176d477b619e6993d4c10e20a76930894ddb79",
+            "size_bytes": 320350
+          },
+          {
+            "mtime_ns": 1783841586093666853,
+            "name": "DJI_20200223_163208_938.png",
+            "sha256": "2a3138b5c5da30125ab2eabe5ef06a62320f5429581dccb60aec196ddcf25d8e",
+            "size_bytes": 291339
+          }
+        ],
+        "latest_mtime_ns": 1783841586093666853,
+        "manifest_sha256": "0d79a20d4e73dc803ba582bf3bed87dcc96623091aa6f4eb70664f7dcd79af8d",
+        "names": [
+          "DJI_20200223_163016_842.png",
+          "DJI_20200223_163024_597.png",
+          "DJI_20200223_163033_432.png",
+          "DJI_20200223_163047_307.png",
+          "DJI_20200223_163055_437.png",
+          "DJI_20200223_163103_777.png",
+          "DJI_20200223_163201_633.png",
+          "DJI_20200223_163208_938.png"
+        ]
+      },
+      "resolution": "1_8",
+      "scene": "horns",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_8/leaves": {
+      "access": {
+        "cache": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": false,
+          "readable": true,
+          "realpath": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/logs/refgs_llff/fsgs_shared_eval_validation/1_8/leaves",
+          "requested_path": "logs/refgs_llff/fsgs_shared_eval_validation/1_8/leaves",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "gt": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/leaves/test/ours_10000/gt",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/leaves/test/ours_10000/gt",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "model": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/leaves",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/leaves",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "renders": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/leaves/test/ours_10000/renders",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/leaves/test/ours_10000/renders",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        }
+      },
+      "cached_runtime": null,
+      "current_evaluator_sha256": "ab33c0e0c574795d63da93d219fee4267b2e0c122f6f966e2f128b52b42d7e19",
+      "current_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "evaluator_file_changed": true,
+      "gt": {
+        "count": 4,
+        "files": [
+          {
+            "mtime_ns": 1783871853849123230,
+            "name": "IMG_2997.png",
+            "sha256": "41962d5c398e1ba48f47b16daefb9274bbf5f744eae9f788cc3a54909d81d78b",
+            "size_bytes": 450233
+          },
+          {
+            "mtime_ns": 1783871853929123532,
+            "name": "IMG_3006.png",
+            "sha256": "b29747607be5efc9b66a05e7ac8f97da0aa3ef7b06e42b1fe62f66b423a52e87",
+            "size_bytes": 446430
+          },
+          {
+            "mtime_ns": 1783871854013123848,
+            "name": "IMG_3014.png",
+            "sha256": "b551c533a8465443cdabf675e4e8655d624c43c6aebd9e36e02de89e2caa05e0",
+            "size_bytes": 441697
+          },
+          {
+            "mtime_ns": 1783871854097124164,
+            "name": "IMG_3022.png",
+            "sha256": "d91511246ada5451c3a69b39ef81e9eb318792c7a6de1bc142d12858f820da69",
+            "size_bytes": 436532
+          }
+        ],
+        "latest_mtime_ns": 1783871854097124164,
+        "manifest_sha256": "a170d2f1cd4110bdebe97d8de5193ec22dd5fa02a209b1f7e933cea496d8a325",
+        "names": [
+          "IMG_2997.png",
+          "IMG_3006.png",
+          "IMG_3014.png",
+          "IMG_3022.png"
+        ]
+      },
+      "input_fingerprint": "521a0396d9c281cbefbf38d122bdb0aa331717329eb1d2cd916daa6e1e4e36e3",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.20964427292346954,
+        "PSNR": 17.76478624343872,
+        "SSIM": 0.632229819893837
+      },
+      "numeric_change_proven": false,
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "per_view_count": 4,
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "renders": {
+        "count": 4,
+        "files": [
+          {
+            "mtime_ns": 1783871853813123095,
+            "name": "IMG_2997.png",
+            "sha256": "28637cd659264d88c2e50b99a630a39d0cf71acf636fd99eba86a944037ee171",
+            "size_bytes": 438011
+          },
+          {
+            "mtime_ns": 1783871853893123396,
+            "name": "IMG_3006.png",
+            "sha256": "418c5f7c9263da6ccd6b7fc6e87bd97093e6af25322c1fbab25d8b2e42975f83",
+            "size_bytes": 433115
+          },
+          {
+            "mtime_ns": 1783871853981123727,
+            "name": "IMG_3014.png",
+            "sha256": "b7e132680f27b77c2e127f1b44f6d10c4988e7a8100adbeb030a68a6584f44a8",
+            "size_bytes": 429205
+          },
+          {
+            "mtime_ns": 1783871854061124029,
+            "name": "IMG_3022.png",
+            "sha256": "c631f641c462eb22d65da5c22a12ef1b2e7525e1d3215e18d42357a2080c8f9a",
+            "size_bytes": 429174
+          }
+        ],
+        "latest_mtime_ns": 1783871854061124029,
+        "manifest_sha256": "39ed08d12358b6d32125b3fc92ac68aaeb0e0df67bf983817a1c7efea5dfa506",
+        "names": [
+          "IMG_2997.png",
+          "IMG_3006.png",
+          "IMG_3014.png",
+          "IMG_3022.png"
+        ]
+      },
+      "resolution": "1_8",
+      "scene": "leaves",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_8/orchids": {
+      "access": {
+        "cache": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": false,
+          "readable": true,
+          "realpath": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/logs/refgs_llff/fsgs_shared_eval_validation/1_8/orchids",
+          "requested_path": "logs/refgs_llff/fsgs_shared_eval_validation/1_8/orchids",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "gt": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/orchids/test/ours_10000/gt",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/orchids/test/ours_10000/gt",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "model": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/orchids",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/orchids",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "renders": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/orchids/test/ours_10000/renders",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/orchids/test/ours_10000/renders",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        }
+      },
+      "cached_runtime": null,
+      "current_evaluator_sha256": "ab33c0e0c574795d63da93d219fee4267b2e0c122f6f966e2f128b52b42d7e19",
+      "current_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "evaluator_file_changed": true,
+      "gt": {
+        "count": 4,
+        "files": [
+          {
+            "mtime_ns": 1783858455259793092,
+            "name": "IMG_4467.png",
+            "sha256": "a5e8ca2e1034b0c90d88b5346f2de97266a02d866a8547b35a5cb1ad8fd8ad8f",
+            "size_bytes": 412318
+          },
+          {
+            "mtime_ns": 1783858455363792980,
+            "name": "IMG_4475.png",
+            "sha256": "9b94fb1b3969bdf0392adbbb8ed95344768b2bed470525d276c7792f2a97cd97",
+            "size_bytes": 418130
+          },
+          {
+            "mtime_ns": 1783858455459792876,
+            "name": "IMG_4483.png",
+            "sha256": "f6c6a01f2f16e72e8944a15d3170c73b34dabcfa702e33f9a2c8d20323afe1e3",
+            "size_bytes": 434138
+          },
+          {
+            "mtime_ns": 1783858455555792772,
+            "name": "IMG_4491.png",
+            "sha256": "e40ea5e570ffafd23dbdb4391f73c3e9cd837d4b60f5b4f3881fd7ea5c1c623f",
+            "size_bytes": 431372
+          }
+        ],
+        "latest_mtime_ns": 1783858455555792772,
+        "manifest_sha256": "c36efd84cc09a6b864e42f4b1da1be30d59b2b4f2047bcc18daf6750ad7bd13e",
+        "names": [
+          "IMG_4467.png",
+          "IMG_4475.png",
+          "IMG_4483.png",
+          "IMG_4491.png"
+        ]
+      },
+      "input_fingerprint": "613a1f4bcfd27c62c7322975f1d262d67ac00f8a6a28907b98988100b952dada",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.25432969257235527,
+        "PSNR": 16.438672304153442,
+        "SSIM": 0.5168814957141876
+      },
+      "numeric_change_proven": false,
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "per_view_count": 4,
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "renders": {
+        "count": 4,
+        "files": [
+          {
+            "mtime_ns": 1783858455211793145,
+            "name": "IMG_4467.png",
+            "sha256": "dcd28a519b80760061455d0852ea14701313887d55cbb36ed43097db31ca3dfd",
+            "size_bytes": 405096
+          },
+          {
+            "mtime_ns": 1783858455315793032,
+            "name": "IMG_4475.png",
+            "sha256": "6e28d971d0bed7e38c20e735f0c49aa9bd0b8283cb96006fb10b2047cc251f3e",
+            "size_bytes": 404913
+          },
+          {
+            "mtime_ns": 1783858455415792923,
+            "name": "IMG_4483.png",
+            "sha256": "330b18922fd4b52de9cf55f926a43c9f8f34b0ffa20ed0a8906cb84b61daf026",
+            "size_bytes": 407565
+          },
+          {
+            "mtime_ns": 1783858455511792819,
+            "name": "IMG_4491.png",
+            "sha256": "92226e2a06175bd01a10048c7c8cf20cc5bb7c8927c0343b14fd6d97ee152890",
+            "size_bytes": 406870
+          }
+        ],
+        "latest_mtime_ns": 1783858455511792819,
+        "manifest_sha256": "2d75d7a0dba6733b3ff1689edb421843b13a8acde44b5f1f231d6168e26c760b",
+        "names": [
+          "IMG_4467.png",
+          "IMG_4475.png",
+          "IMG_4483.png",
+          "IMG_4491.png"
+        ]
+      },
+      "resolution": "1_8",
+      "scene": "orchids",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_8/room": {
+      "access": {
+        "cache": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": false,
+          "readable": true,
+          "realpath": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/logs/refgs_llff/fsgs_shared_eval_validation/1_8/room",
+          "requested_path": "logs/refgs_llff/fsgs_shared_eval_validation/1_8/room",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "gt": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/room/test/ours_10000/gt",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/room/test/ours_10000/gt",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "model": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/room",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/room",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "renders": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/room/test/ours_10000/renders",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/room/test/ours_10000/renders",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        }
+      },
+      "cached_runtime": null,
+      "current_evaluator_sha256": "ab33c0e0c574795d63da93d219fee4267b2e0c122f6f966e2f128b52b42d7e19",
+      "current_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "evaluator_file_changed": true,
+      "gt": {
+        "count": 6,
+        "files": [
+          {
+            "mtime_ns": 1783859303411339585,
+            "name": "DJI_20200226_143850_006.png",
+            "sha256": "73c8807d68f2624de98befdc2e967dc85ec45e71f4c2ee38c39fc199a24964ac",
+            "size_bytes": 210971
+          },
+          {
+            "mtime_ns": 1783859303587339548,
+            "name": "DJI_20200226_143901_419.png",
+            "sha256": "c5ce57857d7be6d5e405573b45955b29404e4d952f4c786ee7752262367a0dd0",
+            "size_bytes": 208901
+          },
+          {
+            "mtime_ns": 1783859303767339509,
+            "name": "DJI_20200226_143912_008.png",
+            "sha256": "3238cbd59447f9dfee08427cbd4410b795cbcd2f3e12acf83df301d0d29ddeb3",
+            "size_bytes": 209302
+          },
+          {
+            "mtime_ns": 1783859303935339474,
+            "name": "DJI_20200226_143926_241.png",
+            "sha256": "c7681c87c0c92e9dcdf0d261c18ee763ac60fac7be5f3465b9b7d3e2de716607",
+            "size_bytes": 199159
+          },
+          {
+            "mtime_ns": 1783859304083339442,
+            "name": "DJI_20200226_143938_168.png",
+            "sha256": "dcf0403d736ab99ce754b71ecec5f3763ab6b630712681b8dc67d444ab7a8b8a",
+            "size_bytes": 208612
+          },
+          {
+            "mtime_ns": 1783859304227339410,
+            "name": "DJI_20200226_143948_113.png",
+            "sha256": "2be370a292ca73bf873e6bc9c774f1d6b7999c36f6157e1f003204cd2b5a4f3a",
+            "size_bytes": 200139
+          }
+        ],
+        "latest_mtime_ns": 1783859304227339410,
+        "manifest_sha256": "13547fc893786db44d4da037b3e6cd2a939d9700f1e8d2c956591a99bb927a97",
+        "names": [
+          "DJI_20200226_143850_006.png",
+          "DJI_20200226_143901_419.png",
+          "DJI_20200226_143912_008.png",
+          "DJI_20200226_143926_241.png",
+          "DJI_20200226_143938_168.png",
+          "DJI_20200226_143948_113.png"
+        ]
+      },
+      "input_fingerprint": "0512280e3ec5eed7378b87d920a82356d1e805368cb1da83c2bc0ad37a406dc2",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.1655116081237793,
+        "PSNR": 21.25847625732422,
+        "SSIM": 0.8449338972568512
+      },
+      "numeric_change_proven": false,
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "per_view_count": 6,
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "renders": {
+        "count": 6,
+        "files": [
+          {
+            "mtime_ns": 1783859303323339604,
+            "name": "DJI_20200226_143850_006.png",
+            "sha256": "8610db291533a34f96ee39bdb5de9e4ac902bbe2ebbb67530e6c47de6fc8c5d7",
+            "size_bytes": 192288
+          },
+          {
+            "mtime_ns": 1783859303503339565,
+            "name": "DJI_20200226_143901_419.png",
+            "sha256": "08a56f252b581b4c1c968baa29e062e83ac4e302d26ff932f5741fe068ff134d",
+            "size_bytes": 195978
+          },
+          {
+            "mtime_ns": 1783859303679339528,
+            "name": "DJI_20200226_143912_008.png",
+            "sha256": "ecc91cb93aec310aeaa1df27644fd5f0e7302dc4d77fb3b6f261086c09a3e8f0",
+            "size_bytes": 208160
+          },
+          {
+            "mtime_ns": 1783859303859339489,
+            "name": "DJI_20200226_143926_241.png",
+            "sha256": "839543bd086d3960a3e781ec0c25e02556655f4be16eb3c3552bb0478da63f49",
+            "size_bytes": 190205
+          },
+          {
+            "mtime_ns": 1783859304007339457,
+            "name": "DJI_20200226_143938_168.png",
+            "sha256": "8d0896368eed70cb3898ef2fae09808c1aa3efe7d587b0b1cb2e9fcee5d4277e",
+            "size_bytes": 191663
+          },
+          {
+            "mtime_ns": 1783859304155339426,
+            "name": "DJI_20200226_143948_113.png",
+            "sha256": "3b0eeeeefab5fa33babd8e9008476bcb79272f2d90b868e3ac7576af5764b78d",
+            "size_bytes": 195414
+          }
+        ],
+        "latest_mtime_ns": 1783859304155339426,
+        "manifest_sha256": "612a9ef732b891b4150fc9988329ce896f1ddde62963a27d39771cc8d06ddbf4",
+        "names": [
+          "DJI_20200226_143850_006.png",
+          "DJI_20200226_143901_419.png",
+          "DJI_20200226_143912_008.png",
+          "DJI_20200226_143926_241.png",
+          "DJI_20200226_143938_168.png",
+          "DJI_20200226_143948_113.png"
+        ]
+      },
+      "resolution": "1_8",
+      "scene": "room",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    },
+    "1_8/trex": {
+      "access": {
+        "cache": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": false,
+          "readable": true,
+          "realpath": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/logs/refgs_llff/fsgs_shared_eval_validation/1_8/trex",
+          "requested_path": "logs/refgs_llff/fsgs_shared_eval_validation/1_8/trex",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "gt": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/trex/test/ours_10000/gt",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/trex/test/ours_10000/gt",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "model": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/trex",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/trex",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        },
+        "renders": {
+          "codex_direct_file_tool": "not_available_in_this_session",
+          "exists": true,
+          "outside_workspace": true,
+          "readable": true,
+          "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/trex/test/ours_10000/renders",
+          "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro/1_8/trex/test/ours_10000/renders",
+          "sandbox_observation": "readable_from_current_restricted_shell",
+          "shell_subprocess_access": true
+        }
+      },
+      "cached_runtime": null,
+      "current_evaluator_sha256": "ab33c0e0c574795d63da93d219fee4267b2e0c122f6f966e2f128b52b42d7e19",
+      "current_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "evaluator_file_changed": true,
+      "gt": {
+        "count": 7,
+        "files": [
+          {
+            "mtime_ns": 1783860194610174442,
+            "name": "DJI_20200223_163548_810.png",
+            "sha256": "93ddf08c96690c9ad1b4b426f445be178e6a3d379686d14df5d5911949371df2",
+            "size_bytes": 290870
+          },
+          {
+            "mtime_ns": 1783860194730174732,
+            "name": "DJI_20200223_163557_660.png",
+            "sha256": "0b7db8661590be831751a95ed69ab45d1632aa8696b5d956425b57b9576d1ca3",
+            "size_bytes": 307586
+          },
+          {
+            "mtime_ns": 1783860194850175023,
+            "name": "DJI_20200223_163604_605.png",
+            "sha256": "21dba57221036a308bd88b93dc8fc07a1354505a940176c31513555c117db1a9",
+            "size_bytes": 314825
+          },
+          {
+            "mtime_ns": 1783860194978175332,
+            "name": "DJI_20200223_163611_160.png",
+            "sha256": "9c07757198255462745045545f6fd9748fd237198ebf257b004bd2c2cc9a565c",
+            "size_bytes": 336968
+          },
+          {
+            "mtime_ns": 1783860195102175632,
+            "name": "DJI_20200223_163620_700.png",
+            "sha256": "dedff98aee86629e55287ab0486305b43dfa7a06a93998808d74ca5b10bf7759",
+            "size_bytes": 315292
+          },
+          {
+            "mtime_ns": 1783860195218175913,
+            "name": "DJI_20200223_163639_916.png",
+            "sha256": "c5a785e6208a5ad3f2182b1b2e682ed7330d4e76213250de19c9e8d0e8fd73be",
+            "size_bytes": 302358
+          },
+          {
+            "mtime_ns": 1783860195342176213,
+            "name": "DJI_20200223_163646_755.png",
+            "sha256": "3ad3dade58ae7d46ec141e79253c1980dd76e4c861e2e6b79a0398d4907bf265",
+            "size_bytes": 320867
+          }
+        ],
+        "latest_mtime_ns": 1783860195342176213,
+        "manifest_sha256": "e107e080bd7bc7e55eb707a1ea6ced2ec400824f10d562fd27a8bfdfee406cf3",
+        "names": [
+          "DJI_20200223_163548_810.png",
+          "DJI_20200223_163557_660.png",
+          "DJI_20200223_163604_605.png",
+          "DJI_20200223_163611_160.png",
+          "DJI_20200223_163620_700.png",
+          "DJI_20200223_163639_916.png",
+          "DJI_20200223_163646_755.png"
+        ]
+      },
+      "input_fingerprint": "d07d735c49ba973699fe2ef39bf2b98b13af9e10338fa19ebc68f851b167d25b",
+      "lpips_backbone": "vgg",
+      "metrics": {
+        "LPIPS": 0.1557182084236826,
+        "PSNR": 21.873391015189036,
+        "SSIM": 0.8102683680398124
+      },
+      "numeric_change_proven": false,
+      "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+      "per_view_count": 7,
+      "reason": "cache_identity_matches",
+      "recorded_evaluator_sha256": "bcc320c9741509584f49000320f618b2202d67a8cf006039423e98a3db02d622",
+      "recorded_fsgs_metrics_sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "renders": {
+        "count": 7,
+        "files": [
+          {
+            "mtime_ns": 1783860194550174297,
+            "name": "DJI_20200223_163548_810.png",
+            "sha256": "32c37a2278924cbb9742277dd8569360e9d9e48b54bc705fcfd6ad1b84514988",
+            "size_bytes": 276065
+          },
+          {
+            "mtime_ns": 1783860194674174597,
+            "name": "DJI_20200223_163557_660.png",
+            "sha256": "c57291d7baa495ebeb1518e773fcc20980b3c52d56a7a21939f6ea3a9491fffd",
+            "size_bytes": 300415
+          },
+          {
+            "mtime_ns": 1783860194794174887,
+            "name": "DJI_20200223_163604_605.png",
+            "sha256": "feec1d7f37649b4bec5527226155da33a2fa1dca7d88e3c7e795b6bfd7e8440f",
+            "size_bytes": 304194
+          },
+          {
+            "mtime_ns": 1783860194918175187,
+            "name": "DJI_20200223_163611_160.png",
+            "sha256": "88da0e8713c866bb6480bfa5f079452fbfbf6d1b4ec8239bd874d705795bac0d",
+            "size_bytes": 317295
+          },
+          {
+            "mtime_ns": 1783860195042175487,
+            "name": "DJI_20200223_163620_700.png",
+            "sha256": "0bccaa139bbc25d02169864fe316fcab8fb560cff40a256073c7d5d250ae6901",
+            "size_bytes": 306362
+          },
+          {
+            "mtime_ns": 1783860195162175777,
+            "name": "DJI_20200223_163639_916.png",
+            "sha256": "8e7c2b82f0f3a6825e160ce8a18447ce79217d0db42ccdb500e8abab385507b1",
+            "size_bytes": 291838
+          },
+          {
+            "mtime_ns": 1783860195282176067,
+            "name": "DJI_20200223_163646_755.png",
+            "sha256": "3a815efadcf41fd67076657119bb25840766b47097996591b30f23d8c6e89d10",
+            "size_bytes": 302169
+          }
+        ],
+        "latest_mtime_ns": 1783860195282176067,
+        "manifest_sha256": "87d72122d344ac4221409de4f6c292f10ea885859d10e0760720af651204854a",
+        "names": [
+          "DJI_20200223_163548_810.png",
+          "DJI_20200223_163557_660.png",
+          "DJI_20200223_163604_605.png",
+          "DJI_20200223_163611_160.png",
+          "DJI_20200223_163620_700.png",
+          "DJI_20200223_163639_916.png",
+          "DJI_20200223_163646_755.png"
+        ]
+      },
+      "resolution": "1_8",
+      "scene": "trex",
+      "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+      "status": "reusable"
+    }
+  },
+  "diagnostic_context": {
+    "basis": "direct restricted-shell path check before the first cache-status-only audit",
+    "provenance_initially_existed": false,
+    "validation_index_initially_existed": false
+  },
+  "fsgs_repository": {
+    "commit": "1bdf2f71079bcca2bb65d1f9d590e01cb56961ae",
+    "dirty_status": [
+      "M logs/llff_repro/1_8/horns/status.json",
+      " M logs/llff_repro/1_8/horns/train/status.json",
+      " M logs/llff_repro/data_audit.csv",
+      " M logs/llff_repro/data_audit.md",
+      " M logs/llff_repro/environment.json",
+      " M logs/llff_repro/environment.md",
+      " M logs/llff_repro/llff_repro_summary.csv",
+      " M logs/llff_repro/llff_repro_summary.json",
+      " M logs/llff_repro/llff_repro_summary.md",
+      " M logs/llff_repro/midas_validation.log",
+      " M logs/llff_repro/preflight.json",
+      " M scripts/run_llff_repro.py",
+      " M scripts/summarize_llff_repro.py",
+      " M tests/test_depth_utils.py",
+      "?? logs/llff_repro/1_4/",
+      "?? logs/llff_repro/1_8/fern/",
+      "?? logs/llff_repro/1_8/flower/",
+      "?? logs/llff_repro/1_8/fortress/",
+      "?? logs/llff_repro/1_8/horns/eval/",
+      "?? logs/llff_repro/1_8/horns/prepare/",
+      "?? logs/llff_repro/1_8/horns/render/",
+      "?? logs/llff_repro/1_8/horns/train/command.txt",
+      "?? logs/llff_repro/1_8/horns/train/stage.log",
+      "?? logs/llff_repro/1_8/leaves/",
+      "?? logs/llff_repro/1_8/orchids/",
+      "?? logs/llff_repro/1_8/room/",
+      "?? logs/llff_repro/1_8/trex/",
+      "?? logs/llff_repro/download_manifest.json",
+      "?? logs/llff_repro/download_manifest.md",
+      "?? logs/llff_repro/manual_runs/",
+      "?? logs/llff_repro/retry_backups/"
+    ],
+    "realpath": "/home/liuly/Surface_Reconstruction/Sparse/FSGS",
+    "requested_path": "/home/liuly/Surface_Reconstruction/Sparse/FSGS"
+  },
+  "generated_at": "2026-07-13T07:06:19.737940+00:00",
+  "guarantees": {
+    "gpu_used": false,
+    "images_decoded": false,
+    "lpips_imported": false,
+    "metrics_computed": false,
+    "torch_imported": false
+  },
+  "metric_sources": {
+    "fsgs_image_utils": {
+      "codex_direct_file_tool": "not_available_in_this_session",
+      "exists": true,
+      "outside_workspace": true,
+      "readable": true,
+      "realpath": "/home/liuly/Surface_Reconstruction/Sparse/FSGS/utils/image_utils.py",
+      "requested_path": "/home/liuly/Surface_Reconstruction/Sparse/FSGS/utils/image_utils.py",
+      "sandbox_observation": "readable_from_current_restricted_shell",
+      "sha256": "933c577b54069c8a19751890bfd8477852086aff735a550a550ce7cb9282a701",
+      "shell_subprocess_access": true
+    },
+    "fsgs_loss_utils": {
+      "codex_direct_file_tool": "not_available_in_this_session",
+      "exists": true,
+      "outside_workspace": true,
+      "readable": true,
+      "realpath": "/home/liuly/Surface_Reconstruction/Sparse/FSGS/utils/loss_utils.py",
+      "requested_path": "/home/liuly/Surface_Reconstruction/Sparse/FSGS/utils/loss_utils.py",
+      "sandbox_observation": "readable_from_current_restricted_shell",
+      "sha256": "f323b1ae9d55041bade3d0b1b1c5ed271df508730ea2f4633294c3d92e4246e2",
+      "shell_subprocess_access": true
+    },
+    "fsgs_lpips_impl": {
+      "codex_direct_file_tool": "not_available_in_this_session",
+      "exists": true,
+      "outside_workspace": true,
+      "readable": true,
+      "realpath": "/home/liuly/Surface_Reconstruction/Sparse/FSGS/lpipsPyTorch/modules/lpips.py",
+      "requested_path": "/home/liuly/Surface_Reconstruction/Sparse/FSGS/lpipsPyTorch/modules/lpips.py",
+      "sandbox_observation": "readable_from_current_restricted_shell",
+      "sha256": "3bece0b9cf9943af5b043026458819d259df9bfe7c2a1d3ffc6c905e7e5aa2b4",
+      "shell_subprocess_access": true
+    },
+    "fsgs_lpips_init": {
+      "codex_direct_file_tool": "not_available_in_this_session",
+      "exists": true,
+      "outside_workspace": true,
+      "readable": true,
+      "realpath": "/home/liuly/Surface_Reconstruction/Sparse/FSGS/lpipsPyTorch/__init__.py",
+      "requested_path": "/home/liuly/Surface_Reconstruction/Sparse/FSGS/lpipsPyTorch/__init__.py",
+      "sandbox_observation": "readable_from_current_restricted_shell",
+      "sha256": "c348791da4cdddaf6ef5b89f5f6410a42bef12facee603b922736c69a9f2fabe",
+      "shell_subprocess_access": true
+    },
+    "fsgs_metrics": {
+      "codex_direct_file_tool": "not_available_in_this_session",
+      "exists": true,
+      "outside_workspace": true,
+      "readable": true,
+      "realpath": "/home/liuly/Surface_Reconstruction/Sparse/FSGS/metrics.py",
+      "requested_path": "/home/liuly/Surface_Reconstruction/Sparse/FSGS/metrics.py",
+      "sandbox_observation": "readable_from_current_restricted_shell",
+      "sha256": "1b57789e2b69b966dea0dd7809f23de0dee075e07324109d13f99a301f733aa8",
+      "shell_subprocess_access": true
+    },
+    "refgs_image_utils": {
+      "codex_direct_file_tool": "not_available_in_this_session",
+      "exists": true,
+      "outside_workspace": false,
+      "readable": true,
+      "realpath": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/utils/image_utils.py",
+      "requested_path": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/utils/image_utils.py",
+      "sandbox_observation": "readable_from_current_restricted_shell",
+      "sha256": "7f418174f747214c869b3167f630627ca3999271bf51340e8027b3a2d2052a80",
+      "shell_subprocess_access": true
+    },
+    "refgs_loss_utils": {
+      "codex_direct_file_tool": "not_available_in_this_session",
+      "exists": true,
+      "outside_workspace": false,
+      "readable": true,
+      "realpath": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/utils/loss_utils.py",
+      "requested_path": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/utils/loss_utils.py",
+      "sandbox_observation": "readable_from_current_restricted_shell",
+      "sha256": "71664b9cbd0fa12ae5549ab6f1069f2e1ee1437a824796c1c59c1282b3c1070e",
+      "shell_subprocess_access": true
+    },
+    "refgs_lpips_impl": {
+      "codex_direct_file_tool": "not_available_in_this_session",
+      "exists": true,
+      "outside_workspace": false,
+      "readable": true,
+      "realpath": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/lpipsPyTorch/modules/lpips.py",
+      "requested_path": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/lpipsPyTorch/modules/lpips.py",
+      "sandbox_observation": "readable_from_current_restricted_shell",
+      "sha256": "3bece0b9cf9943af5b043026458819d259df9bfe7c2a1d3ffc6c905e7e5aa2b4",
+      "shell_subprocess_access": true
+    },
+    "refgs_lpips_init": {
+      "codex_direct_file_tool": "not_available_in_this_session",
+      "exists": true,
+      "outside_workspace": false,
+      "readable": true,
+      "realpath": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/lpipsPyTorch/__init__.py",
+      "requested_path": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/lpipsPyTorch/__init__.py",
+      "sandbox_observation": "readable_from_current_restricted_shell",
+      "sha256": "a657ce7355782eb970f95fd0d2e26eec5b9023212d2b655814da6e15b70510b4",
+      "shell_subprocess_access": true
+    },
+    "refgs_shared_evaluator": {
+      "codex_direct_file_tool": "not_available_in_this_session",
+      "exists": true,
+      "outside_workspace": false,
+      "readable": true,
+      "realpath": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/scripts/evaluate_refgs_llff.py",
+      "requested_path": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/scripts/evaluate_refgs_llff.py",
+      "sandbox_observation": "readable_from_current_restricted_shell",
+      "sha256": "ab33c0e0c574795d63da93d219fee4267b2e0c122f6f966e2f128b52b42d7e19",
+      "shell_subprocess_access": true
+    }
+  },
+  "mode": "cache-status-only",
+  "numeric_evaluator_fingerprint": "b47e87c495319599129436a54c8ec79bedd1bedf5ed2dda9419cd00e646d4187",
+  "original_fsgs_training_runtime": {
+    "colmap_commit": "78c12b4",
+    "colmap_version": "3.9",
+    "cuda_available": true,
+    "cuda_context": "approved_host_context",
+    "cuda_device_count": 8,
+    "gpu_selection_pool": [
+      1,
+      4,
+      5,
+      6
+    ],
+    "gpus": [
+      {
+        "compute_mode": "Default",
+        "eligible": false,
+        "free_mib": 16029,
+        "index": 0,
+        "name": "NVIDIA RTX A5000",
+        "used_mib": 8217,
+        "utilization_percent": 100
+      },
+      {
+        "compute_mode": "Default",
+        "eligible": true,
+        "free_mib": 24244,
+        "index": 1,
+        "name": "NVIDIA RTX A5000",
+        "selected": true,
+        "used_mib": 3,
+        "utilization_percent": 0
+      },
+      {
+        "compute_mode": "Default",
+        "eligible": false,
+        "free_mib": 24244,
+        "index": 2,
+        "name": "NVIDIA RTX A5000",
+        "used_mib": 3,
+        "utilization_percent": 0
+      },
+      {
+        "compute_mode": "Default",
+        "eligible": false,
+        "free_mib": 24244,
+        "index": 3,
+        "name": "NVIDIA RTX A5000",
+        "used_mib": 3,
+        "utilization_percent": 0
+      },
+      {
+        "compute_mode": "Default",
+        "eligible": true,
+        "free_mib": 24244,
+        "index": 4,
+        "name": "NVIDIA GeForce RTX 3090 Ti",
+        "used_mib": 3,
+        "utilization_percent": 0
+      },
+      {
+        "compute_mode": "Default",
+        "eligible": true,
+        "free_mib": 24244,
+        "index": 5,
+        "name": "NVIDIA GeForce RTX 3090 Ti",
+        "used_mib": 3,
+        "utilization_percent": 0
+      },
+      {
+        "compute_mode": "Default",
+        "eligible": true,
+        "free_mib": 1944,
+        "index": 6,
+        "name": "NVIDIA GeForce RTX 3090 Ti",
+        "used_mib": 22302,
+        "utilization_percent": 66
+      },
+      {
+        "compute_mode": "Prohibited",
+        "eligible": false,
+        "free_mib": 24244,
+        "index": 7,
+        "name": "NVIDIA GeForce RTX 3090 Ti",
+        "used_mib": 3,
+        "utilization_percent": 0
+      }
+    ],
+    "nvidia_smi_ok": true,
+    "python": "/home/liuly/anaconda3/envs/FSGS/bin/python",
+    "python_version": "3.8.1",
+    "selected_gpu": 1,
+    "source": "/home/liuly/Surface_Reconstruction/Sparse/FSGS/logs/llff_repro/environment.json",
+    "status": "ready_cuda",
+    "torch_cuda_version": "11.6",
+    "torch_version": "1.12.1"
+  },
+  "path_access": {
+    "fsgs_loss_utils": {
+      "codex_direct_file_tool": "not_available_in_this_session",
+      "exists": true,
+      "outside_workspace": true,
+      "readable": true,
+      "realpath": "/home/liuly/Surface_Reconstruction/Sparse/FSGS/utils/loss_utils.py",
+      "requested_path": "/home/liuly/Surface_Reconstruction/Sparse/FSGS/utils/loss_utils.py",
+      "sandbox_observation": "readable_from_current_restricted_shell",
+      "shell_subprocess_access": true
+    },
+    "fsgs_metrics": {
+      "codex_direct_file_tool": "not_available_in_this_session",
+      "exists": true,
+      "outside_workspace": true,
+      "readable": true,
+      "realpath": "/home/liuly/Surface_Reconstruction/Sparse/FSGS/metrics.py",
+      "requested_path": "/home/liuly/Surface_Reconstruction/Sparse/FSGS/metrics.py",
+      "sandbox_observation": "readable_from_current_restricted_shell",
+      "shell_subprocess_access": true
+    },
+    "fsgs_outputs": {
+      "codex_direct_file_tool": "not_available_in_this_session",
+      "exists": true,
+      "outside_workspace": true,
+      "readable": true,
+      "realpath": "/data1/liuly/FSGS_LLFF/output/llff_repro",
+      "requested_path": "/data1/liuly/FSGS_LLFF/output/llff_repro",
+      "sandbox_observation": "readable_from_current_restricted_shell",
+      "shell_subprocess_access": true
+    },
+    "fsgs_repository": {
+      "codex_direct_file_tool": "not_available_in_this_session",
+      "exists": true,
+      "outside_workspace": true,
+      "readable": true,
+      "realpath": "/home/liuly/Surface_Reconstruction/Sparse/FSGS",
+      "requested_path": "/home/liuly/Surface_Reconstruction/Sparse/FSGS",
+      "sandbox_observation": "readable_from_current_restricted_shell",
+      "shell_subprocess_access": true
+    },
+    "provenance_observed_before_write": {
+      "codex_direct_file_tool": "not_available_in_this_session",
+      "exists": true,
+      "outside_workspace": false,
+      "readable": true,
+      "realpath": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/logs/refgs_llff/fsgs_shared_eval_validation/provenance.json",
+      "requested_path": "logs/refgs_llff/fsgs_shared_eval_validation/provenance.json",
+      "sandbox_observation": "readable_from_current_restricted_shell",
+      "shell_subprocess_access": true
+    },
+    "shared_cache": {
+      "codex_direct_file_tool": "not_available_in_this_session",
+      "exists": true,
+      "outside_workspace": false,
+      "readable": true,
+      "realpath": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/logs/refgs_llff/fsgs_shared_eval_validation",
+      "requested_path": "logs/refgs_llff/fsgs_shared_eval_validation",
+      "sandbox_observation": "readable_from_current_restricted_shell",
+      "shell_subprocess_access": true
+    },
+    "validation_index_observed_before_write": {
+      "codex_direct_file_tool": "not_available_in_this_session",
+      "exists": true,
+      "outside_workspace": false,
+      "readable": true,
+      "realpath": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS/logs/refgs_llff/fsgs_shared_eval_validation/validation_index.json",
+      "requested_path": "logs/refgs_llff/fsgs_shared_eval_validation/validation_index.json",
+      "sandbox_observation": "readable_from_current_restricted_shell",
+      "shell_subprocess_access": true
+    }
+  },
+  "schema_version": 2,
+  "shared_evaluator_runtime": {
+    "lpips_version": "0.1.4",
+    "numpy_version": "1.21.6",
+    "pillow_version": "9.5.0",
+    "python_executable": "/home/liuly/anaconda3/envs/ref_gs/bin/python",
+    "python_version": "3.7.12",
+    "torch_cuda_version": "11.3",
+    "torch_version": "1.12.1",
+    "torchvision_version": "0.13.1"
+  },
+  "shared_evaluator_runtime_fingerprint": "875960060e3bbce2b6224fba631cfbd37ceec6d00d5492047cf7164f698ed95a",
+  "summary": {
+    "reusable": 16
+  },
+  "workspace": "/home/liuly/Surface_Reconstruction/Glossy/Ref-GS"
+}
