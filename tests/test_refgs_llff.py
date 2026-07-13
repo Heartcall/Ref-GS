@@ -3,6 +3,7 @@ import math
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 import numpy as np
 
@@ -325,17 +326,76 @@ class RunnerTests(unittest.TestCase):
         self.assertFalse(aggregate_matches_per_view(
             {"PSNR": 11.0, "SSIM": 0.5, "LPIPS": 0.2}, per_view
         ))
-    def test_weak_or_stale_smoke_certificate_is_rejected(self):
-        from scripts.run_refgs_llff import smoke_certificate_header_valid
-        weak = {"status": "completed", "smoke_gate_passed": True}
-        self.assertFalse(smoke_certificate_header_valid(weak, "abc"))
-        current = {
-            "status": "completed", "smoke_gate_passed": True,
-            "scene": "horns", "resolution": "1_8", "gpu": 2, "iteration": 10000,
-            "smoke_certification": {"version": 2, "runner_sha256": "abc"},
-        }
-        self.assertTrue(smoke_certificate_header_valid(current, "abc"))
-        self.assertFalse(smoke_certificate_header_valid(current, "different"))
+    def _write_global_smoke_gate(self, root, status="completed", checks_value=True):
+        from scripts.run_refgs_llff import REQUIRED_SMOKE_VALIDATION_CHECKS
+        horns_log = Path(root) / "1_8" / "horns"
+        horns_log.mkdir(parents=True, exist_ok=True)
+        (horns_log / "status.json").write_text(json.dumps({
+            "scene": "horns", "resolution": "1_8", "status": status,
+        }))
+        (horns_log / "smoke_validation.json").write_text(json.dumps({
+            "checks": {
+                name: checks_value for name in REQUIRED_SMOKE_VALIDATION_CHECKS
+            }
+        }))
+
+    def test_global_gate_uses_horns_validation_not_runner_sha_or_cell_smoke_field(self):
+        from scripts.run_refgs_llff import smoke_allows_batch
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._write_global_smoke_gate(root)
+            horns_status = root / "1_8" / "horns" / "status.json"
+            payload = json.loads(horns_status.read_text())
+            payload["smoke_certification"] = {
+                "version": 2, "runner_sha256": "intentionally-stale-whole-file-sha"
+            }
+            horns_status.write_text(json.dumps(payload))
+            with mock.patch(
+                    "scripts.run_refgs_llff.protocol_fingerprint_matches", return_value=True):
+                self.assertTrue(smoke_allows_batch(root, root / "prepared", root / "output"))
+
+    def test_flower_completion_does_not_close_horns_global_gate(self):
+        from scripts.run_refgs_llff import smoke_allows_batch
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._write_global_smoke_gate(root)
+            flower = root / "1_8" / "flower"
+            flower.mkdir(parents=True)
+            (flower / "status.json").write_text(json.dumps({
+                "scene": "flower", "status": "completed"
+            }))
+            with mock.patch(
+                    "scripts.run_refgs_llff.protocol_fingerprint_matches", return_value=True):
+                self.assertTrue(smoke_allows_batch(root, root / "prepared", root / "output"))
+
+    def test_horns_skip_existing_status_without_smoke_fields_keeps_gate_open(self):
+        from scripts.run_refgs_llff import smoke_allows_batch
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._write_global_smoke_gate(root)
+            status_path = root / "1_8" / "horns" / "status.json"
+            payload = json.loads(status_path.read_text())
+            payload["stages"] = {
+                stage: {"status": "completed", "skipped_existing": True}
+                for stage in ("prepare", "train", "render", "eval")
+            }
+            status_path.write_text(json.dumps(payload))
+            with mock.patch(
+                    "scripts.run_refgs_llff.protocol_fingerprint_matches", return_value=True):
+                self.assertTrue(smoke_allows_batch(root, root / "prepared", root / "output"))
+
+    def test_failed_smoke_check_or_protocol_fingerprint_closes_gate(self):
+        from scripts.run_refgs_llff import smoke_allows_batch
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self._write_global_smoke_gate(root, checks_value=False)
+            with mock.patch(
+                    "scripts.run_refgs_llff.protocol_fingerprint_matches", return_value=True):
+                self.assertFalse(smoke_allows_batch(root, root / "prepared", root / "output"))
+            self._write_global_smoke_gate(root, checks_value=True)
+            with mock.patch(
+                    "scripts.run_refgs_llff.protocol_fingerprint_matches", return_value=False):
+                self.assertFalse(smoke_allows_batch(root, root / "prepared", root / "output"))
     @unittest.skipUnless(DATA_ROOT.is_dir() and AUTHOR_ROOT.is_dir(), "LLFF source unavailable")
     def test_prepare_skip_rejects_extra_unlisted_image(self):
         from scripts.run_refgs_llff import prepared_scene_complete
@@ -381,6 +441,29 @@ class RunnerTests(unittest.TestCase):
             with self.assertRaises((ValueError, RuntimeError)):
                 validate_execution_request(scene, resolution, gpu, iteration, False)
 
+    def test_completed_horns_gate_allows_flower_orchids_and_trex_on_both_gpus(self):
+        from scripts.run_refgs_llff import validate_execution_request
+        for scene in ("flower", "orchids", "trex"):
+            for gpu in ("1", "2"):
+                validate_execution_request(scene, "1_8", gpu, 10000, True)
+
+    def test_failed_global_gate_starts_no_training_subprocess(self):
+        from argparse import Namespace
+        from scripts.run_refgs_llff import execute
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            args = Namespace(
+                scene="orchids", resolution="1_8", gpu="2", iteration=10000,
+                log_root=root / "logs", prepared_root=root / "prepared",
+                output_root=root / "output",
+            )
+            with mock.patch(
+                    "scripts.run_refgs_llff.smoke_allows_batch", return_value=False), mock.patch(
+                    "scripts.run_refgs_llff._run_stage") as run_stage:
+                with self.assertRaisesRegex(RuntimeError, "before the smoke gate"):
+                    execute(args)
+                run_stage.assert_not_called()
+
     def test_smoke_certification_requires_all_four_fresh_stages(self):
         from scripts.run_refgs_llff import can_certify_smoke
         complete = {stage: {"status": "completed"} for stage in ("prepare", "train", "render", "eval")}
@@ -390,7 +473,8 @@ class RunnerTests(unittest.TestCase):
         stale = dict(complete)
         stale["train"] = {"status": "completed", "skipped_existing": True}
         self.assertFalse(can_certify_smoke("horns", "1_8", "2", 10000, stale, False))
-        self.assertTrue(can_certify_smoke("horns", "1_8", "2", 10000, stale, True))
+        self.assertFalse(can_certify_smoke("horns", "1_8", "2", 10000, stale, True))
+        self.assertFalse(can_certify_smoke("flower", "1_8", "2", 10000, complete, True))
 
     def test_shared_eval_requires_provenance_and_fsgs_gate(self):
         from scripts.run_refgs_llff import shared_eval_complete

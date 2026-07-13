@@ -39,6 +39,25 @@ MIN_GPU_FREE_MIB = 22000
 MIN_STORAGE_FREE_BYTES = 10 * 1024 ** 3
 SMOKE_CERTIFICATION_VERSION = 2
 SMOKE_PHYSICAL_GPU = 2
+REQUIRED_SMOKE_VALIDATION_CHECKS = (
+    "status_completed",
+    "smoke_gate_passed",
+    "train_count_3",
+    "test_deferred",
+    "test_count_8",
+    "pointcloud_sha_matches",
+    "model_input_identical",
+    "iter5000_nonempty",
+    "iter10000_nonempty",
+    "render_names_exact",
+    "gt_names_exact",
+    "finite_metrics",
+    "no_traceback",
+    "no_oom",
+    "no_download",
+    "no_full_pointcloud_in_prepared",
+    "vgg_metadata",
+)
 
 
 def resolve_runtime_paths(args, launch_cwd):
@@ -150,17 +169,6 @@ def stage_complete(stage, model, iteration, expected_names, prepared=None, log_d
     raise ValueError("unknown stage: {}".format(stage))
 
 
-def smoke_certificate_header_valid(payload, runner_sha256):
-    certificate = payload.get("smoke_certification", {})
-    return (
-        payload.get("status") == "completed" and payload.get("smoke_gate_passed") is True
-        and payload.get("scene") == "horns" and payload.get("resolution") == "1_8"
-        and payload.get("gpu") == SMOKE_PHYSICAL_GPU and payload.get("iteration") == 10000
-        and certificate.get("version") == SMOKE_CERTIFICATION_VERSION
-        and certificate.get("runner_sha256") == runner_sha256
-    )
-
-
 def smoke_artifact_checks(log_root, prepared_root, output_root):
     log_root, prepared_root, output_root = Path(log_root), Path(prepared_root), Path(output_root)
     cell_log = log_root / "1_8" / "horns"
@@ -191,12 +199,23 @@ def smoke_artifact_checks(log_root, prepared_root, output_root):
 
 
 def smoke_allows_batch(log_root, prepared_root=DEFAULT_PREPARED_ROOT, output_root=DEFAULT_OUTPUT_ROOT):
-    payload = read_json(Path(log_root) / "1_8" / "horns" / "status.json", {}) or {}
-    runner_hash = file_sha256(Path(__file__))
-    if not smoke_certificate_header_valid(payload, runner_hash):
-        return False
-    checks = smoke_artifact_checks(log_root, prepared_root, output_root)
-    return all(checks.values()) and payload.get("smoke_certification", {}).get("checks") == checks
+    """Return the global batch gate from the immutable horns smoke evidence.
+
+    Whole-runner hashes and ordinary-cell status fields are intentionally not
+    numerical/protocol cache keys.  The live protocol fingerprint check below
+    is the only code/data compatibility gate after the recorded smoke checks.
+    """
+    horns_log = Path(log_root) / "1_8" / "horns"
+    status = read_json(horns_log / "status.json", {}) or {}
+    validation = read_json(horns_log / "smoke_validation.json", {}) or {}
+    checks = validation.get("checks", {})
+    prepared = Path(prepared_root) / "1_8" / "horns"
+    model = Path(output_root) / "1_8" / "horns"
+    return (
+        status.get("status") == "completed"
+        and all(checks.get(name) is True for name in REQUIRED_SMOKE_VALIDATION_CHECKS)
+        and protocol_fingerprint_matches(prepared, model)
+    )
 
 
 def certify_existing_smoke(args):
@@ -232,8 +251,6 @@ def validate_execution_request(scene, resolution, gpu, iteration, prior_smoke_pa
 
 
 def can_certify_smoke(scene, resolution, gpu, iteration, stage_results, prior_smoke_passed):
-    if prior_smoke_passed:
-        return True
     if not (
         scene == "horns" and resolution == "1_8"
         and int(gpu) == SMOKE_PHYSICAL_GPU and int(iteration) == 10000
@@ -552,8 +569,10 @@ def execute(args):
             "scene": args.scene, "resolution": args.resolution, "gpu": int(args.gpu),
             "iteration": args.iteration, "status": status, "failure_reason": reason,
             "checkpoint_exists": False, "render_exists": False,
-            "metrics_exists": False, "metrics": None, "smoke_gate_passed": False,
+            "metrics_exists": False, "metrics": None,
         }
+        if args.scene == "horns" and args.resolution == "1_8":
+            payload["smoke_gate_passed"] = prior_smoke_passed
         write_json(paths["log"] / "status.json", payload)
         print(json.dumps(payload, indent=2, sort_keys=True))
         return 1
@@ -620,18 +639,21 @@ def execute(args):
     artifact_complete = prepared_complete and all(final[key] for key in ("checkpoint_exists", "render_exists", "metrics_exists"))
     status = resolve_cell_status(artifact_complete, stage_results, set(stages_requested))
     completed = status == "completed"
-    smoke_gate = completed and can_certify_smoke(
+    fresh_smoke = completed and can_certify_smoke(
         args.scene, args.resolution, args.gpu, args.iteration, stage_results, prior_smoke_passed
     )
     persisted_stages = dict(previous_cell.get("stages", {}))
     persisted_stages.update(stage_results)
     payload = dict(final, scene=args.scene, resolution=args.resolution, gpu=int(args.gpu),
-                   iteration=args.iteration, status=status, smoke_gate_passed=smoke_gate,
+                   iteration=args.iteration, status=status,
                    stages=persisted_stages, failure_reason=cell_failure_reason(stage_results),
                    train_images=audit.get("train_images"),
                    test_images=audit.get("test_images"), pointcloud=audit.get("pointcloud"))
+    if args.scene == "horns" and args.resolution == "1_8":
+        # A skip-existing pass must preserve an already validated global gate.
+        payload["smoke_gate_passed"] = fresh_smoke or (prior_smoke_passed and completed)
     write_json(paths["log"] / "status.json", payload)
-    if smoke_gate:
+    if fresh_smoke:
         checks = smoke_artifact_checks(args.log_root, args.prepared_root, args.output_root)
         if all(checks.values()):
             payload["smoke_certification"] = {
