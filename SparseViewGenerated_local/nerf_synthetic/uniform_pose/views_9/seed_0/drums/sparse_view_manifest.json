@@ -1,0 +1,38 @@
+{
+  "dataset": "nerf_synthetic",
+  "scene": "drums",
+  "source_scene": "/data/liuly/dataset/3DGS/NeRF Synthetic/drums",
+  "output_scene": "/data/liuly/dataset/3DGS/SparseViewGenerated/nerf_synthetic/uniform_pose/views_9/seed_0/drums",
+  "strategy": "uniform_pose",
+  "seed": 0,
+  "requested_views": 9,
+  "train_frames_available": 100,
+  "train_frames_selected": 9,
+  "test_frames": 200,
+  "selected_indices": [
+    6,
+    12,
+    21,
+    29,
+    31,
+    50,
+    83,
+    84,
+    98
+  ],
+  "selected_file_paths": [
+    "./train/r_6",
+    "./train/r_12",
+    "./train/r_21",
+    "./train/r_29",
+    "./train/r_31",
+    "./train/r_50",
+    "./train/r_83",
+    "./train/r_84",
+    "./train/r_98"
+  ],
+  "status": "ok",
+  "notes": "",
+  "dry_run": false,
+  "reused_existing": false
+}

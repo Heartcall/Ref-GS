@@ -1,0 +1,26 @@
+{
+  "dataset": "refnerf",
+  "scene": "ball",
+  "source_scene": "/data/liuly/dataset/3DGS/Shiny Blender Synthetic/ball",
+  "output_scene": "/data/liuly/dataset/3DGS/SparseViewGenerated/refnerf/uniform_pose/views_3/seed_0/ball",
+  "strategy": "uniform_pose",
+  "seed": 0,
+  "requested_views": 3,
+  "train_frames_available": 100,
+  "train_frames_selected": 3,
+  "test_frames": 200,
+  "selected_indices": [
+    14,
+    25,
+    61
+  ],
+  "selected_file_paths": [
+    "./train/r_14",
+    "./train/r_25",
+    "./train/r_61"
+  ],
+  "status": "ok",
+  "notes": "",
+  "dry_run": false,
+  "reused_existing": false
+}

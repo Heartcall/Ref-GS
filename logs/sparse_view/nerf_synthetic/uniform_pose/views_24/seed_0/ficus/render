@@ -1,0 +1,15 @@
+/home/liuly/anaconda3/envs/ref_gs/lib/python3.7/site-packages/torch/functional.py:478: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at  /opt/conda/conda-bld/pytorch_1659484809535/work/aten/src/ATen/native/TensorShape.cpp:2894.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Looking for config file in output/sparse_view/nerf_synthetic/uniform_pose/views_24/seed_0/ficus/cfg_args
+Config file found: output/sparse_view/nerf_synthetic/uniform_pose/views_24/seed_0/ficus/cfg_args
+Rendering output/sparse_view/nerf_synthetic/uniform_pose/views_24/seed_0/ficus [10/07 04:48:33]
+SphMipEncoding ### level: 9   size: 512 [10/07 04:48:34]
+Loading trained model at iteration 31000 [10/07 04:48:34]
+Found transforms_train.json file, assuming Blender data set! [10/07 04:48:34]
+Reading Training Transforms [10/07 04:48:34]
+Reading Test Transforms [10/07 04:48:34]
+Generating random point cloud (100000)... [10/07 04:48:35]
+resolution_scales [1.0] [10/07 04:48:35]
+Loading Training Cameras [10/07 04:48:35]
+Loading Test Cameras [10/07 04:48:37]
+Load Path output/sparse_view/nerf_synthetic/uniform_pose/views_24/seed_0/ficus/point_cloud/iteration_31000/point_cloud.ply [10/07 04:48:45]

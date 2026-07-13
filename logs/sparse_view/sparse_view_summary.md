@@ -3,13 +3,13 @@
 ## Coverage
 
 - Sparse rows discovered: 100
-- Rows with metrics: 61
-- Rows missing metrics: 39
-- Rows with checkpoints: 61
-- Rows with rendered test images: 61
-- Completed: 61
-- Running: 1
-- Missing: 38
+- Rows with metrics: 100
+- Rows missing metrics: 0
+- Rows with checkpoints: 100
+- Rows with rendered test images: 100
+- Completed: 100
+- Running: 0
+- Missing: 0
 - Failed: 0
 
 ## Completion By Dataset/View
@@ -21,11 +21,11 @@
 | glossy_synthetic | uniform_pose | 9 | 0 | 6 | 6 | 0 | 0 | 0 | 1.000000 |
 | glossy_synthetic | uniform_pose | 12 | 0 | 6 | 6 | 0 | 0 | 0 | 1.000000 |
 | glossy_synthetic | uniform_pose | 24 | 0 | 6 | 6 | 0 | 0 | 0 | 1.000000 |
-| nerf_synthetic | uniform_pose | 3 | 0 | 8 | 1 | 0 | 7 | 0 | 0.125000 |
-| nerf_synthetic | uniform_pose | 6 | 0 | 8 | 0 | 1 | 7 | 0 | 0.000000 |
-| nerf_synthetic | uniform_pose | 9 | 0 | 8 | 0 | 0 | 8 | 0 | 0.000000 |
-| nerf_synthetic | uniform_pose | 12 | 0 | 8 | 0 | 0 | 8 | 0 | 0.000000 |
-| nerf_synthetic | uniform_pose | 24 | 0 | 8 | 0 | 0 | 8 | 0 | 0.000000 |
+| nerf_synthetic | uniform_pose | 3 | 0 | 8 | 8 | 0 | 0 | 0 | 1.000000 |
+| nerf_synthetic | uniform_pose | 6 | 0 | 8 | 8 | 0 | 0 | 0 | 1.000000 |
+| nerf_synthetic | uniform_pose | 9 | 0 | 8 | 8 | 0 | 0 | 0 | 1.000000 |
+| nerf_synthetic | uniform_pose | 12 | 0 | 8 | 8 | 0 | 0 | 0 | 1.000000 |
+| nerf_synthetic | uniform_pose | 24 | 0 | 8 | 8 | 0 | 0 | 0 | 1.000000 |
 | refnerf | uniform_pose | 3 | 0 | 6 | 6 | 0 | 0 | 0 | 1.000000 |
 | refnerf | uniform_pose | 6 | 0 | 6 | 6 | 0 | 0 | 0 | 1.000000 |
 | refnerf | uniform_pose | 9 | 0 | 6 | 6 | 0 | 0 | 0 | 1.000000 |
@@ -41,11 +41,11 @@
 | glossy_synthetic | uniform_pose | 9 | 0 | 6 | 6 | 21.974053 | 0.847900 | 0.120449 | -7.770450 | -0.114998 | 0.087109 |
 | glossy_synthetic | uniform_pose | 12 | 0 | 6 | 6 | 22.926368 | 0.864717 | 0.105026 | -6.818135 | -0.098181 | 0.071686 |
 | glossy_synthetic | uniform_pose | 24 | 0 | 6 | 6 | 25.729414 | 0.911772 | 0.066220 | -4.015089 | -0.051126 | 0.032880 |
-| nerf_synthetic | uniform_pose | 3 | 0 | 8 | 1 | 17.861407 | 0.626856 | 0.363679 | -10.488863 | -0.247700 | 0.233543 |
-| nerf_synthetic | uniform_pose | 6 | 0 | 8 | 0 | NA | NA | NA | NA | NA | NA |
-| nerf_synthetic | uniform_pose | 9 | 0 | 8 | 0 | NA | NA | NA | NA | NA | NA |
-| nerf_synthetic | uniform_pose | 12 | 0 | 8 | 0 | NA | NA | NA | NA | NA | NA |
-| nerf_synthetic | uniform_pose | 24 | 0 | 8 | 0 | NA | NA | NA | NA | NA | NA |
+| nerf_synthetic | uniform_pose | 3 | 0 | 8 | 8 | 16.759602 | 0.746840 | 0.265548 | -12.364267 | -0.202014 | 0.211767 |
+| nerf_synthetic | uniform_pose | 6 | 0 | 8 | 8 | 20.922114 | 0.832661 | 0.148269 | -8.201755 | -0.116192 | 0.094488 |
+| nerf_synthetic | uniform_pose | 9 | 0 | 8 | 8 | 22.893462 | 0.866723 | 0.110989 | -6.230407 | -0.082130 | 0.057209 |
+| nerf_synthetic | uniform_pose | 12 | 0 | 8 | 8 | 24.066240 | 0.884015 | 0.095659 | -5.057629 | -0.064838 | 0.041879 |
+| nerf_synthetic | uniform_pose | 24 | 0 | 8 | 8 | 26.416942 | 0.916125 | 0.072295 | -2.706927 | -0.032728 | 0.018515 |
 | refnerf | uniform_pose | 3 | 0 | 6 | 6 | 16.143194 | 0.771586 | 0.318336 | -14.944158 | -0.199352 | 0.269370 |
 | refnerf | uniform_pose | 6 | 0 | 6 | 6 | 20.555772 | 0.850310 | 0.187156 | -10.531579 | -0.120628 | 0.138190 |
 | refnerf | uniform_pose | 9 | 0 | 6 | 6 | 22.460150 | 0.876464 | 0.153523 | -8.627202 | -0.094474 | 0.104556 |
@@ -61,11 +61,11 @@
 | glossy_synthetic | uniform_pose | 9 | 1 | 21.974053 | 1.978641 | 0.847900 | 0.029724 | 0.120449 | 0.021782 | -7.770450 | -0.114998 | 0.087109 |
 | glossy_synthetic | uniform_pose | 12 | 1 | 22.926368 | 1.854010 | 0.864717 | 0.027621 | 0.105026 | 0.029688 | -6.818135 | -0.098181 | 0.071686 |
 | glossy_synthetic | uniform_pose | 24 | 1 | 25.729414 | 1.926732 | 0.911772 | 0.020866 | 0.066220 | 0.016493 | -4.015089 | -0.051126 | 0.032880 |
-| nerf_synthetic | uniform_pose | 3 | 1 | 17.861407 | NA | 0.626856 | NA | 0.363679 | NA | -10.488863 | -0.247700 | 0.233543 |
-| nerf_synthetic | uniform_pose | 6 | 1 | NA | NA | NA | NA | NA | NA | NA | NA | NA |
-| nerf_synthetic | uniform_pose | 9 | 1 | NA | NA | NA | NA | NA | NA | NA | NA | NA |
-| nerf_synthetic | uniform_pose | 12 | 1 | NA | NA | NA | NA | NA | NA | NA | NA | NA |
-| nerf_synthetic | uniform_pose | 24 | 1 | NA | NA | NA | NA | NA | NA | NA | NA | NA |
+| nerf_synthetic | uniform_pose | 3 | 1 | 16.759602 | 2.449463 | 0.746840 | 0.084003 | 0.265548 | 0.077988 | -12.364267 | -0.202014 | 0.211767 |
+| nerf_synthetic | uniform_pose | 6 | 1 | 20.922114 | 2.780095 | 0.832661 | 0.072985 | 0.148269 | 0.056067 | -8.201755 | -0.116192 | 0.094488 |
+| nerf_synthetic | uniform_pose | 9 | 1 | 22.893462 | 2.592564 | 0.866723 | 0.068482 | 0.110989 | 0.048258 | -6.230407 | -0.082130 | 0.057209 |
+| nerf_synthetic | uniform_pose | 12 | 1 | 24.066240 | 2.520447 | 0.884015 | 0.060135 | 0.095659 | 0.041354 | -5.057629 | -0.064838 | 0.041879 |
+| nerf_synthetic | uniform_pose | 24 | 1 | 26.416942 | 2.908889 | 0.916125 | 0.055509 | 0.072295 | 0.041339 | -2.706927 | -0.032728 | 0.018515 |
 | refnerf | uniform_pose | 3 | 1 | 16.143194 | 4.374744 | 0.771586 | 0.120285 | 0.318336 | 0.169784 | -14.944158 | -0.199352 | 0.269370 |
 | refnerf | uniform_pose | 6 | 1 | 20.555772 | 6.008194 | 0.850310 | 0.088568 | 0.187156 | 0.111162 | -10.531579 | -0.120628 | 0.138190 |
 | refnerf | uniform_pose | 9 | 1 | 22.460150 | 5.887785 | 0.876464 | 0.078159 | 0.153523 | 0.102971 | -8.627202 | -0.094474 | 0.104556 |
@@ -106,46 +106,46 @@
 | glossy_synthetic | potion_blender | uniform_pose | 24 | 0 | 24 | 16 | 26.340409 | 0.903443 | 0.091845 | 29.926326 | 0.959533 | 0.046309 | -3.585917 | -0.056090 | 0.045537 | completed |  |  |
 | glossy_synthetic | tbell_blender | uniform_pose | 24 | 0 | 24 | 16 | 26.301910 | 0.924454 | 0.072467 | 31.215519 | 0.967600 | 0.033669 | -4.913608 | -0.043146 | 0.038798 | completed |  |  |
 | glossy_synthetic | teapot_blender | uniform_pose | 24 | 0 | 24 | 16 | 22.296846 | 0.883628 | 0.073617 | 27.011217 | 0.953340 | 0.037896 | -4.714371 | -0.069712 | 0.035721 | completed |  |  |
-| nerf_synthetic | chair | uniform_pose | 3 | 0 | 3 | 200 | NA | NA | NA | 29.053885 | 0.976026 | 0.028086 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | drums | uniform_pose | 3 | 0 | 3 | 200 | NA | NA | NA | 24.823498 | 0.933557 | 0.060275 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | ficus | uniform_pose | 3 | 0 | 3 | 200 | NA | NA | NA | 24.411800 | 0.925269 | 0.074030 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | hotdog | uniform_pose | 3 | 0 | 3 | 200 | NA | NA | NA | 33.157090 | 0.980351 | 0.029270 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | lego | uniform_pose | 3 | 0 | 3 | 200 | NA | NA | NA | 30.542826 | 0.972603 | 0.027694 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | materials | uniform_pose | 3 | 0 | 3 | 200 | NA | NA | NA | 30.285471 | 0.949973 | 0.050605 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | mic | uniform_pose | 3 | 0 | 3 | 200 | NA | NA | NA | 32.366114 | 0.978492 | 0.030150 | NA | NA | NA | missing |  | missing_metrics |
+| nerf_synthetic | chair | uniform_pose | 3 | 0 | 3 | 200 | 14.800869 | 0.768090 | 0.232068 | 29.053885 | 0.976026 | 0.028086 | -14.253016 | -0.207936 | 0.203982 | completed |  |  |
+| nerf_synthetic | drums | uniform_pose | 3 | 0 | 3 | 200 | 13.771075 | 0.673761 | 0.346647 | 24.823498 | 0.933557 | 0.060275 | -11.052423 | -0.259796 | 0.286372 | completed |  |  |
+| nerf_synthetic | ficus | uniform_pose | 3 | 0 | 3 | 200 | 15.788276 | 0.792583 | 0.197719 | 24.411800 | 0.925269 | 0.074030 | -8.623525 | -0.132687 | 0.123689 | completed |  |  |
+| nerf_synthetic | hotdog | uniform_pose | 3 | 0 | 3 | 200 | 18.819591 | 0.837543 | 0.213123 | 33.157090 | 0.980351 | 0.029270 | -14.337499 | -0.142808 | 0.183853 | completed |  |  |
+| nerf_synthetic | lego | uniform_pose | 3 | 0 | 3 | 200 | 16.456987 | 0.728242 | 0.235141 | 30.542826 | 0.972603 | 0.027694 | -14.085838 | -0.244361 | 0.207448 | completed |  |  |
+| nerf_synthetic | materials | uniform_pose | 3 | 0 | 3 | 200 | 15.284429 | 0.681393 | 0.360094 | 30.285471 | 0.949973 | 0.050605 | -15.001042 | -0.268580 | 0.309489 | completed |  |  |
+| nerf_synthetic | mic | uniform_pose | 3 | 0 | 3 | 200 | 21.294186 | 0.866249 | 0.175911 | 32.366114 | 0.978492 | 0.030150 | -11.071928 | -0.112242 | 0.145761 | completed |  |  |
 | nerf_synthetic | ship | uniform_pose | 3 | 0 | 3 | 200 | 17.861407 | 0.626856 | 0.363679 | 28.350269 | 0.874557 | 0.130135 | -10.488863 | -0.247700 | 0.233543 | completed |  |  |
-| nerf_synthetic | chair | uniform_pose | 6 | 0 | 6 | 200 | NA | NA | NA | 29.053885 | 0.976026 | 0.028086 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | drums | uniform_pose | 6 | 0 | 6 | 200 | NA | NA | NA | 24.823498 | 0.933557 | 0.060275 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | ficus | uniform_pose | 6 | 0 | 6 | 200 | NA | NA | NA | 24.411800 | 0.925269 | 0.074030 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | hotdog | uniform_pose | 6 | 0 | 6 | 200 | NA | NA | NA | 33.157090 | 0.980351 | 0.029270 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | lego | uniform_pose | 6 | 0 | 6 | 200 | NA | NA | NA | 30.542826 | 0.972603 | 0.027694 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | materials | uniform_pose | 6 | 0 | 6 | 200 | NA | NA | NA | 30.285471 | 0.949973 | 0.050605 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | mic | uniform_pose | 6 | 0 | 6 | 200 | NA | NA | NA | 32.366114 | 0.978492 | 0.030150 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | ship | uniform_pose | 6 | 0 | 6 | 200 | NA | NA | NA | 28.350269 | 0.874557 | 0.130135 | NA | NA | NA | running |  | missing_metrics |
-| nerf_synthetic | chair | uniform_pose | 9 | 0 | 9 | 200 | NA | NA | NA | 29.053885 | 0.976026 | 0.028086 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | drums | uniform_pose | 9 | 0 | 9 | 200 | NA | NA | NA | 24.823498 | 0.933557 | 0.060275 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | ficus | uniform_pose | 9 | 0 | 9 | 200 | NA | NA | NA | 24.411800 | 0.925269 | 0.074030 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | hotdog | uniform_pose | 9 | 0 | 9 | 200 | NA | NA | NA | 33.157090 | 0.980351 | 0.029270 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | lego | uniform_pose | 9 | 0 | 9 | 200 | NA | NA | NA | 30.542826 | 0.972603 | 0.027694 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | materials | uniform_pose | 9 | 0 | 9 | 200 | NA | NA | NA | 30.285471 | 0.949973 | 0.050605 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | mic | uniform_pose | 9 | 0 | 9 | 200 | NA | NA | NA | 32.366114 | 0.978492 | 0.030150 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | ship | uniform_pose | 9 | 0 | 9 | 200 | NA | NA | NA | 28.350269 | 0.874557 | 0.130135 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | chair | uniform_pose | 12 | 0 | 12 | 200 | NA | NA | NA | 29.053885 | 0.976026 | 0.028086 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | drums | uniform_pose | 12 | 0 | 12 | 200 | NA | NA | NA | 24.823498 | 0.933557 | 0.060275 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | ficus | uniform_pose | 12 | 0 | 12 | 200 | NA | NA | NA | 24.411800 | 0.925269 | 0.074030 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | hotdog | uniform_pose | 12 | 0 | 12 | 200 | NA | NA | NA | 33.157090 | 0.980351 | 0.029270 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | lego | uniform_pose | 12 | 0 | 12 | 200 | NA | NA | NA | 30.542826 | 0.972603 | 0.027694 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | materials | uniform_pose | 12 | 0 | 12 | 200 | NA | NA | NA | 30.285471 | 0.949973 | 0.050605 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | mic | uniform_pose | 12 | 0 | 12 | 200 | NA | NA | NA | 32.366114 | 0.978492 | 0.030150 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | ship | uniform_pose | 12 | 0 | 12 | 200 | NA | NA | NA | 28.350269 | 0.874557 | 0.130135 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | chair | uniform_pose | 24 | 0 | 24 | 200 | NA | NA | NA | 29.053885 | 0.976026 | 0.028086 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | drums | uniform_pose | 24 | 0 | 24 | 200 | NA | NA | NA | 24.823498 | 0.933557 | 0.060275 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | ficus | uniform_pose | 24 | 0 | 24 | 200 | NA | NA | NA | 24.411800 | 0.925269 | 0.074030 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | hotdog | uniform_pose | 24 | 0 | 24 | 200 | NA | NA | NA | 33.157090 | 0.980351 | 0.029270 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | lego | uniform_pose | 24 | 0 | 24 | 200 | NA | NA | NA | 30.542826 | 0.972603 | 0.027694 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | materials | uniform_pose | 24 | 0 | 24 | 200 | NA | NA | NA | 30.285471 | 0.949973 | 0.050605 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | mic | uniform_pose | 24 | 0 | 24 | 200 | NA | NA | NA | 32.366114 | 0.978492 | 0.030150 | NA | NA | NA | missing |  | missing_metrics |
-| nerf_synthetic | ship | uniform_pose | 24 | 0 | 24 | 200 | NA | NA | NA | 28.350269 | 0.874557 | 0.130135 | NA | NA | NA | missing |  | missing_metrics |
+| nerf_synthetic | chair | uniform_pose | 6 | 0 | 6 | 200 | 18.897372 | 0.857781 | 0.128026 | 29.053885 | 0.976026 | 0.028086 | -10.156513 | -0.118245 | 0.099940 | completed |  |  |
+| nerf_synthetic | drums | uniform_pose | 6 | 0 | 6 | 200 | 18.248149 | 0.817945 | 0.153392 | 24.823498 | 0.933557 | 0.060275 | -6.575349 | -0.115612 | 0.093117 | completed |  |  |
+| nerf_synthetic | ficus | uniform_pose | 6 | 0 | 6 | 200 | 19.794234 | 0.856676 | 0.127020 | 24.411800 | 0.925269 | 0.074030 | -4.617567 | -0.068593 | 0.052990 | completed |  |  |
+| nerf_synthetic | hotdog | uniform_pose | 6 | 0 | 6 | 200 | 25.130031 | 0.910370 | 0.103379 | 33.157090 | 0.980351 | 0.029270 | -8.027058 | -0.069981 | 0.074109 | completed |  |  |
+| nerf_synthetic | lego | uniform_pose | 6 | 0 | 6 | 200 | 20.819773 | 0.808776 | 0.141464 | 30.542826 | 0.972603 | 0.027694 | -9.723053 | -0.163827 | 0.113770 | completed |  |  |
+| nerf_synthetic | materials | uniform_pose | 6 | 0 | 6 | 200 | 18.835380 | 0.794156 | 0.173426 | 30.285471 | 0.949973 | 0.050605 | -11.450090 | -0.155817 | 0.122821 | completed |  |  |
+| nerf_synthetic | mic | uniform_pose | 6 | 0 | 6 | 200 | 25.301846 | 0.922978 | 0.089047 | 32.366114 | 0.978492 | 0.030150 | -7.064268 | -0.055514 | 0.058897 | completed |  |  |
+| nerf_synthetic | ship | uniform_pose | 6 | 0 | 6 | 200 | 20.350129 | 0.692608 | 0.270397 | 28.350269 | 0.874557 | 0.130135 | -8.000141 | -0.181949 | 0.140262 | completed |  |  |
+| nerf_synthetic | chair | uniform_pose | 9 | 0 | 9 | 200 | 21.861414 | 0.904068 | 0.081740 | 29.053885 | 0.976026 | 0.028086 | -7.192471 | -0.071957 | 0.053654 | completed |  |  |
+| nerf_synthetic | drums | uniform_pose | 9 | 0 | 9 | 200 | 20.596946 | 0.867205 | 0.106269 | 24.823498 | 0.933557 | 0.060275 | -4.226552 | -0.066351 | 0.045994 | completed |  |  |
+| nerf_synthetic | ficus | uniform_pose | 9 | 0 | 9 | 200 | 21.664382 | 0.883965 | 0.100426 | 24.411800 | 0.925269 | 0.074030 | -2.747419 | -0.041304 | 0.026397 | completed |  |  |
+| nerf_synthetic | hotdog | uniform_pose | 9 | 0 | 9 | 200 | 27.413777 | 0.932053 | 0.074949 | 33.157090 | 0.980351 | 0.029270 | -5.743312 | -0.048298 | 0.045678 | completed |  |  |
+| nerf_synthetic | lego | uniform_pose | 9 | 0 | 9 | 200 | 22.724220 | 0.854435 | 0.099020 | 30.542826 | 0.972603 | 0.027694 | -7.818606 | -0.118168 | 0.071327 | completed |  |  |
+| nerf_synthetic | materials | uniform_pose | 9 | 0 | 9 | 200 | 20.805982 | 0.831852 | 0.131233 | 30.285471 | 0.949973 | 0.050605 | -9.479489 | -0.118121 | 0.080628 | completed |  |  |
+| nerf_synthetic | mic | uniform_pose | 9 | 0 | 9 | 200 | 26.464244 | 0.936919 | 0.073496 | 32.366114 | 0.978492 | 0.030150 | -5.901870 | -0.041572 | 0.043346 | completed |  |  |
+| nerf_synthetic | ship | uniform_pose | 9 | 0 | 9 | 200 | 21.616735 | 0.723286 | 0.220783 | 28.350269 | 0.874557 | 0.130135 | -6.733534 | -0.151271 | 0.090647 | completed |  |  |
+| nerf_synthetic | chair | uniform_pose | 12 | 0 | 12 | 200 | 23.749696 | 0.916609 | 0.067413 | 29.053885 | 0.976026 | 0.028086 | -5.304189 | -0.059417 | 0.039327 | completed |  |  |
+| nerf_synthetic | drums | uniform_pose | 12 | 0 | 12 | 200 | 21.215765 | 0.874316 | 0.099050 | 24.823498 | 0.933557 | 0.060275 | -3.607733 | -0.059241 | 0.038774 | completed |  |  |
+| nerf_synthetic | ficus | uniform_pose | 12 | 0 | 12 | 200 | 22.105695 | 0.889637 | 0.095956 | 24.411800 | 0.925269 | 0.074030 | -2.306106 | -0.035633 | 0.021926 | completed |  |  |
+| nerf_synthetic | hotdog | uniform_pose | 12 | 0 | 12 | 200 | 28.023419 | 0.940494 | 0.070070 | 33.157090 | 0.980351 | 0.029270 | -5.133671 | -0.039857 | 0.040800 | completed |  |  |
+| nerf_synthetic | lego | uniform_pose | 12 | 0 | 12 | 200 | 24.644348 | 0.891001 | 0.076685 | 30.542826 | 0.972603 | 0.027694 | -5.898478 | -0.081602 | 0.048992 | completed |  |  |
+| nerf_synthetic | materials | uniform_pose | 12 | 0 | 12 | 200 | 22.268600 | 0.857327 | 0.105864 | 30.285471 | 0.949973 | 0.050605 | -8.016870 | -0.092646 | 0.055259 | completed |  |  |
+| nerf_synthetic | mic | uniform_pose | 12 | 0 | 12 | 200 | 27.532606 | 0.946350 | 0.060671 | 32.366114 | 0.978492 | 0.030150 | -4.833508 | -0.032142 | 0.030521 | completed |  |  |
+| nerf_synthetic | ship | uniform_pose | 12 | 0 | 12 | 200 | 22.989789 | 0.756388 | 0.189565 | 28.350269 | 0.874557 | 0.130135 | -5.360480 | -0.118169 | 0.059430 | completed |  |  |
+| nerf_synthetic | chair | uniform_pose | 24 | 0 | 24 | 200 | 27.145494 | 0.957685 | 0.039401 | 29.053885 | 0.976026 | 0.028086 | -1.908391 | -0.018340 | 0.011316 | completed |  |  |
+| nerf_synthetic | drums | uniform_pose | 24 | 0 | 24 | 200 | 22.512641 | 0.901713 | 0.079076 | 24.823498 | 0.933557 | 0.060275 | -2.310857 | -0.031844 | 0.018800 | completed |  |  |
+| nerf_synthetic | ficus | uniform_pose | 24 | 0 | 24 | 200 | 23.452131 | 0.907720 | 0.082986 | 24.411800 | 0.925269 | 0.074030 | -0.959669 | -0.017550 | 0.008957 | completed |  |  |
+| nerf_synthetic | hotdog | uniform_pose | 24 | 0 | 24 | 200 | 30.361996 | 0.960792 | 0.044784 | 33.157090 | 0.980351 | 0.029270 | -2.795093 | -0.019559 | 0.015514 | completed |  |  |
+| nerf_synthetic | lego | uniform_pose | 24 | 0 | 24 | 200 | 28.065531 | 0.941912 | 0.043883 | 30.542826 | 0.972603 | 0.027694 | -2.477294 | -0.030691 | 0.016190 | completed |  |  |
+| nerf_synthetic | materials | uniform_pose | 24 | 0 | 24 | 200 | 25.493711 | 0.896676 | 0.084001 | 30.285471 | 0.949973 | 0.050605 | -4.791760 | -0.053296 | 0.033396 | completed |  |  |
+| nerf_synthetic | mic | uniform_pose | 24 | 0 | 24 | 200 | 29.840199 | 0.965194 | 0.041948 | 32.366114 | 0.978492 | 0.030150 | -2.525915 | -0.013298 | 0.011798 | completed |  |  |
+| nerf_synthetic | ship | uniform_pose | 24 | 0 | 24 | 200 | 24.463835 | 0.797308 | 0.162284 | 28.350269 | 0.874557 | 0.130135 | -3.886434 | -0.077249 | 0.032149 | completed |  |  |
 | refnerf | ball | uniform_pose | 3 | 0 | 3 | 200 | 11.829082 | 0.660491 | 0.541012 | 30.037854 | 0.971641 | 0.081153 | -18.208772 | -0.311150 | 0.459858 | completed |  |  |
 | refnerf | car | uniform_pose | 3 | 0 | 3 | 200 | 18.054066 | 0.801862 | 0.169408 | 31.196145 | 0.965286 | 0.026168 | -13.142079 | -0.163424 | 0.143239 | completed |  |  |
 | refnerf | coffee | uniform_pose | 3 | 0 | 3 | 200 | 17.841351 | 0.816676 | 0.291644 | 31.923324 | 0.968782 | 0.065987 | -14.081973 | -0.152106 | 0.225657 | completed |  |  |
@@ -179,47 +179,7 @@
 
 ## Failure Summary
 
-| dataset | scene | strategy | views | seed | status | failure_reason | notes |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| nerf_synthetic | chair | uniform_pose | 3 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | drums | uniform_pose | 3 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | ficus | uniform_pose | 3 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | hotdog | uniform_pose | 3 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | lego | uniform_pose | 3 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | materials | uniform_pose | 3 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | mic | uniform_pose | 3 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | chair | uniform_pose | 6 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | drums | uniform_pose | 6 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | ficus | uniform_pose | 6 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | hotdog | uniform_pose | 6 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | lego | uniform_pose | 6 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | materials | uniform_pose | 6 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | mic | uniform_pose | 6 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | ship | uniform_pose | 6 | 0 | running |  | missing_metrics |
-| nerf_synthetic | chair | uniform_pose | 9 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | drums | uniform_pose | 9 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | ficus | uniform_pose | 9 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | hotdog | uniform_pose | 9 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | lego | uniform_pose | 9 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | materials | uniform_pose | 9 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | mic | uniform_pose | 9 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | ship | uniform_pose | 9 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | chair | uniform_pose | 12 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | drums | uniform_pose | 12 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | ficus | uniform_pose | 12 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | hotdog | uniform_pose | 12 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | lego | uniform_pose | 12 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | materials | uniform_pose | 12 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | mic | uniform_pose | 12 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | ship | uniform_pose | 12 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | chair | uniform_pose | 24 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | drums | uniform_pose | 24 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | ficus | uniform_pose | 24 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | hotdog | uniform_pose | 24 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | lego | uniform_pose | 24 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | materials | uniform_pose | 24 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | mic | uniform_pose | 24 | 0 | missing |  | missing_metrics |
-| nerf_synthetic | ship | uniform_pose | 24 | 0 | missing |  | missing_metrics |
+No sparse rows with failed or missing metrics were found.
 
 ## Paper/Full-View Alignment Caveats
 

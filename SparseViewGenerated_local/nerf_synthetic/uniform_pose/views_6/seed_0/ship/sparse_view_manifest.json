@@ -1,0 +1,32 @@
+{
+  "dataset": "nerf_synthetic",
+  "scene": "ship",
+  "source_scene": "/data/liuly/dataset/3DGS/NeRF Synthetic/ship",
+  "output_scene": "/data/liuly/dataset/3DGS/SparseViewGenerated/nerf_synthetic/uniform_pose/views_6/seed_0/ship",
+  "strategy": "uniform_pose",
+  "seed": 0,
+  "requested_views": 6,
+  "train_frames_available": 100,
+  "train_frames_selected": 6,
+  "test_frames": 200,
+  "selected_indices": [
+    0,
+    11,
+    14,
+    57,
+    82,
+    98
+  ],
+  "selected_file_paths": [
+    "./train/r_0",
+    "./train/r_11",
+    "./train/r_14",
+    "./train/r_57",
+    "./train/r_82",
+    "./train/r_98"
+  ],
+  "status": "ok",
+  "notes": "",
+  "dry_run": false,
+  "reused_existing": false
+}
