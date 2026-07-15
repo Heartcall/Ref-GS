@@ -1,0 +1,31 @@
+{
+  "command": "CUDA_VISIBLE_DEVICES=1 REFGS_PHYSICAL_GPU=1 /home/liuly/anaconda3/envs/ref_gs/bin/python /home/liuly/Surface_Reconstruction/Glossy/Ref-GS/render.py -s /data1/liuly/RefGS_LLFF/prepared/1_4/room -m /data1/liuly/RefGS_LLFF/output/llff_sparse/1_4/room --iteration 10000 --renderer refgs --image-key pbr_rgb --skip_train",
+  "competing_compute_processes": [],
+  "cuda_probe": {
+    "cuda_available": true,
+    "cuda_visible_devices": "1",
+    "current_device": 0,
+    "device_count": 1,
+    "gpu_name": "NVIDIA RTX A5000",
+    "passes": true,
+    "physical_gpu": "1",
+    "returncode": 0,
+    "stderr": ""
+  },
+  "cuda_visible_devices": "1",
+  "elapsed_seconds": 8.882708933902904,
+  "failure_reason": "",
+  "gpu_before": {
+    "memory_free_mib": 24244,
+    "memory_used_mib": 3,
+    "name": "NVIDIA RTX A5000",
+    "physical_index": 1,
+    "utilization_percent": 0
+  },
+  "peak_increment_mib": 6672,
+  "peak_memory_used_mib": 6675,
+  "physical_gpu": 1,
+  "returncode": 0,
+  "stage": "render",
+  "status": "completed"
+}

@@ -1,0 +1,31 @@
+{
+  "command": "CUDA_VISIBLE_DEVICES=2 REFGS_PHYSICAL_GPU=2 /home/liuly/anaconda3/envs/ref_gs/bin/python /home/liuly/Surface_Reconstruction/Glossy/Ref-GS/train.py -s /data1/liuly/RefGS_LLFF/prepared/1_4/orchids -m /data1/liuly/RefGS_LLFF/output/llff_sparse/1_4/orchids --eval --iterations 10000 --save_iterations 5000 10000",
+  "competing_compute_processes": [],
+  "cuda_probe": {
+    "cuda_available": true,
+    "cuda_visible_devices": "2",
+    "current_device": 0,
+    "device_count": 1,
+    "gpu_name": "NVIDIA RTX A5000",
+    "passes": true,
+    "physical_gpu": "2",
+    "returncode": 0,
+    "stderr": ""
+  },
+  "cuda_visible_devices": "2",
+  "elapsed_seconds": 1216.9645637921058,
+  "failure_reason": "",
+  "gpu_before": {
+    "memory_free_mib": 24244,
+    "memory_used_mib": 3,
+    "name": "NVIDIA RTX A5000",
+    "physical_index": 2,
+    "utilization_percent": 0
+  },
+  "peak_increment_mib": 23786,
+  "peak_memory_used_mib": 23789,
+  "physical_gpu": 2,
+  "returncode": 0,
+  "stage": "train",
+  "status": "completed"
+}
